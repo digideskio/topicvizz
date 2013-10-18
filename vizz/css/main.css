@@ -1,0 +1,152 @@
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #444;
+	font-family: Helvetica, Arial, Verdana, sans-serif;
+	color: white;
+}
+
+body #time_topbar {
+	position: fixed;
+	left: 50%;
+	margin-left: -400px;
+	width: 800px;
+	height: 150px;
+	top: -115px;
+	border-radius: 0 0 20px 20px;
+}
+
+	#time_topbar .content {
+		width: 760px;
+		margin: 30px auto -10px;
+		height: 95px;
+	}
+	
+		#time_topbar .content #time_slider {
+			width: 720px;
+			height: 10px;
+			margin: 0 auto;
+			background: #fff;
+		}
+
+		#time_topbar .content .info {
+			height: 20px;
+			margin-top: 35px;
+		}
+	
+			#time_topbar .content .info .left_handle_value {
+				text-align: left;
+				float: left;
+			}
+	
+			#time_topbar .content .info .right_handle_value {
+				text-align: right;
+				float: right;
+			}
+
+			#time_topbar .content .info .left_handle_value,
+			#time_topbar .content .info .right_handle_value {
+				width: 100px;
+				margin: 0 50px;
+			}
+
+	#time_topbar .title {
+		line-height: 35px;
+		width: 100%;
+		text-align: center;
+		cursor: default;
+	}
+
+
+body #filter_sidebar {
+	position: fixed;
+	right: -265px;
+	margin-top: -300px;
+	top: 50%;
+	width: 300px;
+	height: 600px;
+	border-radius: 20px 0 0 20px;
+}
+
+	#filter_sidebar .title {
+		float: left;
+		height: 100%;
+		width: 35px;
+		cursor: default;
+		text-align: center;
+	}
+
+		#filter_sidebar .title span {
+			display: block;
+			margin-top: 300px;
+			-moz-transform:rotate(-90deg);
+		}
+
+	#filter_sidebar .content {
+		float: left;
+		width: 220px;
+		height: 100%;
+		margin-left: 40px;
+		margin: 20px 0 0 20px;
+	}
+	
+
+
+body #time_topbar,
+body #filter_sidebar {
+	box-shadow: 0 0 10px #000;
+	background: rgba(20, 20, 20, 0.75);
+}
+
+
+body #info_box {
+	position: absolute;
+	z-index: 999999;
+	display: none;
+	background: rgba(20, 20, 20, 0.9);
+	width: 0px;
+	height: 0px;
+	left: 50%;
+	top: 50%;
+	border: 1px solid #111;
+	border-radius: 20px;
+	box-shadow: 0 0 10px #000;
+	padding: 20px;
+}
+
+	body #info_box .head {
+		height: 50px;
+	}
+	
+		body #info_box .head h2 {
+			margin: 0;
+			display: block;
+			float: left;
+			font-size: 30px;
+			font-weight: bold;
+		}
+
+		body #info_box .head .close_button {
+			text-align: center;
+			line-height: 30px;
+			float: right;
+			width: 30px;
+			margin: 10px;
+			height: 30px;
+			background: #1989E0;
+			border-radius: 5px;
+			box-shadow: 0 0 5px #1989E0;
+			cursor: pointer;
+			font-weight: bold;
+		}
+
+	body #info_box .body {
+		height: 390px;
+		margin-top: 20px;
+		overflow: hidden;
+	}
+
+.clear_fix {
+	clear: both;
+}
