@@ -90,11 +90,48 @@ body #filter_sidebar {
 		margin-left: 40px;
 		margin: 20px 0 0 20px;
 	}
-	
+
+
+body #collector_sidebar {
+	position: fixed;
+	left: -75px;
+	margin-top: -300px;
+	top: 50%;
+	width: 100px;
+	height: 600px;
+	border-radius: 0 20px 20px 0;
+}
+
+	#collector_sidebar .content {
+		
+	}
+
+		#collector_sidebar .content .item {
+			width: 100%;
+			height: 60px;
+			margin-top: 15px;
+			margin-left: -15px;
+			cursor: pointer;
+		}
+		
+			#collector_sidebar .content .item .placeholder {
+				float: left;
+				width: 75%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.2);
+			}
+			
+			#collector_sidebar .content .item .colorarea {
+				float: right;
+				width: 25%;
+				height: 100%;
+				border-radius: 0 10px 10px 0;
+			}
 
 
 body #time_topbar,
-body #filter_sidebar {
+body #filter_sidebar,
+body #collector_sidebar {
 	box-shadow: 0 0 10px #000;
 	background: rgba(20, 20, 20, 0.75);
 }
@@ -115,11 +152,30 @@ body #info_box {
 	padding: 20px;
 }
 
-	body #info_box .head {
+	body #info_box .collection_button {
+		float: left;
+		width: 7%;
+		border: 1px solid rgba(25, 137, 224, 0.5);;
+		background: rgba(25, 137, 224, 0.45);
+		height: 100%;
+		border-radius: 20px 0 0 20px;
+		cursor: pointer;
+		line-height: 390px;
+		color: #fff;
+		text-align: center;
+	}
+	
+
+	body #info_box .content {
+		float: right;
+		width: 88%;
+	}
+
+	body #info_box .content .head {
 		height: 50px;
 	}
 	
-		body #info_box .head h2 {
+		body #info_box .content .head h2 {
 			margin: 0;
 			display: block;
 			float: left;
@@ -127,7 +183,7 @@ body #info_box {
 			font-weight: bold;
 		}
 
-		body #info_box .head .close_button {
+		body #info_box .content .head .close_button {
 			text-align: center;
 			line-height: 30px;
 			float: right;
@@ -141,7 +197,7 @@ body #info_box {
 			font-weight: bold;
 		}
 
-	body #info_box .body {
+	body #info_box .content .body {
 		height: 390px;
 		margin-top: 20px;
 		overflow: hidden;
