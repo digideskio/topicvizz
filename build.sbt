@@ -6,3 +6,8 @@ libraryDependencies += "com.typesafe" % "config" % "1.0.2"
 
 libraryDependencies += "org.scalatest" % "scalatest_2.10" % "2.0.RC3" % "test"
 
+libraryDependencies += "org.apache.jena" % "jena-arq" % "2.11.0"
+
+libraryDependencies += "org.apache.jena" % "jena-core" % "2.11.0"
+
+libraryDependencies += "org.apache.pdfbox" % "pdfbox" % "1.8.2"
