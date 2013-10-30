@@ -1,14 +1,14 @@
 <!-- Tufts VUE 3.2.2 concept-map (namedEntityAnalyse.vue) 2013-10-30 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/home/rgiacinto/.local/bin/vue.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Wed Oct 30 17:39:39 CET 2013 by rgiacinto on platform Linux 3.11.6-1-ARCH in JVM 1.7.0_45-b31 -->
+<!-- Do Not Remove: Saved date Wed Oct 30 18:14:25 CET 2013 by rgiacinto on platform Linux 3.11.6-1-ARCH in JVM 1.7.0_45-b31 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0"
     label="namedEntityAnalyse.vue" created="1383149122407" x="0.0"
     y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1383151179516" size="13156"
+    <resource referenceCreated="1383153265178" size="13610"
         spec="/home/rgiacinto/Source/topicvizz/doc/namedEntityAnalyse.vue"
         type="1" xsi:type="URLResource">
         <title>namedEntityAnalyse.vue</title>
@@ -74,20 +74,6 @@
         <point2 x="753.0" y="164.69757"/>
         <ID1 xsi:type="node">7</ID1>
         <ID2 xsi:type="node">11</ID2>
-    </child>
-    <child ID="15" label="beziehen sich auf" layerID="1"
-        created="1383149424645" x="151.66609" y="62.70469"
-        width="632.926" height="91.29531" strokeWidth="1.0"
-        autoSized="false" controlCount="1" arrowState="2" xsi:type="link">
-        <strokeColor>#404040</strokeColor>
-        <textColor>#404040</textColor>
-        <font>Arial-plain-11</font>
-        <URIString>http://vue.tufts.edu/rdf/resource/0a2bea1cc0a800641615ab87a0f6b5f0</URIString>
-        <point1 x="784.09216" y="153.5"/>
-        <point2 x="152.16609" y="153.31876"/>
-        <ID1 xsi:type="node">11</ID1>
-        <ID2 xsi:type="node">6</ID2>
-        <ctrlPoint0 x="465.0" y="-14.0" xsi:type="point"/>
     </child>
     <child ID="16"
         label="Begriffshaeufigkeit&#xa;&amp;&#xa;Begriffsranking"
@@ -187,7 +173,7 @@
         <ID1 xsi:type="node">21</ID1>
         <ID2 xsi:type="node">16</ID2>
     </child>
-    <child ID="24" label="Top5 Begriffe" layerID="1"
+    <child ID="24" label="Top 5 Begriffe" layerID="1"
         created="1383150276937" x="1003.0" y="383.0" width="156.5"
         height="74.5" strokeWidth="1.0" autoSized="false" xsi:type="node">
         <fillColor>#C1F780</fillColor>
@@ -215,7 +201,7 @@
         <URIString>http://vue.tufts.edu/rdf/resource/0a2bea28c0a800641615ab8725260b2a</URIString>
     </layer>
     <userZoom>1.0</userZoom>
-    <userOrigin x="-14.0" y="-14.0"/>
+    <userOrigin x="-93.0" y="-14.0"/>
     <presentationBackground>#202020</presentationBackground>
     <PathwayList currentPathway="0" revealerIndex="-1">
         <pathway ID="0" label="Untitled Pathway" created="1383149122406"
