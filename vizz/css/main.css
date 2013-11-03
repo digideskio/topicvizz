@@ -7,6 +7,14 @@ body {
 	color: white;
 }
 
+
+body #graph_viz {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+}
+
+
 body #time_topbar {
 	position: fixed;
 	left: 50%;
@@ -205,4 +213,17 @@ body #info_box {
 
 .clear_fix {
 	clear: both;
+}
+
+
+svg *::selection {
+    background : transparent;
+}
+
+svg *::-moz-selection {
+    background:transparent;
+}
+
+svg *::-webkit-selection {
+    background:transparent;
 }
