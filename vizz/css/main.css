@@ -70,10 +70,10 @@ body #time_topbar {
 body #filter_sidebar {
 	position: fixed;
 	right: -265px;
-	margin-top: -300px;
+	margin-top: -307px;
 	top: 50%;
 	width: 300px;
-	height: 600px;
+	height: 615px;
 	border-radius: 20px 0 0 20px;
 }
 
@@ -103,10 +103,10 @@ body #filter_sidebar {
 body #collector_sidebar {
 	position: fixed;
 	left: -75px;
-	margin-top: -300px;
+	margin-top: -307px;
 	top: 50%;
 	width: 100px;
-	height: 600px;
+	height: 615px;
 	border-radius: 0 20px 20px 0;
 }
 
@@ -124,17 +124,32 @@ body #collector_sidebar {
 		
 			#collector_sidebar .content .item .placeholder {
 				float: left;
-				width: 75%;
+				width: 65%;
 				height: 100%;
 				background: rgba(0, 0, 0, 0.2);
+				cursor: n-resize;
 			}
 			
 			#collector_sidebar .content .item .colorarea {
 				float: right;
-				width: 25%;
+				width: 35%;
 				height: 100%;
 				border-radius: 0 10px 10px 0;
 			}
+
+
+body div#sidepopup {
+	position: absolute;
+	z-index: 999999;
+	background: rgba(20, 20, 20, 0.9);
+	border: 1px solid #111;
+	border-radius: 20px;
+	box-shadow: 0 0 10px #000;
+	padding: 20px;
+	width: 500px;
+	height: 400px;
+	display: none;
+}
 
 
 body #time_topbar,
@@ -227,3 +242,9 @@ svg *::-moz-selection {
 svg *::-webkit-selection {
     background:transparent;
 }
+
+
+svg circle:hover {
+	cursor: pointer;
+}
+

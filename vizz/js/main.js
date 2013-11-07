@@ -3,6 +3,7 @@
 
 	var vizsvg;
 	var force;
+	var collector_sidebar_open = false;
 	var info_box_open = false;
 	var current_info_data = null;
 	
@@ -10,24 +11,25 @@
 
 	var graph = {
 	  "nodes":[
-		{"id":"Myriel","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Napoleon","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Mlle.Baptistine","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Mme.Magloire","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"CountessdeLo","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Geborand","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Champtercier","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Cravatte","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Count","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"OldMan","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Labarre","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Valjean","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Marguerite","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Mme.deR","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Isabeau","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"},
-		{"id":"Gervais","color":"rgb(12,34,56)", "name": "njaa", "desc": "blaaa"}
+		{"id":"Myriel","color":"rgb(32,90,79)", "name": "nja1", "desc": "blaaa1"},
+		{"id":"Napoleon","color":"rgb(12,34,156)", "name": "nja2", "desc": "blaaa2"},
+		{"id":"Mlle.Baptistine","color":"rgb(120,134,56)", "name": "nja3", "desc": "blaaa3"},
+		{"id":"Mme.Magloire","color":"rgb(12,24,156)", "name": "nja4", "desc": "blaaa4"},
+		{"id":"CountessdeLo","color":"rgb(132,134,56)", "name": "nja5", "desc": "blaaa5"},
+		{"id":"Geborand","color":"rgb(12,234,56)", "name": "nja6", "desc": "blaaa6"},
+		{"id":"Champtercier","color":"rgb(12,34,56)", "name": "nja7", "desc": "blaaa7"},
+		{"id":"Cravatte","color":"rgb(12,34,56)", "name": "nja8", "desc": "blaaa8"},
+		{"id":"Count","color":"rgb(12,34,56)", "name": "nja9", "desc": "blaaa9"},
+		{"id":"OldMan","color":"rgb(17,34,76)", "name": "nj10", "desc": "blaaa10"},
+		{"id":"Labarre","color":"rgb(102,164,46)", "name": "nj11", "desc": "blaaa11"},
+		{"id":"Valjean","color":"rgb(12,56,56)", "name": "nj12", "desc": "blaaa12"},
+		{"id":"Marguerite","color":"rgb(200,34,100)", "name": "nj13", "desc": "blaaa13"},
+		{"id":"Mme.deR","color":"rgb(12,74,56)", "name": "nj14", "desc": "blaaa14"},
+		{"id":"Isabeau","color":"rgb(160,70,59)", "name": "nj15", "desc": "blaaa15"},
+		{"id":"Gervais","color":"rgb(40,74,36)", "name": "nj16", "desc": "blaaa16"}
 	  ],
 	  "links":[
+	  	{"source":0,"target":1,"value":50},
 		{"source":1,"target":2,"value":1},
 		{"source":2,"target":1,"value":8},
 		{"source":3,"target":1,"value":10},
@@ -89,6 +91,7 @@
 				})
 				.on('dblclick', function(d, i) {
 					if(d.name) {
+						
 						if(!info_box_open) {
 							info_box_open = true;
 							
@@ -180,34 +183,71 @@
 			var collection_sidebar_con = $('#collector_sidebar .content');
 		
 			var new_item = $('<div class="item"></div>').hide();
-			var new_item_placeholder = $('<div class="placeholder"></div>').click(function() {
-				new_item.animate({opacity: 0.0, height: 0}, 300, function() {
-					$(this).remove();
+			var new_item_placeholder = $('<div class="placeholder"></div>')
+				.click(function() {
+
+					new_item.animate({opacity: 0.0, height: 0}, 300, function() {
+						$(this).remove();
 					
-					for(var i = 0; i < info_collection.length; i++) {
-						if(info_collection[i] === info_data) {
-							info_collection.splice(i, 1);
+						for(var i = 0; i < info_collection.length; i++) {
+							if(info_collection[i] === info_data) {
+								info_collection.splice(i, 1);
+								
+								if(info_collection.length == 0) {
+									$('#collector_sidebar').stop().animate({left: "-75px"}, 300);
+								}
 							
-							if(info_collection.length == 0) {
-								$('#collector_sidebar').stop().animate({left: "-75px"}, 300);
+								return;
 							}
-							
-							return;
 						}
-					}
+					});
 				});
-			});
+			
 			var new_item_colorarea = $('<div class="colorarea"></div>').css({background: color})
 				.hover(function(){
-					console.log('in');
+					//console.log('in');
 				},
 				function(){
-					console.log('out');
+					//console.log('out');
 				});
 			
 			new_item.append(new_item_placeholder);
 			new_item.append(new_item_colorarea);
 			collection_sidebar_con.append(new_item);
+			
+			
+			var sidepopup = $("#sidepopup");
+			
+			collection_sidebar_con.mousemove(function(e) {
+				
+				if(!collector_sidebar_open)
+					return;
+				
+				var w_height = $(window).height();
+				
+				var n_left = e.pageX + 60;
+				var n_top = e.pageY;
+				
+				if((n_top + 400 + 100) > w_height) {
+					n_top = n_top - (n_top + 400 + 100 - w_height)
+				}
+				
+				sidepopup.css({
+					left: n_left,
+					top: n_top
+				})
+			});
+			
+			new_item_colorarea.mouseenter(function() {
+				
+				if(!collector_sidebar_open)
+					return;
+				
+				sidepopup.find(".content > .head > h2").html(info_data.name);
+				sidepopup.find(".content > .body").html(info_data.desc)
+				
+				sidepopup.show();
+			});
 			
 			new_item.fadeIn(300);
 		}
@@ -283,11 +323,15 @@
 			}
 		
 			setTimeout(function() {
-				collector_sidebar_node.stop().animate({left: "0px"}, 300);	
+				collector_sidebar_node.stop().animate({left: "0px"}, 300, function() {
+					collector_sidebar_open = true;
+				});
 			}, 250);
 			
 		})
 		.bind("mouseleave", function() {
+				
+				$("#sidepopup").fadeOut(100);
 				
 				// don't even think about it!
 				if(info_collection.length == 0)	return;
@@ -296,6 +340,7 @@
 				
 				collector_sidebar_timeout = setTimeout(function() {
 					collector_sidebar_node.stop().animate({left: "-75px"}, 300);
+					collector_sidebar_open = true;
 				}, 400);
 		});
 		
@@ -305,7 +350,6 @@
 		.css({opacity: 0.7})
 		.hover(
 			function() {
-				console.log("asf");
 				$(this).stop().animate({opacity: 1.0}, 100);
 			},
 			function() {
@@ -318,12 +362,14 @@
 			$("#info_box")
 			.fadeOut(300, function() {
 				$(this).css({
-					display: 'hidden', 
+					display: 'none', 
 					height: 0,
 					width: 0,
 					marginLeft: 0,
 					marginTop: 0
 				});
+				
+				info_box_open = false;
 			});
 			;
 		});
@@ -342,20 +388,23 @@
 		.click(function() {
 			info_box_open = false;
 			
+			// don't add any more items to the collection if already full
+			if(info_collection.length == 8) {
+				return;
+			}
+			
 			$("#info_box")
 			.animate({marginLeft: '-2000px'}, 500)
 			.fadeOut(200, function() {
+				
 				$(this).css({
-					display: 'hidden',
+					display: 'none',
 					height: 0,
 					width: 0,
 					marginLeft: 0,
 					marginTop: 0,
 				});
 				
-				// don't add any more items if collection is full
-				if(info_collection.length == 9)
-					return;
 			
 				// add a copy to the collection if it hasn't been already added
 				for(var i = 0; i < info_collection.length; i++) {
@@ -369,6 +418,8 @@
 				info_collection.push(c_obj);
 				add_to_collection(c_obj);
 				current_info_data = null;
+				
+				info_box_open = false;
 			});
 			
 		});

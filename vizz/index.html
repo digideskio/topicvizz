@@ -15,23 +15,11 @@
 		<script>
 			$(document).ready(function() {
 				
-				//var canvas = $('#graph_viz');
 			});
 		</script>
 	</head>
 	<body>
 		<svg id="graph_viz" width="900px" height="600px">
-			<defs>
-			<radialGradient fy="50%" fx="50%" r="50%" cy="50%" cx="50%" id="selected-glow">
-				<stop style="stop-color:rgb(255,255,255);stop-opacity:1" offset="0%"></stop>
-				<stop style="stop-color:rgb(0,0,0);stop-opacity:0" offset="100%"></stop>
-			</radialGradient>
-			<radialGradient fy="50%" fx="50%" r="50%" cy="50%" cx="50%" id="connected-glow">
-				<stop style="stop-color:#73A4B8;stop-opacity:1" offset="0%"></stop>
-				<stop style="stop-color:#73A4B8;stop-opacity:0.5" offset="40%"></stop>
-				<stop style="stop-color:rgb(0,0,0);stop-opacity:0" offset="100%"></stop>
-			</radialGradient>
-			</defs>
 		</svg>
 		<div id="time_topbar">
 			<div class="content">
@@ -75,6 +63,15 @@
 				</div>
 			</div>
 			<div class="clear_fix"></div>
+		</div>
+		<div id="sidepopup">
+			<div class="content">
+				<div class="head">
+					<h2></h2>
+				</div>
+				<div class="body">
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
