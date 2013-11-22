@@ -1,0 +1,14 @@
+[{
+"id" : "1",
+"topic" : "LDAP",
+"abstract" : "Das Lightweight Directory Access Protocol ˈlaɪtweɪt daɪrektəri: ækses ˈprəʊtəkɒl ist ein Anwendungsprotokoll aus der Netzwerktechnik. Es erlaubt die Abfrage und die Modifikation von Informationen eines Verzeichnisdienstes (eine im Netzwerk verteilte hierarchische Datenbank) über ein IP-Netzwerk. Die aktuelle Version ist in RFC 4510 / RFC 4511 spezifiziert.",
+"files" : ["p1.pdf", "p15.pdf"],
+"edges" : [{"neighbour" : "2", "weight" : 0.3}]
+},
+{
+"id" : "2",
+"topic" : "Client-Server-Modell",
+"abstract" : "Das Client-Server-Modell (auch Client-Server-Konzept, -Architektur, -System oder -Prinzip genannt) beschreibt eine Möglichkeit, Aufgaben und Dienstleistungen innerhalb eines Netzwerkes zu verteilen. Die Aufgaben werden von Programmen erledigt, die in Clients und Server unterteilt werden. Der Client kann auf Wunsch eine Aufgabe vom Server anfordern (z. B. ein Betriebsmittel). Der Server, der sich auf dem gleichen oder einem beliebigen anderen Rechner im Netzwerk befindet, beantwortet die Anforderung (d. h. er stellt im Beispiel das Betriebsmittel bereit).",
+"files" : ["p1.pdf", "p18.pdf"],
+"edges" : [{"neighbour" : "1", "weight" : 0.3}]
+}]

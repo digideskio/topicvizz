@@ -15,6 +15,51 @@ body #graph_viz {
 }
 
 
+body #filter_sidebar {
+	position: fixed;
+	right: -265px;
+	margin-top: -307px;
+	top: 50%;
+	width: 300px;
+	height: 615px;
+	border-radius: 20px 0 0 20px;
+}
+
+	#filter_sidebar .title {
+		float: left;
+		height: 100%;
+		width: 35px;
+		cursor: default;
+		text-align: center;
+	}
+
+		#filter_sidebar .title span {
+			display: block;
+			margin-top: 300px;
+			transform:rotate(-90deg);
+			-moz-transform:rotate(-90deg);
+			-webkit-transform:rotate(-90deg);
+		}
+
+	#filter_sidebar .content {
+		float: left;
+		width: 220px;
+		height: 100%;
+		margin-left: 40px;
+		margin: 20px 0 0 20px;
+	}
+
+
+body #time_topbar,
+body #filter_sidebar,
+body #collector_sidebar {
+	box-shadow: 0 0 10px #000;
+	background: rgba(20, 20, 20, 0.75);
+}
+
+
+/*
+
 body #time_topbar {
 	position: fixed;
 	left: 50%;
@@ -64,39 +109,6 @@ body #time_topbar {
 		width: 100%;
 		text-align: center;
 		cursor: default;
-	}
-
-
-body #filter_sidebar {
-	position: fixed;
-	right: -265px;
-	margin-top: -307px;
-	top: 50%;
-	width: 300px;
-	height: 615px;
-	border-radius: 20px 0 0 20px;
-}
-
-	#filter_sidebar .title {
-		float: left;
-		height: 100%;
-		width: 35px;
-		cursor: default;
-		text-align: center;
-	}
-
-		#filter_sidebar .title span {
-			display: block;
-			margin-top: 300px;
-			-moz-transform:rotate(-90deg);
-		}
-
-	#filter_sidebar .content {
-		float: left;
-		width: 220px;
-		height: 100%;
-		margin-left: 40px;
-		margin: 20px 0 0 20px;
 	}
 
 
@@ -151,13 +163,6 @@ body div#sidepopup {
 	display: none;
 }
 
-
-body #time_topbar,
-body #filter_sidebar,
-body #collector_sidebar {
-	box-shadow: 0 0 10px #000;
-	background: rgba(20, 20, 20, 0.75);
-}
 
 
 body #info_box {
@@ -226,20 +231,26 @@ body #info_box {
 		overflow: hidden;
 	}
 
+*/
+
+
 .clear_fix {
 	clear: both;
 }
 
 
-svg *::selection {
+svg *::selection,
+.title span::selection {
     background : transparent;
 }
 
-svg *::-moz-selection {
+svg *::-moz-selection,
+.title span::-moz-selection {
     background:transparent;
 }
 
-svg *::-webkit-selection {
+svg *::-webkit-selection,
+.title span::-webkit-selection {
     background:transparent;
 }
 
