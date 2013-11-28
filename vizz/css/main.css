@@ -1,9 +1,18 @@
 
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(./font/lato_regular.woff) format('woff');
+}
+
+
 body {
 	margin: 0;
 	padding: 0;
 	background: #444;
-	font-family: Helvetica, Arial, Verdana, sans-serif;
+	font-family: Lato, Helvetica, Arial, Verdana, sans-serif;
 	color: white;
 }
 
@@ -58,180 +67,16 @@ body #collector_sidebar {
 }
 
 
-/*
-
-body #time_topbar {
-	position: fixed;
-	left: 50%;
-	margin-left: -400px;
-	width: 800px;
-	height: 150px;
-	top: -115px;
-	border-radius: 0 0 20px 20px;
-}
-
-	#time_topbar .content {
-		width: 760px;
-		margin: 30px auto -10px;
-		height: 95px;
-	}
-	
-		#time_topbar .content #time_slider {
-			width: 720px;
-			height: 10px;
-			margin: 0 auto;
-			background: #fff;
-		}
-
-		#time_topbar .content .info {
-			height: 20px;
-			margin-top: 35px;
-		}
-	
-			#time_topbar .content .info .left_handle_value {
-				text-align: left;
-				float: left;
-			}
-	
-			#time_topbar .content .info .right_handle_value {
-				text-align: right;
-				float: right;
-			}
-
-			#time_topbar .content .info .left_handle_value,
-			#time_topbar .content .info .right_handle_value {
-				width: 100px;
-				margin: 0 50px;
-			}
-
-	#time_topbar .title {
-		line-height: 35px;
-		width: 100%;
-		text-align: center;
-		cursor: default;
-	}
-
-
-body #collector_sidebar {
-	position: fixed;
-	left: -75px;
-	margin-top: -307px;
-	top: 50%;
-	width: 100px;
-	height: 615px;
-	border-radius: 0 20px 20px 0;
-}
-
-	#collector_sidebar .content {
-		
-	}
-
-		#collector_sidebar .content .item {
-			width: 100%;
-			height: 60px;
-			margin-top: 15px;
-			margin-left: -15px;
-			cursor: pointer;
-		}
-		
-			#collector_sidebar .content .item .placeholder {
-				float: left;
-				width: 65%;
-				height: 100%;
-				background: rgba(0, 0, 0, 0.2);
-				cursor: n-resize;
-			}
-			
-			#collector_sidebar .content .item .colorarea {
-				float: right;
-				width: 35%;
-				height: 100%;
-				border-radius: 0 10px 10px 0;
-			}
-
-
-body div#sidepopup {
-	position: absolute;
-	z-index: 999999;
-	background: rgba(20, 20, 20, 0.9);
-	border: 1px solid #111;
-	border-radius: 20px;
-	box-shadow: 0 0 10px #000;
-	padding: 20px;
-	width: 500px;
-	height: 400px;
+div#abstract_text_popup {
 	display: none;
-}
-
-
-
-body #info_box {
+	background: rgba(50, 50, 50, 0.9);
+	max-width: 300px;
+	padding: 10px;
+	border-radius: 10px;
 	position: absolute;
-	z-index: 999999;
-	display: none;
-	background: rgba(20, 20, 20, 0.9);
-	width: 0px;
-	height: 0px;
-	left: 50%;
-	top: 50%;
-	border: 1px solid #111;
-	border-radius: 20px;
-	box-shadow: 0 0 10px #000;
-	padding: 20px;
+	font-size: 0.9em;
+	text-align: center;
 }
-
-	body #info_box .collection_button {
-		float: left;
-		width: 7%;
-		border: 1px solid rgba(25, 137, 224, 0.5);;
-		background: rgba(25, 137, 224, 0.45);
-		height: 100%;
-		border-radius: 20px 0 0 20px;
-		cursor: pointer;
-		line-height: 390px;
-		color: #fff;
-		text-align: center;
-	}
-	
-
-	body #info_box .content {
-		float: right;
-		width: 88%;
-	}
-
-	body #info_box .content .head {
-		height: 50px;
-	}
-	
-		body #info_box .content .head h2 {
-			margin: 0;
-			display: block;
-			float: left;
-			font-size: 30px;
-			font-weight: bold;
-		}
-
-		body #info_box .content .head .close_button {
-			text-align: center;
-			line-height: 30px;
-			float: right;
-			width: 30px;
-			margin: 10px;
-			height: 30px;
-			background: #1989E0;
-			border-radius: 5px;
-			box-shadow: 0 0 5px #1989E0;
-			cursor: pointer;
-			font-weight: bold;
-		}
-
-	body #info_box .content .body {
-		height: 390px;
-		margin-top: 20px;
-		overflow: hidden;
-	}
-
-*/
 
 
 .clear_fix {
@@ -240,22 +85,59 @@ body #info_box {
 
 
 svg *::selection,
-.title span::selection {
+.title span::selection,
+foreignObject *::selection {
     background : transparent;
 }
 
 svg *::-moz-selection,
-.title span::-moz-selection {
+.title span::-moz-selection,
+foreignObject *::-moz-selection {
     background:transparent;
 }
 
 svg *::-webkit-selection,
-.title span::-webkit-selection {
+.title span::-webkit-selection,
+foreignObject *::-webkit-selection {
     background:transparent;
 }
 
 
 svg circle:hover {
 	cursor: pointer;
+}
+
+h2.topic_name {
+	margin: 15px 0;
+	text-align: center;
+}
+
+div.abstract_text {
+	font-size: 0.9em;
+	width: 270px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+
+div.files_list {
+	width: 300px;
+	height: 10px;
+	margin-top: 15px;
+}
+
+
+div.files_list a.file_item {
+	display: block;
+	float: right;
+	margin-right: 20px;
+	width: 10px;
+	height: 10px;
+	border-radius: 4px;
+	background: rgba(255, 255, 255, 0.5);
+}
+
+div.files_list a.file_item:hover {
+	background: rgba(255, 255, 255, 1.0);	
 }
 
