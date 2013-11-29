@@ -8,7 +8,10 @@
 	 */
 	var force = null;
 	var vizsvg = null;
-
+	
+	/* "Globale" Variable um Zugriff auf das Popup-Element zu haben */
+	var abstract_text_popup = null;
+	
 	/* Vorgefertigte Datenstruktur für die Nodes (Knoten) und Lines (Kanten) */
 	var graph = {
 		"nodes":[],
@@ -139,6 +142,9 @@
 							
 							force.charge(-100);
 							force.start();
+							
+							/* Den Abstract-Popup ebenfalls schließen, wenn der Node geschlossen/minimiert wird */
+							abstract_text_popup.stop().fadeOut();
 						}
 						else {
 							/* Node ist im geschlossenen Zustand bzw. minimiert */
@@ -264,7 +270,6 @@
 						e.initUIEvent("dblclick", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
 					
 						$(this).parent().find("rect")[0].dispatchEvent(e);
-					
 					});
 				
 				/* Übergeordnetes body-Element einfügen */
@@ -323,10 +328,13 @@
 							/* Das neue Span-Element wird der "full_abstract_popup_text"-Variable zugewiesen */
 							full_abstract_popup_text = $("<span>")
 							.html("[...]")
-							.hover(function(e) { /* MouseEnter
-					
+							.hover(function(e) { /* MouseEnter */
+								
+								if(!d.open)
+									return;
+								
 								/* Popup mit dem restlichen Abstract-Text befüllen und danach direkt einblenden */
-								$("#abstract_text_popup")
+								abstract_text_popup
 									.html(abstract_rest)
 									.css({'left': (e.pageX + 10) + "px", 'top': (e.pageY + 10) + "px"})
 									.stop()
@@ -338,7 +346,7 @@
 								 *	Beim verlassen des Auslassungszeichen-Elements mit der Maus,
 								 *		soll der Popup ausgeblendet werden
 								 */
-								$("#abstract_text_popup")
+								abstract_text_popup
 									.stop()
 									.fadeOut();
 							});
@@ -398,6 +406,10 @@
 		
 		/* Ausgelagerte Initialisierungs-Routine aufrufen */
 		initGraph(vis);
+		
+		
+		/* Referenz auf das im DOM existierende Popup-Element holen und für den späteren Gebrauch sichern */
+		abstract_text_popup = $("#abstract_text_popup");
 		
 		
 		/*
