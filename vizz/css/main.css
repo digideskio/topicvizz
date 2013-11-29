@@ -11,7 +11,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: #444;
+	background: #444 url(../img/bg.jpg);
 	font-family: Lato, Helvetica, Arial, Verdana, sans-serif;
 	color: white;
 }
@@ -59,11 +59,9 @@ body #filter_sidebar {
 	}
 
 
-body #time_topbar,
-body #filter_sidebar,
-body #collector_sidebar {
-	box-shadow: 0 0 10px #000;
-	background: rgba(20, 20, 20, 0.75);
+body #filter_sidebar {
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+	background: rgba(20, 20, 20, 0.85);
 }
 
 
@@ -103,31 +101,44 @@ foreignObject *::-webkit-selection {
 }
 
 
-svg circle:hover {
-	cursor: pointer;
+
+svg g.node .topic {
+	fill: rgb(114, 159, 207);
+	stroke: rgba(255, 255, 255, 0.4);
+	stroke-width": 2;
 }
 
-h2.topic_name {
+
+
+foreignObject body h2.topic_name {
 	margin: 15px 0;
 	text-align: center;
 }
 
-div.abstract_text {
+
+foreignObject body div.abstract_text {
 	font-size: 0.9em;
 	width: 270px;
 	text-align: center;
 	margin: 0 auto;
 }
 
+foreignObject body div.abstract_text span {
+	/*
+	color: rgb(32, 74, 135);
+	*/
+	color: rgb(52, 101, 164);
+}
 
-div.files_list {
+
+foreignObject body div.files_list {
 	width: 300px;
 	height: 10px;
 	margin-top: 15px;
 }
 
 
-div.files_list a.file_item {
+foreignObject body div.files_list a.file_item {
 	display: block;
 	float: right;
 	margin-right: 20px;
@@ -137,7 +148,7 @@ div.files_list a.file_item {
 	background: rgba(255, 255, 255, 0.5);
 }
 
-div.files_list a.file_item:hover {
+foreignObject body div.files_list a.file_item:hover {
 	background: rgba(255, 255, 255, 1.0);	
 }
 

@@ -1,0 +1,9 @@
+Die Hintegrundtextur wurde als DiffuseMap von folgender Seite genommen:
+
+http://resources.blogscopia.com/2011/03/10/smoke-oak-texture/
+
+
+Sie wurde vormals von der Firma Europlac unter der Public Domain freigegeben.
+
+Die Textur wurde für den Gebrauch zusätzlich mit GIMP nachträglich in ihrer
+Helligkeit, Kontrast, Sättigung, ihrem Farbton und zusätzlich hinzugefügten Schatten angepasst.

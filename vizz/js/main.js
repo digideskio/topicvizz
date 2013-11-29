@@ -11,8 +11,8 @@
 
 	/* Vorgefertigte Datenstruktur für die Nodes (Knoten) und Lines (Kanten) */
 	var graph = {
-	  "nodes":[],
-	  "links":[]
+		"nodes":[],
+		"links":[]
 	};
 
 	
@@ -47,20 +47,21 @@
 		
 		/* D3.js-Layout festlegen (Graph) und benötigte Startwerte angeben (nodes, links etc.) */
 			force = d3.layout.force()
-		    .nodes(graph.nodes)
-		    .links(graph.links)
-		    .charge(-100)
-		    .gravity(0.01)
-		    .linkStrength(0.2)
-		    .linkDistance(function(link) {
-		    	/* Die Kantenlänge anhand der Gewichtung festlegen */
-		    	return 500 * (1-link.weight);
-		    })
-		    .size([width,height])
-		    .start();
-		    
-		    
-		    /* Lines erzeugen (SVG-Line) und an diese jeweils ihre Daten binden */
+			.nodes(graph.nodes)
+			.links(graph.links)
+			.charge(-100)
+			.gravity(0.01)
+			.linkStrength(0.2)
+			.linkDistance(function(link) {
+				
+				/* Die Kantenlänge anhand der Gewichtung festlegen */
+				return 500 * (1-link.weight);
+			})
+			.size([width,height])
+			.start();
+			
+			
+			/* Lines erzeugen (SVG-Line) und an diese jeweils ihre Daten binden */
 			var link = vis.selectAll(".link")
 				.data(graph.links)
 				.enter().append("line")
@@ -72,30 +73,28 @@
 			
 			
 			/*
-		     *	Nodes erzeugen (SVG-G) und an diese jeweils ihre Daten binden
-		     *		Als Node wird ein SVG-Group-Element gewählt, um zusammengehörige Elemente (Texte etc.) zu gruppieren
-		     */
+			 *	Nodes erzeugen (SVG-G) und an diese jeweils ihre Daten binden
+			 *		Als Node wird ein SVG-Group-Element gewählt, um zusammengehörige Elemente (Texte etc.) zu gruppieren
+			 */
 			var node = vis.selectAll(".node")
 				.data(graph.nodes)
 				.enter().append('g')
 				.attr("class", "node");
 				
 				/*
-				 *	Visuelle wird der Node als Rechteck mit abgerundeten Ecken dargestellt
-				 *		bzw. sieht es im Minimierten Zustand wie ein Kreis aus
+				 *	Visuell wird der Node als Rechteck mit abgerundeten Ecken dargestellt
+				 *		bzw. sieht er im Minimierten Zustand wie ein Kreis aus
 				 */
 				node.append("rect")
+				.attr("class", "topic")
 				.attr("width", 30)
 				.attr("height", 30)
 				.attr("rx", 15)
 				.attr("ry", 15)
 				.attr("x", -15)
 				.attr("y", -15)
-				.style("fill", function(d) {
-					return "rgb(114, 159, 207)"; /* TODO: Je nach Node-Typ(?) eine eigene Farbe wählen */
-				})
 				.style({"stroke": "rgba(255, 255, 255, 0.4)", "stroke-width": 2})
-				.on('dblclick', function(d, i) { /* Ein Doppelklick auf ein Node (Rechteck) soll das Rechteck maximieren */
+				.on('dblclick', function(d, i) { /* Ein Doppelklick auf ein Node (Rechteck) soll das Rechteck Maximieren */
 					
 					/* Bei fehlendem Topic-Namen, macht es keinen Sinn diesen zu Maximieren */
 					if(d.topic) {
@@ -116,6 +115,7 @@
 						if(d.open) {
 							/* Node ist im offen Zustand bzw. maximiert */
 							
+							/* In den Element-Daten festhalten, dass der Node nun geschlossen ist bzw. wird */
 							d.open = false;
 							
 							/* Zentrierter Topic-Name einblenden */
@@ -142,7 +142,8 @@
 						}
 						else {
 							/* Node ist im geschlossenen Zustand bzw. minimiert */
-						
+							
+							/* In den Element-Daten festhalten, dass der Node nun offen ist bzw. geöffnet wird */
 							d.open = true;
 							
 							/*
@@ -168,7 +169,7 @@
 								.style("stroke-width", 7);
 							
 							/*
-							 *	Geöffnetes Node soll im Force-Layout auf andere Nodes einwirken (umso größer, desto abstoßender)
+							 *	Geöffneter Node soll im Force-Layout auf andere Nodes einwirken (umso größer, desto abstoßender)
 							 *		Es werden nur geöffnete Nodes betrachtet
 							 */
 							force.charge(function(d) {
@@ -210,7 +211,7 @@
 					/* Minimale Nodegröße für den späteren Gebrauch sichern (für spätere Minimierung) */
 					d.size = size;
 					
-					/* Eigentlicher Wert für das "text-anchor"-Attribut (innerhalb des Gruppenelements zentriert) */
+					/* Eigentlicher Wert für das "text-anchor"-Attribut (innerhalb des Gruppenelements zentrieren) */
 					return "middle";
 				});
 				
@@ -219,8 +220,8 @@
 				node.call(force.drag);
 			
 			/*
-			 *	Nach jeder Neuberechnung der Position des Graphen und seiner Elemente,
-			 *		sollen die Nodes und Kanten ihrer neu berechneten Position nach, neu respositioniert werden
+			 *	Nach jeder Neuberechnung der Position des Graphs und seiner Elemente,
+			 *		sollen die Nodes und Kanten, entsprechend ihrer neu berechneten Position, neu respositioniert werden
 			 *		(von D3.js vorgegebener Zeitpunkt; Tick)
 			 */
 			force.on("tick", function() {
@@ -232,9 +233,9 @@
 				node.attr("transform", function(d, i) {
 					return "translate(" + d.x + ", " + d.y + ")";
 				});
-			  });
-			  
-			  
+			});
+			
+			
 			/*
 			 *	Hinzufügen eines foreignObject-Elements, welcher es erlaubt innerhalb des SVG-Namespaces
 			 *		(X)HTML-Elemente einzubetten (ermöglicht die Nutzung von Elementen mit Word-Wrap-Eigenschaften)
@@ -256,7 +257,7 @@
 						 *	Da der Node vom foreignObject komplett überdeckt wird,
 						 *		kann auf diesem kein Doppelklick ausgeübt werden
 						 *
-						 *	Ein Doppelklick auf das foreignObject muss somit auf den daunter liegenden 
+						 *	Ein Doppelklick auf das foreignObject muss somit dem daunter liegenden 
 						 *		Node gereicht werden. Dies wird durch ein simulierten Doppelklick auf das Rechteck-Element realisiert
 						 */
 						var e = document.createEvent('UIEvents');
@@ -281,15 +282,15 @@
 				/*
 				 *	Ist der Abstact zu lang für den Node, wird er gekürzt dargestellt
 				 *
-				 *	Über ein zusätzlich angehängtes Auslassungs-Kennzeichen ([...]), wird der restliche 
+				 *	Über ein zusätzlich angehängtes Auslassungszeichen ([...]), wird der restliche 
 				 *		Abstract in einem Popup angezeigt
 				 *	
-				 *	Ist der Abstract kurz genug, wird kein Auslassungs-Kennzeichen angehangen
+				 *	Ist der Abstract kurz genug, wird kein Auslassungszeichen angehangen
 				 */
 				 
 				/*
 				 *	Im späteren Verlauf kann die Variable "full_abstract_popup_text" je nach Abstract-Länge,
-				 *		ein Span-Element für das Auslassungs-Kennzeichen enthalten
+				 *		ein Span-Element für das Auslassungszeichen enthalten
 				 */
 				var full_abstract_popup_text = null;
 				
@@ -319,7 +320,7 @@
 						 */
 						if(abstract_rest.length > 0) {
 						
-							/* Span-Element wird der "full_abstract_popup_text"-Variable zugewiesen */
+							/* Das neue Span-Element wird der "full_abstract_popup_text"-Variable zugewiesen */
 							full_abstract_popup_text = $("<span>")
 							.html("[...]")
 							.hover(function(e) { /* MouseEnter
@@ -334,8 +335,8 @@
 							function(e) { /* MouseLeave */
 								
 								/*
-								 *	Beim verlassen des Auslassungs-Kennzeichen-Elements mit der Maus,
-								 *		soll Popup ausgeblendet werden
+								 *	Beim verlassen des Auslassungszeichen-Elements mit der Maus,
+								 *		soll der Popup ausgeblendet werden
 								 */
 								$("#abstract_text_popup")
 									.stop()
@@ -348,10 +349,10 @@
 					});
 				
 				/*
-				 *	Existiert ein rstlicher Abstract, wurde auch ein Span-Element erzeugt
+				 *	Existiert ein restlicher Abstract, wurde auch ein Span-Element erzeugt
 				 *		und der Variable "full_abstract_popup_text" zugewiesen
 				 *	
-				 *	Das Span-Element kann somit dem Div-Element mit dem verkürzten Abstract angehangen werden,
+				 *	Das Span-Element, mit dem verkürzten Abstract, kann somit dem Div-Element angehangen werden,
 				 *		um den Popup mit dem restlichen Abstract aufrufen zu können
 				 */
 				if(full_abstract_popup_text != null) {
@@ -388,7 +389,7 @@
 	}
 
 	
-	/* Den Graphen erst aufbauen, wenn die Seite komplett geladen bzw. das DOM komplett aufgebaut wurde */
+	/* Den Graph erst aufbauen, wenn die Seite komplett geladen bzw. das DOM komplett aufgebaut wurde */
 	$(document).ready(function(){
 		
 		vizsvg = document.querySelector('#graph_viz');
@@ -429,26 +430,26 @@
 		},
 		function() { /* MouseLeave */
 				
-				/* Den Start der "Öffnen"-Animation abbrechen */
-				if(filter_sidebar_timeout !== null) {
-					clearTimeout(filter_sidebar_timeout);
-					filter_sidebar_timeout = null;
-				}
-				
-				/* Evtl. momentan aktive Animationsvorgänge stoppen */
-				filter_sidebar_node.stop();
-				filter_sidebar_title_node.stop();
-				
-				filter_sidebar_timeout = setTimeout(function() {
-					filter_sidebar_node.stop().animate({right: "-265px"}, 300);
-					filter_sidebar_title_node.stop().fadeIn(300);
-				}, 400);
+			/* Den Start der "Öffnen"-Animation abbrechen */
+			if(filter_sidebar_timeout !== null) {
+				clearTimeout(filter_sidebar_timeout);
+				filter_sidebar_timeout = null;
+			}
+			
+			/* Evtl. momentan aktive Animationsvorgänge stoppen */
+			filter_sidebar_node.stop();
+			filter_sidebar_title_node.stop();
+			
+			filter_sidebar_timeout = setTimeout(function() {
+				filter_sidebar_node.stop().animate({right: "-265px"}, 300);
+				filter_sidebar_title_node.stop().fadeIn(300);
+			}, 400);
 		});
 		
 		
 		/*
 		 *	Wenn das Fenster in seiner Größe verändert wird,
-		 *		soll auch das Ausgabeelement und das d3.js-Layout die neue Größe übernehmen
+		 *		soll auch das Ausgabe-Element und das d3.js-Layout die neue Größe übernehmen
 		 */
 		$(window).resize(function() {
 		
