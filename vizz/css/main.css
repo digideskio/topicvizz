@@ -8,12 +8,59 @@
 }
 
 
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
+
 body {
 	margin: 0;
 	padding: 0;
 	background: #444 url(../img/bg.jpg);
 	font-family: Lato, Helvetica, Arial, Verdana, sans-serif;
 	color: white;
+}
+
+
+input[type='button'] {
+    border: 2px solid #1e5799;
+    color: rgb(220, 220, 220);
+    background: linear-gradient(to bottom, #2f95e2 0%, #2989d8 34%, #207cca 61%, #1e5799 100%);
+    border-radius: 6px;
+    box-shadow: 0 0 3px rgba(143, 175, 211, 0.4);
+    cursor: pointer;
+    padding: 4px 5px;
+}
+
+
+input[type='button']:hover {
+    border: 2px solid #2d6199;
+    background: linear-gradient(to bottom, #429ddd 0%, #3f93d3 34%, #3b8ac6 61%, #2d6199 100%);
+}
+
+input[type='button']:active {
+    color: rgb(200, 200, 200);
+    border: 2px solid #1f446b;
+    background: linear-gradient(to bottom, #2f6d98 0%, #2e6e9e 10%, #265282 100%);
+}
+
+
+input[type='text'] {
+    border: 3px solid #1f446b;
+    color: rgb(40, 40, 40);
+    background: #ddd;
+    border-radius: 6px;
+    box-shadow: 0 0 3px rgba(143, 175, 211, 0.4);
+    padding: 4px 5px;
+}
+
+
+input[type='text']:focus {
+    box-shadow: 0 0 25px #1e5799;
+}
+
+
+input[type='checkbox'] {
+    border: 2px solid #1f446b;
 }
 
 
