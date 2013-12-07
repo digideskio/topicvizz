@@ -270,7 +270,7 @@
                          *      Node gereicht werden. Dies wird durch ein simulierten Doppelklick auf das Rechteck-Element realisiert
                          */
                         var e = document.createEvent('UIEvents');
-                        e.initUIEvent   "dblclick", true, true,
+                        e.initUIEvent(  "dblclick", true, true,
                                         window, 0, 0, 0, 0, 0, 
                                         false, false, false, false,
                                         0, null);
@@ -342,7 +342,7 @@
                                 /* Popup mit dem restlichen Abstract-Text befüllen und danach direkt einblenden */
                                 abstract_text_popup
                                     .html(abstract_rest)
-                                    .css(   'left': (e.pageX + 10) + "px",
+                                    .css({  'left': (e.pageX + 10) + "px",
                                             'top': (e.pageY + 10) + "px"})
                                     .stop()
                                     .fadeIn();

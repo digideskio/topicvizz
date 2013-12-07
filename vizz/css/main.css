@@ -121,7 +121,7 @@ body #frequency_overlay .content svg .color_one_path {
 }
 
 
-body #frequency_overlay .content svg .color_two_text
+body #frequency_overlay .content svg .color_two_text {
     fill: rgb(255, 255, 255);
 }
 
