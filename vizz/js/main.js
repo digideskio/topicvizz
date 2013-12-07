@@ -9,6 +9,8 @@
 	var force = null;
 	var vizsvg = null;
 	
+	var frequencyvizsvg = null;
+	
 	/* "Globale" Variable um Zugriff auf das Popup-Element zu haben */
 	var abstract_text_popup = null;
 	
@@ -23,7 +25,7 @@
 	 *	JSON-Dokument mit den Topics beziehen und in die zuvor definierte Datensturktur einpflegen
 	 *		(momentan kann nur Firefox lokale Dateien per XHR beziehen)
 	 */
-	$.getJSON('./data/topics.json', function(json) {
+	$.getJSON('./data/topics.with_frequency_per_year.json', function(json) {
 		$.each(json.topics, function(i, v) {
 			graph.nodes.push(v);
 			
@@ -419,6 +421,13 @@
 		var filter_sidebar_title_node = filter_sidebar_node.find(".title span");
 		var filter_sidebar_timeout = null;
 
+		var frequency_overlay = $("#frequency_overlay");
+		var frequency_overlay_close_button = $("#frequency_overlay_close_button");
+		frequency_overlay_close_button
+			.on("click", function() { toggle_frequency_overlay(); })
+			.css("opacity", 0.4)
+			.hover( function(e) { $(this).stop().animate({"opacity": 1.0}, 300); }, /* MouseEnter */
+					function(e) { $(this).stop().animate({"opacity": 0.4}, 200); }); /* MouseLeave */
 
 		/* Eventhandler zum Öffnen der Filter-Sidebar definieren und dieser zuweisen */
 		filter_sidebar_node.hover(function() { /* MouseEnter */
@@ -472,6 +481,109 @@
 			vizsvg.style.height = height + "px";
 			vizsvg.style.width = width + "px";
 		});
+		
+		
+		/* Ausglagerte Prozedur zur Diagrammerstellung (Zeitliche Entwicklung der Häufigkeit eines Terms) */
+		function create_frequency_diagram() {
+		
+		    /* Node-Referenz des DIV-Elements holen */
+			frequencyvizsvg = document.querySelector('#frequency_viz');
+			var frequencyvis = d3.select(frequencyvizsvg);
+
+			var frequencyvizsvg_jq = $(frequencyvizsvg);
+
+			/* Dimension des SVG-Elements setzen */
+			frequencyvizsvg_jq.css("height", frequencyvizsvg_jq.height() + "px");
+			frequencyvizsvg_jq.css("width", frequencyvizsvg_jq.width() + "px");
+			
+			/* Die für die Ausgabe relevanten Daten für d3.js holen bzw. Umbettungsstrukturen definieren */
+			var nodes = graph.nodes;
+			var years_min_max = {min: null, max: null};
+			var frequency_min_max = {min: null, max: null};
+			
+			/* Durch alle "Nodes" traversieren und das niedrigste und das höchste Jahr, sowie direkt auch die Häufigkeit */
+			$.each(nodes, function(i, v) {
+				var node_years = v.frequency_per_year;
+
+				$.each(node_years, function(i, v) {
+					var year = parseInt(i);
+					var frequency = v;
+
+					if(years_min_max.min === null || year < years_min_max.min)
+						years_min_max.min = year;
+
+					if(years_min_max.max === null || year > years_min_max.max)
+						years_min_max.max = year;
+
+					if(frequency_min_max.min === null || frequency < frequency_min_max.min)
+						frequency_min_max.min = frequency;
+
+					if(frequency_min_max.max === null || frequency > frequency_min_max.max)
+						frequency_min_max.max = frequency;
+				});
+			});
+
+			/* Teilstrings zur CSS-Klassenbildung um Terme, bzw. Elemente die den Term betreffend, farblich zu unterscheiden */
+			var class_arr = ['color_one', 'color_two', 'color_three', 'color_four', 'color_five'];
+
+			/* d3.js - Einbindung */
+			var item_histories =
+				frequencyvis.selectAll('.term_history')
+					.data(nodes)
+					.enter();
+			
+			/* Ausgabe des Terms bzw. Topics */
+			item_histories.append("text")
+				.attr("class", function(d, i) { return class_arr[i] + "_text"; })
+				.attr("pointer-events", "none")
+				.attr("dy", "50px")
+				.attr("dx", "175px")
+				.attr("y", function(d, i) {
+					return i * 110 + 50;
+				})
+				.html(function(d, i) {
+					return d.topic; /* Topic-Name als Inhalt des Text-Elements setzen */
+				})
+				.attr("text-anchor", "end");
+
+			/* TODO: Zeitachse ausgeben */
+			/* TODO: Pfade generieren */
+		}
+		
+		
+		/* Funktion zur Steuerung des Häufigkeits-Popups bzw. -Overlays */
+		function toggle_frequency_overlay() {
+			
+			/* Sofern das Popup nicht offen ist */
+			if(!frequency_overlay.is(':visible')) {
+				/* Stoppe den Graphen im Hintergrund -> da nicht mehr im Fokus und zu dem Zeitpunkt irrelevant */
+				if(force)
+					force.stop();
+				
+				/* Erzeuge das Häufigkeits-Diagramm */
+				create_frequency_diagram();
+				/* Popup bzw. Overlay einblenden */
+				frequency_overlay.stop().fadeIn();
+			}
+			/* Sofern das Popup offen ist */
+			else {
+				/* Blende das Popup bzw. Overlay aus und entleere den Inhalt des Diagramms (Elemente im SVG-Element) */
+				frequency_overlay.stop().fadeOut(function() { $(frequencyvizsvg).empty(); });
+				
+				/* Starte die Positionsberechnung des Graphen, der nun wieder den Fokus besitzt */
+				if(force)
+					force.start();
+			}
+		}
+		
+		/*
+		 *	Test-Button, um das Popup bzw. Overlay überhaupt öffnen und testen zu können
+		 *		TODO: Durch angemessene Aufrufmöglichkeit ersetzen
+		 */
+		$("#test_button").on("click", function(e) {
+			toggle_frequency_overlay();
+		});
+		
 	})
 
 })(this.jQuery)

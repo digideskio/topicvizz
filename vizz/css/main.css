@@ -1,10 +1,10 @@
 
 
 @font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url(./font/lato_regular.woff) format('woff');
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Lato Regular'), local('Lato-Regular'), url(./font/lato_regular.woff) format('woff');
 }
 
 
@@ -22,46 +22,147 @@ body {
 
 
 input[type='button'] {
-    border: 2px solid #1e5799;
-    color: rgb(220, 220, 220);
-    background: linear-gradient(to bottom, #2f95e2 0%, #2989d8 34%, #207cca 61%, #1e5799 100%);
-    border-radius: 6px;
-    box-shadow: 0 0 3px rgba(143, 175, 211, 0.4);
-    cursor: pointer;
-    padding: 4px 5px;
+	border: 2px solid #1e5799;
+	color: rgb(220, 220, 220);
+	background: linear-gradient(to bottom, #2f95e2 0%, #2989d8 34%, #207cca 61%, #1e5799 100%);
+	border-radius: 6px;
+	box-shadow: 0 0 3px rgba(143, 175, 211, 0.4);
+	cursor: pointer;
+	padding: 4px 5px;
 }
 
 
 input[type='button']:hover {
-    border: 2px solid #2d6199;
-    background: linear-gradient(to bottom, #429ddd 0%, #3f93d3 34%, #3b8ac6 61%, #2d6199 100%);
+	border: 2px solid #2d6199;
+	background: linear-gradient(to bottom, #429ddd 0%, #3f93d3 34%, #3b8ac6 61%, #2d6199 100%);
 }
 
 input[type='button']:active {
-    color: rgb(200, 200, 200);
-    border: 2px solid #1f446b;
-    background: linear-gradient(to bottom, #2f6d98 0%, #2e6e9e 10%, #265282 100%);
+	color: rgb(200, 200, 200);
+	border: 2px solid #1f446b;
+	background: linear-gradient(to bottom, #2f6d98 0%, #2e6e9e 10%, #265282 100%);
 }
 
 
 input[type='text'] {
-    border: 3px solid #1f446b;
-    color: rgb(40, 40, 40);
-    background: #ddd;
-    border-radius: 6px;
-    box-shadow: 0 0 3px rgba(143, 175, 211, 0.4);
-    padding: 4px 5px;
+	border: 3px solid #1f446b;
+	color: rgb(40, 40, 40);
+	background: #ddd;
+	border-radius: 6px;
+	box-shadow: 0 0 3px rgba(143, 175, 211, 0.4);
+	padding: 4px 5px;
 }
 
 
 input[type='text']:focus {
-    box-shadow: 0 0 25px #1e5799;
+	box-shadow: 0 0 25px #1e5799;
 }
 
 
 input[type='checkbox'] {
-    border: 2px solid #1f446b;
+	border: 2px solid #1f446b;
 }
+
+
+body #frequency_overlay {
+	display: none;
+	position: absolute;
+	width: 1000px;
+	height: 700px;
+	background: rgba();
+	border-radius: 20px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+	background: rgba(20, 20, 20, 0.85);
+	left: 50%;
+	margin-left: -500px;
+	top: 50%;
+	margin-top: -350px;
+	z-index: 9999999;
+	padding: 25px;
+}
+
+
+body #frequency_overlay h2 {
+	margin: 0;
+	text-align: center;
+}
+
+
+body #frequency_overlay #frequency_overlay_close_button {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	margin: -30px -30px 0 0;
+	background-image: url('../img/close_button.png');
+	cursor: pointer;
+}
+
+
+
+body #frequency_overlay .content {
+	margin-top: 25px;
+}
+
+body #frequency_overlay .content svg {
+	width: 950px;
+	height: 645px;
+}
+
+
+body #frequency_overlay .content svg .color_one_text {
+	fill: rgb(255, 255, 255);
+}
+
+body #frequency_overlay .content svg .color_one_path {
+	stroke: rgb(255, 255, 255);
+	stroke-width: 1;
+}
+
+
+body #frequency_overlay .content svg .color_two_text
+	fill: rgb(255, 255, 255);
+}
+
+body #frequency_overlay .content svg .color_two_path {
+	stroke: rgb(255, 255, 255);
+	stroke-width: 1;
+}
+
+
+
+body #frequency_overlay .content svg .color_three_text {
+	fill: rgb(255, 255, 255);
+}
+
+body #frequency_overlay .content svg .color_three_path {
+	stroke: rgb(255, 255, 255);
+	stroke-width: 1;
+}
+
+
+
+body #frequency_overlay .content svg .color_four_text {
+	fill: rgb(255, 255, 255);
+}
+
+body #frequency_overlay .content svg .color_four_path {
+	stroke: rgb(255, 255, 255);
+	stroke-width: 1;
+}
+
+
+
+body #frequency_overlay .content svg .color_five_text {
+	fill: rgb(255, 255, 255);
+}
+
+body #frequency_overlay .content svg .color_five_path {
+	stroke: rgb(255, 255, 255);
+	stroke-width: 1;
+}
+
 
 
 body #graph_viz {
@@ -132,19 +233,19 @@ div#abstract_text_popup {
 svg *::selection,
 .title span::selection,
 foreignObject *::selection {
-    background : transparent;
+	background : transparent;
 }
 
 svg *::-moz-selection,
 .title span::-moz-selection,
 foreignObject *::-moz-selection {
-    background:transparent;
+	background:transparent;
 }
 
 svg *::-webkit-selection,
 .title span::-webkit-selection,
 foreignObject *::-webkit-selection {
-    background:transparent;
+	background:transparent;
 }
 
 
