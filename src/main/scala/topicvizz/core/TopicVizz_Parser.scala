@@ -25,38 +25,10 @@ class TopicVizz_Parser {
     try {
       // Load document
       val pdfFile = new File(sPath)
-
-      // Parse presentation type
-      var tempType: String = null
-      val typePattern = Pattern.compile("(vortrag|beitrag)_.*.pdf")
-      val typeMatcher = typePattern.matcher(pdfFile.getName)
-      if (typeMatcher.find()) {
-        tempType = typeMatcher.group(1)
-      }
-      else {
-        tempType = "Undefined"
-      }
-
-      // Parse date
-      var tempDate: String = null
-      val datePattern = Pattern.compile("\\d\\d\\d\\d-\\d\\d-\\d\\d")
-      val dateMatcher = datePattern.matcher(pdfFile.getName)
-      if (dateMatcher.find()) {
-        tempDate = dateMatcher.group()
-      } else {
-        tempDate = "YYYY-MM-DD"
-      }
-
-      // Parse author
-      var tempAuthor: String = null
-      val authorPattern = Pattern.compile("vortrag_vd-ak.*\\d\\d\\d\\d-\\d\\d-\\d\\d_(.*).pdf")
-      val authorMatcher = authorPattern.matcher(pdfFile.getName)
-      if (authorMatcher.find()) {
-        tempAuthor = authorMatcher.group(1)
-      } else {
-        tempAuthor = ""
-      }
-
+      // Parse meta-information
+      val tempType = matchString("(vortrag|beitrag)_.*.pdf", pdfFile.getName, "Undefined", 1)
+      val tempDate = matchString("\\d\\d\\d\\d-\\d\\d-\\d\\d", pdfFile.getName, "YYYY-MM-DD", 0)
+      val tempAuthor = matchString("vortrag_vd-ak.*\\d\\d\\d\\d-\\d\\d-\\d\\d_(.*).pdf", pdfFile.getName, "", 1)
       // Load pdf document
       val pdDocument = PDDocument.load(pdfFile)
       val bEncrypted = pdDocument.isEncrypted
@@ -66,10 +38,8 @@ class TopicVizz_Parser {
         val tempText = tempStripper.getText(pdDocument)
         val tempFile = new TopicVizz_File(sPath, tempType, tempText, tempAuthor, tempDate)
         oFileList = oFileList.+:(tempFile)
-
         // Annotate text
         val tempAText = annotate(tempText)
-
         // Parse topics out of href-tag
         val hrefPattern = Pattern.compile("<a href=\"(.*)\" title=\"(.*)\" target=(.*)>(.*)</a>")
         val hrefMatcher = hrefPattern.matcher(tempAText)
@@ -81,8 +51,7 @@ class TopicVizz_Parser {
             if (!tempTopic.containsFile(tempFile)) {
               tempTopic.addFile(tempFile)
             }
-          }
-          else {
+          } else {
             val tempTopic = oTopicMap.get(tempTopicName.toUpperCase).get
             if (!tempTopic.containsFile(tempFile)) {
               tempTopic.addFile(tempFile)
@@ -90,25 +59,17 @@ class TopicVizz_Parser {
           }
         }
       }
-
-      // Debug files
-      //      for (tempDebug <- oFileList)
-      //      {
-      //          println("\n######################\n")
-      //          println("Filename : "+tempDebug.getSFileName)
-      //          println("PresentationType : "+tempDebug.getSPresentationType)
-      //          println("Date : "+tempDebug.getSDate)
-      //          println("Author : "+tempDebug.getSAuthor)
-      //          println("Chars:" +tempDebug.getSText.length)
+      //      // Debug files
+      //      for (tempDebug ← oFileList) {
+      //        println("\n######################\n")
+      //        println("Filename : " + tempDebug.getSFileName)
+      //        println("PresentationType : " + tempDebug.getSPresentationType)
+      //        println("Date : " + tempDebug.getSDate)
+      //        println("Author : " + tempDebug.getSAuthor)
+      //        println("Chars:" + tempDebug.getSText.length)
       //      }
-      //      //Debug topics
-      //      for (tempDebug <- oTopicMap.values)
-      //      {
-      //        println(tempDebug.getSTopic + " = " + tempDebug.getSUrl)
-      //      }
-
     } catch {
-      case e: Exception => println(e.getMessage)
+      case e: Exception ⇒ println(e.getMessage)
     }
   }
 
@@ -120,7 +81,7 @@ class TopicVizz_Parser {
     try {
       val pdfDir = new File(sPath)
       val filter = new PDFFilenameFilter()
-      for (inputFile <- pdfDir.listFiles(filter)) {
+      for (inputFile ← pdfDir.listFiles(filter)) {
         parseFile(inputFile.getPath)
       }
 
@@ -135,7 +96,7 @@ class TopicVizz_Parser {
       //      }
 
     } catch {
-      case e: Exception => println(e.getMessage)
+      case e: Exception ⇒ println(e.getMessage)
     }
   }
 
@@ -162,10 +123,26 @@ class TopicVizz_Parser {
       in.close()
       decodedText
     } catch {
-      case e: Exception => {
+      case e: Exception ⇒ {
         println(e.getMessage)
         ""
       }
+    }
+  }
+
+  def matchString(sPattern: String, sString: String, sDefaultResult: String, iGroup: Integer): String = {
+    try {
+      val oPattern = Pattern.compile(sPattern)
+      val oMatcher = oPattern.matcher(sString)
+      if (oMatcher.find()) {
+        oMatcher.group(iGroup)
+      } else {
+        sDefaultResult
+      }
+    } catch {
+      case e: Exception ⇒
+        println(e.getMessage)
+        sDefaultResult
     }
   }
 
