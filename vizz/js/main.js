@@ -585,6 +585,43 @@
             }
         }
         
+        
+        /*
+         *  Export-Button, um das Diagramm innerhalb des Popups als Grafik zu exportieren
+         */
+        $("#frequency_export_button").on("click", function(e) {
+            
+            var svg_title = "Zeitliche Entwicklung der Topics";
+            
+            var svg_elem = $("#frequency_viz")
+                .attr({
+                    "title": svg_title,   // TODO: besseren Titel vergeben
+                    "version": "1.1",
+                    "xmlns": "http://www.w3.org/2000/svg"
+                }).prepend("<title>" + svg_title + "</title>" +
+                            "<defs>\n" +
+                            "<style type=\"text/css\" >\n" +
+                                "<![CDATA[\n" +
+                                    "@font-face {" +
+                                        "font-family: 'Lato';\n" +
+                                        "font-style: normal;\n" +
+                                        "font-weight: 400;\n" +
+                                        "src: local('Lato Regular'), local('Lato-Regular'), url(./font/lato_regular.woff) format('woff');" + // TODO: Evtl. die Schriftart per base64 einbetten
+                                    "}\n" +
+                                    
+                                    "* {\n" +
+                                         "font-family: Lato, Helvetica, Arial, Verdana, sans-serif;\n" +
+                                    "}\n" +
+                                "]]>\n" + 
+                            "</style>\n" +
+                            "</defs>");
+            
+            var svg_html = svg_elem.parent().html();
+            
+            window.open("data:image/svg+xml;base64,"+ btoa(svg_html), 'Diagramm der Topic-Entwicklung');
+        });
+        
+        
         /*
          *  Test-Button, um das Popup bzw. Overlay überhaupt öffnen und testen zu können
          *      TODO: Durch angemessene Aufrufmöglichkeit ersetzen

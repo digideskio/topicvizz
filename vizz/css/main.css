@@ -173,6 +173,16 @@ body #frequency_overlay .content_wrapper .content svg .color_five_path {
 }
 
 
+body #frequency_overlay .sub_bar {
+    margin-top: 15px;
+    text-align: right;
+}
+
+body #frequency_overlay .sub_bar #frequency_export_button {
+    margin-right: 30px;
+}
+
+
 
 body #graph_viz {
     position: absolute;
