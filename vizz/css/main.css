@@ -8,8 +8,9 @@
 }
 
 
-:focus {outline:none;}
-::-moz-focus-inner {border:0;}
+:focus {outline:none !important;}
+::-moz-focus-inner {border:0 !important;}
+
 
 
 body {
@@ -101,64 +102,72 @@ body #frequency_overlay #frequency_overlay_close_button {
 
 
 
-body #frequency_overlay .content {
+body #frequency_overlay .content_wrapper {
     margin-top: 25px;
+    overflow: hidden;
+    height: 600px;
 }
 
-body #frequency_overlay .content svg {
+
+.nano .content { padding: 10px; }
+.nano .pane   { background: rgb(255, 255, 255); }
+.nano .pane .slider { background: rgb(114, 159, 207); }
+
+
+body #frequency_overlay .content_wrapper .content svg {
     width: 950px;
     height: 645px;
 }
 
 
-body #frequency_overlay .content svg .color_one_text {
+body #frequency_overlay .content_wrapper .content svg .color_one_text {
     fill: rgb(255, 255, 255);
 }
 
-body #frequency_overlay .content svg .color_one_path {
+body #frequency_overlay .content_wrapper .content svg .color_one_path {
     stroke: rgb(255, 255, 255);
     stroke-width: 1;
 }
 
 
-body #frequency_overlay .content svg .color_two_text {
+body #frequency_overlay .content_wrapper .content svg .color_two_text {
     fill: rgb(255, 255, 255);
 }
 
-body #frequency_overlay .content svg .color_two_path {
-    stroke: rgb(255, 255, 255);
-    stroke-width: 1;
-}
-
-
-
-body #frequency_overlay .content svg .color_three_text {
-    fill: rgb(255, 255, 255);
-}
-
-body #frequency_overlay .content svg .color_three_path {
+body #frequency_overlay .content_wrapper .content svg .color_two_path {
     stroke: rgb(255, 255, 255);
     stroke-width: 1;
 }
 
 
 
-body #frequency_overlay .content svg .color_four_text {
+body #frequency_overlay .content_wrapper .content svg .color_three_text {
     fill: rgb(255, 255, 255);
 }
 
-body #frequency_overlay .content svg .color_four_path {
+body #frequency_overlay .content_wrapper .content svg .color_three_path {
     stroke: rgb(255, 255, 255);
     stroke-width: 1;
 }
 
 
 
-body #frequency_overlay .content svg .color_five_text {
+body #frequency_overlay .content_wrapper .content svg .color_four_text {
     fill: rgb(255, 255, 255);
 }
 
-body #frequency_overlay .content svg .color_five_path {
+body #frequency_overlay .content_wrapper .content svg .color_four_path {
+    stroke: rgb(255, 255, 255);
+    stroke-width: 1;
+}
+
+
+
+body #frequency_overlay .content_wrapper .content svg .color_five_text {
+    fill: rgb(255, 255, 255);
+}
+
+body #frequency_overlay .content_wrapper .content svg .color_five_path {
     stroke: rgb(255, 255, 255);
     stroke-width: 1;
 }

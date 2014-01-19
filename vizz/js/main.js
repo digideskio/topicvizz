@@ -567,6 +567,9 @@
                 create_frequency_diagram();
                 /* Popup bzw. Overlay einblenden */
                 frequency_overlay.stop().fadeIn();
+            
+                /* Nano-Scrollbar initialisieren */
+                $(".nano").nanoScroller({ flash: true });
             }
             /* Sofern das Popup offen ist */
             else {
@@ -576,6 +579,9 @@
                 /* Starte die Positionsberechnung des Graphen, der nun wieder den Fokus besitzt */
                 if(force)
                     force.start();
+                    
+                /* Nano-Scrollbar zerstören */
+                $(".nano").nanoScroller({ flash: true });
             }
         }
         
