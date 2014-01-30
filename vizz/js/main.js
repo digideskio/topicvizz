@@ -525,10 +525,7 @@
                         frequency_min_max.max = frequency;
                 });
             });
-
-            /* Teilstrings zur CSS-Klassenbildung um Terme, bzw. Elemente die den Term betreffend, farblich zu unterscheiden */
-            var class_arr = ['color_one', 'color_two', 'color_three', 'color_four', 'color_five'];
-
+            
             /* D3.js - Einbindung */
             var item_histories =
                 frequencyvis.selectAll('.term_history')
@@ -537,7 +534,7 @@
             
             /* Ausgabe des Terms bzw. Topics */
             item_histories.append("text")
-                .attr("class", function(d, i) { return class_arr[i] + "_text"; })
+                .attr("class", "item_title_text")
                 .attr("pointer-events", "none")
                 .attr("dy", "50px")
                 .attr("dx", "175px")

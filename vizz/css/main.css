@@ -95,7 +95,7 @@ body #frequency_overlay #frequency_overlay_close_button {
     position: absolute;
     right: 0px;
     top: 0px;
-    margin: -30px -30px 0 0;
+    margin: -35px -10px 0 0;
     background-image: url('../img/close_button.png');
     cursor: pointer;
 }
@@ -105,7 +105,7 @@ body #frequency_overlay #frequency_overlay_close_button {
 body #frequency_overlay .content_wrapper {
     margin-top: 25px;
     overflow: hidden;
-    height: 600px;
+    height: 585px;
 }
 
 
@@ -120,61 +120,14 @@ body #frequency_overlay .content_wrapper .content svg {
 }
 
 
-body #frequency_overlay .content_wrapper .content svg .color_one_text {
+body #frequency_overlay .content_wrapper .content svg .item_title_text {
     fill: rgb(255, 255, 255);
 }
 
-body #frequency_overlay .content_wrapper .content svg .color_one_path {
-    stroke: rgb(255, 255, 255);
-    stroke-width: 1;
-}
-
-
-body #frequency_overlay .content_wrapper .content svg .color_two_text {
-    fill: rgb(255, 255, 255);
-}
-
-body #frequency_overlay .content_wrapper .content svg .color_two_path {
-    stroke: rgb(255, 255, 255);
-    stroke-width: 1;
-}
-
-
-
-body #frequency_overlay .content_wrapper .content svg .color_three_text {
-    fill: rgb(255, 255, 255);
-}
-
-body #frequency_overlay .content_wrapper .content svg .color_three_path {
-    stroke: rgb(255, 255, 255);
-    stroke-width: 1;
-}
-
-
-
-body #frequency_overlay .content_wrapper .content svg .color_four_text {
-    fill: rgb(255, 255, 255);
-}
-
-body #frequency_overlay .content_wrapper .content svg .color_four_path {
-    stroke: rgb(255, 255, 255);
-    stroke-width: 1;
-}
-
-
-
-body #frequency_overlay .content_wrapper .content svg .color_five_text {
-    fill: rgb(255, 255, 255);
-}
-
-body #frequency_overlay .content_wrapper .content svg .color_five_path {
-    stroke: rgb(255, 255, 255);
-    stroke-width: 1;
-}
 
 
 body #frequency_overlay .sub_bar {
-    margin-top: 15px;
+    margin-top: 30px;
     text-align: right;
 }
 
