@@ -70,7 +70,7 @@ body #frequency_overlay {
     position: absolute;
     width: 1000px;
     height: 700px;
-    background: rgba();
+    /*background: rgba();*/
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
     background: rgba(20, 20, 20, 0.85);
@@ -117,6 +117,7 @@ body #frequency_overlay .content_wrapper {
 body #frequency_overlay .content_wrapper .content svg {
     width: 950px;
     height: 645px;
+    fill: rgb(255, 255, 255);
 }
 
 
@@ -225,7 +226,7 @@ foreignObject *::-webkit-selection {
 svg g.node .topic {
     fill: rgb(114, 159, 207);
     stroke: rgba(255, 255, 255, 0.4);
-    stroke-width": 2;
+    stroke-width: 2;
 }
 
 

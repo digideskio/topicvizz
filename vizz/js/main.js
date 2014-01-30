@@ -533,18 +533,61 @@
                     .enter();
             
             /* Ausgabe des Terms bzw. Topics */
-            item_histories.append("text")
+            var item_g = item_histories.append("g")
+                .attr("transform", function(d, i) {
+                    return "translate(0, " + (i * 110 + 10) + ")";
+                });
+                
+            item_g.append("text")
                 .attr("class", "item_title_text")
                 .attr("pointer-events", "none")
-                .attr("dy", "50px")
                 .attr("dx", "175px")
-                .attr("y", function(d, i) {
-                    return i * 110 + 50;
-                })
+                .attr("y", "55px")
                 .html(function(d, i) {
                     return d.topic; /* Topic-Name als Inhalt des Text-Elements setzen */
                 })
                 .attr("text-anchor", "end");
+            
+            
+            /* #### Example #### */
+            var exampleData = [62, 6, 132, 22, 72, 126, 122, 119, 125, 128];
+            
+            var widthStep = 700 / exampleData.length;
+            var maxValue = 0;
+            for(var i = 0; i < exampleData.length; i++) {
+                if(maxValue < exampleData[i]) maxValue = exampleData[i];
+            }
+            
+            var resizeQuot = 55 / maxValue;
+            
+            var lineData = [];
+            
+            for(var i = 0; i < exampleData.length; i++) {
+                lineData.push({"x": widthStep * i, "y": 55 + exampleData[i] * resizeQuot });
+            }
+            
+            lineData.push({"x": widthStep * (exampleData.length - 1), "y": 55 - exampleData[exampleData.length-1] * resizeQuot });
+            
+            for(var i = exampleData.length-2; i >= 0; i--) {
+                lineData.push({"x": widthStep * i, "y": 55 - exampleData[i] * resizeQuot });
+            }
+            
+            lineData.push({"x": 0 , "y": 55 - exampleData[0] * resizeQuot });
+            /* #### Example - End */
+            
+            
+            var lineFunction = d3.svg.line()
+                                .x(function(d) { return d.x; })
+                                .y(function(d) { return d.y; })
+                                .interpolate("basis-closed");
+            
+            item_g.append("g")
+                .attr("class", "frequence_path")
+                .attr("transform", "translate(200, 0)")
+                .append("path")
+                .attr("d", lineFunction(lineData))
+                .attr("stroke-width", "1")
+                .attr("stroke", "white");
 
             /* TODO: Zeitachse ausgeben */
             /* TODO: Pfade generieren */
@@ -609,6 +652,12 @@
                                     "* {\n" +
                                          "font-family: Lato, Helvetica, Arial, Verdana, sans-serif;\n" +
                                     "}\n" +
+                                    
+                                    "frequence_path {\n" +
+                                         "fill: black;\n" +
+                                    "}\n" +
+                                    
+                                    
                                 "]]>\n" + 
                             "</style>\n" +
                             "</defs>");
