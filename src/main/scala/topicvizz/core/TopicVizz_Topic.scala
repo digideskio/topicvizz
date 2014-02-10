@@ -23,8 +23,8 @@ class TopicVizz_Topic(@BeanProperty var sTopic: String, @BeanProperty var sUrl: 
    *
    * @param oTopicVizz_File
    */
-  def addFile(oTopicVizz_File: TopicVizz_File) {
-    oFileList = oFileList.+:(oTopicVizz_File)
+  def addFile(oTopicVizz_File: TopicVizz_File): Unit = {
+    oFileList = oTopicVizz_File :: oFileList
   }
 
   /**
