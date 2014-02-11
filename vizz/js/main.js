@@ -56,6 +56,8 @@
             line_data.push({"x": width_step * i, "y": max_height + data_arr[i] * resize_quot });
         }
         
+        line_data.push({"x": width_step * (data_arr.length - 1) + 7, "y": max_height - 10 + data_arr[data_arr.length - 1] * resize_quot });
+        line_data.push({"x": width_step * (data_arr.length - 1) + 7, "y": max_height + 10 - data_arr[data_arr.length - 1] * resize_quot });
         
         for(var i = data_arr.length-1; i >= 0; i--) {
             line_data.push({"x": width_step * i, "y": max_height - data_arr[i] * resize_quot });
@@ -77,7 +79,6 @@
     /* Jahrestexte innerhalb einer SVG-Gruppe erzeugen (justify) */
     var create_year_text_in_group = function(group_node, year_start, year_amount, max_width) {
         
-        max_width -= 10;
         
         var width_step = max_width / year_amount;
         
@@ -85,7 +86,7 @@
             group_node.append("text")
                 .attr("fill", "rgb(255, 255, 255)")
                 .attr("pointer-events", "none")
-                .attr("x", function() { return width_step * i - 15; })
+                .attr("x", function() { return width_step * i - 20; })
                 .attr("y", 20)
                 .attr("style", "font-size: 0.8em;")
                 .attr('text-anchor', 'begin')
@@ -477,7 +478,7 @@
                                 .attr("y", -280)
                                 .each('end', function() {
                                     /* Erweiterungs-ForeignObject einblenden */
-                                    var forgObj = $(node.node()).parent().find(".expanded_content").fadeIn();
+                                    var forgObj = $(node.node()).find(".expanded_content").fadeIn();
                                     /* Nano-Scrollbar für die zusätzlichen Topic-Infos einbinden */
                                     forgObj.find(".nano").nanoScroller({ flash: true });
                                 });
@@ -551,7 +552,7 @@
                 
                 topic_single_diagram.append("g")
                     .attr("class", "frequence_path")
-                    .attr("transform", "translate(45, 10)")
+                    .attr("transform", "translate(40, 10)")
                     .append("path")
                     .attr("d", line_function(example_data, 620, 50))
                     .attr("stroke-width", "0");

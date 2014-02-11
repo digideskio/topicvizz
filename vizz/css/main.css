@@ -290,27 +290,19 @@ foreignObject.expanded_content body div.topic_more_infos {
     foreignObject.expanded_content body div.topic_more_infos div.links_list {
         height: 100%;
         float: left;
-        margin-left: 17px;
+        margin-left: 16px;
         text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.5);
     }
 
-
-    foreignObject.expanded_content body div.topic_more_infos div.authors_list {
-    }
         foreignObject.expanded_content body div.topic_more_infos div.authors_list div.content_wrapper {
             /*border-radius: 10px 0 0 10px;*/
-            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            /*border-left: 1px solid rgba(255, 255, 255, 0.5);*/
         }
-    
-    foreignObject.expanded_content body div.topic_more_infos div.documents_list {
-    }
-    
-    foreignObject.expanded_content body div.topic_more_infos div.links_list {
-    }
-    
+        
         foreignObject.expanded_content body div.topic_more_infos div.links_list div.content_wrapper {
             /*border-radius: 0 10px 10px 0;*/
-            border-right: 1px solid rgba(255, 255, 255, 0.5);
+            /*border-right: 1px solid rgba(255, 255, 255, 0.5);*/
         }
 
         foreignObject.expanded_content body div.topic_more_infos div div.content_wrapper {
@@ -322,6 +314,13 @@ foreignObject.expanded_content body div.topic_more_infos {
             background: rgba(255, 255, 255, 0.1);
         }
     
+    foreignObject.expanded_content body div.topic_more_infos div span {
+        font-weight: bold;
+        line-height: 20px;
+        margin-top: 5px;
+        display: block;
+    }
+        
     
     foreignObject.expanded_content body div.topic_more_infos div div.content_wrapper div.content ul {
         margin: 0 0 15px 0;
