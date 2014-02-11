@@ -42,35 +42,45 @@
     /* Linienfunktion, um, anhand eines Wertearrays, ein SVG-Pfad zu erzeugen */
     var line_function = function(data_arr, max_width, max_height) {
         
+        /* Abstandsschritt zwischen den Pfadpunkten bestimmten */
         var width_step = max_width / data_arr.length;
         var max_value = 0;
+        
+        /* Den größten Wert im Wertearray bestimmen, um das Diagramm in seiner y-Achse zu skalieren */
         for(var i = 0; i < data_arr.length; i++) {
             if(max_value < data_arr[i]) max_value = data_arr[i];
         }
         
+        /* Skalisrungsfaktor bestimmen */
         var resize_quot = max_height / max_value;
         
         var line_data = [];
         
+        /* Untere Punkte des Pfads berechnen (hin ->) */
         for(var i = 0; i < data_arr.length; i++) {
             line_data.push({"x": width_step * i, "y": max_height + data_arr[i] * resize_quot });
         }
         
+        /* Zwei Punkte am Ende, um einen mehr oder wenigen glatten Schnitt zu erreichen */
         line_data.push({"x": width_step * (data_arr.length - 1) + 7, "y": max_height - 10 + data_arr[data_arr.length - 1] * resize_quot });
         line_data.push({"x": width_step * (data_arr.length - 1) + 7, "y": max_height + 10 - data_arr[data_arr.length - 1] * resize_quot });
         
+        /* Oberen Punkte bestimmten (zurück <-) */
         for(var i = data_arr.length-1; i >= 0; i--) {
             line_data.push({"x": width_step * i, "y": max_height - data_arr[i] * resize_quot });
         }
         
+        /* Letzten Punkt setzen, damit ein glatter Schnitt am Anfang erreicht wird */
         line_data.push({"x": 0 , "y": max_height - data_arr[0] * resize_quot });
         
-        
+        /* Von d3.js bereitgestellte Funktion, um einen Pfad einfacher zu erzeugen */
         var line_func = d3.svg.line()
                             .x(function(d) { return d.x; })
                             .y(function(d) { return d.y; })
+                            /* 'cardinal' versucht den Pfad über die Punkte verlaufen zu lassen und schließt den Pfad am Ende */ 
                             .interpolate("cardinal");
-    
+        
+        /* Attrbutwert für 'd' zurückgeben */
         return line_func(line_data);
     };
 
@@ -79,9 +89,10 @@
     /* Jahrestexte innerhalb einer SVG-Gruppe erzeugen (justify) */
     var create_year_text_in_group = function(group_node, year_start, year_amount, max_width) {
         
-        
+        /* Abstand zwischen den Textelementen (enthalten Jahreszahl) bestimmen */
         var width_step = max_width / year_amount;
         
+        /* Für jede Jahreszahl ein Textelement erzeugen und es dem g-Element anhängen */
         for(var i = 0; i < year_amount; i++) {
             group_node.append("text")
                 .attr("fill", "rgb(255, 255, 255)")
@@ -92,6 +103,7 @@
                 .attr('text-anchor', 'begin')
                 .html("" + year_start);
             
+            /* Das Jahr erhöhen */
             year_start++;
         }
     };
