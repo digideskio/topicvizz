@@ -5,6 +5,7 @@
 	"topic" : "LDAP",
 	"abstract" : "Das Lightweight Directory Access Protocol ˈlaɪtweɪt daɪrektəri: ækses ˈprəʊtəkɒl ist ein Anwendungsprotokoll aus der Netzwerktechnik. Es erlaubt die Abfrage und die Modifikation von Informationen eines Verzeichnisdienstes (eine im Netzwerk verteilte hierarchische Datenbank) über ein IP-Netzwerk. Die aktuelle Version ist in RFC 4510 / RFC 4511 spezifiziert.",
 	"files" : ["p1.pdf", "p15.pdf"],
+	"mentioned_by" : ["1"],
 	"edges" : [{"neighbour" : "2", "weight" : 0.3}],
 	"frequency_per_year": {"2002": 100, "2003": 50, "2008": 150} 
 	},
@@ -15,5 +16,12 @@
 	"files" : ["p1.pdf", "p18.pdf"],
 	"edges" : [{"neighbour" : "1", "weight" : 0.3}],
 	"frequency_per_year": {"2000": 20, "2006": 112, "2013": 45} 
+	}],
+	
+"authors" : [{
+	"id" : "1",
+	"name" : "Karl Heinz Meier",
+	"files" : ["pdf2.pdf"],
+	"mentioned" : ["1"]
 	}]
 }
