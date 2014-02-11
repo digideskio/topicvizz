@@ -1,3 +1,4 @@
+
 (function($){
     "use strict";
     
@@ -36,6 +37,64 @@
             });
         });
     });
+    
+    
+    /* Linienfunktion, um, anhand eines Wertearrays, ein SVG-Pfad zu erzeugen */
+    var line_function = function(data_arr, max_width, max_height) {
+        
+        var width_step = max_width / data_arr.length;
+        var max_value = 0;
+        for(var i = 0; i < data_arr.length; i++) {
+            if(max_value < data_arr[i]) max_value = data_arr[i];
+        }
+        
+        var resize_quot = max_height / max_value;
+        
+        var line_data = [];
+        
+        for(var i = 0; i < data_arr.length; i++) {
+            line_data.push({"x": width_step * i, "y": max_height + data_arr[i] * resize_quot });
+        }
+        
+        
+        for(var i = data_arr.length-1; i >= 0; i--) {
+            line_data.push({"x": width_step * i, "y": max_height - data_arr[i] * resize_quot });
+        }
+        
+        line_data.push({"x": 0 , "y": max_height - data_arr[0] * resize_quot });
+        
+        
+        var line_func = d3.svg.line()
+                            .x(function(d) { return d.x; })
+                            .y(function(d) { return d.y; })
+                            .interpolate("cardinal");
+    
+        return line_func(line_data);
+    };
+
+    
+    
+    /* Jahrestexte innerhalb einer SVG-Gruppe erzeugen (justify) */
+    var create_year_text_in_group = function(group_node, year_start, year_amount, max_width) {
+        
+        max_width -= 10;
+        
+        var width_step = max_width / year_amount;
+        
+        for(var i = 0; i < year_amount; i++) {
+            group_node.append("text")
+                .attr("fill", "rgb(255, 255, 255)")
+                .attr("pointer-events", "none")
+                .attr("x", function() { return width_step * i - 15; })
+                .attr("y", 20)
+                .attr("style", "font-size: 0.8em;")
+                .attr('text-anchor', 'begin')
+                .html("" + year_start);
+            
+            year_start++;
+        }
+    };
+    
     
     
     /* Ausgelagerte Initialisierungs-Prozedur */
@@ -131,8 +190,8 @@
                                 .find(".main_content")
                                 .fadeOut(function() {
                                 
-                                    /* foreignObject aus Gründen der Performance aus dem DOM-Baum entfernen */
-                                    $(this).parent().find(".main_content").remove();
+                                    /* foreignObjects aus Gründen der Performance aus dem DOM-Baum entfernen */
+                                    $(this).parent().find("foreignObject").remove();
                                 });
                             rect.transition()
                                 .attr("width", d.size)
@@ -156,15 +215,16 @@
                             d.open = true;
                             
                             /*
-                             *  ForeignObject einfügen, um eingebettete XHTML-Elemente zu ermöglichen,
+                             *  ForeignObject für die Frontdarstellung eines Topics einfügen, um eingebettete XHTML-Elemente zu ermöglichen,
                              *      da SVG keine Elemente anbietet, die Word-Wrapping unterstützen
                              */
-                            addForeignObject(g_d3);
+                            addForeignObjectMain(g_d3);
+                            addForeignObjectExpansion(g_d3);
                             
                             /* Zentrierter Topic-Name ausblenden */
                             top_text.fadeOut();
                             
-                            /* Zuvor eingefügtes ForeignObject-Element einblenden */
+                            /* Zuvor eingefügtes ForeignObject-Element (Vorderseite) einblenden */
                             $(this).parent().find(".main_content").fadeIn();
                             
                             /* Maximierungs-Transition (Animation) starten */
@@ -247,9 +307,10 @@
             
             /*
              *  Hinzufügen eines foreignObject-Elements, welcher es erlaubt innerhalb des SVG-Namespaces
-             *      (X)HTML-Elemente einzubetten (ermöglicht die Nutzung von Elementen mit Word-Wrap-Eigenschaften)
+             *      (X)HTML-Elemente einzubetten (ermöglicht die Nutzung von Elementen mit Word-Wrap-Eigenschaften);
+             *  Inhalt der Vorderseite eines Topics
              */
-            function addForeignObject(node) {
+            function addForeignObjectMain(node) {
             
                 var content = node
                     .append("foreignObject")
@@ -279,13 +340,13 @@
                     });
                 
                 /* Übergeordnetes body-Element einfügen */
-                var embedDiv = content.append("xhtml:body")
+                var embed_div = content.append("xhtml:body")
                     .attr("xmlns", "http://www.w3.org/1999/xhtml")
                     .style("background", "transparent");
             
 
                 /* Dem body-Element wird ein Header-Element hinzugefügt */
-                embedDiv.append("h2")
+                embed_div.append("h2")
                     .attr("class", "topic_name")
                     .text(function(d, i) { return d.topic });
                 
@@ -306,7 +367,7 @@
                 var full_abstract_popup_text = null;
                 
                 /* Div-Element für den Abstract erzeugen und einfügen */
-                var abstract_text_div = embedDiv.append("div")
+                var abstract_text_div = embed_div.append("div")
                     .attr("class", "abstract_text")
                     .html(function(d, i) {
                         
@@ -379,26 +440,255 @@
                  *  Hinzufügen eines Div-Elements, um Dateien aufzulisten,
                  *      die mit dem Topic in Beziehung stehen
                  */
-                var files_list = embedDiv.append("div")
-                    .attr("class", "files_list");
+                var turn_over_placer = embed_div.append("div")
+                    .attr("class", "turn_over_placer");
                 
-                var files_list_jq = $(files_list.node());
+
+                var turn_over_btn = turn_over_placer.append("a")
+                    .attr("class", "turn_over_btn")
+                    .attr("href", "javascript:void(0);");
+                
+                var turn_over_btn_jq = $(turn_over_btn.node());
+                
+                turn_over_btn_jq.html('Erweitert');
+                
+                turn_over_btn_jq.on('click', function(e) {
+                    
+                    var rect = d3.select($(node.node()).find('rect')[0]);
+                    
+                    /* Haupt-ForeignObject ausblenden */
+                    $(content.node()).stop().fadeOut();
+                    
+                    /* Wende-Transition (Animation) starten  -> von der Vorder- zur Rückseite */
+                    rect.transition()
+                        .duration(700)
+                        .attr("width", 0)
+                        .attr("rx", 40)
+                        .attr("ry", 40)
+                        .attr("x", 0)
+                        .each('end', function() {
+                            rect.transition()
+                                .duration(700)
+                                .attr("width", 640)
+                                .attr("height", 560)
+                                .attr("rx", 40)
+                                .attr("ry", 40)
+                                .attr("x", -320)
+                                .attr("y", -280)
+                                .each('end', function() {
+                                    /* Erweiterungs-ForeignObject einblenden */
+                                    var forgObj = $(node.node()).parent().find(".expanded_content").fadeIn();
+                                    /* Nano-Scrollbar für die zusätzlichen Topic-Infos einbinden */
+                                    forgObj.find(".nano").nanoScroller({ flash: true });
+                                });
+                        });
+                });
+                
+            }
+            
+            
+            
+            /*
+             *  Hinzufügen eines foreignObject-Elements, welcher es erlaubt innerhalb des SVG-Namespaces
+             *      (X)HTML-Elemente einzubetten (ermöglicht die Nutzung von Elementen mit Word-Wrap-Eigenschaften);
+             *  Inhalt der Rückseite eines Topics
+             */
+            function addForeignObjectExpansion(node) {
+                var content = node
+                    .append("foreignObject")
+                    .attr("class", "expanded_content")
+                    .attr("style", "display: none; margin-left: -320px; margin-top: -320px; cursor: default;")
+                    .attr("requiredExtensions", "http://www.w3.org/1999/xhtml")
+                    .attr("width", "640px")
+                    .attr("height", "560px")
+                    .attr("x", "-320px")
+                    .attr("y", "-280px")
+                    .on("dblclick", function(d, i) {
+                    
+                        /*
+                         *  Da der Node vom foreignObject komplett überdeckt wird,
+                         *      kann auf diesem kein Doppelklick ausgeübt werden
+                         *
+                         *  Ein Doppelklick auf das foreignObject muss somit dem daunter liegenden 
+                         *      Node gereicht werden. Dies wird durch ein simulierten Doppelklick auf das Rechteck-Element realisiert
+                         */
+                        var e = document.createEvent('UIEvents');
+                        e.initUIEvent(  "dblclick", true, true,
+                                        window, 0, 0, 0, 0, 0, 
+                                        false, false, false, false,
+                                        0, null);
+                    
+                        $(this).parent().find("rect")[0].dispatchEvent(e);
+                    });
+                
+                /* Übergeordnetes body-Element einfügen */
+                var embed_div = content.append("xhtml:body")
+                    .attr("xmlns", "http://www.w3.org/1999/xhtml")
+                    .style("background", "transparent");
+            
+
+                /* Dem body-Element wird ein Header-Element hinzugefügt */
+                embed_div.append("h2")
+                    .attr("class", "topic_name")
+                    .text(function(d, i) { return d.topic });
+                
+                
+
+                /* DIV-Container, in dem nur der für das Topic relevante Verlauf grafisch ausgegeben wird */                
+                var frequency_single_diagram = embed_div.append("div")
+                    .attr("class", "frequency_single_diagram");
+                    
+                
+                /* Frequenz-Diagramm erzeugen */
+                
+                /* EXAMPLE - ANFANG */
+                
+                var topic_single_diagram = frequency_single_diagram.append("svg").attr("class", "topic_single_diagram");
+                
+                var year_start = 2003; // TODO: richtige Werte nehmen
+                var example_data = [140, 106, 34, 64, 54, 1, 68, 9, 136, 123]; // TODO: richtige Werte nehmen
+                
+                
+                topic_single_diagram.append("g")
+                    .attr("class", "frequence_path")
+                    .attr("transform", "translate(45, 10)")
+                    .append("path")
+                    .attr("d", line_function(example_data, 620, 50))
+                    .attr("stroke-width", "0");
+                
+                
+                var year_group = topic_single_diagram.append("g")
+                    .attr("class", "frequence_years")
+                    .attr("transform", "translate(45, 120)")
+                
+                create_year_text_in_group(year_group, year_start, example_data.length, 620);
+                
+                
+                /* EXAMPLE - ENDE */
+                
+                
+                    
+                /* DIV-Container, in dem weitere Infos ausgegeben werden */
+                var topic_more_infos = embed_div.append("div")
+                    .attr("class", "topic_more_infos");
+                
+                /* Autoren-Liste */
+                var authors_list = topic_more_infos.append("div")
+                    .attr("class", "authors_list");
+                
+                authors_list.append("span")
+                            .text("Autoren");
+                            
+                var authors_content = authors_list.append("div")
+                            .attr("class", "content_wrapper nano")
+                                .append("div")
+                                    .attr("class", "content");
+                                    
+                                    
+                var authors_arr = ["Hans", "Peter", "Horst", "Matthias", "Beate", "Tilo", "Günther", "Kevin", "Jörn", "Ludwig", "Torsten"];/*/ TODO: austauschen
+                
+                /* Autoren-Liste füllen */
+                var authors_ul = authors_content.append("ul").attr("class", "list");
+                for(var i = 0; i < authors_arr.length; i++) {
+                    authors_ul.append("li").text(authors_arr[i]);
+                }
+                
+                
+                /* Dokumenten-Liste */
+                var docs_list = topic_more_infos.append("div")
+                    .attr("class", "documents_list");
+                docs_list.append("span")
+                            .text("Dokumente");
+                
+                var docs_content = docs_list.append("div")
+                            .attr("class", "content_wrapper nano")
+                                .append("div")
+                                    .attr("class", "content");                
+                
+                // TODO: austauschen
+                var docs_arr = node.data()[0].files;
+                
+                /* Dokumenten-Liste füllen */
+                var docs_ul = docs_content.append("ul").attr("class", "list");
+                for(var i = 0; i < docs_arr.length; i++) {
+                    docs_ul.append("li").append("a").attr("target", "_blank").attr("href", "#" + docs_arr[i]).text(docs_arr[i]);
+                }
+                
+                
+                /* Links-Liste */
+                var links_list = topic_more_infos.append("div")
+                    .attr("class", "links_list");
+                
+                links_list.append("span")
+                            .text("Links");
+                
+                var links_content = links_list.append("div")
+                            .attr("class", "content_wrapper nano")
+                                .append("div")
+                                    .attr("class", "content");
+                
+                 // TODO: austauschen
+                var links_arr = [{"title": "Wikipedia", "href": "http://de.wikipedia.org/w/index.php?title=Spezial:Suche&search=" + node.data()[0].topic },
+                                 {"title": "DBPedia", "href": "http://dbpedia.org/resource/" + node.data()[0].topic} ];
+                
+                /* Links-Liste füllen */
+                var links_ul = links_content.append("ul").attr("class", "list");
+                for(var i = 0; i < links_arr.length; i++) {
+                    links_ul.append("li").append("a").attr("target", "_blank").attr("href", links_arr[i].href).text(links_arr[i].title);
+                }
+                
+                
+                
+                /* Clearfix */
+                topic_more_infos.append("div")
+                    .attr("class", "clear_fix");
                 
                 /*
-                 *  Erstellen von Anchor-Elementen als Datei-Einträge
-                 *
-                 *  Verlinken auf die entsprechenden Dateien
+                 *  Hinzufügen eines Div-Elements, um Dateien aufzulisten,
+                 *      die mit dem Topic in Beziehung stehen
                  */
-                $.each(node.data()[0].files, function(i, v) {
-                    files_list_jq
-                        .append($("<a>")
-                        .attr({
-                            title: v,
-                            href: "#" + v, /* TODO: Dateien richtig verlinken */
-                            target: "_blank" })
-                        .addClass("file_item"));
-                });                
+                var turn_over_placer = embed_div.append("div")
+                    .attr("class", "turn_over_placer");
                 
+
+                var turn_over_btn = turn_over_placer.append("a")
+                    .attr("class", "turn_over_btn")
+                    .attr("href", "javascript:void(0);");
+                
+                var turn_over_btn_jq = $(turn_over_btn.node());
+                
+                turn_over_btn_jq.html('Simpel');
+                
+                turn_over_btn_jq.on('click', function() {
+                    var rect = d3.select($(node.node()).find('rect')[0]);
+                    
+                    /* Erweiterungs-ForeignObject ausblenden */
+                    var forObj = $(content.node()).stop().fadeOut();
+                    forObj.find(".nano").nanoScroller({ flash: true });
+                    
+                    /* Wende-Transition (Animation) starten -> von der Rück- zur Vorderseite */
+                    rect.transition()
+                        .duration(700)
+                        .attr("width", 0)
+                        .attr("rx", 40)
+                        .attr("ry", 40)
+                        .attr("x", 0)
+                        .each('end', function() {
+                        
+                            rect.transition()
+                                .duration(700)
+                                .attr("width", 320)
+                                .attr("height", 320)
+                                .attr("rx", 40)
+                                .attr("ry", 40)
+                                .attr("x", -160)
+                                .attr("y", -160)
+                                .each('end', function() {
+                                    /* Haupt-ForeignObject einblenden */
+                                    $(node.node()).parent().find(".main_content").fadeIn();
+                                })
+                        });
+                });
             }
             
     }
@@ -550,44 +840,15 @@
             
             
             /* #### Example #### */
-            var exampleData = [62, 6, 132, 22, 72, 126, 122, 119, 125, 128];
+            var example_data = [62, 6, 132, 22, 72, 126, 122, 119, 125, 128]; // TODO: richtige Werte nehmen
             
-            var widthStep = 700 / exampleData.length;
-            var maxValue = 0;
-            for(var i = 0; i < exampleData.length; i++) {
-                if(maxValue < exampleData[i]) maxValue = exampleData[i];
-            }
-            
-            var resizeQuot = 55 / maxValue;
-            
-            var lineData = [];
-            
-            for(var i = 0; i < exampleData.length; i++) {
-                lineData.push({"x": widthStep * i, "y": 55 + exampleData[i] * resizeQuot });
-            }
-            
-            lineData.push({"x": widthStep * (exampleData.length - 1), "y": 55 - exampleData[exampleData.length-1] * resizeQuot });
-            
-            for(var i = exampleData.length-2; i >= 0; i--) {
-                lineData.push({"x": widthStep * i, "y": 55 - exampleData[i] * resizeQuot });
-            }
-            
-            lineData.push({"x": 0 , "y": 55 - exampleData[0] * resizeQuot });
-            /* #### Example - End */
-            
-            
-            var lineFunction = d3.svg.line()
-                                .x(function(d) { return d.x; })
-                                .y(function(d) { return d.y; })
-                                .interpolate("basis-closed");
             
             item_g.append("g")
                 .attr("class", "frequence_path")
                 .attr("transform", "translate(200, 0)")
                 .append("path")
-                .attr("d", lineFunction(lineData))
-                .attr("stroke-width", "1")
-                .attr("stroke", "white");
+                .attr("d", line_function(example_data, 700, 50))
+                .attr("stroke-width", "1");
 
             /* TODO: Zeitachse ausgeben */
             /* TODO: Pfade generieren */
@@ -621,7 +882,7 @@
                     force.start();
                     
                 /* Nano-Scrollbar zerstören */
-                $(".nano").nanoScroller({ flash: true });
+                $(".nano").nanoScroller({ stop: true });
             }
         }
         

@@ -230,6 +230,9 @@ svg g.node .topic {
 }
 
 
+foreignObject body a {
+    color: rgb(52, 101, 164);
+}
 
 foreignObject body h2.topic_name {
     margin: 15px 0;
@@ -237,14 +240,14 @@ foreignObject body h2.topic_name {
 }
 
 
-foreignObject body div.abstract_text {
+foreignObject.main_content body div.abstract_text {
     font-size: 0.9em;
     width: 270px;
     text-align: center;
     margin: 0 auto;
 }
 
-foreignObject body div.abstract_text span {
+foreignObject.main_content body div.abstract_text span {
     /*
     color: rgb(32, 74, 135);
     */
@@ -252,26 +255,89 @@ foreignObject body div.abstract_text span {
 }
 
 
-foreignObject body div.files_list {
-    width: 300px;
-    height: 10px;
+foreignObject.main_content body div.turn_over_placer {
+    text-align: right;
     margin-top: 15px;
 }
 
-
-foreignObject body div.files_list a.file_item {
-    display: block;
-    float: right;
+foreignObject.main_content body div.turn_over_placer a.turn_over_btn {
     margin-right: 10px;
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    /*background: rgba(255, 255, 255, 0.5);*/
-    background: url('../img/document.png');
 }
 
-foreignObject body div.files_list a.file_item:hover {
-    /* background: rgba(255, 255, 255, 1.0); */
-    background-position: -20px;
+
+
+foreignObject.expanded_content body div.frequency_single_diagram {
+    height: 150px;
+    width: 100%;
+}
+
+    foreignObject.expanded_content body div.frequency_single_diagram svg.topic_single_diagram {
+        height: 150px;
+        width: 620px;
+        fill: rgb(255, 255, 255);
+    }
+
+
+foreignObject.expanded_content body div.topic_more_infos {
+    height: 250px;
+    width: 100%;
+    margin: 25px 0;
+}
+
+
+    foreignObject.expanded_content body div.topic_more_infos div.authors_list,
+    foreignObject.expanded_content body div.topic_more_infos div.documents_list,
+    foreignObject.expanded_content body div.topic_more_infos div.links_list {
+        height: 100%;
+        float: left;
+        margin-left: 17px;
+        text-align: center;
+    }
+
+
+    foreignObject.expanded_content body div.topic_more_infos div.authors_list {
+    }
+        foreignObject.expanded_content body div.topic_more_infos div.authors_list div.content_wrapper {
+            /*border-radius: 10px 0 0 10px;*/
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    
+    foreignObject.expanded_content body div.topic_more_infos div.documents_list {
+    }
+    
+    foreignObject.expanded_content body div.topic_more_infos div.links_list {
+    }
+    
+        foreignObject.expanded_content body div.topic_more_infos div.links_list div.content_wrapper {
+            /*border-radius: 0 10px 10px 0;*/
+            border-right: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        foreignObject.expanded_content body div.topic_more_infos div div.content_wrapper {
+            width: 190px;
+            height: 215px;
+            margin-top: 10px;
+            text-align: left;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    
+    
+    foreignObject.expanded_content body div.topic_more_infos div div.content_wrapper div.content ul {
+        margin: 0 0 15px 0;
+    }
+    
+    foreignObject.expanded_content body div.topic_more_infos div.authors_list div.content_wrapper div.content a {
+        color: rgb(52, 101, 164);
+    }
+        
+
+foreignObject.expanded_content body div.turn_over_placer {
+    text-align: right;
+    margin-top: 15px;
+}
+
+foreignObject.expanded_content body div.turn_over_placer a.turn_over_btn {
+    margin-right: 30px;
 }
 
