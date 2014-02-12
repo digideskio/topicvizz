@@ -21,7 +21,10 @@
         "nodes":[],
         "links":[]
     };
-
+    
+    var frequency_overlay = null;
+    
+    
     /* Hilfsvariablen, um das kleineste und größte Jahr sowie den kleinsten und größten Häufigkeitswert feestzuhalten */
     var years_min_max = {min: null, max: null};
     var frequency_min_max = {min: null, max: null};
@@ -34,13 +37,29 @@
      *  JSON-Dokument mit den Topics beziehen und in die zuvor definierte Datensturktur einpflegen
      *      (momentan kann nur Firefox lokale Dateien per XHR beziehen)
      */
-    $.getJSON('./data/max.json', function(json) {
+    $.getJSON('./data/samplemin.json', function(json) {
         
         authors = json.authors;
         
         var id_index_map = {};
         
         $.each(json.topics, function(i, v) {
+            
+            var count = 0;
+            
+            for (i in v.frequency_per_year) {
+                if (v.frequency_per_year.hasOwnProperty(i)) {
+                    if(v.frequency_per_year[i] > 1) {
+                        count = 2; /* wurde mehr als 1 Mal in einem Jahr genannt, deshalb soll es dargestellt werden; evtl. kann man hier das Ganze etwas feintunen */
+                        break;
+                    }
+                    count++;
+                }
+            }
+            
+            if(count == 1)
+                return;
+            
             graph.nodes.push(v);
             id_index_map[v.id] = i;
             
@@ -65,17 +84,18 @@
             });
         });
         
-        /*
         $.each(json.topics, function(i, v) {
             $.each(v.edges, function(sub_i, sub_v) {
-                graph.links.push({  source: id_index_map[v.id],
-                                    target: id_index_map[sub_v.neighbour],
-                                    weight: sub_v.weight});
+                
+                if(typeof(id_index_map[v.id]) !== 'undefined' && id_index_map[sub_v.neighbour] !== 'undefined') {
+                    graph.links.push({  source: id_index_map[v.id],
+                                        target: id_index_map[sub_v.neighbour],
+                                        weight: sub_v.weight});
+                }
             });
         });
-        */
-        console.log("init");
-        //initGraph();
+        
+        initGraph();
     });
     
     
@@ -167,8 +187,7 @@
         vizsvg.style.height = height + "px";
         vizsvg.style.width = width + "px";
         
-        console.log(graph.nodes.length);
-        
+
         /* D3.js-Layout festlegen (Graph) und benötigte Startwerte angeben (nodes, links etc.) */
             force = d3.layout.force()
             .nodes(graph.nodes)
@@ -179,10 +198,25 @@
             .linkDistance(function(link) {
                 
                 /* Die Kantenlänge anhand der Gewichtung festlegen */
-                return 500 * (1-link.weight);
+                return 9999 * (1-link.weight);
             })
             .size([width,height])
             .start();
+            
+            
+            /*
+             *  Wenn das Fenster in seiner Größe verändert wird,
+             *      soll auch das Ausgabe-Element und das d3.js-Layout die neue Größe übernehmen
+             */
+            $(window).resize(function() {
+                
+                var height = $(window).height(),
+                    width = $(window).width();
+            
+                force.size([width, height]);
+                vizsvg.style.height = height + "px";
+                vizsvg.style.width = width + "px";
+            });
             
             
             /* Lines erzeugen (SVG-Line) und an diese jeweils ihre Daten binden */
@@ -769,7 +803,6 @@
                         });
                 });
             }
-            
     }
 
     
@@ -779,26 +812,19 @@
         /* Referenz auf das im DOM existierende Popup-Element holen und für den späteren Gebrauch sichern */
         abstract_text_popup = $("#abstract_text_popup");
         
+        /* Referenz auf das Overlay-Popup holen und für den späteren Gebrauch sichern */
+        frequency_overlay = $("#frequency_overlay");
+        $("#frequency_overlay_close_button").on("click", function() { toggle_frequency_overlay(); })
+            .css("opacity", 0.4)
+            .hover( function(e) { $(this).stop().animate({"opacity": 1.0}, 300); }, /* MouseEnter */
+                    function(e) { $(this).stop().animate({"opacity": 0.4}, 200); }); /* MouseLeave */
+        
         
         /* Click-Handler den Elementen innerhalb der Sidebar zuweisen */
         $("#frequency_diagramm_button").on('click', function() {
             toggle_frequency_overlay();
         });
         
-        
-        /*
-         *  Wenn das Fenster in seiner Größe verändert wird,
-         *      soll auch das Ausgabe-Element und das d3.js-Layout die neue Größe übernehmen
-         */
-        $(window).resize(function() {
-        
-            var height = $(window).height(),
-                width = $(window).width();
-        
-            force.size([width, height]);
-            vizsvg.style.height = height + "px";
-            vizsvg.style.width = width + "px";
-        });
         
         
         /* Ausglagerte Prozedur zur Diagrammerstellung (Zeitliche Entwicklung der Häufigkeit eines Terms) */
@@ -863,9 +889,11 @@
                     
                     return line_function(data_arr, 700, 50, frequency_min_max.max);
                 })
-                .attr("stroke-width", "1");
+                .attr("stroke-width", "0");
             
             var g_nodes = $(frequencyvis.node()).children();
+            
+            var new_height = null;
             
             $.each(g_nodes, function(i, d) {
                 var g_year_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'g'));
@@ -875,10 +903,12 @@
                 
                 var year_group = g_node
                     .attr("class", "frequence_years")
-                    .attr("transform", function(d) { return "translate(215, "+(120 + (i*130))+")"; });
+                    .attr("transform", function(d) {  new_height = 100 + (i*140); return "translate(215, " + new_height + ")"; });
                 
                 create_year_text_in_group(year_group, years_min_max.min, data_arr.length, 700);
             });
+            
+            frequency_viz.style.height = (new_height + 70) + "px";
         }
         
         
@@ -953,15 +983,6 @@
             var svg_html = svg_elem.parent().html();
             
             window.open("data:image/svg+xml;base64,"+ btoa(svg_html), 'Diagramm der Topic-Entwicklung');
-        });
-        
-        
-        /*
-         *  Test-Button, um das Popup bzw. Overlay überhaupt öffnen und testen zu können
-         *      TODO: Durch angemessene Aufrufmöglichkeit ersetzen
-         */
-        $("#test_button").on("click", function(e) {
-            toggle_frequency_overlay();
         });
         
     })
