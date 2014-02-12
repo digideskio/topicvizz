@@ -202,11 +202,11 @@
             .links(graph.links)
             .charge(-100)
             .gravity(0.01)
-            .linkStrength(0.2)
+            .linkStrength(0.1)
             .linkDistance(function(link) {
                 
                 /* Die Kantenlänge anhand der Gewichtung festlegen */
-                return 500 * (1-link.weight);
+                return 200 * (link.weight);
             })
             .size([width,height])
             .start();
