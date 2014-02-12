@@ -110,7 +110,8 @@ class TopicVizz_Parser {
 
   def createJSONFile(sPath: String) {
     val file = new File(sPath)
-    val writer = new FileWriter(file, true)
+    val writer = new BufferedWriter(new OutputStreamWriter(
+      new FileOutputStream(sPath), "UTF-8"));
     try {
       println("Start writing JSON... [" + file.getPath + "]")
       writer.write("{" + "\n" +
@@ -146,7 +147,7 @@ class TopicVizz_Parser {
         "{" + "\n" +
         "\"id\" :\"" + oTopic.id + "\",\n" +
         "\"topic\" :\"" + oTopic.getSTopic.replace("\"", "") + "\",\n" +
-        "\"abstract\" :\"" + oTopic.getSAbstract + "\",\n" +
+        "\"abstract\" :\"" + oTopic.getSAbstract.replace("\"", "") + "\",\n" +
         "\"files\" : ["
       for (file ← oTopic.files) {
         json +=
