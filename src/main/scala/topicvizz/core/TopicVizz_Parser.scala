@@ -61,7 +61,7 @@ class TopicVizz_Parser {
           // Mapping Topic -> Files
           for (topic ← tempTText) {
             if (!oTopicMap.contains(topic.name.toUpperCase)) {
-              val tempAbstract = getAbstract(topic.name)
+              val tempAbstract = getAbstract(topic.name, topic.value.toString)
               val tempTopic = new TopicVizz_Topic(topic.name, tempAbstract, topic.value)
               tempAuthor.addTopic(tempTopic)
               tempTopic.addAuthor(tempAuthor)
@@ -93,13 +93,15 @@ class TopicVizz_Parser {
     println("Linking...")
     for (topic ← oTopicMap) {
       val tempAText = annotate(topic._2.getSAbstract)
-      val tempACText = tempAText.substring(tempAText.indexOf("<Resources>"), tempAText.indexOf("</Resources>") + "</Resources>".length())
-      val tempTText = tag(tempACText)
-      for (topic2 ← tempTText) {
-        if ((oTopicMap.contains(topic2.name.toUpperCase())) && (topic._2.getSTopic.toUpperCase() != topic2.name.toUpperCase())) {
-          val neighbour: TopicVizz_Topic = oTopicMap.apply(topic2.name.toUpperCase())
-          if (!topic._2.containsNeighbour(neighbour)) {
-            topic._2.addNeighbour(neighbour, topic2.simScore)
+      if (tempAText.indexOf("<Resources>") > -1) {
+        val tempACText = tempAText.substring(tempAText.indexOf("<Resources>"), tempAText.indexOf("</Resources>") + "</Resources>".length())
+        val tempTText = tag(tempACText)
+        for (topic2 ← tempTText) {
+          if ((oTopicMap.contains(topic2.name.toUpperCase())) && (topic._2.getSTopic.toUpperCase() != topic2.name.toUpperCase())) {
+            val neighbour: TopicVizz_Topic = oTopicMap.apply(topic2.name.toUpperCase())
+            if (!topic._2.containsNeighbour(neighbour)) {
+              topic._2.addNeighbour(neighbour, topic2.simScore)
+            }
           }
         }
       }
@@ -284,18 +286,18 @@ class TopicVizz_Parser {
     }
   }
 
-  def getAbstract(sTopic: String): String = {
+  def getAbstract(sTopic: String, sURL: String): String = {
     var out: OutputStreamWriter = null
     var in: InputStream = null
     var Decoder: Scanner = null
 
     val query = "SELECT ?abstract FROM NAMED <http://dbpedia.org> WHERE " +
-      "{{ <http://dbpedia.org/resource/Civil_engineering> " +
+      "{{ <" + sURL + "> " +
       "<http://dbpedia.org/ontology/abstract> ?abstract. FILTER (LANG(?abstract)='de')}}"
 
     try {
       val urlEncoded = java.net.URLEncoder.encode(query, "UTF-8")
-      val url = new java.net.URL("http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org")
+      val url = new java.net.URL("http://de.dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fde.dbpedia.org")
       val data = "query=" + urlEncoded
       val conn = url.openConnection()
       conn.setDoOutput(true)
