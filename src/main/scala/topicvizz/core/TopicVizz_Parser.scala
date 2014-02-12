@@ -147,7 +147,7 @@ class TopicVizz_Parser {
         "{" + "\n" +
         "\"id\" :\"" + oTopic.id + "\",\n" +
         "\"topic\" :\"" + oTopic.getSTopic.replace("\"", "") + "\",\n" +
-        "\"abstract\" :\"" + oTopic.getSAbstract.replace("\"", "") + "\",\n" +
+        "\"abstract\" :\"" + oTopic.getSAbstract.replace("\"", "").replace("\t", "") + "\",\n" +
         "\"files\" : ["
       for (file ← oTopic.files) {
         json +=
@@ -263,7 +263,7 @@ class TopicVizz_Parser {
         val urlEncoded = java.net.URLEncoder.encode(plainText, "UTF-8")
         val url = new java.net.URL("http://de.dbpedia.org/spotlight/rest/annotate")
         //val url = new java.net.URL("http://spotlight.dbpedia.org/rest/annotate")
-        val data = "text=" + urlEncoded + "&support=10&confidence=0.3"
+        val data = "text=" + urlEncoded + "&support=50&confidence=0.3"
         val conn = url.openConnection()
         conn.setRequestProperty("Accept", "text/xml")
         conn.setDoOutput(true)
