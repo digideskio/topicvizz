@@ -10,6 +10,7 @@
     var force = null;
     var vizsvg = null;
     
+    /* Variable, die das SVG-Element im DOM referenziert, in dem die Verlaufsgrafiken ausgegeben werden */
     var frequencyvizsvg = null;
     
     /* "Globale" Variable um Zugriff auf das Popup-Element zu haben */
@@ -21,12 +22,22 @@
         "links":[]
     };
 
+    /* Hilfsvariablen, um das kleineste und größte Jahr sowie den kleinsten und größten Häufigkeitswert feestzuhalten */
+    var years_min_max = {min: null, max: null};
+    var frequency_min_max = {min: null, max: null};
+    
+    /* Liste von Autoren */
+    var authors = null;
+
     
     /*
      *  JSON-Dokument mit den Topics beziehen und in die zuvor definierte Datensturktur einpflegen
      *      (momentan kann nur Firefox lokale Dateien per XHR beziehen)
      */
     $.getJSON('./data/topics.with_frequency_per_year.json', function(json) {
+        
+        authors = json.authors;
+        
         $.each(json.topics, function(i, v) {
             graph.nodes.push(v);
             
@@ -36,19 +47,45 @@
                                     weight: sub_v.weight});
             });
         });
+        
+        
+        /* Durch alle "Nodes" traversieren und das niedrigste und das höchste Jahr, sowie direkt auch die Häufigkeit */
+        $.each(graph.nodes, function(i, v) {
+            var node_years = v.frequency_per_year;
+
+            $.each(node_years, function(i, v) {
+                var year = parseInt(i);
+                var frequency = v;
+
+                if(years_min_max.min === null || year < years_min_max.min)
+                    years_min_max.min = year;
+
+                if(years_min_max.max === null || year > years_min_max.max)
+                    years_min_max.max = year;
+
+                if(frequency_min_max.min === null || frequency < frequency_min_max.min)
+                    frequency_min_max.min = frequency;
+
+                if(frequency_min_max.max === null || frequency > frequency_min_max.max)
+                    frequency_min_max.max = frequency;
+            });
+        });
+        
     });
     
     
     /* Linienfunktion, um, anhand eines Wertearrays, ein SVG-Pfad zu erzeugen */
-    var line_function = function(data_arr, max_width, max_height) {
+    var line_function = function(data_arr, max_width, max_height, max_value) {
         
         /* Abstandsschritt zwischen den Pfadpunkten bestimmten */
         var width_step = max_width / data_arr.length;
-        var max_value = 0;
         
-        /* Den größten Wert im Wertearray bestimmen, um das Diagramm in seiner y-Achse zu skalieren */
-        for(var i = 0; i < data_arr.length; i++) {
-            if(max_value < data_arr[i]) max_value = data_arr[i];
+        if(typeof(max_value) === 'undefined') {
+            /* Den größten Wert im Wertearray bestimmen, um das Diagramm in seiner y-Achse zu skalieren */
+            max_value = 0;
+            for(var i = 0; i < data_arr.length; i++) {
+                if(max_value < data_arr[i]) max_value = data_arr[i];
+            }
         }
         
         /* Skalisrungsfaktor bestimmen */
@@ -95,12 +132,11 @@
         /* Für jede Jahreszahl ein Textelement erzeugen und es dem g-Element anhängen */
         for(var i = 0; i < year_amount; i++) {
             group_node.append("text")
-                .attr("fill", "rgb(255, 255, 255)")
                 .attr("pointer-events", "none")
-                .attr("x", function() { return width_step * i - 20; })
+                .attr("x", function() { return width_step * i - 15; })
                 .attr("y", 20)
                 .attr("style", "font-size: 0.8em;")
-                .attr('text-anchor', 'begin')
+                .attr('text-anchor', 'middle')
                 .html("" + year_start);
             
             /* Das Jahr erhöhen */
@@ -554,19 +590,29 @@
                 
                 /* Frequenz-Diagramm erzeugen */
                 
-                /* EXAMPLE - ANFANG */
-                
                 var topic_single_diagram = frequency_single_diagram.append("svg").attr("class", "topic_single_diagram");
                 
-                var year_start = 2003; // TODO: richtige Werte nehmen
-                var example_data = [140, 106, 34, 64, 54, 1, 68, 9, 136, 123]; // TODO: richtige Werte nehmen
-                
+                var data_arr = [];
                 
                 topic_single_diagram.append("g")
                     .attr("class", "frequence_path")
-                    .attr("transform", "translate(40, 10)")
+                    .attr("transform", "translate(30, 10)")
                     .append("path")
-                    .attr("d", line_function(example_data, 620, 50))
+                    .attr("d", function(d, i) {
+                        var freq_arr = d.frequency_per_year;
+                        
+                        data_arr = [];
+                        for(var i = years_min_max.min; i <= years_min_max.max; i++) {
+                            var val = freq_arr[''+i];
+                            
+                            if(typeof(val) === 'undefined')
+                                val = 0;
+                            
+                            data_arr.push(val);
+                        }
+                        
+                        return line_function(data_arr, 620, 50);
+                    })
                     .attr("stroke-width", "0");
                 
                 
@@ -574,11 +620,7 @@
                     .attr("class", "frequence_years")
                     .attr("transform", "translate(45, 120)")
                 
-                create_year_text_in_group(year_group, year_start, example_data.length, 620);
-                
-                
-                /* EXAMPLE - ENDE */
-                
+                create_year_text_in_group(year_group, years_min_max.min, data_arr.length, 620);
                 
                     
                 /* DIV-Container, in dem weitere Infos ausgegeben werden */
@@ -598,7 +640,20 @@
                                     .attr("class", "content");
                                     
                                     
-                var authors_arr = ["Hans", "Peter", "Horst", "Matthias", "Beate", "Tilo", "Günther", "Kevin", "Jörn", "Ludwig", "Torsten"];/*/ TODO: austauschen
+                var authors_arr = [];
+                var mentioned_by_arr = node.data()[0].mentioned_by;
+                
+                if(typeof(mentioned_by_arr) !== 'undefined') {
+                
+                    for(var i = 0; i < mentioned_by_arr.length; i++) {
+                        for(var j = 0; j < authors.length; j++) {
+                            if(authors[j].id === mentioned_by_arr[i]) {
+                                authors_arr.push(authors[j].name);
+                            }
+                        }
+                    }
+                    
+                }
                 
                 /* Autoren-Liste füllen */
                 var authors_ul = authors_content.append("ul").attr("class", "list");
@@ -618,7 +673,7 @@
                                 .append("div")
                                     .attr("class", "content");                
                 
-                // TODO: austauschen
+                // TODO: richtig verlinken
                 var docs_arr = node.data()[0].files;
                 
                 /* Dokumenten-Liste füllen */
@@ -804,30 +859,6 @@
             
             /* Die für die Ausgabe relevanten Daten für d3.js holen bzw. Umbettungsstrukturen definieren */
             var nodes = graph.nodes;
-            var years_min_max = {min: null, max: null};
-            var frequency_min_max = {min: null, max: null};
-            
-            /* Durch alle "Nodes" traversieren und das niedrigste und das höchste Jahr, sowie direkt auch die Häufigkeit */
-            $.each(nodes, function(i, v) {
-                var node_years = v.frequency_per_year;
-
-                $.each(node_years, function(i, v) {
-                    var year = parseInt(i);
-                    var frequency = v;
-
-                    if(years_min_max.min === null || year < years_min_max.min)
-                        years_min_max.min = year;
-
-                    if(years_min_max.max === null || year > years_min_max.max)
-                        years_min_max.max = year;
-
-                    if(frequency_min_max.min === null || frequency < frequency_min_max.min)
-                        frequency_min_max.min = frequency;
-
-                    if(frequency_min_max.max === null || frequency > frequency_min_max.max)
-                        frequency_min_max.max = frequency;
-                });
-            });
             
             /* D3.js - Einbindung */
             var item_histories =
@@ -845,26 +876,52 @@
                 .attr("class", "item_title_text")
                 .attr("pointer-events", "none")
                 .attr("dx", "175px")
-                .attr("y", "55px")
+                .attr("y", function(d, i) {
+                    return (55 + i * 30) + "px";
+                })
                 .html(function(d, i) {
                     return d.topic; /* Topic-Name als Inhalt des Text-Elements setzen */
                 })
                 .attr("text-anchor", "end");
             
-            
-            /* #### Example #### */
-            var example_data = [62, 6, 132, 22, 72, 126, 122, 119, 125, 128]; // TODO: richtige Werte nehmen
-            
+            var data_arr = [];
             
             item_g.append("g")
                 .attr("class", "frequence_path")
-                .attr("transform", "translate(200, 0)")
+                .attr("transform", function(d, i) { return "translate(200, "+(i*30)+")"; })
                 .append("path")
-                .attr("d", line_function(example_data, 700, 50))
+                .attr("d", function(d, i) {
+                    
+                    var freq_arr = d.frequency_per_year;
+                    
+                    data_arr = [];
+                    for(var i = years_min_max.min; i <= years_min_max.max; i++) {
+                        var val = freq_arr[''+i];
+                        
+                        if(typeof(val) === 'undefined')
+                            val = 0;
+                        
+                        data_arr.push(val);
+                    }
+                    
+                    return line_function(data_arr, 700, 50, frequency_min_max.max);
+                })
                 .attr("stroke-width", "1");
-
-            /* TODO: Zeitachse ausgeben */
-            /* TODO: Pfade generieren */
+            
+            var g_nodes = $(frequencyvis.node()).children();
+            
+            $.each(g_nodes, function(i, d) {
+                var g_year_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'g'));
+                
+                $(d).after(g_year_node);
+                var g_node = d3.select(g_year_node[0]);
+                
+                var year_group = g_node
+                    .attr("class", "frequence_years")
+                    .attr("transform", function(d) { return "translate(215, "+(120 + (i*130))+")"; });
+                
+                create_year_text_in_group(year_group, years_min_max.min, data_arr.length, 700);
+            });
         }
         
         

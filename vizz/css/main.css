@@ -325,6 +325,7 @@ foreignObject.expanded_content body div.topic_more_infos {
     
     foreignObject.expanded_content body div.topic_more_infos div div.content_wrapper div.content ul {
         margin: 0 0 15px 0;
+        padding-left: 20px;
     }
     
     foreignObject.expanded_content body div.topic_more_infos div.authors_list div.content_wrapper div.content a {
