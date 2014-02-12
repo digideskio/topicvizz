@@ -43,13 +43,15 @@
         
         var id_index_map = {};
         
+        var runner = 0;
+        
         $.each(json.topics, function(i, v) {
             
             var count = 0;
             
-            for (i in v.frequency_per_year) {
-                if (v.frequency_per_year.hasOwnProperty(i)) {
-                    if(v.frequency_per_year[i] > 1) {
+            for(var j in v.frequency_per_year) {
+                if(v.frequency_per_year.hasOwnProperty(j)) {
+                    if(v.frequency_per_year[j] > 1) {
                         count = 2; /* wurde mehr als 1 Mal in einem Jahr genannt, deshalb soll es dargestellt werden; evtl. kann man hier das Ganze etwas feintunen */
                         break;
                     }
@@ -61,7 +63,8 @@
                 return;
             
             graph.nodes.push(v);
-            id_index_map[v.id] = i;
+            id_index_map[v.id] = runner;
+            runner++;
             
             /* Durch alle "Nodes" traversieren und das niedrigste und das höchste Jahr, sowie direkt auch die Häufigkeit */
             var node_years = v.frequency_per_year;
@@ -84,10 +87,12 @@
             });
         });
         
-        $.each(json.topics, function(i, v) {
+        $.each(graph.nodes, function(i, v) {
             $.each(v.edges, function(sub_i, sub_v) {
                 
-                if(typeof(id_index_map[v.id]) !== 'undefined' && id_index_map[sub_v.neighbour] !== 'undefined') {
+                console.log(id_index_map[v.id], id_index_map[sub_v.neighbour]);
+                
+                if(typeof(id_index_map[v.id]) !== 'undefined' && typeof(id_index_map[sub_v.neighbour]) !== 'undefined') {
                     graph.links.push({  source: id_index_map[v.id],
                                         target: id_index_map[sub_v.neighbour],
                                         weight: sub_v.weight});
@@ -96,6 +101,9 @@
         });
         
         initGraph();
+    })
+    .error(function(e, i) {
+        console.log(e, i);
     });
     
     
@@ -198,7 +206,7 @@
             .linkDistance(function(link) {
                 
                 /* Die Kantenlänge anhand der Gewichtung festlegen */
-                return 9999 * (1-link.weight);
+                return 500 * (1-link.weight);
             })
             .size([width,height])
             .start();
