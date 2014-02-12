@@ -91,7 +91,10 @@ class TopicVizz_Parser {
 
   def linkTopics() {
     println("Linking...")
+    var count = 0
     for (topic ← oTopicMap) {
+      count = count + 1
+      println(count + "/" + oTopicMap.size)
       val tempAText = annotate(topic._2.getSAbstract)
       if (tempAText.indexOf("<Resources>") > -1) {
         val tempACText = tempAText.substring(tempAText.indexOf("<Resources>"), tempAText.indexOf("</Resources>") + "</Resources>".length())
@@ -263,7 +266,7 @@ class TopicVizz_Parser {
         val urlEncoded = java.net.URLEncoder.encode(plainText, "UTF-8")
         val url = new java.net.URL("http://de.dbpedia.org/spotlight/rest/annotate")
         //val url = new java.net.URL("http://spotlight.dbpedia.org/rest/annotate")
-        val data = "text=" + urlEncoded + "&support=50&confidence=0.3"
+        val data = "text=" + urlEncoded + "&support=250&confidence=0.2"
         val conn = url.openConnection()
         conn.setRequestProperty("Accept", "text/xml")
         conn.setDoOutput(true)
