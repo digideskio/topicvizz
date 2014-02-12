@@ -1,7 +1,6 @@
 package topicvizz
 
 import java.io._
-
 import topicvizz.core.TopicVizz_Parser
 
 object TopicVizz_Main extends App {
@@ -16,8 +15,10 @@ object TopicVizz_Main extends App {
     val parser = new TopicVizz_Parser()
     parser.parseDirectory(userDir + "\\src\\main\\resources\\pdfs\\")
 
+    parser.createJSONFile(userDir + "\\src\\main\\resources\\sample.json")
+
   } catch {
-    case e: Exception => System.out.println(e.getMessage())
+    case e: Exception ⇒ System.out.println(e.getMessage())
   }
 
 }

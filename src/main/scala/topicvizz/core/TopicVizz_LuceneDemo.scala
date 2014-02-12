@@ -15,8 +15,8 @@ import org.apache.pdfbox.pdmodel._
 import org.apache.pdfbox.util._
 
 /**
- * For testing purpose only
- */
+  * For testing purpose only
+  */
 object TopicVizz_LuceneDemo {
 
   def main(args: Array[String]) {
@@ -42,7 +42,7 @@ object TopicVizz_LuceneDemo {
     // Adds them to the Index
 
     val filter = new PDFFilenameFilter()
-    for (inputFile <- pdfDir.listFiles(filter)) {
+    for (inputFile ← pdfDir.listFiles(filter)) {
       //  System.out.println("\n######################\n")
       //  System.out.println("Count: " + ++count)
       //  System.out.println("File: " + inputFile)
@@ -70,7 +70,6 @@ object TopicVizz_LuceneDemo {
         System.out.println(inputFile.getName())
       }
     }
-
 
     // Add some Document objects containing quotes
     //            writer.addDocument(createDocument("Theodore Roosevelt",
@@ -144,16 +143,15 @@ object TopicVizz_LuceneDemo {
   }
 
   /**
-   * Make a Document object with an un-indexed title field and an
-   * indexed content field.
-   */
+    * Make a Document object with an un-indexed title field and an
+    * indexed content field.
+    */
   def createDocument(title: String, content: String): Document = {
     val doc = new Document()
 
     // Add the title as an unindexed field...
 
     doc.add(new Field("title", title, Field.Store.YES, Field.Index.NO))
-
 
     // ...and the content as an indexed field. Note that indexed
     // Text fields are constructed using a Reader. Lucene can read
@@ -166,8 +164,8 @@ object TopicVizz_LuceneDemo {
   }
 
   /**
-   * Searches for the given string in the "content" field
-   */
+    * Searches for the given string in the "content" field
+    */
   def search(searcher: IndexSearcher, queryString: String) {
 
     // Build a Query object
@@ -175,7 +173,6 @@ object TopicVizz_LuceneDemo {
       "content",
       new StandardAnalyzer(Version.LUCENE_45))
     val query = parser.parse(queryString)
-
 
     val hitsPerPage = 10
     // Search for the query
@@ -197,7 +194,7 @@ object TopicVizz_LuceneDemo {
         queryString + "\" were found in quotes by:")
 
       // Iterate over the Documents in the Hits object
-      for (i <- 0 to hitCount) {
+      for (i ← 0 to hitCount) {
         val scoreDoc = hits(i)
         val docId = scoreDoc.doc
         val docScore = scoreDoc.score
