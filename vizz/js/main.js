@@ -34,23 +34,17 @@
      *  JSON-Dokument mit den Topics beziehen und in die zuvor definierte Datensturktur einpflegen
      *      (momentan kann nur Firefox lokale Dateien per XHR beziehen)
      */
-    $.getJSON('./data/topics.with_frequency_per_year.json', function(json) {
+    $.getJSON('./data/max.json', function(json) {
         
         authors = json.authors;
         
+        var id_index_map = {};
+        
         $.each(json.topics, function(i, v) {
             graph.nodes.push(v);
+            id_index_map[v.id] = i;
             
-            $.each(v.edges, function(sub_i, sub_v) {
-                graph.links.push({  source: parseInt(v.id) - 1,
-                                    target: parseInt(sub_v.neighbour) - 1,
-                                    weight: sub_v.weight});
-            });
-        });
-        
-        
-        /* Durch alle "Nodes" traversieren und das niedrigste und das höchste Jahr, sowie direkt auch die Häufigkeit */
-        $.each(graph.nodes, function(i, v) {
+            /* Durch alle "Nodes" traversieren und das niedrigste und das höchste Jahr, sowie direkt auch die Häufigkeit */
             var node_years = v.frequency_per_year;
 
             $.each(node_years, function(i, v) {
@@ -71,6 +65,16 @@
             });
         });
         
+        /*
+        $.each(json.topics, function(i, v) {
+            $.each(v.edges, function(sub_i, sub_v) {
+                graph.links.push({  source: id_index_map[v.id],
+                                    target: id_index_map[sub_v.neighbour],
+                                    weight: sub_v.weight});
+            });
+        });
+        */
+        //initGraph();
     });
     
     
@@ -147,7 +151,11 @@
     
     
     /* Ausgelagerte Initialisierungs-Prozedur */
-    function initGraph(vis) {
+    function initGraph() {
+        
+        vizsvg = document.querySelector('#graph_viz');
+        
+        var vis = d3.select(vizsvg);
         
         /* Aktuelle Größe des Fensters festhalten */
         var height = $(window).height(),
@@ -157,6 +165,8 @@
         /* Die Größe des im DOM befindlichen SVG-Elements */
         vizsvg.style.height = height + "px";
         vizsvg.style.width = width + "px";
+        
+        console.log(graph.nodes.length);
         
         /* D3.js-Layout festlegen (Graph) und benötigte Startwerte angeben (nodes, links etc.) */
             force = d3.layout.force()
@@ -764,14 +774,6 @@
     
     /* Den Graph erst aufbauen, wenn die Seite komplett geladen bzw. das DOM komplett aufgebaut wurde */
     $(document).ready(function(){
-        
-        vizsvg = document.querySelector('#graph_viz');
-        
-        var vis = d3.select(vizsvg);
-        
-        /* Ausgelagerte Initialisierungs-Routine aufrufen */
-        initGraph(vis);
-        
         
         /* Referenz auf das im DOM existierende Popup-Element holen und für den späteren Gebrauch sichern */
         abstract_text_popup = $("#abstract_text_popup");
