@@ -17,6 +17,7 @@ class TopicVizz_Topic(@BeanProperty var sTopic: String, @BeanProperty var sAbstr
   private var oFileList: List[TopicVizz_File] = List()
   private var oAuthorList: List[TopicVizz_Author] = List()
   private var oYearMap: scala.collection.mutable.Map[String, Integer] = scala.collection.mutable.Map()
+  private var oNeighbourMap: scala.collection.mutable.Map[TopicVizz_Topic, Double] = scala.collection.mutable.Map()
 
   /**
     *
@@ -76,6 +77,25 @@ class TopicVizz_Topic(@BeanProperty var sTopic: String, @BeanProperty var sAbstr
     } else {
       oYearMap += sYear -> 1
     }
+  }
+
+  /**
+    *
+    * @return
+    */
+  def neighbours: scala.collection.mutable.Map[TopicVizz_Topic, Double] = oNeighbourMap
+
+  def addNeighbour(oTopicVizz_Topic: TopicVizz_Topic, dsimScore: Double) {
+    oNeighbourMap += oTopicVizz_Topic -> dsimScore
+  }
+
+  /**
+    *
+    * @param oTopicVizz_Topic
+    * @return
+    */
+  def containsNeighbour(oTopicVizz_Topic: TopicVizz_Topic): Boolean = {
+    oNeighbourMap.contains(oTopicVizz_Topic)
   }
 
 }

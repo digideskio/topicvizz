@@ -89,18 +89,18 @@ class TopicVizz_Parser {
     }
   }
 
-  def linkTopics()
-  {
+  def linkTopics() {
     println("Linking...")
-    for(topic <- oTopicMap)
-    {
+    for (topic ← oTopicMap) {
       val tempAText = annotate(topic._2.getSAbstract)
       val tempACText = tempAText.substring(tempAText.indexOf("<Resources>"), tempAText.indexOf("</Resources>") + "</Resources>".length())
       val tempTText = tag(tempACText)
       for (topic2 ← tempTText) {
-        if ((oTopicMap.contains(topic2.name.toUpperCase())) && (topic._2.getSTopic.toUpperCase()!=topic2.name.toUpperCase()))
-        {
-             // ADD LINKING
+        if ((oTopicMap.contains(topic2.name.toUpperCase())) && (topic._2.getSTopic.toUpperCase() != topic2.name.toUpperCase())) {
+          val neighbour: TopicVizz_Topic = oTopicMap.apply(topic2.name.toUpperCase())
+          if (!topic._2.containsNeighbour(neighbour)) {
+            topic._2.addNeighbour(neighbour, topic2.simScore)
+          }
         }
       }
     }
@@ -160,6 +160,17 @@ class TopicVizz_Parser {
         json +=
           "\"" + author.id + "\""
         if (oTopic.authors.last != author) {
+          json += ","
+        }
+      }
+      json +=
+        "]," + "\n" +
+        "\"edges\" : ["
+      for (neighbour ← oTopic.neighbours) {
+        json +=
+          "{\"neighbour\":" + "\"" + neighbour._1.id + "\"," +
+          "\"weight\":" + neighbour._2 + "}"
+        if (oTopic.neighbours.last != neighbour) {
           json += ","
         }
       }
@@ -308,7 +319,7 @@ class TopicVizz_Parser {
   def tag(annotatedText: String): Set[Tag] = {
     import scala.xml.XML._
     val x = load(new StringReader(annotatedText))
-    (for (resource ← x \ "Resource") yield Tag(resource \ "@surfaceForm" text, new URL(resource \ "@URI" text))).toSet
+    (for (resource ← x \ "Resource") yield Tag(resource \ "@surfaceForm" text, new URL(resource \ "@URI" text), (resource \ "@similarityScore" text).toDouble))toSet
   }
 
   def matchString(sPattern: String, sString: String, sDefaultResult: String, iGroup: Integer): String = {

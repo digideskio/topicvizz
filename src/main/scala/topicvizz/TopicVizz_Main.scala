@@ -14,7 +14,7 @@ object TopicVizz_Main extends App {
     // Initialize parser and parse directory
     val parser = new TopicVizz_Parser()
     parser.parseDirectory(userDir + "\\src\\main\\resources\\pdfs\\testing2\\")
-
+    parser.linkTopics()
     parser.createJSONFile(userDir + "\\src\\main\\resources\\samplemin.json")
 
   } catch {
