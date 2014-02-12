@@ -52,6 +52,7 @@ class TopicVizz_Parser {
         tempAuthor.addFile(tempFile)
         oFileList = oFileList.+:(tempFile)
         // Annotate text
+        println("Annotating...")
         val tempAText = annotate(tempText)
         if (tempAText.indexOf("<Resources>") > -1) {
           val tempACText = tempAText.substring(tempAText.indexOf("<Resources>"), tempAText.indexOf("</Resources>") + "</Resources>".length())
@@ -60,7 +61,8 @@ class TopicVizz_Parser {
           // Mapping Topic -> Files
           for (topic ← tempTText) {
             if (!oTopicMap.contains(topic.name.toUpperCase)) {
-              val tempTopic = new TopicVizz_Topic(topic.name, topic.value)
+              val tempAbstract = getAbstract(topic.name)
+              val tempTopic = new TopicVizz_Topic(topic.name, tempAbstract, topic.value)
               tempAuthor.addTopic(tempTopic)
               tempTopic.addAuthor(tempAuthor)
               tempTopic.addFile(tempFile)
@@ -91,6 +93,7 @@ class TopicVizz_Parser {
     val file = new File(sPath)
     val writer = new FileWriter(file, true)
     try {
+      println("Start writing JSON... [" + file.getPath + "]")
       writer.write("{" + "\n" +
         "\"topics\" :" + "\n" +
         "[" + "\n")
@@ -98,7 +101,6 @@ class TopicVizz_Parser {
       for (topic ← oTopicMap) {
         writer.write(createJSONTopicString(topic._2))
         writer.flush()
-        println("T")
       }
       writer.write("\n" +
         "],\n" +
@@ -108,11 +110,11 @@ class TopicVizz_Parser {
       for (author ← oAuthorMap) {
         writer.write(createJSONAuthorString(author._2))
         writer.flush()
-        println("A")
       }
       writer.write("\n]" +
         "\n}")
       writer.flush()
+      println("Finished writing.")
     } finally {
       writer.close()
     }
@@ -124,8 +126,8 @@ class TopicVizz_Parser {
       json +=
         "{" + "\n" +
         "\"id\" :\"" + oTopic.id + "\",\n" +
-        "\"topic\" :\"" + oTopic.getSTopic + "\",\n" +
-        "\"abstract\" :\"" + "NO ABSTRACT" + "\",\n" +
+        "\"topic\" :\"" + oTopic.getSTopic.replace("\"", "") + "\",\n" +
+        "\"abstract\" :\"" + oTopic.getSAbstract + "\",\n" +
         "\"files\" : ["
       for (file ← oTopic.files) {
         json +=
@@ -251,6 +253,38 @@ class TopicVizz_Parser {
       }
     } catch {
       case e: NullPointerException ⇒ "Annotation failed."
+    }
+  }
+
+  def getAbstract(sTopic: String): String = {
+    var out: OutputStreamWriter = null
+    var in: InputStream = null
+    var Decoder: Scanner = null
+
+    val query = "SELECT ?abstract FROM NAMED <http://dbpedia.org> WHERE " +
+      "{{ <http://dbpedia.org/resource/Civil_engineering> " +
+      "<http://dbpedia.org/ontology/abstract> ?abstract. FILTER (LANG(?abstract)='de')}}"
+
+    try {
+      val urlEncoded = java.net.URLEncoder.encode(query, "UTF-8")
+      val url = new java.net.URL("http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org")
+      val data = "query=" + urlEncoded
+      val conn = url.openConnection()
+      conn.setDoOutput(true)
+      out = new java.io.OutputStreamWriter(conn.getOutputStream)
+      out.write(data)
+      out.flush()
+      in = conn.getInputStream
+      Decoder = new Scanner(in, "UTF-8")
+      val decodedText = Decoder.useDelimiter("\\A").next()
+      decodedText.substring(decodedText.indexOf("<td>") + "</td>".length(), decodedText.indexOf("</td>") - 4)
+    } catch {
+      case e: Exception ⇒ e.getMessage()
+
+    } finally {
+      out.close()
+      Decoder.close()
+      in.close()
     }
   }
 

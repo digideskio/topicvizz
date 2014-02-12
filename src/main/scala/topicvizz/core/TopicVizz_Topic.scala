@@ -8,9 +8,10 @@ import java.util.UUID
 /**
   *
   * @param sTopic
+  * @param sAbstract
   * @param sUrl
   */
-class TopicVizz_Topic(@BeanProperty var sTopic: String, @BeanProperty var sUrl: URL) {
+class TopicVizz_Topic(@BeanProperty var sTopic: String, @BeanProperty var sAbstract: String, @BeanProperty var sUrl: URL) {
 
   val id: String = String.valueOf(UUID.randomUUID())
   private var oFileList: List[TopicVizz_File] = List()

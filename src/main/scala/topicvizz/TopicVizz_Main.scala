@@ -9,13 +9,13 @@ object TopicVizz_Main extends App {
     // Read working directory
     val userDir = new File(System.getProperty("user.dir"))
     // Read pdf directory
-    val pdfDir = new File(userDir + "\\src\\main\\resources\\pdfs\\")
+    val pdfDir = new File(userDir + "\\src\\main\\resources\\pdfs\\testing2\\")
     System.out.println("Directory: " + pdfDir)
     // Initialize parser and parse directory
     val parser = new TopicVizz_Parser()
-    parser.parseDirectory(userDir + "\\src\\main\\resources\\pdfs\\")
+    parser.parseDirectory(userDir + "\\src\\main\\resources\\pdfs\\testing2\\")
 
-    parser.createJSONFile(userDir + "\\src\\main\\resources\\sample.json")
+    parser.createJSONFile(userDir + "\\src\\main\\resources\\sample2.json")
 
   } catch {
     case e: Exception ⇒ System.out.println(e.getMessage())
