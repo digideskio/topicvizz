@@ -13,7 +13,7 @@ import java.util.UUID
   */
 class TopicVizz_Topic(@BeanProperty var sTopic: String, @BeanProperty var sAbstract: String, @BeanProperty var sUrl: URL) {
 
-  val id: String = String.valueOf(UUID.randomUUID())
+  val id: String = String.valueOf(UUID.randomUUID().hashCode())
   private var oFileList: List[TopicVizz_File] = List()
   private var oAuthorList: List[TopicVizz_Author] = List()
   private var oYearMap: scala.collection.mutable.Map[String, Integer] = scala.collection.mutable.Map()

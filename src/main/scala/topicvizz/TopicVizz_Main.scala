@@ -15,7 +15,7 @@ object TopicVizz_Main extends App {
     val parser = new TopicVizz_Parser()
     parser.parseDirectory(userDir + "\\src\\main\\resources\\pdfs\\testing2\\")
 
-    parser.createJSONFile(userDir + "\\src\\main\\resources\\sample2.json")
+    parser.createJSONFile(userDir + "\\src\\main\\resources\\samplemin.json")
 
   } catch {
     case e: Exception ⇒ System.out.println(e.getMessage())

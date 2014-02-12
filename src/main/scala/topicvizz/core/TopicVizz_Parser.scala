@@ -89,6 +89,23 @@ class TopicVizz_Parser {
     }
   }
 
+  def linkTopics()
+  {
+    println("Linking...")
+    for(topic <- oTopicMap)
+    {
+      val tempAText = annotate(topic._2.getSAbstract)
+      val tempACText = tempAText.substring(tempAText.indexOf("<Resources>"), tempAText.indexOf("</Resources>") + "</Resources>".length())
+      val tempTText = tag(tempACText)
+      for (topic2 ← tempTText) {
+        if ((oTopicMap.contains(topic2.name.toUpperCase())) && (topic._2.getSTopic.toUpperCase()!=topic2.name.toUpperCase()))
+        {
+             // ADD LINKING
+        }
+      }
+    }
+  }
+
   def createJSONFile(sPath: String) {
     val file = new File(sPath)
     val writer = new FileWriter(file, true)

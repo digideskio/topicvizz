@@ -12,7 +12,7 @@ import java.util.UUID
   */
 class TopicVizz_Author(@BeanProperty var sName: String) {
 
-  val id: String = String.valueOf(UUID.randomUUID())
+  val id: String = String.valueOf(UUID.randomUUID().hashCode())
   private var oFileList: List[TopicVizz_File] = List()
   private var oTopicList: List[TopicVizz_Topic] = List()
 
