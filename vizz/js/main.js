@@ -74,6 +74,7 @@
             });
         });
         */
+        console.log("init");
         //initGraph();
     });
     
@@ -779,55 +780,9 @@
         abstract_text_popup = $("#abstract_text_popup");
         
         
-        /* Hilfsvariablen definieren und mit Startwerten initialisieren */
-        var filter_sidebar_node = $("#filter_sidebar");
-        var filter_sidebar_title_node = filter_sidebar_node.find(".title span");
-        var filter_sidebar_timeout = null;
-
-        var frequency_overlay = $("#frequency_overlay");
-        var frequency_overlay_close_button = $("#frequency_overlay_close_button");
-        frequency_overlay_close_button
-            .on("click", function() { toggle_frequency_overlay(); })
-            .css("opacity", 0.4)
-            .hover( function(e) { $(this).stop().animate({"opacity": 1.0}, 300); }, /* MouseEnter */
-                    function(e) { $(this).stop().animate({"opacity": 0.4}, 200); }); /* MouseLeave */
-
-        /* Eventhandler zum Öffnen der Filter-Sidebar definieren und dieser zuweisen */
-        filter_sidebar_node.hover(function() { /* MouseEnter */
-            
-            /* Den Start der "Schließen"-Animation abbrechen */
-            if(filter_sidebar_timeout !== null) {
-                clearTimeout(filter_sidebar_timeout);
-                filter_sidebar_timeout = null;
-            }
-            
-            /* Evtl. momentan aktive Animationsvorgänge stoppen */
-            filter_sidebar_node.stop();
-            filter_sidebar_title_node.stop();
-            
-            /* Das Triggern der "Öffnen"-Animation zeitlich verzögern */
-            filter_sidebar_timeout = setTimeout(function() {
-                filter_sidebar_node.stop().animate({right: "0px"}, 300);
-                filter_sidebar_title_node.stop().fadeOut(300);
-            }, 250);
-            
-        },
-        function() { /* MouseLeave */
-                
-            /* Den Start der "Öffnen"-Animation abbrechen */
-            if(filter_sidebar_timeout !== null) {
-                clearTimeout(filter_sidebar_timeout);
-                filter_sidebar_timeout = null;
-            }
-            
-            /* Evtl. momentan aktive Animationsvorgänge stoppen */
-            filter_sidebar_node.stop();
-            filter_sidebar_title_node.stop();
-            
-            filter_sidebar_timeout = setTimeout(function() {
-                filter_sidebar_node.stop().animate({right: "-265px"}, 300);
-                filter_sidebar_title_node.stop().fadeIn(300);
-            }, 400);
+        /* Click-Handler den Elementen innerhalb der Sidebar zuweisen */
+        $("#frequency_diagramm_button").on('click', function() {
+            toggle_frequency_overlay();
         });
         
         

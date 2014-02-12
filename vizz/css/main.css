@@ -147,43 +147,32 @@ body #graph_viz {
 
 body #filter_sidebar {
     position: fixed;
-    right: -265px;
     margin-top: -307px;
+    right: 0;
     top: 50%;
-    width: 300px;
+    width: 75px;
     height: 615px;
     border-radius: 20px 0 0 20px;
-}
-
-    #filter_sidebar .title {
-        float: left;
-        height: 100%;
-        width: 35px;
-        cursor: default;
-        text-align: center;
-    }
-
-        #filter_sidebar .title span {
-            display: block;
-            margin-top: 300px;
-            transform:rotate(-90deg);
-            -moz-transform:rotate(-90deg);
-            -webkit-transform:rotate(-90deg);
-        }
-
-    #filter_sidebar .content {
-        float: left;
-        width: 220px;
-        height: 100%;
-        margin-left: 40px;
-        margin: 20px 0 0 20px;
-    }
-
-
-body #filter_sidebar {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
     background: rgba(20, 20, 20, 0.85);
 }
+
+
+body #filter_sidebar div.button {
+    display: block;
+    height: 60px;
+    width: 60px;
+    margin: 7px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+body #filter_sidebar div.button:hover {
+    
+}
+
 
 
 div#abstract_text_popup {
