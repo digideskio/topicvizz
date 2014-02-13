@@ -28,6 +28,7 @@
     /* Hilfsvariablen, um das kleineste und größte Jahr sowie den kleinsten und größten Häufigkeitswert feestzuhalten */
     var years_min_max = {min: null, max: null};
     var frequency_min_max = {min: null, max: null};
+    var max_num_mentioned = null;
     
     /* Liste von Autoren */
     var authors = null;
@@ -47,20 +48,24 @@
         
         $.each(json.topics, function(i, v) {
             
-            var count = 0;
+            var num_in_years_mentioned = 0;
+            var num_overall_mentioned = 0;
             
             for(var j in v.frequency_per_year) {
                 if(v.frequency_per_year.hasOwnProperty(j)) {
-                    if(v.frequency_per_year[j] > 1) {
-                        count = 2; /* wurde mehr als 1 Mal in einem Jahr genannt, deshalb soll es dargestellt werden; evtl. kann man hier das Ganze etwas feintunen */
-                        break;
-                    }
-                    count++;
+                    num_overall_mentioned += v.frequency_per_year[j];
+                    num_in_years_mentioned++;
                 }
             }
             
-            if(count == 1)
+            // num_in_years_mentioned // könnte evtl. auch als Filterparameter herangezogen werden
+            if(num_overall_mentioned < 2) // Schöne Stelle für ein Threshold; Topics nicht betrachten, wenn sie insgesamt nur ein Mal erwähnt wurden
                 return;
+            
+            v.num_overall_mentioned = num_overall_mentioned;
+            
+            if(max_num_mentioned == null || num_overall_mentioned > max_num_mentioned)
+                max_num_mentioned = num_overall_mentioned;
             
             graph.nodes.push(v);
             id_index_map[v.id] = runner;
@@ -90,8 +95,6 @@
         $.each(graph.nodes, function(i, v) {
             $.each(v.edges, function(sub_i, sub_v) {
                 
-                console.log(id_index_map[v.id], id_index_map[sub_v.neighbour]);
-                
                 if(typeof(id_index_map[v.id]) !== 'undefined' && typeof(id_index_map[sub_v.neighbour]) !== 'undefined') {
                     graph.links.push({  source: id_index_map[v.id],
                                         target: id_index_map[sub_v.neighbour],
@@ -105,6 +108,46 @@
     .error(function(e, i) {
         console.log(e, i);
     });
+    
+    
+    /* Hilfsfunktion, um ein HSV- in ein RGB-Farbwert umzurechnen */
+    function hsl2rgb(h, s, l) {
+        if(s == 0)
+            return rgb = {"r": l, "g": l, "b": l};
+    
+        var hi = h/60;
+        var i = Math.floor(hi); 
+        var f = hi - i;
+        var p = l * (1 - s);
+        var q = l * (1 - s * f);
+        var t = l * (1- s * (1 - f));
+        
+        var r, g, b;
+        
+        switch(i) {
+            case 0:
+            case 6:
+                r = l; g = t; b = p;
+                break;
+            case 1:
+                r = q, g = l; b = p;
+                break;
+            case 2:
+                r = p; g = l; b = t;
+                break;
+            case 3:
+                r = p; g = q; b = l;
+                break;
+            case 4:
+                r = t; g = p; b = l;
+                break;
+            case 5:
+                r = l; g = p; b = q;
+                break;
+        }
+    
+        return [Math.ceil(r * 255), Math.ceil(g * 255), Math.ceil(b * 255)];
+    }
     
     
     /* Linienfunktion, um, anhand eines Wertearrays, ein SVG-Pfad zu erzeugen */
@@ -260,7 +303,14 @@
                 .attr("ry", 15)
                 .attr("x", -15)
                 .attr("y", -15)
-                .style({"stroke": "rgba(255, 255, 255, 0.4)", "stroke-width": 2})
+                .style({
+                    "stroke": "rgba(255, 255, 255, 0.4)",
+                    "stroke-width": 2,
+                    "fill": function(d, i) {
+                        var rgb =  hsl2rgb((1 - d.num_overall_mentioned/max_num_mentioned) * 130, 0.55, 0.71); /* Sättigung und Helligkeit niedrig */
+                        return "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+                    }
+                })
                 .on('dblclick', function(d, i) { /* Ein Doppelklick auf ein Node (Rechteck) soll das Rechteck Maximieren */
                     
                     /* Bei fehlendem Topic-Namen, macht es keinen Sinn diesen zu Maximieren */
