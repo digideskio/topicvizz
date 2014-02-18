@@ -59,7 +59,7 @@
             
             
             // num_in_years_mentioned // könnte evtl. auch als Filterparameter herangezogen werden
-            if(num_overall_mentioned < 2) // Schöne Stelle für ein Threshold; Topics nicht betrachten, wenn sie insgesamt nur ein Mal erwähnt wurden
+            if(num_overall_mentioned < 2) // Schöne Stelle für ein Threshold
                 return;
             
             v.num_overall_mentioned = num_overall_mentioned;
@@ -100,7 +100,6 @@
         
             $.each(graph.links, function(i, v) {
                 if(v['source'] === target && v['target'] === source) {
-                    console.log("Es existiert bereits eine entgegengerichtete Kante: ", v, source, target);
                     is_unique = false;
                     return false;
                 }
@@ -108,8 +107,6 @@
             
             return is_unique;
         }
-        
-        console.log("length", graph.nodes.length);
         
         $.each(graph.nodes, function(i, v) {
             
@@ -128,6 +125,10 @@
                 }
             });
         });
+        
+        
+        console.log("topics_count", graph.nodes.length);
+        console.log("edges_count", graph.links.length);
         
         initGraph();
     })
