@@ -47,7 +47,6 @@
         var runner = 0;
         
         $.each(json.topics, function(i, v) {
-            
             var num_in_years_mentioned = 0;
             var num_overall_mentioned = 0;
             
@@ -57,6 +56,7 @@
                     num_in_years_mentioned++;
                 }
             }
+            
             
             // num_in_years_mentioned // könnte evtl. auch als Filterparameter herangezogen werden
             if(num_overall_mentioned < 2) // Schöne Stelle für ein Threshold; Topics nicht betrachten, wenn sie insgesamt nur ein Mal erwähnt wurden
@@ -92,10 +92,36 @@
             });
         });
         
+        
+        /* Überprüfen, dass nicht bereits eine Kante in entgegengesetzter Richtung existiert */
+        var unique_link = function(source, target) {
+        
+            var is_unique = true;
+        
+            $.each(graph.links, function(i, v) {
+                if(v['source'] === target && v['target'] === source) {
+                    console.log("Es existiert bereits eine entgegengerichtete Kante: ", v, source, target);
+                    is_unique = false;
+                    return false;
+                }
+            });
+            
+            return is_unique;
+        }
+        
+        console.log("length", graph.nodes.length);
+        
         $.each(graph.nodes, function(i, v) {
+            
+            /* Sicherheitshalber überprüfen, ob das Topic überhaupt Kanten zu anderen Topics besitzt */
+            if(typeof(v.edges) === 'undefined')
+                return true;
+            
             $.each(v.edges, function(sub_i, sub_v) {
                 
-                if(typeof(id_index_map[v.id]) !== 'undefined' && typeof(id_index_map[sub_v.neighbour]) !== 'undefined') {
+                if(     typeof(id_index_map[v.id]) !== 'undefined'
+                    &&  typeof(id_index_map[sub_v.neighbour]) !== 'undefined'
+                    &&  unique_link(id_index_map[v.id], id_index_map[sub_v.neighbour])) {
                     graph.links.push({  source: id_index_map[v.id],
                                         target: id_index_map[sub_v.neighbour],
                                         weight: sub_v.weight});
@@ -112,9 +138,11 @@
     
     /* Hilfsfunktion, um ein HSV- in ein RGB-Farbwert umzurechnen */
     function hsl2rgb(h, s, l) {
-        if(s == 0)
-            return rgb = {"r": l, "g": l, "b": l};
-    
+        if(s == 0) {
+            var val = l * 255;
+            return rgb = [val, val, val];
+        }
+        
         var hi = h/60;
         var i = Math.floor(hi); 
         var f = hi - i;
