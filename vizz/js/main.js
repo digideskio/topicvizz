@@ -1119,7 +1119,6 @@
             
             var svg_elem = $("#frequency_viz")
                 .attr({
-                    "title": svg_title,   // TODO: besseren Titel vergeben
                     "version": "1.1",
                     "xmlns": "http://www.w3.org/2000/svg"
                 }).prepend("<title>" + svg_title + "</title>" +
