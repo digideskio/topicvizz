@@ -360,7 +360,9 @@
             
             var height = $(window).height(),
                 width = $(window).width();
-        
+            
+            vizsvg.setAttribute("viewBox", "" + [0, 0, width, height]);
+            
             force.size([width, height]);
             vizsvg.style.height = height + "px";
             vizsvg.style.width = width + "px";
