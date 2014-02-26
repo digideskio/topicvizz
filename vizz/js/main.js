@@ -288,6 +288,7 @@
                  *      der folgende Code überprüft bei jeder Mausbewegung, ob die Maustaste noch gedrückt wird und bricht das Panning ab,
                  *      wenn es nicht mehr so ist
                  */
+                 
                 if(d3.event.buttons === 0) {
                     vis.on('mousemove', null);
                     start_curr_g_pos = curr_g_pos;
@@ -300,9 +301,11 @@
                 /* Positions-Differenz bilden */
                 new_pos = [curr_pos[0] - start_pos[0], curr_pos[1] - start_pos[1]];
                 
-                /* Sofern die übergeordnete schon einmal in ihrere Position bewegt wurde, soll die letzte Verschiebung mitberücksichtigt werden */
-                new_pos[0] += start_curr_g_pos[0];
-                new_pos[1] += start_curr_g_pos[1];
+                if(start_curr_g_pos.length === 2) {
+                    /* Sofern die übergeordnete schon einmal in ihrere Position bewegt wurde, soll die letzte Verschiebung mitberücksichtigt werden */
+                    new_pos[0] += start_curr_g_pos[0];
+                    new_pos[1] += start_curr_g_pos[1];
+                }
                 
                 /* Eigentliche Positionierung */
                 g_all.attr("transform", "translate(" + new_pos + ")");
