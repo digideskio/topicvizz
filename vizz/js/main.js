@@ -28,7 +28,7 @@
     /* Hilfsvariablen, um das kleineste und größte Jahr sowie den kleinsten und größten Häufigkeitswert feestzuhalten */
     var years_min_max = {min: null, max: null};
     var frequency_min_max = {min: null, max: null};
-    var max_num_mentioned = null;
+    var num_mentioned = {min: null, max: null};
     
     /* Liste von Autoren */
     var authors = null;
@@ -64,8 +64,11 @@
             
             v.num_overall_mentioned = num_overall_mentioned;
             
-            if(max_num_mentioned == null || num_overall_mentioned > max_num_mentioned)
-                max_num_mentioned = num_overall_mentioned;
+            if(num_mentioned.max == null || num_overall_mentioned > num_mentioned.max)
+                num_mentioned.max = num_overall_mentioned;
+            
+            if(num_mentioned.min == null || num_overall_mentioned < num_mentioned.min)
+                num_mentioned.min = num_overall_mentioned;
             
             graph.nodes.push(v);
             id_index_map[v.id] = runner;
@@ -77,7 +80,7 @@
             $.each(node_years, function(i, v) {
                 var year = parseInt(i);
                 var frequency = v;
-
+                
                 if(years_min_max.min === null || year < years_min_max.min)
                     years_min_max.min = year;
 
@@ -91,6 +94,9 @@
                     frequency_min_max.max = frequency;
             });
         });
+        
+        
+        console.log(frequency_min_max);
         
         
         /* Überprüfen, dass nicht bereits eine Kante in entgegengesetzter Richtung existiert */
@@ -409,7 +415,7 @@
                 "stroke": "rgba(255, 255, 255, 0.4)",
                 "stroke-width": 2,
                 "fill": function(d, i) {
-                    var rgb =  hsv2rgb((1 - d.num_overall_mentioned/max_num_mentioned) * 130, 0.55, 0.71); /* Sättigung und Helligkeit niedrig */
+                    var rgb =  hsv2rgb((1 - d.num_overall_mentioned/num_mentioned.max) * 130, 0.55, 0.71); /* Sättigung und Helligkeit niedrig */
                     return "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
                 }
             })
@@ -522,15 +528,20 @@
             .attr("fill", "rgb(255, 255, 255)")
             .attr("pointer-events", "none")
             .attr("y", 5)
-            .html(function(d, i) {
-                return d.topic; /* Topic-Name als Inhalt des Text-Elements setzen */
+            .attr("title", function(d, i) {
+                /* Topic-Name als Title setzen */
+                return d.topic;
+            })
+            .html(function(d) {
+                return d.topic;
             }).attr("text-anchor", function(d) {
-                
+            
                 /*
                  *  Das Rechteck (minimiert als Kreis dargestellt) soll möglichst groß genug sein,
                  *      um den Text komplett in diesen zentrieren zu können
                  */
-                var size = this.getBBox().width + 20;
+                 
+                var size = 80 + (((d.num_overall_mentioned - num_mentioned.min) / (num_mentioned.max - num_mentioned.min)) * 100);
                 var rect = $(this).parent().find("rect");
                 rect.attr("width", size);
                 rect.attr("height", size);
@@ -544,6 +555,17 @@
                 
                 /* Minimale Nodegröße für den späteren Gebrauch sichern (für spätere Minimierung) */
                 d.size = size;
+                
+                var width_diff = (this.getBBox().width + 20) - size;
+                
+                if(width_diff > 0) {
+                    /* Nach Nodegröße angepassten Topic-Name als Inhalt des Text-Elements setzen */
+                    var short_topic_str = d.topic;
+                    
+                    short_topic_str = short_topic_str.slice(0, Math.floor(size / 13)) + "...";
+                    
+                    d3.select(this).html(short_topic_str);
+                }
                 
                 /* Eigentlicher Wert für das "text-anchor"-Attribut (innerhalb des Gruppenelements zentrieren) */
                 return "middle";
