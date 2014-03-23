@@ -140,40 +140,40 @@
     
     /* Hilfsfunktion, um ein HSV- in ein RGB-Farbwert umzurechnen; da SVG keine HSV-Farbangabe unterstützt */
     /* http://de.wikipedia.org/wiki/HSV-Farbraum#Umrechnung_HSV_in_RGB */
-    function hsl2rgb(h, s, l) {
+    function hsv2rgb(h, s, v) {
         if(s == 0) {
-            var val = l * 255;
+            var val = v * 255;
             return rgb = [val, val, val];
         }
         
         var hi = h/60;
         var i = Math.floor(hi); 
         var f = hi - i;
-        var p = l * (1 - s);
-        var q = l * (1 - s * f);
-        var t = l * (1- s * (1 - f));
+        var p = v * (1 - s);
+        var q = v * (1 - s * f);
+        var t = v * (1- s * (1 - f));
         
         var r, g, b;
         
         switch(i) {
             case 0:
             case 6:
-                r = l; g = t; b = p;
+                r = v; g = t; b = p;
                 break;
             case 1:
-                r = q, g = l; b = p;
+                r = q, g = v; b = p;
                 break;
             case 2:
-                r = p; g = l; b = t;
+                r = p; g = v; b = t;
                 break;
             case 3:
-                r = p; g = q; b = l;
+                r = p; g = q; b = v;
                 break;
             case 4:
-                r = t; g = p; b = l;
+                r = t; g = p; b = v;
                 break;
             case 5:
-                r = l; g = p; b = q;
+                r = v; g = p; b = q;
                 break;
         }
     
@@ -409,7 +409,7 @@
                 "stroke": "rgba(255, 255, 255, 0.4)",
                 "stroke-width": 2,
                 "fill": function(d, i) {
-                    var rgb =  hsl2rgb((1 - d.num_overall_mentioned/max_num_mentioned) * 130, 0.55, 0.71); /* Sättigung und Helligkeit niedrig */
+                    var rgb =  hsv2rgb((1 - d.num_overall_mentioned/max_num_mentioned) * 130, 0.55, 0.71); /* Sättigung und Helligkeit niedrig */
                     return "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
                 }
             })
