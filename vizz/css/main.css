@@ -224,9 +224,15 @@ svg g.node .topic {
 }
 
 
+svg g.node .main_close_button:hover {
+    cursor: pointer;
+}
+
+
 foreignObject body a {
     color: rgb(52, 101, 164);
 }
+
 
 foreignObject body h2.topic_name {
     margin: 15px 0;
@@ -250,12 +256,18 @@ foreignObject.main_content body div.abstract_text span {
 
 
 foreignObject.main_content body div.turn_over_placer {
+    position: absolute;
     text-align: right;
-    margin-top: 15px;
+    bottom: 5px;
+    right: 0px;
 }
 
 foreignObject.main_content body div.turn_over_placer a.turn_over_btn {
     margin-right: 10px;
+    font-size: 2.0em;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 
@@ -328,11 +340,17 @@ foreignObject.expanded_content body div.topic_more_infos {
         
 
 foreignObject.expanded_content body div.turn_over_placer {
+    position: absolute;
     text-align: right;
-    margin-top: 15px;
+    bottom: 15px;
+    right: 0px;
 }
 
 foreignObject.expanded_content body div.turn_over_placer a.turn_over_btn {
     margin-right: 30px;
+    font-size: 2.0em;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 

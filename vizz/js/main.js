@@ -96,9 +96,6 @@
         });
         
         
-        console.log(frequency_min_max);
-        
-        
         /* Überprüfen, dass nicht bereits eine Kante in entgegengesetzter Richtung existiert */
         var unique_link = function(source, target) {
         
@@ -337,6 +334,8 @@
         var height = $(window).height(),
             width = $(window).width();
         
+        d3.ns.prefix.xlink = "http://www.w3.org/1999/xlink";
+        
         vizsvg.setAttribute("viewBox", "" + [0, 0, width, height]);
         vizsvg.setAttribute("preserveAspectRatio", "xMinYMin meet");
         
@@ -445,6 +444,12 @@
                         /* In den Element-Daten festhalten, dass der Node nun geschlossen ist bzw. wird */
                         d.open = false;
                         
+                        /* Closebutton ausblenden */
+                        $(this)
+                            .parent()
+                            .find(".main_close_button")
+                            .fadeOut();
+                        
                         /* Zentrierter Topic-Name einblenden */
                         top_text.fadeIn();
                         $(this)
@@ -486,6 +491,9 @@
                         /* Zentrierter Topic-Name ausblenden */
                         top_text.fadeOut();
                         
+                        /* Closebutton einblenden */
+                        $(this).parent().find(".main_close_button").fadeIn();
+                        
                         /* Zuvor eingefügtes ForeignObject-Element (Vorderseite) einblenden */
                         $(this).parent().find(".main_content").fadeIn();
                         
@@ -523,56 +531,88 @@
                 //d3.event.stopPropagation();
             });
 
+
+            /* Schließenbutton hinzufügen */
+            node.append('image')
+                .attr("class", "main_close_button")
+                .attr("x", "115")
+                .attr("y", "-215")
+                .attr("width", "80")
+                .attr("height", "80")
+                .attr("xlink:href", "./img/close_button.png")
+                .style("display", "none")
+                .on("click", function() {
+                    
+                    console.log("asf");
+                
+                    d3.event.preventDefault();
+                    d3.event.stopPropagation();
+                    
+                    var e = document.createEvent('UIEvents');
+                    e.initUIEvent(  "dblclick", true, true,
+                                    window, 0, 0, 0, 0, 0,
+                                    false, false, false, false,
+                                    0, null);
+                
+                    $(this).parent().find("rect")[0].dispatchEvent(e);
+                    
+                    $(this).fadeOut(function() {
+                        $(this)
+                            .attr("x", "115")
+                            .attr("y", "-215");
+                    });
+                });
+
             /* Dem Gruppenelement ein zentriertes Textelement mit dem Topic-Namen hinzufügen */
             node.append('text')
-            .attr("fill", "rgb(255, 255, 255)")
-            .attr("pointer-events", "none")
-            .attr("y", 5)
-            .attr("title", function(d, i) {
-                /* Topic-Name als Title setzen */
-                return d.topic;
-            })
-            .html(function(d) {
-                return d.topic;
-            }).attr("text-anchor", function(d) {
-            
-                /*
-                 *  Das Rechteck (minimiert als Kreis dargestellt) soll möglichst groß genug sein,
-                 *      um den Text komplett in diesen zentrieren zu können
-                 */
-                 
-                var size = 80 + (((d.num_overall_mentioned - num_mentioned.min) / (num_mentioned.max - num_mentioned.min)) * 100);
-                var rect = $(this).parent().find("rect");
-                rect.attr("width", size);
-                rect.attr("height", size);
+                .attr("fill", "rgb(255, 255, 255)")
+                .attr("pointer-events", "none")
+                .attr("y", 5)
+                .attr("title", function(d, i) {
+                    /* Topic-Name als Title setzen */
+                    return d.topic;
+                })
+                .html(function(d) {
+                    return d.topic;
+                }).attr("text-anchor", function(d) {
                 
-                var size_h = size/2;
-                
-                rect.attr("rx", size_h);
-                rect.attr("ry", size_h);
-                rect.attr("x", -size_h);
-                rect.attr("y", -size_h);
-                
-                /* Minimale Nodegröße für den späteren Gebrauch sichern (für spätere Minimierung) */
-                d.size = size;
-                
-                var width_diff = (this.getBBox().width + 20) - size;
-                
-                if(width_diff > 0) {
-                    /* Nach Nodegröße angepassten Topic-Name als Inhalt des Text-Elements setzen */
-                    var short_topic_str = d.topic;
+                    /*
+                     *  Das Rechteck (minimiert als Kreis dargestellt) soll möglichst groß genug sein,
+                     *      um den Text komplett in diesen zentrieren zu können
+                     */
+                     
+                    var size = 80 + (((d.num_overall_mentioned - num_mentioned.min) / (num_mentioned.max - num_mentioned.min)) * 100);
+                    var rect = $(this).parent().find("rect");
+                    rect.attr("width", size);
+                    rect.attr("height", size);
                     
-                    short_topic_str = short_topic_str.slice(0, Math.floor(size / 13)) + "...";
+                    var size_h = size/2;
                     
-                    d3.select(this).html(short_topic_str);
-                }
+                    rect.attr("rx", size_h);
+                    rect.attr("ry", size_h);
+                    rect.attr("x", -size_h);
+                    rect.attr("y", -size_h);
+                    
+                    /* Minimale Nodegröße für den späteren Gebrauch sichern (für spätere Minimierung) */
+                    d.size = size;
+                    
+                    var width_diff = (this.getBBox().width + 20) - size;
+                    
+                    if(width_diff > 0) {
+                        /* Nach Nodegröße angepassten Topic-Name als Inhalt des Text-Elements setzen */
+                        var short_topic_str = d.topic;
+                        
+                        short_topic_str = short_topic_str.slice(0, Math.floor(size / 13)) + "...";
+                        
+                        d3.select(this).html(short_topic_str);
+                    }
+                    
+                    /* Eigentlicher Wert für das "text-anchor"-Attribut (innerhalb des Gruppenelements zentrieren) */
+                    return "middle";
+                });
                 
-                /* Eigentlicher Wert für das "text-anchor"-Attribut (innerhalb des Gruppenelements zentrieren) */
-                return "middle";
-            });
-            
-            /* Jedes Node soll gezogen und verschoben werden können */
-            node.call(force.drag);
+                /* Jedes Node soll gezogen und verschoben werden können */
+                node.call(force.drag);
             
             
         /*
@@ -609,7 +649,6 @@
                 .attr("x", "-150px")
                 .attr("y", "-150px")
                 .on("dblclick", function(d, i) {
-                
                     /*
                      *  Da der Node vom foreignObject komplett überdeckt wird,
                      *      kann auf diesem kein Doppelklick ausgeübt werden
@@ -737,7 +776,7 @@
             
             var turn_over_btn_jq = $(turn_over_btn.node());
             
-            turn_over_btn_jq.html('Erweitert');
+            turn_over_btn_jq.html('+');
             
             turn_over_btn_jq.on('click', function(e) {
                 
@@ -745,6 +784,15 @@
                 
                 /* Haupt-ForeignObject ausblenden */
                 $(content.node()).stop().fadeOut();
+                
+                /* Closebutton ausblenden und neu positionieren */
+                var main_close_button = $(content.node()).parent().find('.main_close_button');
+                
+                main_close_button.fadeOut(function() {
+                    $(this)
+                        .attr("x", "275")
+                        .attr("y", "-335");
+                });
                 
                 /* Wende-Transition (Animation) starten  -> von der Vorder- zur Rückseite */
                 rect.transition()
@@ -767,6 +815,9 @@
                                 var forgObj = $(node.node()).find(".expanded_content").fadeIn();
                                 /* Nano-Scrollbar für die zusätzlichen Topic-Infos einbinden */
                                 forgObj.find(".nano").nanoScroller({ flash: true });
+                                
+                                /* Closebutton nach Wendeanimation einblenden */
+                                main_close_button.fadeIn();
                             });
                     });
             });
@@ -964,10 +1015,19 @@
             
             var turn_over_btn_jq = $(turn_over_btn.node());
             
-            turn_over_btn_jq.html('Simpel');
+            turn_over_btn_jq.html('-');
             
             turn_over_btn_jq.on('click', function() {
                 var rect = d3.select($(node.node()).find('rect')[0]);
+                
+                /* Closebutton ausblenden und neu positionieren */
+                var main_close_button = $(content.node()).parent().find('.main_close_button');
+                
+                main_close_button.fadeOut(function() {
+                    $(this)
+                        .attr("x", "115")
+                        .attr("y", "-215");
+                });
                 
                 /* Erweiterungs-ForeignObject ausblenden */
                 var forObj = $(content.node()).stop().fadeOut();
@@ -993,6 +1053,9 @@
                             .each('end', function() {
                                 /* Haupt-ForeignObject einblenden */
                                 $(node.node()).parent().find(".main_content").fadeIn();
+                                
+                                /* Closebutton nach Wendeanimation einblenden */
+                                main_close_button.fadeIn();
                             })
                     });
             });
