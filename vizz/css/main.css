@@ -1,5 +1,6 @@
 
 
+
 @font-face {
     font-family: 'Lato';
     font-style: normal;
@@ -137,14 +138,6 @@ body #frequency_overlay .sub_bar #frequency_export_button {
 }
 
 
-
-body #graph_viz {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-}
-
-
 body #filter_sidebar {
     position: fixed;
     margin-top: -307px;
@@ -217,14 +210,41 @@ foreignObject *::-webkit-selection {
 
 
 
-svg g.node .topic {
+div#graph_viz {
+    position: absolute;
+    vertical-align:middle;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+div#graph_viz > svg {
+    width: 100%;
+    height: 100%;
+}
+
+div#graph_viz > svg > .node {
+    background-color: #00a2e8;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+}
+
+div#graph_viz > svg > .link {
+    background-color: #999;
+    position: absolute;
+}
+
+
+g.node .topic {
     fill: rgb(114, 159, 207);
     stroke: rgba(255, 255, 255, 0.4);
     stroke-width: 2;
 }
 
 
-svg g.node .main_close_button:hover {
+g.node .main_close_button:hover {
     cursor: pointer;
 }
 
@@ -248,9 +268,6 @@ foreignObject.main_content body div.abstract_text {
 }
 
 foreignObject.main_content body div.abstract_text span {
-    /*
-    color: rgb(32, 74, 135);
-    */
     color: rgb(52, 101, 164);
 }
 
@@ -353,4 +370,6 @@ foreignObject.expanded_content body div.turn_over_placer a.turn_over_btn {
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
+
+
 

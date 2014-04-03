@@ -3,12 +3,9 @@
     "use strict";
     
     /*
-     *  Im kompletten Scope und Unterscopes gültige Variablen,
-     *      um bei Veränderungen der Viewport-Größe diese dem D3.js-Layout mitzuteilen
-     *      bzw. das Ausgabe-Element dynamisch der Viewport-Größe anzupassen 
+     *  Renderer-Variable, woruber der Renderer gesteuert werden kann (VivaGraphJS)
      */
-    var force = null;
-    var vizsvg = null;
+    var renderer = null;
     
     /* Variable, die das SVG-Element im DOM referenziert, in dem die Verlaufsgrafiken ausgegeben werden */
     var frequencyvizsvg = null;
@@ -17,7 +14,7 @@
     var abstract_text_popup = null;
     
     /* Vorgefertigte Datenstruktur für die Nodes (Knoten) und Lines (Kanten) */
-    var graph = {
+    var data = {
         "nodes":[],
         "links":[]
     };
@@ -70,7 +67,7 @@
             if(num_mentioned.min == null || num_overall_mentioned < num_mentioned.min)
                 num_mentioned.min = num_overall_mentioned;
             
-            graph.nodes.push(v);
+            data.nodes.push(v);
             id_index_map[v.id] = runner;
             runner++;
             
@@ -101,7 +98,7 @@
         
             var is_unique = true;
         
-            $.each(graph.links, function(i, v) {
+            $.each(data.links, function(i, v) {
                 if(v['source'] === target && v['target'] === source) {
                     is_unique = false;
                     return false;
@@ -111,7 +108,7 @@
             return is_unique;
         }
         
-        $.each(graph.nodes, function(i, v) {
+        $.each(data.nodes, function(i, v) {
             
             /* Sicherheitshalber überprüfen, ob das Topic überhaupt Kanten zu anderen Topics besitzt */
             if(typeof(v.edges) === 'undefined')
@@ -122,7 +119,7 @@
                 if(     typeof(id_index_map[v.id]) !== 'undefined'
                     &&  typeof(id_index_map[sub_v.neighbour]) !== 'undefined'
                     &&  unique_link(id_index_map[v.id], id_index_map[sub_v.neighbour])) {
-                    graph.links.push({  source: id_index_map[v.id],
+                    data.links.push({  source: id_index_map[v.id],
                                         target: id_index_map[sub_v.neighbour],
                                         weight: sub_v.weight});
                 }
@@ -130,8 +127,8 @@
         });
         
         /* Ausgabe der Anzahl aller betrachteten Nodes und Kanten über die Konsole ausgeben */
-        console.log("topics_count", graph.nodes.length);
-        console.log("edges_count", graph.links.length);
+        console.log("topics_count", data.nodes.length);
+        console.log("edges_count", data.links.length);
         
         /* Den Graphen erst aufbauen, nachdem das JSON-Dokument geparst und alle relevanten Topics ausgewählt wurden */
         initGraph();
@@ -259,168 +256,69 @@
     /* Ausgelagerte Initialisierungs-Prozedur */
     function initGraph() {
         
-        vizsvg = document.querySelector('#graph_viz');
+        var graph = Viva.Graph.graph();
         
-        var vis = d3.select(vizsvg);
+        for (var i = 0; i < data.nodes.length; ++i){
+            graph.addNode(i, data.nodes[i]);
+        }
         
-        /* 
-         *  Alle Nodes und Links in ein übergeordnetes Gruppenelement ("g") gruppieren,
-         *      damit man das Gruppenelement und ihre entahltenen Elemente besser bewegen kann -> hilfreich für Panning
-         */
-        var g_all = vis.append('g').attr('class', 'grouper');
         
-        /* Hilfsvariablen, um die momentane Verschiebung des übergeordneten Gruppenelements festzuhalten */
-        var start_curr_g_pos = [0, 0];
-        var curr_g_pos = [];
-        var body_jq_node = $('body');
+        for (i = 0; i < data.links.length; ++i){
+            var link = data.links[i];
+            graph.addLink(link.source, link.target, link.value);
+        }
         
-        /* Panning ohne direkte Unterstützung von d3.js umgesetzt, da es zuerst bei einigen Tests Probleme gab */
-        vis.on('mousedown', function() {
-            /* Nur wenn das "svg"-Element angeklickt wurde, soll das Panning möglich sein */
-            if(d3.event.target != vizsvg)
-                return;
-            
-            /* Momentane Startposition für spätere Berechnungen zwischenspeichern */
-            var start_pos = d3.mouse(vizsvg);
-            var new_pos = [];
-            
-            /* Erst wen man auf das "svg"-Element geklickt hat, soll diesem der entsprechende Move-Handler zugewiesen werden */
-            vis.on('mousemove', function() {
-                /* 
-                 *  Sofern man die Maus mit gedrückter Taste aus dem Fenster bewegt, bleibt das Panning beim Wiedereintritt aktiv;
-                 *      der folgende Code überprüft bei jeder Mausbewegung, ob die Maustaste noch gedrückt wird und bricht das Panning ab,
-                 *      wenn es nicht mehr so ist
-                 */
-                 
-                if(d3.event.buttons === 0) {
-                    vis.on('mousemove', null);
-                    start_curr_g_pos = curr_g_pos;
-                    return;
-                }
-                
-                /* Die aktuelle Mausposition beziehen, nachdem sie bewegt wurde */
-                var curr_pos = d3.mouse(vizsvg);
-                
-                /* Positions-Differenz bilden */
-                new_pos = [curr_pos[0] - start_pos[0], curr_pos[1] - start_pos[1]];
-                
-                if(start_curr_g_pos.length === 2) {
-                    /* Sofern die übergeordnete schon einmal in ihrere Position bewegt wurde, soll die letzte Verschiebung mitberücksichtigt werden */
-                    new_pos[0] += start_curr_g_pos[0];
-                    new_pos[1] += start_curr_g_pos[1];
-                }
-                
-                /* Eigentliche Positionierung */
-                g_all.attr("transform", "translate(" + new_pos + ")");
-                
-                /* Die Hintergrundgrafik soll sich mitbewegen -> CSS-Wert "no-repeat"" darf für die Hintergrundgrafik nicht gesetzt sein */
-                body_jq_node.css('background-position', new_pos[0] + "px " + new_pos[1] + "px");
-                
-                /* Aktuelle Position für das nächsten Mal, wenn "mousemove" getriggert wird, aufbewahren  */
-                curr_g_pos = new_pos;
-            })
-        })
-        .on('mouseup', function() {
-            /*
-             *  Wird die Maustaste losgelassen, soll das Panning ebenfalls nicht mehr mögloch sein -> Entfernen des "mousemove"-Handlers,
-             *      und Sicherung der aktuellen Verschiebung für den nächsten Panning-Versuch
-             */
-            vis.on('mousemove', null);
-            start_curr_g_pos = curr_g_pos;
+        var layout = Viva.Graph.Layout.forceDirected(graph, {
+            springLength : 200,
+            springCoeff : 0.0002,
+            dragCoeff : 0.02,
+            gravity : -1.2
         });
-        
-        
-        /* Aktuelle Größe des Fensters festhalten */
-        var height = $(window).height(),
-            width = $(window).width();
-        
-        d3.ns.prefix.xlink = "http://www.w3.org/1999/xlink";
-        
-        vizsvg.setAttribute("viewBox", "" + [0, 0, width, height]);
-        vizsvg.setAttribute("preserveAspectRatio", "xMinYMin meet");
-        
-        /* Die Größe des im DOM befindlichen SVG-Elements */
-        vizsvg.style.height = height + "px";
-        vizsvg.style.width = width + "px";
-        
 
-        /* D3.js-Layout festlegen (Graph) und benötigte Startwerte angeben (nodes, links etc.) */
-        force = d3.layout.force()
-        .nodes(graph.nodes)
-        .links(graph.links)
-        .charge(-100)
-        .gravity(0.01)
-        .linkStrength(0.1)
-        .linkDistance(function(link) {
+        var svgGraphics = Viva.Graph.View.svgGraphics();
+
+        svgGraphics.node(function(node) {
+                
+            var g = Viva.Graph.svg('g')
+                .attr("class", "node");
             
-            /* Die Kantenlänge anhand der Gewichtung festlegen */
-            return 200 * (link.weight);
-        })
-        .size([width,height])
-        .start();
-        
-        
-        /*
-         *  Wenn das Fenster in seiner Größe verändert wird,
-         *      soll auch das Ausgabe-Element und das d3.js-Layout die neue Größe übernehmen
-         */
-        $(window).resize(function() {
-            
-            var height = $(window).height(),
-                width = $(window).width();
-            
-            vizsvg.setAttribute("viewBox", "" + [0, 0, width, height]);
-            
-            force.size([width, height]);
-            vizsvg.style.height = height + "px";
-            vizsvg.style.width = width + "px";
-        });
-        
-        
-        /* Lines erzeugen (SVG-Line) und an diese jeweils ihre Daten binden */
-        var link = g_all.selectAll(".link")
-            .data(graph.links)
-            .enter().append("line")
-            .attr("class", "link")
-            .style("stroke-width", 1)
-            .style("stroke", function(d) {
-                return "rgb(255, 255, 255)";
-            });
-        
-        
-        /*
-         *  Nodes erzeugen (SVG-G) und an diese jeweils ihre Daten binden
-         *      Als Node wird ein SVG-Group-Element gewählt,
-         *          um zusammengehörige Elemente (Texte etc.) zu gruppieren
-         */
-        var node = g_all.selectAll(".node")
-            .data(graph.nodes)
-            .enter().append('g')
-            .attr("class", "node");
-            
-            /*
-             *  Visuell wird der Node als Rechteck mit abgerundeten Ecken dargestellt
-             *      bzw. sieht er im Minimierten Zustand wie ein Kreis aus
-             */
-            node.append("rect")
-            .attr("class", "topic")
-            .attr("width", 30)
-            .attr("height", 30)
-            .attr("rx", 15)
-            .attr("ry", 15)
-            .attr("x", -15)
-            .attr("y", -15)
-            .style({
+            var rect = Viva.Graph.svg('rect')
+                .attr("class", "topic")
+                .attr("width", 30)
+                .attr("height", 30)
+                .attr("rx", 15)
+                .attr("ry", 15)
+                .attr("x", -15)
+                .attr("y", -15);
+                
+            d3.select(rect).style({
                 "stroke": "rgba(255, 255, 255, 0.4)",
                 "stroke-width": 2,
-                "fill": function(d, i) {
-                    var rgb =  hsv2rgb((1 - d.num_overall_mentioned/num_mentioned.max) * 130, 0.55, 0.71); /* Sättigung und Helligkeit niedrig */
+                "fill": function() {
+                    var rgb =  hsv2rgb((1 - node.data.num_overall_mentioned/num_mentioned.max) * 130, 0.55, 0.71); /* Sättigung und Helligkeit niedrig */
                     return "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
                 }
-            })
-            .on('dblclick', function(d, i) { /* Ein Doppelklick auf ein Node (Rechteck) soll das Rechteck Maximieren */
+            });
+            
+            var size = 80 + (((node.data.num_overall_mentioned - num_mentioned.min) / (num_mentioned.max - num_mentioned.min)) * 100);
+            rect.attr("width", size);
+            rect.attr("height", size);
+            
+            var size_h = size/2;
+            
+            rect.attr("rx", size_h);
+            rect.attr("ry", size_h);
+            rect.attr("x", -size_h);
+            rect.attr("y", -size_h);
+            
+            
+            var g_all = null;
+            
+            $(rect).on('dblclick', function(e) { /* Ein Doppelklick auf ein Node (Rechteck) soll das Rechteck Maximieren */
                 
-                d3.event.stopPropagation();
+                e.stopPropagation();
+                
+                var d = node.data;                
                 
                 /* Bei fehlendem Topic-Namen, macht es keinen Sinn diesen zu Maximieren */
                 if(d.topic) {
@@ -432,7 +330,11 @@
                      */
                     var rect = d3.select(this);
                     var g_jq = $($(this).parent()).detach();
-                    $(g_all.node()).append(g_jq);
+                    
+                    if(g_all === null)
+                        g_all = $("#graph_viz > svg > g");
+                    
+                    g_all.append(g_jq);
                     
                     /* Element-Referenzen für den späteren Gebrauch holen */
                     var top_text = $(this).parent().find("text");
@@ -469,9 +371,6 @@
                             .attr("y", -d.size/2)
                             .style("stroke-width", 2);
                         
-                        force.charge(-100);
-                        force.start();
-                        
                         /* Den Abstract-Popup ebenfalls schließen, wenn der Node geschlossen/minimiert wird */
                         abstract_text_popup.stop().fadeOut();
                     }
@@ -485,8 +384,8 @@
                          *  ForeignObject für die Frontdarstellung eines Topics einfügen, um eingebettete XHTML-Elemente zu ermöglichen,
                          *      da SVG keine Elemente anbietet, die Word-Wrapping unterstützen
                          */
-                        addForeignObjectMain(g_d3);
-                        addForeignObjectExpansion(g_d3);
+                        addForeignObjectMain(g_d3, node.data);
+                        addForeignObjectExpansion(g_d3, node.data);
                         
                         /* Zentrierter Topic-Name ausblenden */
                         top_text.fadeOut();
@@ -506,47 +405,53 @@
                             .attr("x", -160)
                             .attr("y", -160)
                             .style("stroke-width", 7);
-                        
-                        /*
-                         *  Geöffneter Node soll im Force-Layout auf andere Nodes einwirken (umso größer, desto abstoßender)
-                         *      Es werden nur geöffnete Nodes betrachtet
-                         */
-                        force.charge(function(d) {
-                            return (d.open) ? -700: -100;
-                        });
-                        
-                        /* Das Layout mit den neuen Werten starten */
-                        force.start();
                     }
                 
                 }
-            })
-            .on('mousedown', function() {
-                //d3.event.stopPropagation();
-            })
-            .on('mousemove', function() {
-                //d3.event.stopPropagation();
-            })
-            .on('mouseup', function() {
-                //d3.event.stopPropagation();
             });
-
-
+                
+                
+            /* Minimale Nodegröße für den späteren Gebrauch sichern (für spätere Minimierung) */
+            node.data.size = size;
+                
+            var topic_text = Viva.Graph.svg('text')
+                .attr("fill", "rgb(255, 255, 255)")
+                .attr("pointer-events", "none")
+                .attr("y", 5)
+                .attr("title", node.data.topic)
+                .attr("text-anchor", "middle");
+            
+            
+            $(topic_text).html(node.data.topic);
+            
+            var width_diff = ((node.data.topic.length * 8) + 20) - size;
+            
+            if(width_diff > 0) {
+                /* Nach Nodegröße angepassten Topic-Name als Inhalt des Text-Elements setzen */
+                var short_topic_str = node.data.topic;
+                
+                short_topic_str = short_topic_str.slice(0, Math.floor(size / 13)) + "...";
+                
+                $(topic_text).html(short_topic_str);
+            }
+            
+            
             /* Schließenbutton hinzufügen */
-            node.append('image')
+            var image = Viva.Graph.svg('image')
                 .attr("class", "main_close_button")
                 .attr("x", "115")
                 .attr("y", "-215")
                 .attr("width", "80")
                 .attr("height", "80")
-                .attr("xlink:href", "./img/close_button.png")
-                .style("display", "none")
-                .on("click", function() {
+                .link('./img/close_button.png');
+            
+            image.style.display = "none";
+            
+            $(image)
+                .on("click", function(e) {
                     
-                    console.log("asf");
-                
-                    d3.event.preventDefault();
-                    d3.event.stopPropagation();
+                    e.preventDefault();
+                    e.stopPropagation();
                     
                     var e = document.createEvent('UIEvents');
                     e.initUIEvent(  "dblclick", true, true,
@@ -554,7 +459,7 @@
                                     false, false, false, false,
                                     0, null);
                 
-                    $(this).parent().find("rect")[0].dispatchEvent(e);
+                    rect.dispatchEvent(e);
                     
                     $(this).fadeOut(function() {
                         $(this)
@@ -562,74 +467,32 @@
                             .attr("y", "-215");
                     });
                 });
+            
+            g.append(rect);
+            g.append(topic_text);
+            g.append(image);
+            
+            return g;
 
-            /* Dem Gruppenelement ein zentriertes Textelement mit dem Topic-Namen hinzufügen */
-            node.append('text')
-                .attr("fill", "rgb(255, 255, 255)")
-                .attr("pointer-events", "none")
-                .attr("y", 5)
-                .attr("title", function(d, i) {
-                    /* Topic-Name als Title setzen */
-                    return d.topic;
-                })
-                .html(function(d) {
-                    return d.topic;
-                }).attr("text-anchor", function(d) {
-                
-                    /*
-                     *  Das Rechteck (minimiert als Kreis dargestellt) soll möglichst groß genug sein,
-                     *      um den Text komplett in diesen zentrieren zu können
-                     */
-                     
-                    var size = 80 + (((d.num_overall_mentioned - num_mentioned.min) / (num_mentioned.max - num_mentioned.min)) * 100);
-                    var rect = $(this).parent().find("rect");
-                    rect.attr("width", size);
-                    rect.attr("height", size);
-                    
-                    var size_h = size/2;
-                    
-                    rect.attr("rx", size_h);
-                    rect.attr("ry", size_h);
-                    rect.attr("x", -size_h);
-                    rect.attr("y", -size_h);
-                    
-                    /* Minimale Nodegröße für den späteren Gebrauch sichern (für spätere Minimierung) */
-                    d.size = size;
-                    
-                    var width_diff = (this.getBBox().width + 20) - size;
-                    
-                    if(width_diff > 0) {
-                        /* Nach Nodegröße angepassten Topic-Name als Inhalt des Text-Elements setzen */
-                        var short_topic_str = d.topic;
-                        
-                        short_topic_str = short_topic_str.slice(0, Math.floor(size / 13)) + "...";
-                        
-                        d3.select(this).html(short_topic_str);
-                    }
-                    
-                    /* Eigentlicher Wert für das "text-anchor"-Attribut (innerhalb des Gruppenelements zentrieren) */
-                    return "middle";
-                });
-                
-                /* Jedes Node soll gezogen und verschoben werden können */
-                node.call(force.drag);
-            
-            
-        /*
-         *  Nach jeder Neuberechnung der Position des Graphs und seiner Elemente,
-         *      sollen die Nodes und Kanten, entsprechend ihrer neu berechneten Position, neu respositioniert werden
-         *          (von D3.js vorgegebener Zeitpunkt; Tick)
-         */
-        force.on("tick", function() {
-            link.attr("x1", function(d) { return d.source.x; })
-                .attr("y1", function(d) { return d.source.y; })
-                .attr("x2", function(d) { return d.target.x; })
-                .attr("y2", function(d) { return d.target.y; });
-            
-            node.attr("transform", function(d, i) {
-                return "translate(" + d.x + ", " + d.y + ")";
-            });
+        }).placeNode(function(nodeUI, pos){
+            nodeUI.attr("transform", "translate(" + pos.x + ", " + pos.y + ")");
         });
+
+        svgGraphics.link(function(link){
+            return Viva.Graph.svg('line')
+                    .attr('stroke', '#fff')
+                    .attr('stroke-width', 1);
+        });
+
+        renderer = Viva.Graph.View.renderer(graph, {
+            container : document.getElementById('graph_viz'),
+            layout : layout,
+            graphics : svgGraphics,
+            prerender: 0,
+            renderLinks : true
+        });
+        
+        renderer.run();
         
         
         /*
@@ -637,7 +500,7 @@
          *      (X)HTML-Elemente einzubetten (ermöglicht die Nutzung von Elementen mit Word-Wrap-Eigenschaften);
          *  Inhalt der Vorderseite eines Topics
          */
-        function addForeignObjectMain(node) {
+        function addForeignObjectMain(node, d) {
         
             var content = node
                 .append("foreignObject")
@@ -674,7 +537,7 @@
             /* Dem body-Element wird ein Header-Element hinzugefügt */
             embed_div.append("h2")
                 .attr("class", "topic_name")
-                .text(function(d, i) { return d.topic });
+                .text(d.topic);
             
             
             /*
@@ -695,7 +558,7 @@
             /* Div-Element für den Abstract erzeugen und einfügen */
             var abstract_text_div = embed_div.append("div")
                 .attr("class", "abstract_text")
-                .html(function(d, i) {
+                .html(function() {
                     
                     /*
                      *  Ein verkürzter Abstact soll maximal 360 Zeichen besitzen,
@@ -831,7 +694,7 @@
          *      (X)HTML-Elemente einzubetten (ermöglicht die Nutzung von Elementen mit Word-Wrap-Eigenschaften);
          *  Inhalt der Rückseite eines Topics
          */
-        function addForeignObjectExpansion(node) {
+        function addForeignObjectExpansion(node, d) {
             var content = node
                 .append("foreignObject")
                 .attr("class", "expanded_content")
@@ -868,7 +731,7 @@
             /* Dem body-Element wird ein Header-Element hinzugefügt */
             embed_div.append("h2")
                 .attr("class", "topic_name")
-                .text(function(d, i) { return d.topic });
+                .text(d.topic);
             
             
 
@@ -887,7 +750,7 @@
                 .attr("class", "frequence_path")
                 .attr("transform", "translate(30, 10)")
                 .append("path")
-                .attr("d", function(d, i) {
+                .attr("d", function() {
                     var freq_arr = d.frequency_per_year;
                     
                     data_arr = [];
@@ -930,7 +793,7 @@
                                 
                                 
             var authors_arr = [];
-            var mentioned_by_arr = node.data()[0].mentioned_by;
+            var mentioned_by_arr = d.mentioned_by;
             
             if(typeof(mentioned_by_arr) !== 'undefined') {
                 
@@ -964,7 +827,7 @@
                                 .attr("class", "content");                
             
             // TODO: richtig verlinken
-            var docs_arr = node.data()[0].files;
+            var docs_arr = d.files;
             
             /* Dokumenten-Liste füllen */
             var docs_ul = docs_content.append("ul").attr("class", "list");
@@ -986,8 +849,8 @@
                                 .attr("class", "content");
             
              // TODO: austauschen
-            var links_arr = [{"title": "Wikipedia", "href": "http://de.wikipedia.org/w/index.php?title=Spezial:Suche&search=" + node.data()[0].topic },
-                             {"title": "DBPedia", "href": "http://dbpedia.org/resource/" + node.data()[0].topic} ];
+            var links_arr = [{"title": "Wikipedia", "href": "http://de.wikipedia.org/w/index.php?title=Spezial:Suche&search=" + d.topic },
+                             {"title": "DBPedia", "href": "http://dbpedia.org/resource/" + d.topic} ];
             
             /* Links-Liste füllen */
             var links_ul = links_content.append("ul").attr("class", "list");
@@ -1062,7 +925,7 @@
         }
     }
 
-    
+
     /* Handler usw. erst zuweisen, wenn der DOM-Baum komplett aufgebaut ist bzw. die Seite komplett geladen wurde */
     $(document).ready(function() {
         
@@ -1097,7 +960,7 @@
             frequencyvizsvg_jq.css("width", frequencyvizsvg_jq.width() + "px");
             
             /* Die für die Ausgabe relevanten Daten für d3.js holen bzw. Umbettungsstrukturen definieren */
-            var nodes = graph.nodes;
+            var nodes = data.nodes;
             
             /* D3.js - Einbindung */
             var item_histories =
@@ -1174,8 +1037,8 @@
             /* Sofern das Popup nicht offen ist */
             if(!frequency_overlay.is(':visible')) {
                 /* Stoppe den Graphen im Hintergrund -> da nicht mehr im Fokus und zu dem Zeitpunkt irrelevant */
-                if(force)
-                    force.stop();
+                if(renderer)
+                    renderer.pause();
                 
                 /* Erzeuge das Häufigkeits-Diagramm */
                 create_frequency_diagram();
@@ -1191,8 +1054,8 @@
                 frequency_overlay.stop().fadeOut(function() { $(frequencyvizsvg).empty(); });
                 
                 /* Starte die Positionsberechnung des Graphen, der nun wieder den Fokus besitzt */
-                if(force)
-                    force.start();
+                if(renderer)
+                    renderer.resume();
                     
                 /* Nano-Scrollbar zerstören */
                 $(".nano").nanoScroller({ stop: true });
