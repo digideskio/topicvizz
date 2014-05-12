@@ -495,6 +495,57 @@
         renderer.run();
         
         
+        /* Hintergrund beim Panning mitbewegen */
+        
+        var start_curr_g_pos = [0, 0];
+        var curr_g_pos = [];
+        var graph_viz_jq_node = $('#graph_viz');
+        var body_jq_node = $('body');
+        
+        graph_viz_jq_node.on('mousedown', function(e) {
+        
+            /* Momentane Startposition für spätere Berechnungen zwischenspeichern */
+            var start_pos = [e.clientX, e.clientY];
+            var new_pos = [];
+            
+            graph_viz_jq_node.on('mousemove', function(e) {
+                /*
+                * Sofern man die Maus mit gedrückter Taste aus dem Fenster bewegt, bleibt das Panning beim Wiedereintritt aktiv;
+                * der folgende Code überprüft bei jeder Mausbewegung, ob die Maustaste noch gedrückt wird und bricht das Panning ab,
+                * wenn es nicht mehr so ist
+                */
+                 
+                if(e.buttons === 0) {
+                    graph_viz_jq_node.off('mousemove');
+                    start_curr_g_pos = curr_g_pos;
+                    return;
+                }
+                
+                /* Die aktuelle Mausposition beziehen, nachdem sie bewegt wurde */
+                var curr_pos = [e.clientX, e.clientY];
+                
+                /* Positions-Differenz bilden */
+                new_pos = [curr_pos[0] - start_pos[0], curr_pos[1] - start_pos[1]];
+                
+                if(start_curr_g_pos.length === 2) {
+                    /* Sofern die übergeordnete schon einmal in ihrere Position bewegt wurde, soll die letzte Verschiebung mitberücksichtigt werden */
+                    new_pos[0] += start_curr_g_pos[0];
+                    new_pos[1] += start_curr_g_pos[1];
+                }
+                
+                /* Die Hintergrundgrafik soll sich mitbewegen -> CSS-Wert "no-repeat"" darf für die Hintergrundgrafik nicht gesetzt sein */
+                body_jq_node.css('background-position', new_pos[0] + "px " + new_pos[1] + "px");
+                
+                /* Aktuelle Position für das nächsten Mal, wenn "mousemove" getriggert wird, aufbewahren */
+                curr_g_pos = new_pos;
+            });
+        })
+        .on('mouseup', function(e) {
+            graph_viz_jq_node.off('mousemove');
+            start_curr_g_pos = curr_g_pos;
+        });
+        
+        
         /*
          *  Hinzufügen eines foreignObject-Elements, welcher es erlaubt innerhalb des SVG-Namespaces
          *      (X)HTML-Elemente einzubetten (ermöglicht die Nutzung von Elementen mit Word-Wrap-Eigenschaften);
