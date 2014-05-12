@@ -1261,6 +1261,8 @@
                 
                 author_data.append($('<div></div>').attr('class', 'clear_fix'));
                 
+                author_con.append($('<div></div>').attr('class', 'seperator'));
+                
                 authors_content_div.append(author_con);
             }
         }
