@@ -1,0 +1,1186 @@
+{
+"topics" :
+[
+{
+"id" :"-1116757765",
+"topic" :"Farbraum",
+"abstract" :"Alle Farben eines Farbmodells, die durch eine farbgebende Methode tatsächlich ausgegeben werden können, werden dreidimensional – als Farbraum – dargestellt. Jede farbgebende Methode hat ihren eigenen Farbraum. Eine Darstellung aller Farborte eines Farbmodells bildet den Farbkörper. Alle Verfahrensweisen und damit verbundenen Geräte und Materialien, die Farbe zur Darstellung bringen können, werden farbgebende Methoden genannt. Solche Verfahren sind Drucker, Monitore, Ausbelichtungen, Kunstdrucke, Lackierungen oder manueller Farbauftrag.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-1944636999",
+"topic" :"Kodex",
+"abstract" :"Kodex oder Codex, Mehrzahl Kodizes bzw. Codices (lat. codex, Mehrzahl codices), bezeichnet ursprünglich einen Stapel beschrifteter oder zur Beschriftung vorgesehener Holz- oder Wachstafeln, später den von zwei Holzbrettchen umschlossenen Block gefalteter oder gehefteter Papyrus- oder Pergamentblätter. Im Lateinischen bedeutete codex (ursprünglich caudex) „Baumstamm“ oder „Holzklotz“, später auch „Buch“ oder „Heft“. In der römischen Kaiserzeit war der Kodex neben der älteren Buchform der Rolle in Gebrauch, bevor er sich seit dem 4. Jahrhundert n.  Chr. als die führende Buchform der Spätantike durchsetzte, die sich bis in die Neuzeit nicht mehr wesentlich verändert hat. Mit der Ablösung der Rolle durch den Kodex wurde als Beschreibmaterial der Papyrus zunehmend durch das edlere und teurere, jedoch nicht von Importen abhängige Pergament ersetzt. Die bequemere Handhabung sowie das vereinfachte Nachschlagen von Parallelstellen im Rahmen der Bibelexegese waren Vorzüge des Kodex.",
+"files" : ["vortrag_vd-ak_2003-12-09_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2003":2}
+},
+{
+"id" :"-954408371",
+"topic" :"Cisco Systems",
+"abstract" :"Cisco Systems, Inc. ist ein US-amerikanisches Unternehmen aus der Telekommunikationsbranche. Bekannt ist es vor allem für seine Router und Switches, die von einem wesentlichen Teil der Internet-Backbones genutzt werden.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"1608041096",
+"topic" :"Studentenwerk",
+"abstract" :"Die Studentenwerke in Deutschland sind zuständig für die Förderung der sozialen, wirtschaftlichen und kulturellen Belange der Studenten. Ursprünglich entstanden als studentische Selbsthilfeeinrichtungen, sind die Studentenwerke heute durch Ländergesetze eingerichtet und nahezu alle als Anstalten des öffentlichen Rechts organisiert. Die derzeit 58 Studentenwerke (u.a. in Rheinland-Pfalz, Hamburg und in der Region Freiburg-Schwarzwald als Studierendenwerke bezeichnet) sind durch von den Bundesländern festgelegte Zuständigkeiten für Hochschulen und Städte räumlich voneinander abgegrenzt. Die Größe der Studentenwerke ist sehr unterschiedlich, sie reicht von ca. 1300 bis 125.000 Studierenden im Zuständigkeitsgebiet und von 11 bis 790 Beschäftigten. Die Studentenwerke arbeiten im Dachverband Deutsches Studentenwerk (DSW) zusammen.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [{"neighbour":"850496989","weight":0.9994835057500246}],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"1018794924",
+"topic" :"Implementierung",
+"abstract" :"Die Implementierung ist die Umsetzung von festgelegten Strukturen und Prozessabläufen in einem System unter Berücksichtigung der Rahmenbedingungen, Regeln und Zielvorgaben, also im Sinne einer Spezifikation. In der Managementlehre spricht man in diesem Zusammenhang von Umsetzungskompetenz als dem Vermögen, angestrebte Ziele in entsprechende Ergebnisse umzusetzen. Im allgemeinen Fall stellt die Konkretisierung einen Wechsel von einer abstrakten zu einer konkreteren Ebene dar – die Implementierung steht dabei für die tiefste Ebene.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2010-02-08_deutschmann_1.pdf","beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","-291390368","1406065811","-713554510"],
+"edges" : [{"neighbour":"-819305540","weight":0.9999999992713242}],
+"frequency_per_year" : {"2010":1,"2013":2,"2011":1}
+},
+{
+"id" :"546729040",
+"topic" :"Non-Profit-Organisation",
+"abstract" :"Non-Profit-Organisation (NPO) bzw. gemeinnützige Organisation verfolgen, im Gegensatz zu For-Profit-Organisationen, keine wirtschaftlichen Gewinnziele, sondern dienen gemeinnützigen sozialen, kulturellen oder wissenschaftlichen Zielen ihrer Mitglieder. Dies ist in einer Satzung festgelegt.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-1837252487",
+"topic" :"Kanton Waadt",
+"abstract" :"Die Waadt [ˈvaːt] ist ein französischsprachiger Kanton im Westen der Schweiz. Der Hauptort ist Lausanne. Der Kanton wird als die Waadt oder auch als das Waadtland bezeichnet, im Französischen Pays de Vaud. Die Einwohner werden als Waadtländer, im Französischen als Vaudois [vo. dwa] bezeichnet. Mit 3212 Quadratkilometern ist die Waadt flächenmässig der grösste ganz zur Romandie gehörige Kanton und der viertgrösste Kanton des Landes und belegt gemessen an der Bevölkerungszahl den dritten Platz. Die Waadt existiert in ihrer heutigen Form erst seit der Mediationsakte und dem Beitritt zur Eidgenossenschaft am 19. Februar 1803.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"1891914943",
+"topic" :"Extensible Markup Language",
+"abstract" :"Die Extensible Markup Language, abgekürzt XML, ist eine Auszeichnungssprache zur Darstellung hierarchisch strukturierter Daten in Form von Textdateien. XML wird u.  a. für den plattform- und implementationsunabhängigen Austausch von Daten zwischen Computersystemen eingesetzt, insbesondere über das Internet. Die vom World Wide Web Consortium (W3C) herausgegebene XML-Spezifikation (Recommendation, erste Ausgabe vom 10. Februar 1998, aktuell ist die fünfte Ausgabe vom 26. November 2008) definiert eine Metasprache, auf deren Basis durch strukturelle und inhaltliche Einschränkungen anwendungsspezifische Sprachen definiert werden. Diese Einschränkungen werden durch Schemasprachen wie DTD oder XML Schema ausgedrückt. Beispiele für XML-Sprachen sind: RSS, MathML, GraphML, XHTML, XAML, Scalable Vector Graphics (SVG), GPX, aber auch XML-Schema. Ein XML-Dokument besteht aus Textzeichen, im einfachsten Fall in ASCII-Kodierung, und ist damit menschenlesbar. Binärdaten enthält es per Definition nicht.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"-1203323361",
+"topic" :"Hochschule",
+"abstract" :"Hochschule ist ein Oberbegriff für verschiedene wissenschaftliche, wissenschaftlich-anwendungsorientierte, künstlerisch-wissenschaftliche, gestalterisch-wissenschaftliche oder künstlerische Einrichtungen des tertiären Bildungsbereichs zur beruflichen Ausbildung, Pflege der Wissenschaften und Künste durch Forschung und Lehre.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","-1899321620","1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2010":1,"2013":1,"2003":1,"2011":1}
+},
+{
+"id" :"168291108",
+"topic" :"Watt (Einheit)",
+"abstract" :"Das Watt ist die im internationalen Einheitensystem für die Leistung verwendete Maßeinheit. Sie wurde nach dem schottischen Wissenschaftler James Watt benannt. Als Einheitenzeichen wird der Großbuchstabe „W“ verwendet. Das Watt ist eine abgeleitete Einheit, das heißt, sie kann mit Hilfe der Basiseinheiten ausgedrückt werden, und zwar mit kg, m und s durch",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned_by" : ["-291390368"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"-876342519",
+"topic" :"Friedrich-Alexander-Universität Erlangen-Nürnberg",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-785002019",
+"topic" :"Programmbibliothek",
+"abstract" :"Eine Programmbibliothek bezeichnet in der Programmierung eine Sammlung von Unterprogrammen, die Lösungswege für thematisch zusammengehörende Problemstellungen anbieten. Bibliotheken sind im Unterschied zu Programmen keine eigenständig lauffähigen Einheiten, sondern sie enthalten Hilfsmodule, die von Programmen angefordert werden. In erweitertem Sinn gelten als Programmbibliotheken jedoch alle Arten von Bibliotheken, die Programmcode bereitstellen/enthalten. Insofern unterscheidet man Programmbibliotheken u.  a. nach dem Typ des Programmcodes, z.  B. Quelltexte, Makros, Object- oder Bytecode, Maschinencode etc. Dementsprechend werden Bibliotheken auch zu unterschiedlichen Zeitpunkten benutzt, manche nur im Rahmen der Softwareentwicklung (von Werkzeugen der Entwicklungsumgebung), andere nur zur Ausführung von Programmen, wieder andere als Mischform von beiden. Manche proprietären Programmbibliotheken werden nicht im Quelltext veröffentlicht, da sie Firmengeheimnisse darstellen. Zum Schutz gegen Dekompilieren werden dann oft ein Obfuscator eingesetzt sowie alle Symbole entfernt.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1,"2003":1}
+},
+{
+"id" :"1188897633",
+"topic" :"Leipzig",
+"abstract" :"ist eine kreisfreie Großstadt im Freistaat Sachsen. Sie bildet ein Zentrum für Wirtschaft, Bildung und Handel sowie Verwaltung, Kultur und Verkehr in Ostdeutschland und Sachsen und war Ende 2012 mit über 520.000 Einwohnern die zwölftgrößte Stadt der Bundesrepublik Deutschland. Leipzig gehört zu den sechs Oberzentren Sachsens und bildet mit der benachbarten Großstadt Halle (Saale) den Ballungsraum Leipzig-Halle, in dem über eine Million Menschen leben. Mit Halle und weiteren Städten in den Ländern Sachsen, Sachsen-Anhalt und Thüringen bildet Leipzig die Metropolregion Mitteldeutschland. Nach Verleihung des Stadtrechts und der Marktprivilegien um das Jahr 1165 entwickelte sich Leipzig bereits während der Deutschen Ostsiedlung zu einem wichtigen Handelszentrum. Leipzigs Tradition als bedeutender Messestandort in Mitteleuropa mit einer der ältesten Messen der Welt geht auf das Jahr 1190 zurück und war eng mit der langjährigen Rolle Leipzigs als internationalem Zentrum des Pelzhandels verknüpft. Deshalb wurde Leipzig am 20.  Dezember 1937 offiziell in Reichsmessestadt Leipzig umbenannt. Neben Frankfurt am Main ist die Stadt ein historisches Zentrum des Buchdrucks und -handels. Außerdem befinden sich in Leipzig eine der ältesten Universitäten sowie die ältesten Hochschulen sowohl für Handel als auch für Musik in Deutschland. Leipzig verfügt über eine große musikalische Tradition, die vor allem auf das Wirken von Johann Sebastian Bach und Felix Mendelssohn Bartholdy zurückgeht und sich unter anderem auf die Bedeutung des Gewandhausorchesters und des Thomanerchors stützt. Im Zuge der Montagsdemonstrationen 1989, die einen entscheidenden Impuls für die Wende in der DDR gaben, wurde Leipzig als Heldenstadt bezeichnet. Die informelle Auszeichnung für den so mutigen wie friedlichen Einsatz vieler Leipziger Bürger einschließlich Kurt Masurs im Umfeld der Leipziger Nikolaikirche prägten den Ruf der Stadt nach der Wende und wird beim Stadtmarketing unter dem Motto „Leipziger Freiheit“ aufgegriffen.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [{"neighbour":"922115807","weight":0.9999999350043275},{"neighbour":"1496874267","weight":0.9999999999120064}],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"850496989",
+"topic" :"Hamburg",
+"abstract" :"Die Freie und Hansestadt Hamburg ist als Stadtstaat ein Land der Bundesrepublik Deutschland. Hamburg ist mit über 1,7 Millionen Einwohnern die zweitgrößte Stadt Deutschlands, achtgrößte der Europäischen Union sowie größte Stadt, die nicht Hauptstadt eines ihrer Mitgliedsstaaten ist. Der Hamburger Hafen ist der größte Seehafen Deutschlands und unter den zwanzig größten Containerhäfen weltweit. Zudem ist Hamburg seit 1982 Sitz des Internationalen Seegerichtshofs.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-25973369",
+"topic" :"Datenstruktur",
+"abstract" :"In der Informatik und Softwaretechnik ist eine Datenstruktur ein Objekt zur Speicherung und Organisation von Daten. Es handelt sich um eine Struktur, weil die Daten in einer bestimmten Art und Weise angeordnet und verknüpft werden, um den Zugriff auf sie und ihre Verwaltung effizient zu ermöglichen. Datenstrukturen sind nicht nur durch die enthaltenen Daten charakterisiert, sondern vor allem durch die Operationen auf diesen Daten, die Zugriff und Verwaltung ermöglichen und realisieren.",
+"files" : ["vortrag_vd-ak_2003-12-09_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2003":3}
+},
+{
+"id" :"2143934050",
+"topic" :"Carl von Ossietzky Universität Oldenburg",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"648470927",
+"topic" :"Layout",
+"abstract" :"Als Layout bezeichnet man das detaillierte Sichtbarmachen eines gedanklichen Bildes im Sinne eines tatsächlichen Entwurfs, meist dem einer Drucksache. Die Visualisierung vermittelt dem Gestalter und dem Auftraggeber einen Eindruck über die Form der späteren Ausführung und dient damit als verbindliche Entscheidungsgrundlage für die weitere Ausführung. Dabei kann auch Füll- oder Blindtext verwendet werden, der nicht dem späteren Original entsprechen muss.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [],
+"frequency_per_year" : {"2010":2}
+},
+{
+"id" :"1098690309",
+"topic" :"Elektron",
+"abstract" :"Das Elektron [ˈeːlɛktrɔn, eˈlɛk-, elɛkˈtroːn] ist ein negativ geladenes Elementarteilchen. Sein Symbol ist e. Die alternative Bezeichnung Negatron wird kaum noch verwendet und ist allenfalls in der Beta-Spektroskopie gebräuchlich. In Atomen und in Ionen bilden Elektronen die Elektronenhülle. Die gesamte Chemie beruht im Wesentlichen auf den Eigenschaften und Wechselwirkungen dieser gebundenen Elektronen. Der Zustand jedes der gebundenen Elektronen lässt sich dabei eindeutig durch vier Quantenzahlen (Hauptquantenzahl, Nebenquantenzahl, magnetische Quantenzahl des Drehimpulses und Spinquantenzahl) beschreiben. Die freie Beweglichkeit einiger der Elektronen in Metallen ist die Ursache für die elektrische Leitfähigkeit von metallischen Leitern. Unabhängig von der Atomhülle wird beim Beta-Minus-Zerfall eines Atomkerns ein Elektron neu erzeugt und ausgesandt. Der experimentelle Nachweis von Elektronen gelang erstmals im Jahre 1897 durch den Briten Joseph John Thomson.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"-1957444664",
+"topic" :"Integrierte Entwicklungsumgebung",
+"abstract" :"Eine integrierte Entwicklungsumgebung (Abkürzung IDE, von engl. integrated development environment, auch integrated design environment oder integrated debugging environment) ist eine Sammlung von Anwendungsprogrammen, mit denen die Aufgaben der Softwareentwicklung (SWE) möglichst ohne Medienbrüche bearbeitet werden können. Integrierte Entwicklungsumgebungen für den SWE-Teilbereich Programmierung verfügen in der Regel über folgende Komponenten: Texteditor Compiler bzw. Interpreter Linker Debugger Quelltextformatierungsfunktion Umfangreichere integrierte Entwicklungsumgebungen enthalten oft weitere hilfreiche Komponenten wie Versionsverwaltung, Projektmanagement, UML-Modellierung oder die Möglichkeit der einfachen Erstellung von grafischen Benutzeroberflächen (auch GUI genannt). Meist wird nur eine Programmiersprache unterstützt. Es gibt aber auch Anwendungen, die mehrere spezielle IDEs unter einer gemeinsamen Benutzeroberfläche zusammenfassen. In erster Linie sind integrierte Entwicklungsumgebungen hilfreiche Werkzeuge, die dem Softwareentwickler häufig wiederkehrende Aufgaben abnehmen, einen schnellen Zugriff auf wichtige Funktionen bieten, mit denen die Arbeits(zwischen)ergebnisse verwaltet und in spätere Bearbeitungsfunktionen direkt überführt werden können. Der Entwickler wird dadurch von formalen Arbeiten entlastet und kann sich ganz auf seine eigentliche Aufgabe, die Softwareentwicklung/Programmierung konzentrieren. IDEs gibt es für nahezu alle Programmiersprachen und Plattformen. Selbstverständlich gibt es integrierte Entwicklungsumgebungen auch für solche Konzepte, die darauf zielen, mehr oder weniger &#39;programmierfrei&#39; Anwendungssoftware per Konfiguration zu erstellen (z.  B. Universal Application), und somit nicht auf eine Programmiersprache ausgerichtet sind. Integrierte Entwicklungsumgebungen kamen in der ersten Hälfte der 1980er Jahre auf und lösten die damals übliche Praxis ab, Editor, Compiler, Linker und Debugger als vier getrennte Produkte anzubieten, die vom Benutzer über die Kommandozeile ausgeführt wurden. Eine der ersten erfolgreichen IDEs war Turbo Pascal. Daneben waren und sind Integrierte Entwicklungsumgebungen der 4. Generation wie z.  B. Natural bis heute im Markt erfolgreich. Während die ersten IDEs noch textbasiert arbeiteten, ging der Trend vor allem bei den großen Anbietern ab ca. 1990 zunehmend hin zu visuellen Programmierumgebungen. Vor allem für Spezialsprachen gibt es aber auch heute noch verschiedene Text-IDEs. Abweichende Bedeutung: Aus Sicht der Systemarchitektur und des Releasemanagements wird der hier zum Teil verwendete Begriff ‚Entwicklungsumgebung‘ als Abgrenzung zu anderen Systemumgebungen verstanden, während der Begriff ‚IDE‘ die funktionale Integration der zur SW-Entwicklung verwendeten Programme betont, egal in welcher technischen Systemumgebung.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [{"neighbour":"-204196359","weight":1.0}],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"1064508556",
+"topic" :"Universität Rostock",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"478395161",
+"topic" :"Datensicherung",
+"abstract" :"Datensicherung bezeichnet das Kopieren von Daten in der Absicht, diese im Fall eines Datenverlustes zurückkopieren zu können. Die auf dem Speichermedium gesicherten Daten werden als Sicherungskopie, engl. Backup, bezeichnet. Die Wiederherstellung der Originaldaten aus einer Sicherungskopie bezeichnet man als Datenwiederherstellung, Datenrücksicherung oder (englisch) Restore.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned_by" : ["-291390368"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"-895117153",
+"topic" :"Hochschulreife",
+"abstract" :"Mit Hochschulreife ist die Befähigung für ein Studium an einer Hochschule gemeint. Die Hochschulzugangs- oder Studienberechtigung wird durch ein entsprechendes Zeugnis der allgemeinen Hochschulreife, der fachgebundenen Hochschulreife oder der Fachhochschulreife bescheinigt. Daraus ergibt sich dem Grunde nach regelmäßig ein Anspruch auf Studienzulassung. Diese Sammelbegriffe werden für alle Bildungsabschlüsse angewendet, die zur Aufnahme eines Studiums an einer Hochschule berechtigen. Gegenüber der Hochschule gilt ein „Zeugnis der Hochschulreife” als Nachweis für die Studierfähigkeit eines Studienbewerbers. Die Hochschulreife wird entweder durch eines der vorgenannten Reifezeugnisse nach Abschluss einer schulischen Oberstufenausbildung oder aber in anderer Form nachgewiesen.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"748368881",
+"topic" :"Hypertext Markup Language",
+"abstract" :"Die Hypertext Markup Language, abgekürzt HTML, ist eine textbasierte Auszeichnungssprache zur Strukturierung von Inhalten wie Texten, Bildern und Hyperlinks in Dokumenten. HTML-Dokumente sind die Grundlage des World Wide Web und werden von einem Webbrowser dargestellt. Neben den vom Browser angezeigten Inhalten einer Webseite enthält HTML zusätzliche Angaben in Form von Metainformationen, die z.  B. über die im Text verwendete Sprache oder den Autor Auskunft geben oder den Inhalt des Textes zusammenfassen. Die Auszeichnungssprache wird vom World Wide Web Consortium (W3C) und der Web Hypertext Application Technology Working Group (WHATWG) weiterentwickelt. Aktuell trägt HTML die Versionsnummer 4.01. HTML5 des W3C bzw. der „HTML Living Standard“ der WHATWG befindet sich in der Entwicklung, wird jedoch schon von vielen aktuellen Layout-Engines unterstützt. Parallel existiert die Extensible Hypertext Markup Language (XHTML).",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"1387087264",
+"topic" :"Sozialdemokratische Partei der Schweiz",
+"abstract" :"Die Sozialdemokratische Partei der Schweiz (SP), französisch Parti socialiste suisse, italienisch Partito socialista svizzero, rätoromanisch Partida socialdemocratica da la Svizra, ist eine sozialdemokratische Partei der Schweiz. Sie leitet ihren Namen aus dem Anspruch einer linken politischen Orientierung her und zielt auf die Überwindung des Kapitalismus hin zum demokratischen Sozialismus. Mit Simonetta Sommaruga und Alain Berset stellt die SP zwei Mitglieder des Bundesrates und gehört damit zu den fünf Bundesratsparteien. Sie ist Mitglied der Sozialistischen Internationalen und assoziiertes Mitglied der Sozialdemokratischen Partei Europas. Ihr Präsident ist seit März 2008 Christian Levrat.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned_by" : ["-291390368"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"-1451354707",
+"topic" :"Immatrikulation",
+"abstract" :"Die Einschreibung oder Immatrikulation an einer Hochschule ist heute Voraussetzung, um die Einrichtungen einer deutschen Hochschule benutzen zu dürfen. Dazu gehört unter anderem die Teilnahme an Lehrveranstaltungen und an Hochschul-Prüfungen, Benutzung der Bibliotheken. Mit der Eintragung in die Matrikel (Stammrolle) bewirkt die Hochschulverwaltung die Aufnahme einer Person als Studierende/r und Mitglied der Hochschule. Früher gab es ein eigenes Bürgerrecht an der Universität, mit der Einschreibung war auch ein Wechsel der Gerichtsbarkeit verbunden; von der Gerichtsbarkeit des Heimatortes zur Gerichtsbarkeit der Universität. Die Immatrikulation erfolgt beim Studierendensekretariat oder Immatrikulationsamt einer Hochschule, der/die Studierende wird dann in der Universitätsmatrikel geführt. In Österreich ist zusätzlich zur einmaligen Zulassung zum Studium (Immatrikulation) auch für jedes Semester eine Inskription für das jeweilige Studium erforderlich. Gegensatz: Exmatrikulation – das Verlassen der Hochschule (früher verlor man dadurch auch das Universitätsbürgerrecht).",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [{"neighbour":"-1318766941","weight":0.9818194944361296}],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"289470275",
+"topic" :"Metadaten",
+"abstract" :"Metadaten oder Metainformationen sind Daten, die Informationen über Merkmale anderer Daten enthalten, aber nicht diese Daten selbst. Bei den durch Metadaten beschriebenen Daten handelt es sich oft um größere Datensammlungen wie Dokumente, Bücher, Datenbanken oder Dateien. So werden auch Angaben von Eigenschaften eines einzelnen Objektes als dessen Metadaten bezeichnet.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned_by" : ["-291390368"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"1615331617",
+"topic" :"Universität Duisburg-Essen",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":4}
+},
+{
+"id" :"-1815077316",
+"topic" :"Programmierschnittstelle",
+"abstract" :"Eine Programmierschnittstelle ist ein Programmteil, der von einem Softwaresystem anderen Programmen zur Anbindung an das System zur Verfügung gestellt wird. Im Gegensatz zu einer Binärschnittstelle (ABI) definiert eine Programmierschnittstelle nur die Programmanbindung auf Quelltext-Ebene. Zur Bereitstellung solch einer Schnittstelle gehört meist die detaillierte Dokumentation der Schnittstellen-Funktionen mit ihren Parametern auf Papier oder als elektronisches Dokument. Neben dem Zugriff auf Datenbanken oder Hardware wie Festplatte oder Grafikkarte kann eine Programmierschnittstelle auch das Erstellen von Komponenten der grafischen Benutzeroberfläche ermöglichen oder vereinfachen. Zum Beispiel ermöglicht die Programmierschnittstelle Windows Application Programming Interface des bekannten Computer-Betriebssystems Microsoft Windows, dass externe Firmen überhaupt erst Software für dieses Betriebssystem entwickeln können. Heutzutage stellen auch viele Internetdienste Programmierschnittstellen zur Verfügung. Im weiteren Sinne wird die Schnittstelle jeder Bibliothek (Library) als Programmierschnittstelle bezeichnet. Zu unterscheiden ist diese Art funktionaler &#39;Programmierschnittstellen&#39; von den vielen anderen Schnittstellen, die in der Programmierung angewendet werden – zum Beispiel die Parameter, die beim Aufruf von Unterprogrammen vereinbart und übergeben werden.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","-1899321620","1406065811"],
+"edges" : [{"neighbour":"1999573618","weight":0.9999998380558413}],
+"frequency_per_year" : {"2010":1,"2004":2,"2011":1}
+},
+{
+"id" :"-1368063910",
+"topic" :"Nukleotide",
+"abstract" :"Ein Nukleotid, auch Nucleotid, ist ein Grundbaustein von Nukleinsäuren, also Desoxyribonukleinsäure (DNA) und Ribonukleinsäure (RNA). Es ist ein Molekül mit einem Phosphat-, einem Zucker- und einem Basen­bestandteil. Viele Arten von Nukleotiden haben lebensnotwendige regulatorische Funktionen in Zellen, beispielsweise das ATP, das cAMP und das GTP. Von den Nukleotiden sind die Nukleoside zu unterscheiden, die nur aus dem Zucker und der Base bestehen, an die jedoch kein Phosphatrest gebunden ist.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"-265697895",
+"topic" :"Authentifizierung",
+"abstract" :"Authentifizierung (griechisch αυθεντικός authentikós ‚echt‘, ‚Anführer‘; Stammform verbunden mit lateinisch facere ‚machen‘) ist der Nachweis einer behaupteten Eigenschaft einer Entität, die beispielsweise ein Mensch, ein Gerät, ein Dokument oder eine Information sein kann, und die dabei durch ihren Beitrag ihre Authentisierung durchführt. Im englischen Sprachraum wird zwischen den Aktionen der beteiligten Entitäten syntaktisch nicht unterschieden. Im deutschen Sprachraum ist diese Unterscheidung meist auch nicht zu finden. Die Authentisierung einer Entität bezüglich der behaupteten Eigenschaft der Authentizität, die beispielsweise Einräumen einer „bestehenden Zugangsberechtigung“ oder „Echtheit“ sein kann, erlaubt der authentifizierten Entität weitere Aktionen. Die Entität gilt dann als authentisch. Die eine Authentifizierung abschließende Bestätigung wird auch als Autorisierung bezeichnet, wenn sie durch bestimmte zulässige Modi und/oder in einem bestimmten Kontext eingeschränkt wird. Eine Authentifizierung gilt solange, bis der betreffende Kontext verlassen oder verändert oder bis der betreffende Modus verlassen oder verändert wird.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1,"2003":3,"2011":1}
+},
+{
+"id" :"1176967491",
+"topic" :"Technische Universität Kaiserslautern",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-890523378",
+"topic" :"Hypertext Transfer Protocol",
+"abstract" :"Das Hypertext Transfer Protocol ist ein Protokoll zur Übertragung von Daten über ein Netzwerk. Es wird hauptsächlich eingesetzt, um Webseiten aus dem World Wide Web (WWW) in einen Webbrowser zu laden. HTTP gehört der sogenannten Anwendungsschicht etablierter Netzwerkmodelle an. Die Anwendungsschicht wird von den Anwendungsprogrammen angesprochen, im Fall von HTTP ist das meist ein Webbrowser. Im ISO/OSI-Schichtenmodell entspricht die Anwendungsschicht den Schichten 5–7. HTTP ist ein zustandsloses Protokoll. Ein zuverlässiges Mitführen von Sitzungsdaten kann erst auf der Anwendungsschicht durch eine Sitzung über eine Session-ID implementiert werden. Durch Erweiterung seiner Anfragemethoden, Header-Informationen und Statuscodes ist HTTP nicht auf Hypertext beschränkt, sondern wird zunehmend zum Austausch beliebiger Daten verwendet, außerdem ist es Grundlage des auf Dateiübertragung spezialisierten Protokolls WebDAV. Zur Kommunikation ist HTTP auf ein zuverlässiges Transportprotokoll angewiesen, wofür in nahezu allen Fällen TCP verwendet wird.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned_by" : ["-291390368"],
+"edges" : [{"neighbour":"-1892052512","weight":0.9915364905034001}],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"-860444342",
+"topic" :"Informationssystem",
+"abstract" :"Ein Informationssystem (von lat. informare „bilden“, „eine Form, Gestalt, Auskunft geben“; griech. σύστημα, altgriechische Aussprache sýstema, heute sístima, „das Gebilde, Zusammengestellte, Verbundene“; kurz IS, auch Informations- und Kommunikationssystem, kurz IuK-System) ist ein soziotechnisches System, das die Deckung von Informationsnachfrage zur Aufgabe hat. Es handelt sich um ein Mensch/Aufgabe/Technik-System, das Daten produziert, beschafft, verteilt und verarbeitet. Informationssysteme sind - neben der Informationsinfrastruktur und der Informationsfunktion der Gegenstandsbereich, das Erklärungs- und Gestaltungsobjekt der Wirtschaftsinformatik. Daneben bezeichnet &quot;Informationssystem&quot; im allgemeineren Sinne ein „System von Informationen“, die in einem wechselseitigen Zusammenhang stehen, und auf eine bestimmte Art organisiert sind. Insbesondere Wissen ist ein solches System aus Informationen. Die Begriffe Informationssystem und Anwendungssystem werden häufig synonym verwendet. Dabei wird Informationssystem im engeren Sinne („und so wird es i.  d.  R. verstanden“) als computergestütztes Anwendungssystem verstanden. Es ist jedoch wichtig zu verstehen, dass ein Anwendungssystem mit Anwendungssoftware und Datenbasen nur Teile eines Informationssystems sind.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1,"2011":1}
+},
+{
+"id" :"-1390208372",
+"topic" :"Jena",
+"abstract" :"Jena ist eine deutsche Universitätsstadt und kreisfreie Großstadt in Thüringen in der Metropolregion Mitteldeutschland. Sie liegt an der Saale zwischen Muschelkalkhängen der Ilm-Saale-Platte und ist nach der Landeshauptstadt Erfurt die zweitgrößte Stadt Thüringens und eines der drei Oberzentren des Freistaats. In Jena befindet sich die Friedrich-Schiller-Universität Jena, die 1558 gegründet wurde und nun mit über 20.000 Studenten die größte Universität Thüringens ist. Jena begann sich ab dem Bau der Saalbahn 1874 zu einer Industriestadt zu entwickeln. Sie ist ein Zentrum der deutschen Optik- und Feinmechanikindustrie rund um das Unternehmen von Carl Zeiss. Das Kombinat Carl Zeiss mit etwa 60.000 Mitarbeitern war seinerzeit auch das größte Kombinat der DDR. Nach der deutschen Wiedervereinigung 1990 wandelte sich Jena vom Industrie- zum Bildungs- und Wissenschaftszentrum. In Jena haben zahlreiche Forschungslabors und Institute ihren Sitz. Das 144,5 m (mit Antenne 159,60 m) hohe Bürohochhaus Jentower war zur Zeit seiner Errichtung das höchste Hochhaus Deutschlands. Am 21. März 2007 verlieh der Stifterverband für die Deutsche Wissenschaft Jena den Titel Stadt der Wissenschaft des Jahres 2008. Die Stadt Jena wirbt für sich auch mit dem Namen „Jena. Lichtstadt. “",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2010-02-08_deutschmann_1.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["-1899321620","-291390368","-713554510","1406065811"],
+"edges" : [{"neighbour":"-2009869509","weight":1.0},{"neighbour":"707221962","weight":0.999997571484407},{"neighbour":"-1318766941","weight":0.8632641831024305}],
+"frequency_per_year" : {"2010":2,"2004":1,"2013":1,"2003":2}
+},
+{
+"id" :"-1324773159",
+"topic" :"Soziale Rolle",
+"abstract" :"Die Soziale Rolle ist ein dem Theater entlehnter Begriff der Soziologie und Sozialpsychologie. Laut Definition des US-amerikanischen Anthropologen Ralph Linton (1936) stellt die soziale Rolle die Gesamtheit der einem gegebenen Status (z.  B. Mutter, Vorgesetzter, Priester etc. ) zugeschriebenen „kulturellen Modelle“ dar. Dazu gehören insbesondere vom sozialen System abhängige Erwartungen, Werte, Handlungsmuster und Verhaltensweisen. Diesen Anforderungen muss sich ein Sozialer Akteur entsprechend seiner Position stellen. Die Rollentheorie beschreibt und erklärt einerseits die Rollenerwartungen und -festlegungen und andererseits, welche Spiel- und Handlungsfreiräume dem Individuum und sozialen Gruppen in einer Rolle offenstehen. Sie beschäftigt sich damit, wie gesellschaftlich vorgegebene Rollen erlernt, verinnerlicht, ausgefüllt und modifiziert werden. Unabhängig von der sozialen Rolle bewirkt im Berufsleben die zugewiesene operationelle Rolle aufgrund von Qualifikationen eine die Arbeitsteilung bestimmende Unterscheidung.",
+"files" : ["vortrag_vd-ak_2003-12-09_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2003":3}
+},
+{
+"id" :"1496874267",
+"topic" :"Sachsen",
+"abstract" :"Der Freistaat Sachsen (obersorbisch Swobodny stat Sakska, Abkürzung SN, auch Sa. ) ist ein Land im Osten der Bundesrepublik Deutschland. Die Landeshauptstadt ist Dresden. Mit etwa 4 Millionen Einwohnern und einer Fläche von rund 18.400 Quadratkilometern gehört Sachsen zu den mittelgroßen Ländern der Bundesrepublik. Neben Dresden gehören mit Leipzig und Chemnitz zwei weitere Großstädte zum Freistaat. Nachbarländer sind Bayern im Südwesten, Thüringen im Westen, Sachsen-Anhalt im Nordwesten, Brandenburg im Norden sowie die Republik Polen im Osten und die Tschechische Republik im Süden. Nach der Auflösung der Länder 1952 wurde 1990 aus den DDR-Bezirken Chemnitz, Dresden und dem größten Teil des Bezirks Leipzig sowie einigen Gebieten des Bezirks Cottbus das Land Sachsen gegründet. Seit 2008 ist Sachsen in zehn Landkreise sowie drei kreisfreie Städte gegliedert. Wie bereits als Gliedstaat in der Weimarer Republik bezeichnet sich Sachsen per Landesgesetz als Freistaat.",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [{"neighbour":"1188897633","weight":0.9733524753449226}],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-2009869509",
+"topic" :"Friedrich-Schiller-Universität Jena",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-1877711698",
+"topic" :"Datenschutz",
+"abstract" :"Datenschutz ist ein in der zweiten Hälfte des 20. Jahrhunderts entstandener Begriff, der nicht einheitlich definiert und interpretiert wird. Je nach Betrachtungsweise wird Datenschutz verstanden als Schutz vor missbräuchlicher Datenverarbeitung, Schutz des Rechts auf informationelle Selbstbestimmung, Schutz des Persönlichkeitsrechts bei der Datenverarbeitung oder Schutz der Privatsphäre. Datenschutz steht für die Idee, dass jeder Mensch grundsätzlich selbst entscheiden kann, wem wann welche seiner persönlichen Daten zugänglich sein sollen. Der Datenschutz soll der in der zunehmend computerisierten und vernetzten Informationsgesellschaft bestehenden Tendenz zum so genannten gläsernen Menschen und dem Ausufern staatlicher Überwachungsmaßnahmen entgegenwirken.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2010-02-08_deutschmann_1.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf","beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","-1899321620","-291390368","1406065811"],
+"edges" : [{"neighbour":"1415281627","weight":0.9999999950280198}],
+"frequency_per_year" : {"2010":2,"2013":1,"2003":3,"2011":1}
+},
+{
+"id" :"-932573085",
+"topic" :"Vorname",
+"abstract" :"Der Vorname einer Person ist der Teil des Namens, der nicht die Zugehörigkeit zu einer Familie ausdrückt, sondern individuell identifiziert. Die Vornamen eines Menschen werden nach seiner Geburt von seinen Eltern bestimmt. In manchen Ländern gibt es Reglementierungen, die die Freiheit der Wahl des Vornamens einschränken. Im Deutschen und in den meisten anderen europäischen Sprachen stehen die Vornamen (als individuelle Namen) vor dem Familiennamen (von regionalen Ausnahmen abgesehen), während beispielsweise im Ungarischen, Vietnamesischen, Chinesischen, Japanischen oder Koreanischen der von den Eltern bestimmte individuelle Name hinter dem Familiennamen steht. Im deutschen Sprachraum bezeichnet man als Rufnamen den- oder diejenigen Vornamen, unter denen eine Person angesprochen wird. Im anglo-amerikanischen Sprachraum sind Zwischennamen gebräuchlich, die auch Mittelnamen (middle names) genannt und meistens mit dem Anfangsbuchstaben abgekürzt werden (middle initials). Auch im Ostfriesischen gibt es Zwischennamen. Im Russischen steht der Vatersname zwischen dem Vor- und dem Familiennamen.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"-1892052512",
+"topic" :"Kommunikation",
+"abstract" :"Kommunikation ist der Austausch oder die Übertragung von Informationen. „Information“ ist in diesem Zusammenhang eine zusammenfassende Bezeichnung für Wissen, Erkenntnis oder Erfahrung. Mit „Austausch“ ist ein gegenseitiges Geben und Nehmen gemeint. „Übertragung“ ist die Beschreibung dafür, dass dabei Distanzen überwunden werden können, oder es ist eine Vorstellung gemeint, dass Gedanken, Vorstellungen, Meinungen und anderes ein Individuum „verlassen“ und in ein anderes „hinein gelangen“. Dies ist eine bestimmte Sichtweise und metaphorische Beschreibung für den Alltag. Bei genaueren Beschreibungen des Phänomens Kommunikation wird die Anwendung dieser Metapher zunehmend schwieriger. Das Wort Kommunikation wird neben der ursprünglichen Bedeutung als Sozialhandlung auch für andere Vorgänge in unterschiedlichen Zusammenhängen verwendet. Der zunehmende Einsatz von Kommunikationstechnik führte zum Beispiel dazu, dass auch technologische Aspekte in den Kommunikationsbegriff eingingen. Unter Kommunikation werden somit auch „Signalübertragung“, „wechselseitige Steuerung“ und in einfachen Fällen auch „Verbindung“ von technischen Geräten verstanden. In anderen Situationen wird das Wort „Kommunikation“ auf Institutionen oder Unternehmen und ihre Zielgruppen bezogen. Dann werden nicht mehr Lebewesen, sondern organisierte Einheiten (oder „Systeme“) als Kommunikatoren (Produzenten und Rezipienten) angesehen. Dies gilt beispielsweise dann, wenn im Zusammenhang mit Journalismus, Publizistik oder Marketing von Kommunikation die Rede ist. Kommunikation ist alltäglich und verläuft scheinbar selbstverständlich, sodass sie nicht weiter problematisch erscheint. Für die meisten Situationen reicht dies auch aus; es wäre zu aufwendig, die eigene Kommunikation ständig zu hinterfragen. Erst bei Missverständnissen und Misserfolgen, die mit Kommunikation in Zusammenhang gebracht werden können, wird Kommunikation problematisiert. In der wissenschaftlichen Behandlung von Kommunikation wird die Frage gestellt, wie Kommunikation erklärt werden kann, unter welchen Bedingungen sie abläuft, was Kriterien für Kommunikationserfolge sind, und wie verlässliche Modelle erstellt werden können, aus denen sich Vorhersagen und Handlungsanweisungen ableiten lassen.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf","beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1,"2013":1}
+},
+{
+"id" :"-931620636",
+"topic" :"Fachhochschule",
+"abstract" :"Die Fachhochschule (FH) ist eine Hochschulform, die Lehre und Forschung auf wissenschaftlicher Grundlage mit anwendungsorientiertem Schwerpunkt betreibt. Fachhochschulen führen zunehmend die Bezeichnungen Hochschule (HS), Hochschule für angewandte Wissenschaften (HAW), technische Hochschule (TH) sowie die entsprechende englischsprachige Bezeichnung University of Applied Sciences (UAS). Das Studienangebot von Fachhochschulen erstreckt sich über ingenieur-, natur-, sozial-, wirtschafts- und rechtswissenschaftliche sowie technische und gestalterische Studiengänge. Das Studium an einer Fachhochschule wird in der Regel mit einem akademischen Grad abgeschlossen; anfangs war es die akademische Graduierung der Berufsbezeichnung, z.  B. graduierter Ingenieur, Ing. (grad. ), später wurde mit Diplom graduiert, z.  B. Diplom-Ingenieur (Fachhochschule), Dipl. -Ing. (FH). Mit dem Bologna-Prozess und der Hochschulreform bieten Fachhochschulen gestufte Bachelor- und Master-Abschlüsse in akkreditierten Studiengängen an.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"1158788459",
+"topic" :"Feld (Datentyp)",
+"abstract" :"Ein Feld (englisch Array für ‚Anordnung‘, ‚Aufstellung‘ usw. ) ist in der Informatik eine Datenstruktur-Variante, mit deren Verwendung „viele gleichartig strukturierte Daten [... ] verarbeitet werden sollen“. Dabei wird zwischen einem ‚Standard-Feld‘ und dem ‚assoziativen Array‘ unterschieden.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"-513556630",
+"topic" :"Düsseldorf",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-1183821875",
+"topic" :"Cascading Style Sheets",
+"abstract" :"Cascading Style Sheets (englische Aussprache; für stufenförmige oder geschachtelte Gestaltungsvorlagen), kurz CSS genannt, ist eine deklarative Sprache für Stilvorlagen von strukturierten Dokumenten. Sie wird vor allem zusammen mit HTML und XML (zum Beispiel bei SVG) eingesetzt. Grundidee beim Entwurf von CSS war es, mittels HTML oder XML nur die inhaltliche Untergliederung eines Dokumentes und die Bedeutung seiner Teile zu beschreiben, während mittels CSS weitgehend unabhängig davon die konkrete Darstellung (Farben, Layout, Schrifteigenschaften usw. ) der Teile festgelegt wird. Elemente eines Dokumentes können z.  B. aufgrund ihres Elementnamens (z.  B. alle Linkelemente), ihrer ID oder auch aufgrund ihrer Position in diesem Dokument (z.  B. alle Bildelemente innerhalb von Linkelementen) identifiziert werden. Mithilfe von CSS-Regeln können deshalb für jedes Element die konkreten Werte für bestimmte Darstellungsattribute festgelegt werden. Diese Festlegungen können an zentraler Stelle erfolgen, ggf. sogar in einem separaten Dokument, was ihre Wiederverwendung für andere Dokumente erleichtert. Daneben enthält CSS ein Vererbungsmodell für Auszeichnungsattribute – deshalb cascading – das die Anzahl nötiger Definitionen vermindert. CSS ermöglicht allenfalls auch die diskretionäre Auszeichnung von Teilen eines Dokuments. Mit CSS ist es möglich, für verschiedene Ausgabemedien unterschiedliche Darstellungen vorzugeben. Das ist nützlich, um zum Beispiel Hyperlinks beim Drucken extra aufzuführen oder für Geräte mit geringerer Auflösung die Anzeige mit Rücksicht auf die geringere Seitenbreite und -höhe anzupassen. Neben verschiedenen Möglichkeiten, Farben und Schriften einzustellen, erlaubt CSS auch, Elemente detaillierter zu gestalten, frei zu positionieren oder mit CSS 3 zu animieren. CSS gilt heute als die Standard-Stylesheetsprache für Webseiten. Die früher üblichen HTML-Elemente wie font oder center sind als deprecated (veraltet) gekennzeichnet, das heißt, sie sollen in Zukunft aus dem HTML-Standard entfernt werden. Grund ist eine Ausgliederung der designtechnischen Angaben aus dem reinen HTML-Quelltext, der im Rahmen des Markups nur die Struktur einer Seite wiedergibt, jedoch keine Hinweise auf Optik und Gestaltung gibt.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [{"neighbour":"648470927","weight":1.0}],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"1675884683",
+"topic" :"Irland",
+"abstract" :"Irland ist ein Inselstaat auf der gleichnamigen Insel Irland. Er grenzt im Norden an das Vereinigte Königreich und ist im Osten von der Irischen See und im Westen und Süden vom Atlantik umgeben. Irland ist seit 1973 Mitglied der Europäischen Union. Ein Großteil der Bevölkerung bekennt sich zum römisch-katholischen Glauben.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"711046698",
+"topic" :"Deutsche Mark",
+"abstract" :"Die Deutsche Mark (abgekürzt DM und im internationalen Bankenverkehr DEM, umgangssprachlich auch D-Mark oder kurz Mark, im englischsprachigen Raum meist „Deutschmark“) war von 1948 bis 1998 als Buchgeld, bis 2001 nur noch als Bargeld die offizielle Währung in der Bundesrepublik Deutschland und vor deren Gründung in den drei westlichen Besatzungszonen Deutschlands und den westlichen Sektoren Berlins. Sie wurde am 21. Juni 1948 in der Trizone und drei Tage später auch in den drei Westsektoren Berlins durch die Währungsreform 1948 als gesetzliches Zahlungsmittel eingeführt und löste die Reichsmark als gesetzliche Währungseinheit ab. Auch nach der Gründung der Bundesrepublik Deutschland am 23. Mai 1949 blieb die Deutsche Mark die Währungseinheit in der Bundesrepublik einschließlich West-Berlin. Mit Inkrafttreten der Währungs-, Wirtschafts- und Sozialunion am 1.  Juli 1990 löste sie die Mark der DDR ab; die D-Mark blieb auch im wiedervereinigten Deutschland das gesetzliche Zahlungsmittel. Nach Errichtung der Europäischen Wirtschafts- und Währungsunion wurde die Deutsche Mark schließlich am 1.  Januar 1999 als Buchgeld und am 1.  Januar 2002 als Bargeld durch den Euro ersetzt. Mit Stand 31. Oktober 2013 waren nach Angaben der Deutschen Bundesbank noch DM-Banknoten im Nennwert von 6,22 Mrd.  DM und Münzen im Wert von 6,85 Mrd.  DM nicht umgetauscht, das sind 5,339 % der Umlaufmenge des Jahres 2000 von 244,8 Mrd.  DM. Eine Deutsche Mark war unterteilt in einhundert Pfennig. Die Währung wurde in Münzen und Scheinen ausgegeben. Es gab vier Serien von Banknoten. Von 1948 bis 1964 trug auch die Mark der DDR offiziell die Bezeichnung „Deutsche Mark“, abgekürzt „DM“.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned_by" : ["-291390368"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"166619682",
+"topic" :"Mobiltelefon",
+"abstract" :"Ein Mobiltelefon ist ein tragbares Telefon, das über Funk mit dem Telefonnetz kommuniziert und daher ortsunabhängig eingesetzt werden kann. Die zehn größten Hersteller von Mobilfunkgeräten weltweit waren im Jahr 2012 Samsung, Nokia und Apple, danach folgten ZTE, LG, Huawei, TCL, Blackberry (RIM), Motorola und HTC.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"1687519609",
+"topic" :"Universität Mannheim",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-1291483928",
+"topic" :"Morsecode",
+"abstract" :"String index out of range: -9",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf"],
+"mentioned_by" : ["-291390368","1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2010":1,"2003":1}
+},
+{
+"id" :"43651481",
+"topic" :"Motorenbenzin",
+"abstract" :"Motorenbenzin ist ein komplexes Gemisch aus über 100 verschiedenen, überwiegend leichten Kohlenwasserstoffen, deren Siedebereich zwischen denen von Butan und Kerosin/Petroleum liegt. Es wird hauptsächlich aus veredelten Komponenten aus der Erdölraffination hergestellt und als Kraftstoff eingesetzt. Motorenbenzin wird (meist zu „Benzin“ abgekürzt) oft ungenau auch Ottokraftstoff genannt, obwohl es auch andere Ottokraftstoffe gibt. Daneben finden geringe Mengen Motorenbenzin auch als Brennstoff Verwendung.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-1599628245",
+"topic" :"Deutsche Bahn",
+"abstract" :"Die Deutsche Bahn AG (DB) ist ein deutsches Verkehrsunternehmen mit Sitz in Berlin. Es entstand 1994 aus der Fusion der Staatsbahnen Deutsche Bundesbahn und Deutsche Reichsbahn. Das bundeseigene Unternehmen ist das größte Eisenbahnverkehrs- und Eisenbahninfrastrukturunternehmen in Mitteleuropa und bereits seit mehreren Jahren international tätig. Der Konzern ist als integrierter Konzern strukturiert und hat über 1000 Tochterunternehmen. Die bekanntesten Tochterunternehmen im Schienenverkehr sind DB Regio (Personennahverkehr), DB Fernverkehr (Personenfernverkehr) und DB Schenker Rail. DB Netz ist das Eisenbahninfrastrukturunternehmen und betreibt das größte Schienennetz Europas. Im Schienenverkehr erwirtschaftet das Unternehmen heute etwa die Hälfte des Gesamtumsatzes. Das weitere Transport- und Logistikgeschäft sowie verschiedene Dienstleister machen die andere Hälfte des operativen Geschäfts aus. Die Konzernzentrale war zunächst in der sogenannten Hauptverwaltung in Frankfurt am Main ansässig. Im Jahr 2000 wurde der Sitz nach Berlin verlegt. Dort bezog das Unternehmen den sogenannten Bahntower am Potsdamer Platz. Die Konzernentwicklung und einige andere zentrale Abteilungen sind weiterhin in Frankfurt am Main ansässig. Das Grundkapital des Unternehmens beträgt 2,15 Milliarden Euro und ist in 430 Millionen auf Inhaber lautende, nennwertlose Stückaktien eingeteilt. Die Bundesrepublik Deutschland ist Inhaber aller Anteile. Da der Bund alle Anteile beibehält und kein Handel damit stattfindet, handelt es sich aufgrund der Eigentümerstruktur um ein privatrechtlich organisiertes Staatsunternehmen. Das Unternehmen erwirtschaftet Teile seines Umsatzes über Verkehrsverträge mit der öffentlichen Hand; bezuschusst werden ebenfalls Unterhalt und Ausbau der Infrastruktur.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"-979890238",
+"topic" :"Synchronisation",
+"abstract" :"Synchronisation (von griechisch συν, „zusammen“ und χρόνος, „Zeit“, wörtlich etwa „Herstellen von Gleichlauf“), gleichwertig auch Synchronisierung, bezeichnet das zeitliche Aufeinander-Abstimmen von Vorgängen. Synchronisation sorgt also dafür, dass Aktionen in einer bestimmten Reihenfolge oder gleichzeitig auftreten, d.  h. synchron stattfinden. In verschiedenen Wissensgebieten wird der Begriff Synchronisation häufig in engeren Bedeutungen verwendet:",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1,"2003":3,"2011":1}
+},
+{
+"id" :"1533450655",
+"topic" :"Schlüssel (Kryptologie)",
+"abstract" :"String index out of range: -9",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf"],
+"mentioned_by" : ["-1899321620","1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2010":1,"2004":1,"2003":1}
+},
+{
+"id" :"-1338682123",
+"topic" :"Suite (Musik)",
+"abstract" :"Eine Suite ist in der Musik ein Zyklus von Instrumental- oder Orchesterstücken, der in einer vorgegebenen Abfolge ohne längere Pausen gespielt wird. In der zweiten Hälfte des 17. Jahrhunderts etablierte sich daneben der Name Partita, im 18. Jahrhundert wurden Suiten auch oft durch Ouvertüren eingeleitet.",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"1794376526",
+"topic" :"Thüringer",
+"abstract" :"String index out of range: -9",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"1320708071",
+"topic" :"Ilmenau",
+"abstract" :"Die Goethe- und Universitätsstadt Ilmenau liegt in Thüringen, etwa 33 Kilometer südwestlich der Landeshauptstadt Erfurt im Tal der Ilm am Nordrand des Thüringer Waldes. Sie ist die größte Stadt im Ilm-Kreis und die elftgrößte Stadt Thüringens. Ilmenau übt für den südlichen Teil des Ilm-Kreises die Funktion eines Mittelzentrums aus. Sie besitzt als einzige Stadt Thüringens, die nicht auch Kreisstadt ist, den Status einer Großen kreisangehörigen Stadt. Wichtigste Institution der Stadt ist die Technische Universität, an der rund 7000 Studierende eingeschrieben sind (Stand Wintersemester 2012/13). Die Universität ist nach der Friedrich-Schiller-Universität in Jena die zweitgrößte in Thüringen. Tragende Wirtschaftszweige sind die Glasindustrie sowie der Maschinenbau. Historisch bedeutsam waren auch der Bergbau (Kupfer, Silber und Mangan) und seit 1777 die Porzellanindustrie. Zunehmend gewinnt auch der Tourismus an Bedeutung. Die Stadt war über die Jahrhunderte hinweg relativ unbedeutend. Sie wuchs erst an, als nach der Gründung des Deutschen Reiches 1871 die Industrialisierung einsetzte. Wie andere Städte der neuen Bundesländer auch erlebte Ilmenau seit der Wende 1990 einen Strukturwandel von der Industrie zur Dienstleistungsbranche. Zur Zeit Goethes und in den darauffolgenden Jahrzehnten war Ilmenau ein beliebtes Ausflugs- und Urlaubsziel der „Weimarer Prominenz“, bis zum Ersten Weltkrieg außerdem ein Kurbad.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["-1899321620","1406065811"],
+"edges" : [{"neighbour":"-1390208372","weight":0.9999895181817021},{"neighbour":"707221962","weight":0.9999926827221638},{"neighbour":"-1318766941","weight":0.9999880564411546}],
+"frequency_per_year" : {"2010":1,"2004":1}
+},
+{
+"id" :"-1409877440",
+"topic" :"Arbeitszeit",
+"abstract" :"Arbeitszeit wird die Zeit genannt, in der ein Mensch einer Arbeit nachgeht. Die Zeit, in der dies nicht der Fall ist, wird Freizeit genannt, obwohl oftmals in der „Freizeit“ Tätigkeiten verrichtet werden, die ebenfalls in einem weiteren Sinn als „Arbeit“ bezeichnet werden könnten. In einem engeren Sinne ist Arbeitszeit die Zeit, die unselbstständige Arbeitnehmer im Rahmen ihres Arbeitsverhältnisses tätig sind. Maßstab ist in Deutschland das Arbeitszeitgesetz (ArbZG) mit dem Arbeitgeber als Normadressaten. Der Artikel behandelt den Sachverhalt im Sinne dieser engeren Definition.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"1386857698",
+"topic" :"Alliierter Kontrollrat",
+"abstract" :"Der Alliierte Kontrollrat wurde nach dem Ende des Zweiten Weltkriegs von den Besatzungsmächten als höchste Regierungsgewalt in Deutschland eingesetzt. Die Alliierte Kommandantur, das entsprechende Gremium für die Viersektorenstadt Berlin, war dem Alliierten Kontrollrat unterstellt.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1,"2003":2}
+},
+{
+"id" :"-99347846",
+"topic" :"IPv6",
+"abstract" :"Das Internet Protocol Version 6 (IPv6), früher auch Internet Protocol next Generation (IPnG) genannt, ist ein von der Internet Engineering Task Force (IETF) seit 1998 standardisiertes Verfahren zur Übertragung von Daten in paketvermittelnden Rechnernetzen, insbesondere dem Internet. In diesen Netzen werden die Daten in Paketen versendet, in welchen nach einem Schichtenmodell Steuerinformationen verschiedener Netzwerkprotokolle ineinander verschachtelt um die eigentlichen Nutzdaten herum übertragen werden. IPv6 stellt als Protokoll der Vermittlungsschicht (Schicht 3 des OSI-Modells) im Rahmen der Internetprotokollfamilie eine über Teilnetze hinweg gültige Adressierung der beteiligten Netzwerkelemente her. Ferner regelt es unter Verwendung dieser Adressen den Vorgang der Paketweiterleitung zwischen Teilnetzen. Die Teilnetze können so mit verschiedenen Protokollen unterer Schichten betrieben werden, die deren unterschiedlichen physikalischen und administrativen Gegebenheiten Rechnung tragen. Im Internet soll IPv6 in den nächsten Jahren die gegenwärtig noch überwiegend genutzte Version 4 des Internet Protocols ablösen, da es eine deutlich größere Zahl möglicher Adressen bietet, die bei IPv4 zu erschöpfen drohen. Kritiker befürchten ein Zurückdrängen der Anonymität im Internet durch die nun mögliche zeitlich stabilere und weiter reichende öffentliche Adressierung. Befürworter bemängeln die zögerliche Einführung von IPv6 angesichts der ausgelaufenen IPv4-Adressvergabe in Asien, Ozeanien und Europa.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf"],
+"mentioned_by" : ["-503985829"],
+"edges" : [],
+"frequency_per_year" : {"2011":1}
+},
+{
+"id" :"-225985840",
+"topic" :"Evaluation",
+"abstract" :"Evaluation oder Evaluierung (aus lateinisch valere „stark, wert sein“) bedeutet sach- und fachgerechte Bewertung.",
+"files" : ["vortrag_vd-ak_2003-07-10_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2003":1}
+},
+{
+"id" :"1111978930",
+"topic" :"Kalifornien",
+"abstract" :"Kalifornien ist der drittgrößte und mit Abstand bevölkerungsreichste Bundesstaat der Vereinigten Staaten von Amerika. Er liegt im Westen des Landes und grenzt an den Pazifischen Ozean, Oregon, Nevada, Arizona sowie den mexikanischen Staat Baja California auf der gleichnamigen Halbinsel. Der offizielle Beiname Kaliforniens lautet Golden State (Goldener Staat).",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-1296517804",
+"topic" :"Juris Doctor",
+"abstract" :"Der Juris Doctor (Abk. J.D. , latein. Gelehrter des Rechts) ist ein akademischer Grad in der Rechtswissenschaft, der hauptsächlich in den Vereinigten Staaten und in Kanada (außerhalb der frankophonen Provinz Québec) verliehen wird. Es handelt sich dabei um ein Berufsdoktorat, das ohne zusätzliche Promotionsleistung als Abschluss des Studiums verliehen wird. Einige Universitäten in Australien, Hongkong und Japan vergeben diesen in letzter Zeit ebenfalls. Manche wenige Universitäten verleihen den Titel in seiner englischen statt seiner lateinischen Bezeichnung als Doctor of Jurisprudence, abgekürzt D. Jur.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1,"2003":3}
+},
+{
+"id" :"-1817538859",
+"topic" :"Rheinische Friedrich-Wilhelms-Universität Bonn",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-164398009",
+"topic" :"Johann Sebastian Bach",
+"abstract" :"Johann Sebastian Bach war ein deutscher Komponist sowie Orgel- und Klaviervirtuose des Barock. Er gilt heute als einer der bekanntesten und bedeutendsten Musiker, vor allem für Berufsmusiker ist er oft der größte Komponist aller Zeiten. Seine Werke beeinflussten nachfolgende Komponistengenerationen und inspirierten Musikschaffende zu zahllosen Bearbeitungen. Zu Lebzeiten wurde Bach als Virtuose, Organist und Orgelinspektor hoch geschätzt, allerdings waren seine Kompositionen nur einem relativ kleinen Kreis von Musikkennern bekannt. Nach Bachs Tod gerieten seine Werke jahrzehntelang in Vergessenheit und wurden kaum noch öffentlich aufgeführt. Nachdem die Komponisten der Wiener Klassik sich mit Teilen von Bachs Werk auseinandergesetzt hatten, begann mit der Wiederaufführung der Matthäus-Passion unter Leitung von Felix Mendelssohn Bartholdy im Jahre 1829 die Bach-Renaissance in der breiten Öffentlichkeit. Seit der Mitte des 19. Jahrhunderts gehören seine Werke weltweit zum festen Repertoire der klassischen Musik.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"1417396736",
+"topic" :"Java (Programmiersprache)",
+"abstract" :"Java ist eine objektorientierte Programmiersprache und eine eingetragene Marke des Unternehmens Sun Microsystems (2010 von Oracle aufgekauft). Die Programmiersprache ist ein Bestandteil der Java-Technologie – diese besteht grundsätzlich aus dem Java-Entwicklungswerkzeug zum Erstellen von Java-Programmen und der Java-Laufzeitumgebung (JRE) zu deren Ausführung. Die Laufzeitumgebung selbst umfasst die virtuelle Maschine und die mitgelieferten Bibliotheken. Die Programmiersprache Java dient innerhalb der Java-Technologie vor allem dem Formulieren von Programmen. Diese liegen zunächst als reiner, menschenverständlicher Text vor, als sogenannter Quellcode. Quellcode ist nicht direkt ausführbar; erst der Java-Compiler, der Teil des Entwicklungswerkzeugs ist, übersetzt ihn in einen maschinenverständlichen Code, den sogenannten Java-Bytecode. Die Maschine, die diesen Bytecode ausführt, ist jedoch typischerweise virtuell – das heißt, der Code wird meist nicht direkt durch Hardware ausgeführt, sondern durch entsprechende Software auf der Zielplattform. Zweck dieser Virtualisierung ist Plattformunabhängigkeit: Das Programm soll ohne weitere Änderung auf jeder Rechnerarchitektur laufen können, wenn dort eine passende Laufzeitumgebung installiert ist. Oracle selbst bietet Laufzeitumgebungen für die Betriebssysteme Linux, OS X, Solaris und Windows an. Andere Hersteller lassen eigene Java-Laufzeitumgebungen für ihre Plattform zertifizieren. Auch in Autos, HiFi-Anlagen und anderen elektronischen Geräten wird Java verwendet. Um die Ausführungsgeschwindigkeit zu erhöhen, werden Konzepte wie die Just-in-time-Kompilierung und die Hotspot-Optimierung verwendet. In Bezug auf den eigentlichen Ausführungsvorgang kann die JVM den Bytecode also interpretieren, ihn bei Bedarf jedoch auch kompilieren und optimieren. Nach dem TIOBE-Index ist Java nach C die zweitpopulärste Programmiersprache. Nach dem RedMonk Programmiersprachen Index ist Java vor JavaScript die populärste Programmiersprache, C ist dort erst auf Platz 8 zu finden.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"-292015081",
+"topic" :"E-Learning",
+"abstract" :"Unter E-Learning, auch als E-Lernen (E-Didaktik) bezeichnet, werden – nach einer Definition von Michael Kerres – alle Formen von Lernen verstanden, bei denen elektronische oder digitale Medien für die Präsentation und Distribution von Lernmaterialien und/oder zur Unterstützung zwischenmenschlicher Kommunikation zum Einsatz kommen. Für E-Learning finden sich als Synonyme auch Begriffe wie: Online-Lernen (Onlinelernen), Telelernen, multimediales Lernen, computergestütztes Lernen, Computer-based Training, Open and Distance-Learning u.  a.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [{"neighbour":"-1892052512","weight":0.9999999785605953}],
+"frequency_per_year" : {"2004":1,"2003":1}
+},
+{
+"id" :"-1746836018",
+"topic" :"RWTH Aachen",
+"abstract" :"Die Rheinisch-Westfälische Technische Hochschule Aachen ist mit über 40.000 Studierenden die größte Universität für technische Studiengänge in Deutschland. Die Technische Hochschule in Aachen in Nordrhein-Westfalen zählt mit ihrem Zukunftskonzept RWTH 2020: „Meeting Global Challenges” zu den neun bundesdeutschen Universitäten, die im Rahmen der Exzellenzinitiative 2007 in die dritte Förderlinie Zukunftskonzepte zum projektbezogenen Ausbau der universitären Spitzenforschung aufgenommen wurden. Die Universität ist Mitglied im Universitätsverbund TU9, in der IDEA League, im TIME- und UNITECH-Netzwerk sowie im Euregio-Hochschulverbund ALMA.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [{"neighbour":"-1318766941","weight":0.9999999903974413}],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"1510374584",
+"topic" :"Neue Musik",
+"abstract" :"Neue Musik (engl. new music, frz. nouvelle musique) ist der Sammelbegriff für eine Fülle recht unterschiedlicher Strömungen der komponierten, mitteleuropäisch geprägten Musik von etwa 1910 bis zur Gegenwart. Sie ist insbesondere durch – teils radikale – Erweiterungen der klanglichen, harmonischen, melodischen, rhythmischen Mittel und Formen charakterisiert. Ihr ist die Suche nach neuen Klängen, neuen Formen oder nach neuartigen Verbindungen alter Stile zu eigen, was teils durch Fortführung bestehender Traditionen, teils durch bewussten Traditionsbruch geschieht und entweder als Fortschritt oder als Erneuerung (Neo- oder Post-Stile) erscheint. Grob gliedert sich Neue Musik in die Zeit von etwa 1910 bis zum Zweiten Weltkrieg – oft als Moderne bezeichnet – und der als &quot;radikal&quot; empfundenen Neuorientierung nach dem Zweiten Weltkrieg – meist als Avantgarde apostrophiert – bis zur Gegenwart. Letztere Zeit wird mitunter in die &quot;50er-, 60er-, 70er-Jahre&quot; untergliedert, wobei die letzten drei Dezennien bislang nicht weiter differenziert werden (der zusammenfassende Begriff Postmoderne hat sich nicht durchgesetzt). Um „Musik der Gegenwart“ im engeren Sinne näher zu bezeichnen, wird der Begriff Zeitgenössische Musik (engl. contemporary music, frz. musique contemporaine) benutzt, ohne dass damit eine feste Periodisierung angesprochen ist. Der Begriff Neue Musik wurde durch den gleichnamigen Vortrag des Musikjournalisten Paul Bekker von 1919 geprägt.",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-395228079",
+"topic" :"Kraftfahrzeug",
+"abstract" :"Als Kraftfahrzeug, in der Schweiz Motorfahrzeug, bezeichnet man ein „durch einen Motor angetriebenes, nicht an Schienen gebundenes Fahrzeug“ (Duden). Im § 2 Nr. 1 der deutschen Fahrzeug-Zulassungsverordnung werden Kraftfahrzeuge definiert als „nicht dauerhaft spurgeführte Landfahrzeuge, die durch Maschinenkraft bewegt werden“. In anderen Ländern gilt diese Definition analog. Kraftfahrzeuge gelten als Straßenfahrzeuge, da die Spurführung in der Regel durch Reibung auf ebener oder unebener Fläche erreicht wird. Schienenfahrzeuge werden trotz des motorischen Antriebs nicht zu den Kraftfahrzeugen gezählt. Entsprechende Definitionen finden sich in den verkehrsrechtlichen Gesetzen, so im deutschen Straßenverkehrsgesetz, in der österreichischen Straßenverkehrsordnung oder im Schweizer Strassenverkehrsgesetz (Art.  7).",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"-175708745",
+"topic" :"Novell",
+"abstract" :"Novell (sprich) ist ein US-amerikanisches Hochtechnologie-Unternehmen, das sich auf Netzwerk- und Internet-Software-Produkte spezialisiert hat und die Linux-Distribution SUSE Linux und das Serverbetriebssystem NetWare entwickelt.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2003":1,"2011":1}
+},
+{
+"id" :"259253852",
+"topic" :"Microsoft",
+"abstract" :"Die Microsoft Corporation [ˈmaɪ. kɹoʊ. sɒft] ist ein multinationaler Software- und Hardwarehersteller. Mit 94.290 Mitarbeitern und einem Umsatz von 73,72 Milliarden US-Dollar ist das Unternehmen weltweit der größte Softwarehersteller. Der Hauptsitz liegt in Redmond, einem Vorort von Seattle im US-Bundesstaat Washington. Seit 2000 ist Steve Ballmer Chief Executive Officer (CEO). Das Unternehmen ist bekannt für sein Betriebssystem Windows und seine Büro-Software Office. Das Unternehmen wurde am 4. April 1975 von Bill Gates und Paul Allen gegründet. Die Firma Microsoft steht für Microcomputer-Software, ursprünglich Micro-Soft. Nach anfänglichen Erfolgen mit einem BASIC-Interpreter Ende der 1970er Jahre stellte das Unternehmen 1981 sein Betriebssystem MS-DOS vor, das im Auftrag von IBM entwickelt worden war. Der IBM-PC und dessen Nachbauten auf PC-Basis wurden in den 1980er Jahren vornehmlich mit diesem DOS-Betriebssystem ausgestattet. In den 1990er Jahren wurden das grafische Betriebssystem Windows und Microsofts Büro-Software Office Marktführer.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"1569226880",
+"topic" :"Personalvertretung",
+"abstract" :"Die Personalvertretung (z. B. Personalrat, Bezirkspersonalrat, Hauptpersonalrat, Gesamtpersonalrat) ist die Vertretung der Beschäftigten einer Dienststelle der öffentlichen Verwaltung, vergleichbar mit der Arbeitnehmervertretung in den Betrieben der Privatwirtschaft. Das Recht der Personalvertretung wird in den Personalvertretungsgesetzen des Bundes und der Länder geregelt.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","-1899321620","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2010":1,"2013":1,"2011":1}
+},
+{
+"id" :"1845168340",
+"topic" :"Parser",
+"abstract" :"Ein Parser [ˈpɑːʁzɐ] (engl. to parse, „analysieren“, bzw. lateinisch pars, „Teil“; im Deutschen gelegentlich auch Zerteiler) ist ein Computerprogramm, das in der Informatik für die Zerlegung und Umwandlung einer beliebigen Eingabe in ein für die Weiterverarbeitung brauchbares Format zuständig ist. Häufig werden Parser eingesetzt, um im Anschluss an den Analysevorgang die Semantik der Eingabe zu erschließen und daraufhin Aktionen durchzuführen. Im Vergleich zu einem Recognizer, der die Eingabe analysiert und ausgibt, ob diese im Sinne der Vorgaben richtig oder falsch ist, gibt der Parser die Analyse einer Eingabe in einer gewünschten Form aus und erzeugt zusätzlich Strukturbeschreibungen. Die Syntaxanalyse (Parsing) findet auch außerhalb der Informatik Anwendung, z.  B. bei der Untersuchung der Struktur von natürlichen Sprachen. In der Grammatik würde die Syntaxanalyse eines Satzes dem Zerlegen des Satzes in seine grammatikalischen Bestandteile entsprechen. Siehe dazu Linguistik.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"-1418913207",
+"topic" :"Koordinierte Weltzeit",
+"abstract" :"Die koordinierte Weltzeit (auch UTC, von englisch Coordinated Universal Time u. französisch Temps universel coordonné abgeleitet) ist die heute gültige Weltzeit. Eingeführt wurde sie 1972. Aus einer Zeitangabe in UTC ergibt sich die entsprechende, in Deutschland, Österreich und anderen mitteleuropäischen Staaten geltende Mitteleuropäische Zeit (MEZ), indem man eine Stunde, und die im Sommer geltende Mitteleuropäische Sommerzeit (MESZ), indem man zwei Stunden addiert. Im Gegensatz zur Universalzeit UT, die den Schwankungen der Erdrotation stetig folgt, indem die Länge der Zeiteinheit angepasst wird, folgt die UTC diesen Schwankungen mit Hilfe von Schaltsekunden, während ihr Sekundentakt jener der gleichmäßig mit SI-Sekunden durchlaufenden internationalen Atomzeit TAI ist.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"1529805091",
+"topic" :"Köln",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-1186954707",
+"topic" :"Manuskript",
+"abstract" :"Unter Manuskript oder Handschrift versteht man in der Bibliothekswissenschaft oder Editionsphilologie handgeschriebene Bücher, Briefe oder andere Publikationsformen (von lateinisch manu scriptum ‚von Hand Geschriebenes‘). Eher umgangssprachlich werden heute auch maschinenschriftliche Druckvorlagen als Manuskript bezeichnet. Wenn Fernseh- und Radiobeiträge in gedruckter Form zur Verfügung gestellt oder zum Herunterladen im Internet angeboten werden, spricht man von Sendemanuskript oder einer Zeitung.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"-321178735",
+"topic" :"Open Source",
+"abstract" :"Open Source [oʊpən ˈsɔːɹs], [əʊpən ˈsɔːs] (brit. ) und quelloffen nennt man Werke, deren Lizenzbestimmungen besagen, dass man mit deren Empfang auch den dazugehörigen Quelltext empfängt. Open-Source-Software (kurz OSS) steht unter einer der von der Open Source Initiative (OSI) anerkannten Lizenzen. Diese Organisation stützt sich bei ihrer Bewertung auf die Kriterien der Open Source Definition. Unter anderem beinhalten diese Lizenzen, dass die Software frei kopiert, modifiziert und verändert wie unverändert weiterverbreitet werden darf. Open Source Software ist in der rein funktionellen Definition fast deckungsgleich mit der Freie-Software-Definition. Der Unterschied liegt in den vertretenen Werten: bei Freier Software ist das Grundprinzip die Freiheit der Nutzer, während es bei Open Source (Verbunden mit der Open Source Initiative) nur die Hervorhebung des praktischen Nutzens und der Entwicklungsmethode ist.",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-819305540",
+"topic" :"Spezifikation",
+"abstract" :"Eine Spezifikation (vom lateinischen specificatio für die „Auflistung“ oder das „Verzeichnis“) ist eine formalisierte Beschreibung eines Produktes, eines Systems oder einer Dienstleistung. Ziel der Spezifikation ist es, Merkmale zu definieren und zu quantifizieren (Toleranzwerte), mit denen das Werk oder die Dienstleistung des Auftragnehmers bei der Übergabe an den Auftraggeber bzw. Käufer geprüft und durch den Auftraggeber abgenommen werden kann, bzw. nach der der Auftragnehmer bzw. Verkäufer die Bezahlung fordern kann, wenn die Merkmale der Spezifikation erreicht wurden. Die Spezifikation enthält in der Regel für jede spezifizierte Eigenschaft eine präzise Referenz zu der anzuwendenden Prüfmethode für das jeweilige Merkmal.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned_by" : ["-503985829","-291390368"],
+"edges" : [],
+"frequency_per_year" : {"2010":1,"2011":1}
+},
+{
+"id" :"1252240133",
+"topic" :"Technische Universität Dresden",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"835669453",
+"topic" :"Kaiserslautern",
+"abstract" :"Kaiserslautern ist eine Industrie- und Universitätsstadt am nordwestlichen Rand des Pfälzerwaldes im Süden des Landes Rheinland-Pfalz. Sie hat den Status einer kreisfreien Stadt und ist gleichzeitig Sitz der Kreisverwaltung des Landkreises Kaiserslautern und der Verbandsgemeinde Kaiserslautern-Süd.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"1415281627",
+"topic" :"Datenverarbeitung",
+"abstract" :"Datenverarbeitung (DV) bezeichnet den organisierten Umgang mit Datenmengen mit dem Ziel, Informationen über diese Datenmengen zu gewinnen oder diese Datenmengen zu verändern. Daten werden in Datensätzen erfasst, nach einem vorgegebenen Verfahren durch Menschen oder Maschinen verarbeitet und als Ergebnis ausgegeben. Eine systematische Datenverarbeitung ist die Grundlage für Statistik, Handel, Technik, Wissenschaft und Verwaltung.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"658656074",
+"topic" :"Plural",
+"abstract" :"Der Plural (lateinisch pluralis ‚Mehrzahl‘, abgeleitet von plures ‚mehrere‘; Abkürzung Pl. ) ist der grammatische Fachausdruck für Mehrzahl. Dem Plural gegenübergestellt ist der Singular, die Einzahl. In manchen Sprachen gibt es weitere Zählformen, siehe Numerus.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"-1000454754",
+"topic" :"Otto I. (HRR)",
+"abstract" :"Otto I. der Große aus dem Geschlecht der Liudolfinger war ab 936 Herzog von Sachsen und König des Ostfrankenreiches (regnum francorum orientalium), ab 951 König von Italien und ab 962 römisch-deutscher Kaiser. Otto setzte während der ersten Hälfte seiner langen Herrschaftszeit die Unteilbarkeit des Königtums, seine Entscheidungsgewalt in der Nachfolgefrage und einen Wandel der Machtstruktur durch: Durch eine geschickte Heiratspolitik und Personalentscheidungen besetzte er die Herzogtümer mit seinen Verwandten und griff damit tief in das bestehende Herrschaftsgefüge des Adels ein. Aus den Aufständen, in denen sich die Erbberechtigten gegen Konkurrenz später geborener Kinder wehrten, ging er als Sieger hervor. Durch seinen Sieg 955 über die Ungarn endeten nicht nur deren Invasionen, sondern auch die Erhebungen der Großen des Reiches gegen den König. Zudem erlangte er damit den Nimbus eines Retters der Christenheit, zumal ihm noch im selben Jahr ein Sieg über die Slawen gelang. In der Folge setzte eine kulturelle Blütezeit ein, die als Ottonische Renaissance bekannt wurde. 961 eroberte er das Königreich Italien und dehnte sein Reich nach Norden, Osten und bis nach Süditalien aus, wo er in Konflikt mit Byzanz geriet. Dennoch ließ er sich unter Rückgriff auf die Kaiseridee Karls des Großen 962 von Papst Johannes XII. in Rom zum Kaiser krönen, und schließlich gelang ihm sogar ein Ausgleich mit dem byzantinischen Kaiser und die Verehelichung seines Sohnes Otto II. mit dessen Nichte Theophanu. Im Jahr 968 gründete er ein Erzbistum in Magdeburg, jener Stadt, die wie keine zweite mit seinem Nachleben verbunden ist. Das Erzbistum war für Otto die entscheidende Voraussetzung für die Christianisierung der Slawen. Der Beiname „der Große“ gilt spätestens seit dem mittelalterlichen Geschichtsschreiber Otto von Freising als festes Namensattribut. Schon Widukind von Corvey nannte ihn totius orbis caput, das „Haupt der ganzen Welt“.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [{"neighbour":"1496874267","weight":1.0}],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"1333465669",
+"topic" :"Super Mario",
+"abstract" :"Super Mario (jap. スーパーマリオ, Sūpā Mario) oder nur Mario ist die populärste Videospiel-Figur der Firma Nintendo und deren Maskottchen. Ebenfalls ist er Protagonist und titelgebender Held der erfolgreichsten Videospielreihe des Unternehmens. Die Spielfigur taucht daher – von wenigen Ausnahmen abgesehen – nur in Spielen für Nintendo-Spielkonsolen auf. Mit über 295 Millionen verkauften Spielen ist Mario nicht nur die erfolgreichste Nintendo-Reihe, sondern die bisher erfolgreichste Videospielreihe überhaupt. Ferner gilt Mario als bekannteste Videospielfigur der Welt. 2005 wurde er mit einem Stern auf dem Walk of Game geehrt. Bei Mario handelt es sich um einen schnauzbärtigen, etwas klein gewachsenen und dicklichen italo-amerikanischen Klempner mit blauer Latzhose, rotem Hemd und roter Schirmmütze mit einem M-Symbol, dessen typische Aussprüche „Mamma mia“ und „It&#39;s-a-me, Mario“ sind. Name, Aussehen und Charakterisierung waren anfangs Veränderungen unterworfen und stabilisierten sich schrittweise. Im Arcadespiel Mario Bros. von 1983 tritt Mario erstmals in blauer Hose und rotem Hemd auf; mit Super Mario Bros. 3 setzt sich diese Kleidung durch. Seit 1995 leiht Charles Martinet ihm seine Stimme.",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-429664838",
+"topic" :"Datenbank",
+"abstract" :"Eine Datenbank, auch Datenbanksystem (DBS) genannt, ist ein System zur elektronischen Datenverwaltung. Die wesentliche Aufgabe eines DBS ist es, große Datenmengen effizient, widerspruchsfrei und dauerhaft zu speichern und benötigte Teilmengen in unterschiedlichen, bedarfsgerechten Darstellungsformen für Benutzer und Anwendungsprogramme bereitzustellen. Ein DBS besteht aus zwei Teilen: der Verwaltungssoftware, genannt Datenbankmanagementsystem (DBMS) und der Menge der zu verwaltenden Daten, der Datenbank (DB) im engeren Sinn, zum Teil auch „Datenbasis“ genannt. Die Verwaltungssoftware organisiert intern die strukturierte Speicherung der Daten und kontrolliert alle lesenden und schreibenden Zugriffe auf die Datenbank. Zur Abfrage und Verwaltung der Daten bietet ein Datenbanksystem eine Datenbanksprache an. Datenbanksysteme gibt es in verschiedenen Formen. Die Art und Weise, wie ein solches System Daten speichert und verwaltet, wird durch das Datenbankmodell festgelegt. Die gebräuchlichste Form eines Datenbanksystems ist das Relationale Datenbanksystem. Zu unterscheiden ist der hier beschriebene Begriff der Datenbank (bestehend aus DBMS und Daten) von Datenbankanwendungen: Letzteres sind (häufig zur Anwendungssoftware gehörende) Computerprogramme, die ihre jeweils individuell erforderlichen Daten unter Nutzung eines DBS verwalten und speichern. Beispiele: Auftragsverwaltung und Bestellwesen, Kunden- und Adressverwaltung, Rechnungserstellung. Im Sprachgebrauch werden gelegentlich (und begrifflich unkorrekt) auch nicht mit Datenbanksystemen verwaltete Daten als „Datenbank“ bezeichnet – als Synonym zu Datenbestand.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["-1899321620","1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2010":1,"2003":3}
+},
+{
+"id" :"-1318766941",
+"topic" :"Universität",
+"abstract" :"String index out of range: -9",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["-1899321620","-713554510","1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2010":1,"2013":2,"2003":2}
+},
+{
+"id" :"1189372605",
+"topic" :"Campus",
+"abstract" :"Der Campus ist der zusammenhängende Komplex von Universitäten und anderen Hochschulen (Hochschulzentrum, Universitätszentrum), oder Forschungsinstituten.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf"],
+"mentioned_by" : ["-503985829"],
+"edges" : [],
+"frequency_per_year" : {"2011":1}
+},
+{
+"id" :"-1043093885",
+"topic" :"Re (Ägyptische Mythologie)",
+"abstract" :"String index out of range: -9",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":2}
+},
+{
+"id" :"922115807",
+"topic" :"Halle (Saale)",
+"abstract" :"Halle (Saale) (bis 1995 Halle/Saale; etwa vom Ende des 15. bis zum Ende des 17. Jahrhunderts Hall in Sachsen) ist eine kreisfreie Großstadt im Süden von Sachsen-Anhalt und liegt an der Saale. Mit mehr als 230.000 Einwohnern ist Halle die größte Stadt und eines der drei Oberzentren des Landes sowie Sitz des Landesverwaltungsamtes. Sie ist die fünftgrößte Stadt Ostdeutschlands. Die Stadt bildet gemeinsam mit der benachbarten Großstadt Leipzig den Ballungsraum Leipzig-Halle, in dem mehr als eine Million Menschen leben, sowie mit Leipzig und neun weiteren Städten in Sachsen-Anhalt, Sachsen und Thüringen die Metropolregion Mitteldeutschland. Halle ist ein bedeutender Verkehrsknotenpunkt und ein wichtiges Wirtschaftszentrum in den neuen Ländern. Die erste urkundliche Erwähnung datiert auf das Jahr 806 n.  Chr. Die Einwohnerzahl der Stadt überschritt 1890 die Grenze von 100.000, wodurch Halle zur Großstadt wurde. Als einzige deutsche Großstadt mit mehr als 200.000 Einwohnern im Jahr 1945 hat Halle den Zweiten Weltkrieg fast unbeschadet überstanden, sodass ihr städtebaulicher Charakter unter den deutschen Großstädten als einzigartig gilt. Mit den durch August Hermann Francke 1698 gegründeten Franckeschen Stiftungen, über deren Aufnahme als UNESCO-Weltkulturerbe 2015 entschieden wird, gilt Halle als Ausgangspunkt der sozial-humanistischen Bildung in Deutschland. Halle ist Sitz einer der ältesten Universitäten Deutschlands, der Martin-Luther-Universität Halle-Wittenberg, sowie der Burg Giebichenstein Kunsthochschule. Darüber hinaus ist die Stadt Sitz der Nationalen Akademie der Wissenschaften Leopoldina und der Kulturstiftung des Bundes, die für die Bundesrepublik Deutschland die Aufgaben der internationalen Vertretung der nationalen Wissenschaft und deutschen Kultur haben. Im Stadtgebiet befindet sich eine Vielzahl von kulturellen und musealen Einrichtungen, wie die Stiftung Moritzburg oder das Landesmuseum für Vorgeschichte. Des Weiteren ist der Weinberg Campus ein wichtiges Technologie- und Gründungszentrum in den neuen Ländern.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [{"neighbour":"1188897633","weight":0.9999999047672691},{"neighbour":"1496874267","weight":0.9999999999893134}],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-821754018",
+"topic" :"Po (Fluss)",
+"abstract" :"Der Fluss Po [pɔ] entspringt den Cottischen Alpen im an der italienisch-französischen Grenze gelegenen Valle Po und mündet nahe bei Adria (Venetien) in die Adria. Mit einer Länge von 652 km ist er der längste Fluss Italiens. Das Einzugsgebiet umfasst eine Fläche von etwa 75.000 km². Auf weiter Strecke fließt der Fluss durch die Poebene (italienisch Pianura Padana), die wichtigste Landwirtschafts- und Industrieregion Italiens. 1852 wurde die Po-Schifffahrt vom Österreichischen Lloyd übernommen und neu organisiert. Der Po hat ein ausgedehntes Delta von etwa 380 km², dessen Fläche sich ständig vergrößert. Fünf der wichtigsten Arme sind Po di Maestra, Po della Pila, Po delle Tolle, Po della Donzella und Po di Goro. Im Februar 2010 wurde der Fluss von einer Ölpest verschmutzt, indem mutwillig aus einer stillgelegten Raffinerie mehr als 2500 Kubikmeter Rohöl in den Nebenfluss Lambro geleitet wurden.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"-1336558855",
+"topic" :"Management",
+"abstract" :"Management kann sowohl Leitungsfunktionen in Unternehmen und Organisationen bezeichnen, als auch die Personen, die diese Funktionen ausüben und entsprechende Managementkompetenzen benötigen. Zu den typischen Funktionen oder Aufgaben des Managements in Unternehmen und Organisationen gehört die Planung, Organisation, Führung und Kontrolle (im Sinne von Erfolgskontrolle). Das Wort leitet sich ab von englisch manage, dies von italienisch maneggiare „an der Hand führen“, dies von lat. manus „Hand“; die engl. Bedeutung wurde im 17./18. Jh. durch franz. ménagement beeinflusst. Die etymologische Wurzel des Begriffs Management ist nicht vollständig geklärt. Als mögliche Wurzeln kommen in Frage lateinisch manus agere, „an der Hand führen“ oder „mansionem agere“, „das Haus (für den Eigentümer) bestellen“.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"-384167087",
+"topic" :"Manager (Wirtschaft)",
+"abstract" :"Ein Manager (von englisch to manage „handhaben”, „bewerkstelligen”, „leiten”; Stammwörter sind die lateinischen Begriffe manus ‚Hand‘ und agere „treiben”, „führen”, „tun”) ist eine Person im Anstellungsverhältnis, welche Managementaufgaben in einer Organisation wahrnimmt. Die wichtigsten Managementaufgaben sind Planung, Organisation, Führung und Kontrolle. Die Begriffe Manager und Führungskraft werden häufig synonym verwendet, obwohl sie sich in den Aufgaben und Kompetenzen unterscheiden. Führung ist ein Teilbereich des Managements, folglich benötigen Manager vor allem Managementkompetenzen, während Führungskräfte insbesondere über Führungskompetenzen verfügen müssen.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-532925762",
+"topic" :"Coaching",
+"abstract" :"Der Begriff Coaching [&#39;kəutʃɪŋ] stammt vom englischen „to coach“ (betreuen, trainieren) und bezeichnet eine Vielzahl von Trainings- und Beratungskonzepten zur Entwicklung und Umsetzung persönlicher oder beruflicher Ziele und der dazu notwendigen Kompetenzen. Beispiele sind Führungs-, Umsetzungs- und Selbstmanagementkompetenzen. Der Begriff Coach ist nicht geschützt. Es gibt keine staatlich anerkannte Ausbildung oder wissenschaftlich fundierte Qualitätsstandards für diese Tätigkeit. Die Qualität der Coaching-Angebote reicht von Scharlatanerie bis hin zu qualitativen Mindestanforderungen wie sie im Psychotherapeutengesetz festgelegt sind (und darüber hinaus).",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"1537098012",
+"topic" :"Nürnberg",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"2130962145",
+"topic" :"Dynamik (Musik)",
+"abstract" :"Mit Dynamik wird in der Musik die Lehre von der Tonstärke bezeichnet. Dabei unterscheidet man einheitliche Lautstärken (Stufen), gleitende Veränderungen der Lautstärke (Übergänge), abrupte Veränderungen der Lautstärke. Die meisten Dynamikanweisungen sind in italienischer Sprache; seit dem 19. Jahrhundert finden sich jedoch auch vermehrt Angaben in der jeweiligen Sprache des Komponisten. Unterschiedliche Tonstärken werden auf den verschiedenen Musikinstrumenten unterschiedlich ausgeführt: bei Streichinstrumenten wird der Druck und die Geschwindigkeit des Bogenstrichs verändert, Bläser variieren den Druck und die Menge des Luftstroms. Die Dynamik der Zupf- und Schlaginstrumente wird, wie auch beim Klavier, durch die Härte des Anschlags bestimmt. In der modernen Notation wird die Tonstärke mit kursiven Buchstaben und Zeichen unter dem Notensystem notiert. Dynamische Bezeichnungen können auch substantivisch gebraucht werden: Das Forte zum Beispiel ist eine Bezeichnung für jenen Teil eines Musikstücks, der mit großer Lautstärke vorgetragen wird, ebenso kann man von einem gewaltigen Orchestercrescendo sprechen.",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-1678804073",
+"topic" :"Technische Universität München",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-880353008",
+"topic" :"Frankfurt am Main",
+"abstract" :"Frankfurt am Main ist die größte Stadt des Landes Hessen und – nach Berlin, Hamburg, München und Köln – die fünftgrößte Kommune der Bundesrepublik Deutschland. Das Stadtgebiet hat etwa 690.000, der engere Ballungsraum Frankfurt/Rhein-Main etwa 2,2 Millionen und die gesamte Metropolregion Rhein-Main 5,5 Millionen Einwohner. Seit dem Mittelalter gehört Frankfurt zu den bedeutenden urbanen Zentren Deutschlands. 794 erstmals urkundlich erwähnt, war es seit dem Hochmittelalter Freie Reichsstadt und bis 1806 Wahl-, seit 1562 auch Krönungsstadt der römisch-deutschen Kaiser. Von 1816 an war Frankfurt Freie Stadt, in der die Bundesversammlung des Deutschen Bundes und 1848/49 das erste frei gewählte deutsche Parlament ihren Sitz hatten. Im Verlauf des Deutschen Krieges von Preußen annektiert, verlor Frankfurt 1866 seine Unabhängigkeit als Stadtstaat. Seit 1875 zählte Frankfurt über 100.000 Einwohner, seit 1928 mehr als 500.000. Heute ist Frankfurt ein wichtiges, internationales Finanzzentrum und ein bedeutendes Industrie-, Messe- und Dienstleistungszentrum. Es wird unter ökonomischen Kriterien zu den Weltstädten gezählt. Frankfurt ist Sitz der Europäischen Zentralbank, der Deutschen Bundesbank, der Frankfurter Wertpapierbörse, zahlreicher Finanzinstitute und der Messe Frankfurt. Durch die zentrale Lage ist Frankfurt ein europäischer Verkehrsknotenpunkt. Der Frankfurter Flughafen gehört zu den weltweit größten Flughäfen, der Frankfurter Hauptbahnhof ist ein zentraler Knotenpunkt im Bahnverkehr und das Frankfurter Kreuz der meistbefahrene Straßenknotenpunkt Deutschlands. Weiterhin ist der DE-CIX in Frankfurt, gemessen am Durchsatz, der größte Internet-Knoten für Datenaustausch weltweit. Eine Besonderheit ist die Skyline der Stadt: Wegen der Hochhäuser, die zu den höchsten Europas gehören, wird Frankfurt gelegentlich als Mainhattan bezeichnet.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [{"neighbour":"-349327793","weight":0.9993558373573412},{"neighbour":"1529805091","weight":0.9999839000975062},{"neighbour":"850496989","weight":0.9999999847727851}],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"247654034",
+"topic" :"Identität",
+"abstract" :"String index out of range: -9",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"1916419211",
+"topic" :"Fernuniversität in Hagen",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-204196359",
+"topic" :"Versionsverwaltung",
+"abstract" :"Eine Versionsverwaltung ist ein System, das zur Erfassung von Änderungen an Dokumenten oder Dateien verwendet wird. Alle Versionen werden in einem Archiv mit Zeitstempel und Benutzerkennung gesichert und können später wiederhergestellt werden. Versionsverwaltungssysteme werden typischerweise in der Softwareentwicklung eingesetzt, um Quelltexte zu verwalten. Versionsverwaltung kommt auch bei Büroanwendungen oder Content-Management-Systemen zum Einsatz. Ein Beispiel ist auch die Wikipedia, hier erzeugt die Software nach jeder Änderung eines Artikels eine neue Version. Alle Versionen bilden in Wikipedia eine Kette, in der die letzte Version gültig ist; es sind keine Varianten vorgesehen. Da zu jedem Versionswechsel die grundlegenden Angaben wie Verfasser und Uhrzeit festgehalten werden, kann genau nachvollzogen werden, wer wann was geändert hat. Bei Bedarf – beispielsweise bei versehentlichen Änderungen – kann man zu einer früheren Version zurückkehren. Die Versionsverwaltung ist eine Form des Variantenmanagements; dort sind verschiedene Sprachvarianten oder modal auch anders bestimmte Varianten möglich. Für Versionsverwaltungssysteme ist die Abkürzung VCS (Version Control System) gebräuchlich.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned_by" : ["-291390368"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"-875227069",
+"topic" :"Server",
+"abstract" :"Ein Server ist entweder eine Software im Client-Server-Modell, oder eine Hardware, auf der diese Software im Rahmen dieses Konzepts abläuft. Ein Server (Software) ist ein Programm, das mit einem anderen Programm, dem Client (englisch für Kunde), kommuniziert, um ihm Zugang zu speziellen Dienstleistungen zu verschaffen. Ein Server (Hardware) ist ein Computer, auf dem ein oder mehrere Server (Software) laufen. Für die Server-Hardware wird in der Fachsprache auch der Begriff Host benutzt. Für den Server als Software-Begriff gibt es keine weitere Bezeichnung. Ob es sich bei einem Server um einen Host oder um eine Software handelt, ist daher nur aus dem Kontext oder mit Hintergrundwissen erkennbar. Die Mehrdeutigkeit des Begriffs Server wird im folgenden Abschnitt weiter erklärt und erläutert.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"1683655880",
+"topic" :"Hannover",
+"abstract" :"Hannover [haˈnoːfɐ] ist die Hauptstadt des Landes Niedersachsen. Unter dem Namen Hanovere 1150 erstmals urkundlich erwähnt, war die Stadt Hauptstadt Kurhannovers, ab 1814 Hauptstadt des Königreichs Hannover und zwischen 1866 und 1946 nach dessen Annexion durch Preußen als Folge des Deutschen Krieges Hauptstadt der Provinz Hannover. 1875 wurde sie mit über 100.000 Einwohnern zur Großstadt. Heute gehört Hannover mit {{#invoke:FormatNum|format|514137|format=dewiki}} Einwohnern zu den 15 größten Städten Deutschlands. Die an der Leine gelegene Stadt ist durch die seit 1947 stattfindende Hannover Messe sowie die CeBIT-Messe international bekannt. Hier kreuzen sich wichtige Schienen- und Straßenverkehrsverbindungen der Nord-Süd-Richtung mit solchen der Ost-West-Richtung. Über den Mittellandkanal ist Hannover zudem an das Binnenschifffahrtsnetz angebunden. Die kreisfreie Stadt gehört zur Region Hannover, einem Kommunalverband besonderer Art, und ist Teil der Metropolregion Hannover-Braunschweig-Göttingen-Wolfsburg. Hannover ist Standort mehrerer Hochschulen: der Gottfried Wilhelm Leibniz Universität, der Medizinischen Hochschule, der Tierärztlichen Hochschule, der Hochschule für Musik, Theater und Medien und der Hochschule Hannover.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [{"neighbour":"-1318766941","weight":0.9989898894199152}],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-1377394094",
+"topic" :"Architektur",
+"abstract" :"Das Wort Architektur (vom lateinischen architectura für „Baukunst“) bezeichnet im weitesten Sinne die Auseinandersetzung des Menschen mit gebautem Raum. Das planvolle Entwerfen und Gestalten von Bauwerken ist der zentrale Inhalt der Architektur. Es gibt eine Vielzahl von Definitionen des Begriffes, die der Architektur verschiedene Aufgaben, Inhalte und Bedeutungen zuschreiben. Einige werden im Folgenden dargestellt.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned_by" : ["-291390368"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"1707024153",
+"topic" :"Objektorientierte Programmierung",
+"abstract" :"Die objektorientierte Programmierung (kurz OOP) ist ein auf dem Konzept der Objektorientierung basierendes Programmierparadigma. Die Grundidee besteht darin, die Architektur einer Software an den Grundstrukturen desjenigen Bereichs der Wirklichkeit auszurichten, der die gegebene Anwendung betrifft. Ein Modell dieser Strukturen wird in der Entwurfsphase aufgestellt. Es enthält Informationen über die auftretenden Objekte und deren Abstraktionen, ihre Typen. Die Umsetzung dieser Denkweise erfordert die Einführung verschiedener Konzepte, insbesondere Klassen, Vererbung, Polymorphie und spätes Binden.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["-291390368","1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2010":1,"2004":1}
+},
+{
+"id" :"-1155461028",
+"topic" :"Fachhochschule Köln",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"707221962",
+"topic" :"Erfurt",
+"abstract" :"Erfurt ist die Landeshauptstadt des deutschen Freistaats Thüringen. Es ist zugleich die größte Stadt Thüringens und neben Jena und Gera eines der drei Oberzentren des Landes. Wichtigste Institutionen neben den Landesbehörden sind das Bundesarbeitsgericht, die Hochschulen Universität Erfurt und Fachhochschule Erfurt sowie das katholische Bistum Erfurt, dessen Kathedrale der Erfurter Dom ist, der wiederum neben der Krämerbrücke eine der Hauptsehenswürdigkeiten der Stadt darstellt. Darüber hinaus besitzt die Stadt einen knapp drei Quadratkilometer großen mittelalterlich geprägten Altstadtkern mit etwa 25 Pfarrkirchen und zahlreichen Fachwerk- und Bürgerhäusern. Erfurt, rund 100 Kilometer westsüdwestlich von Leipzig gelegen, gehört wie die anderen Großstädte in Sachsen, Sachsen-Anhalt und Thüringen zur Metropolregion Mitteldeutschland. Erfurt wurde 742 im Zusammenhang mit der Errichtung des Bistums Erfurt durch Bonifatius erstmals urkundlich erwähnt – schon damals als Großsiedlung. Bereits kurz danach entwickelte es sich zum Zentrum des Thüringer Raumes, wenngleich es lange Zeitabschnitte politisch nicht Teil des Landes war. Im Mittelalter hatte die Stadt ein hohes Maß an Autonomie. Das änderte sich mit der gewaltsamen Unterwerfung durch die Mainzer 1664. 1802 wurde Erfurt Teil Preußens (mit Ausnahme der Zeit von 1806 bis 1814, als es als Fürstentum Erfurt direkt unter französischer Herrschaft stand) und blieb es bis 1945. Die Universität wurde 1392 eröffnet, 1816 geschlossen und 1994 neugegründet. Damit ist sie die dritte Universität, die in Deutschland eröffnet wurde, kann dank eines Gründungsprivilegs von 1379 aber auch als älteste gelten. Martin Luther war ihr bekanntester Student. Die Wirtschaft der Stadt ist von Verwaltung und Dienstleistung geprägt. Ferner hat sich auf Grund der niedrigen Lohnkosten und zentralen Lage in Deutschland eine bedeutende Logistik-Branche etabliert. Erfurt ist nach Leipzig die Stadt mit der zweitgrößten Messe in den ostdeutschen Ländern. Des Weiteren ist Erfurt mit dem Hauptbahnhof wichtiger Verkehrsknotenpunkt im Zentrum Deutschlands. Bekannt ist Erfurt auch für seinen Gartenbau und als Medienzentrum (Sitz des Kindersenders KiKA und mehrerer Radiostationen sowie Tageszeitungen). Die Stadt liegt im südlichen Thüringer Becken am Fluss Gera.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","1406065811"],
+"edges" : [{"neighbour":"-1390208372","weight":0.9996075129030637},{"neighbour":"-1318766941","weight":0.9999996197210107},{"neighbour":"1496874267","weight":0.9999737359469041},{"neighbour":"1188897633","weight":0.9999628320895053}],
+"frequency_per_year" : {"2004":1,"2011":1}
+},
+{
+"id" :"-1025095496",
+"topic" :"Fédération Internationale de Motocyclisme",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-349327793",
+"topic" :"München",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"118162714",
+"topic" :"Otto-Friedrich-Universität Bamberg",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-731605274",
+"topic" :"Eberhard Karls Universität Tübingen",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-1368744821",
+"topic" :"Relationale Datenbank",
+"abstract" :"Eine relationale Datenbank dient zur elektronischen Datenverwaltung in Computersystemen und beruht auf dem relationalen Datenbankmodell. Dieses wurde 1970 von Edgar F. Codd erstmals vorgeschlagen und ist bis heute trotz einiger Kritikpunkte ein etablierter Standard für Datenbanken. Das zugehörige Datenbankmanagementsystem wird als relationales Datenbankmanagementsystem oder RDBMS (Relational Database Management System) bezeichnet. Zum Abfragen und Manipulieren der Daten wird überwiegend die Datenbanksprache SQL (Structured Query Language) eingesetzt. Grundlage des Konzeptes relationaler Datenbanken ist die Relation, ein im mathematischen Sinn wohldefinierter Begriff. Sie stellt eine mathematische Beschreibung einer Tabelle dar; siehe Datenbankrelation. Operationen auf diesen Relationen werden durch die relationale Algebra bestimmt. Die relationale Algebra ist somit die theoretische Grundlage von SQL. Trotz der mathematischen, abstrakten Definition des Datenbankmodells sind relationale Datenbanken vergleichsweise einfach und flexibel zu handhaben. Dies hatte großen Einfluss auf den Erfolg dieser Datenbanktechnik.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["-1899321620","1406065811"],
+"edges" : [{"neighbour":"-1127358688","weight":1.0}],
+"frequency_per_year" : {"2010":1,"2004":1}
+},
+{
+"id" :"-570304174",
+"topic" :"E-Mail",
+"abstract" :"Die (auch das) E-Mail [ˈiːmeil] (kurz Mail; engl. electronic mail für „elektronische Post“ oder E-Post) ist eine auf elektronischem Weg in Computernetzwerken übertragene, briefähnliche Nachricht. E-Mail wird – noch vor dem World Wide Web – als wichtigster und meistgenutzter Dienst des Internets angesehen, nicht zuletzt, weil E-Mail es erlaubt, Textnachrichten ebenso wie digitale Dokumente (also z.  B. Grafiken oder Office-Dokumente) typischerweise in wenigen Sekunden rund um die Erde zuzustellen.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf","beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2004":1,"2013":2,"2003":1,"2011":1}
+},
+{
+"id" :"1999573618",
+"topic" :"Schnittstelle",
+"abstract" :"Die Schnittstelle oder das Interface (oder, englisch für Grenzfläche) ist der Teil eines Systems, welcher der Kommunikation dient. Der Begriff stammt ursprünglich aus der Naturwissenschaft und bezeichnet die physikalische Phasengrenze zweier Zustände eines Mediums. Er beschreibt bildhaft die Eigenschaft eines Systems als Black Box, von der nur die „Oberfläche“ sichtbar ist, und daher auch nur darüber eine Kommunikation möglich ist. Zwei benachbarte Black Boxes können nur miteinander kommunizieren, wenn ihre Oberflächen „zusammenpassen“. Daneben bedeutet das Wort „Zwischenschicht“: Für die beiden beteiligten Boxes ist es ohne Belang, wie die jeweils andere intern mit den Botschaften umgeht, und wie die Antworten darauf zustande kommen. Die Beschreibung der Grenze ist Teil ihrer selbst, und die Black Boxes brauchen nur die ihnen zugewandte Seite zu kennen, um die Kommunikation zu gewährleisten. Das entspricht der lateinischen Wortherkunft inter ‚zwischen‘ und facies ‚Aussehen‘, ‚Form‘ für englisch face ‚Gesicht‘. Wenn man ein beliebiges &#39;System&#39; als Ganzes betrachtet, das es zu analysieren gilt, so wird man dieses Gesamtsystem in Teilsysteme zerschneiden. Die &#39;Stellen&#39;, die als Berührungspunkte oder Ansatzpunkte zwischen diesen Teilsystemen fungieren (= über die die Kommunikation stattfindet), stellen dann die Schnittstellen dar. Unter Verwendung dieser Schnittstellen kann man die Teilsysteme wieder zu einem größeren Ganzen zusammensetzen.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned_by" : ["-291390368"],
+"edges" : [{"neighbour":"-1892052512","weight":0.9999999999149622}],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"1893806403",
+"topic" :"Framework",
+"abstract" :"Ein Framework ist ein Programmiergerüst, das in der Softwaretechnik, insbesondere im Rahmen der objektorientierten Softwareentwicklung sowie bei komponentenbasierten Entwicklungsansätzen, verwendet wird. Im allgemeineren Sinne und nicht als dezidiertes Softwareprodukt verstanden, bezeichnet man mit Framework auch einen Ordnungsrahmen.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1,"2011":1}
+},
+{
+"id" :"1302353142",
+"topic" :"Rostock",
+"abstract" :"Rostock ist eine norddeutsche Hansestadt an der Ostsee. Sie liegt im Landesteil Mecklenburg des Landes Mecklenburg-Vorpommern. Die kreisfreie Stadt erhielt 1218 das Lübische Stadtrecht bestätigt. Rostock zieht sich etwa 20 Kilometer am Lauf der Warnow bis zur Ostsee entlang. Der größte bebaute Teil Rostocks befindet sich auf der westlichen Seite der Warnow. Der östliche Teil der Stadt wird durch den Überseehafen, weitere Gewerbestandorte und das Waldgebiet der Rostocker Heide geprägt. Rostock hat heute etwa 202.000 Einwohner und ist nach Einwohnerzahl und Fläche die größte Stadt des Landes Mecklenburg-Vorpommern. Rostock hat einen für Fährverkehr und Güterumschlag wichtigen Ostseehafen sowie einen der größten deutschen Kreuzfahrthäfen. Kulturell wie wirtschaftlich gilt es als die wichtigste Stadt im Land. Geprägt ist es durch die Lage am Meer, den Hafen, die Hanse und deren Backsteingotik sowie die Universität Rostock, die 1419 gegründet wurde. Rostock gehörte bis 1918 zum Großherzogtum, dann zum Freistaat Mecklenburg-Schwerin. Die Stadt ist eines der vier Oberzentren des Landes. Wirtschaftlich dominiert neben Schiffbau und Schifffahrt, dem Tourismus und dem Dienstleistungssektor die Universität als größter Arbeitgeber der Stadt.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [{"neighbour":"1064508556","weight":0.9999999984274837},{"neighbour":"-1318766941","weight":0.9895056472318052}],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-732603517",
+"topic" :"Friedrich II. (Preußen)",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"1048589980",
+"topic" :"SAP",
+"abstract" :"Die SAP Aktiengesellschaft mit Sitz im baden-württembergischen Walldorf ist der nach Umsatz größte europäische (und außeramerikanische) Softwarehersteller sowie der weltweit viertgrößte. Tätigkeitsschwerpunkt ist die Entwicklung von Software zur Abwicklung sämtlicher Geschäftsprozesse eines Unternehmens wie Buchführung, Controlling, Vertrieb, Einkauf, Produktion, Lagerhaltung und Personalwesen. Der Name stand zeitweise synonym für das ehemals zentrale Softwareprodukt der Firma, ein integriertes betriebswirtschaftliches Standardsoftwarepaket, auch SAP ERP genannt, Version SAP R/2 für Großrechner und SAP R/3 für Client-Server-Systeme. Seit 2005 engagiert sich SAP im Finanzbereich (SAP BankAnalyzer - SAP BA, SAP AFI u.  a. ), im Datawarehousing (SAP Enterprise Warehouse - SAP EDW) und bietet eigene Datenbanklösungen an (SAPDB, SAP ASE, SAP IQ, SAP HANA).",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-1570390135",
+"topic" :"Würzburg",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"1874453566",
+"topic" :"Garching bei München",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-820308878",
+"topic" :"Freie Universität Berlin",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-836221904",
+"topic" :"Chipkarte",
+"abstract" :"Chipkarten, oft auch als Smartcard oder Integrated Circuit Card (ICC) bezeichnet, sind spezielle Plastikkarten mit eingebautem integriertem Schaltkreis (Chip), der eine Hardware-Logik, Speicher oder auch einen Mikroprozessor enthält. Chipkarten werden durch spezielle Kartenlesegeräte angesteuert.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-503985829","-1899321620"],
+"edges" : [],
+"frequency_per_year" : {"2010":2,"2011":1}
+},
+{
+"id" :"392121492",
+"topic" :"Strategie (Wirtschaft)",
+"abstract" :"Beachte die verwandten Themen Strategisches Management und Strategische Planung (Account Planning) Unter Strategie werden in der Wirtschaft klassisch die (meist langfristig) geplanten Verhaltensweisen der Unternehmen zur Erreichung ihrer Ziele verstanden. In diesem Sinne zeigt die Unternehmensstrategie in der Unternehmensführung, auf welche Art ein mittelfristiges (ca. 2–4 Jahre) oder langfristiges (ca. 4–8 Jahre) Unternehmensziel erreicht werden soll. Diese klassische Definition von Strategie wird heute vor allem auf Grund ihrer Annahme der Planbarkeit kritisiert. Sie hat deswegen einige Erweiterungen erfahren, wie z.  B. durch Henry Mintzberg. Eine homogene Auffassung von Strategie herrscht in der wissenschaftlichen Literatur jedoch nicht vor. Im Zusammenhang mit der Unternehmensstrategie wird oft von den vorgeordneten Konzepten der Vision und des Unternehmensleitbildes gesprochen, sowie von Strategischem Management. Als nachgeordnet werden Teilstrategien und die taktische (mittelfristige) sowie die operationale (kurzfristige) Ebene angesehen.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"6376568",
+"topic" :"Prototyp (Technik)",
+"abstract" :"Ein Prototyp (altgr. protos,der Erste‘ und typos,Urbild, Vorbild‘) stellt in der Technik ein für die jeweiligen Zwecke funktionsfähiges, oft aber auch vereinfachtes Versuchsmodell eines geplanten Produktes oder Bauteils dar. Es kann dabei nur rein äußerlich oder auch technisch dem Endprodukt entsprechen. Ein Prototyp dient oft als Vorbereitung einer Serienproduktion, kann aber auch als Einzelstück geplant sein, das nur ein bestimmtes Konzept illustrieren soll. Entsprechend ist der Prototyp auch ein wesentlicher Entwicklungsschritt im Rahmen des Designs und wird nicht nur in technischen Zusammenhängen genutzt. Prototyping bezeichnet dabei verschiedene moderne Verfahren der Prototypenherstellung.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"864949796",
+"topic" :"Validität",
+"abstract" :"String index out of range: -9",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"-2087982369",
+"topic" :"Universität Osnabrück",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"750527945",
+"topic" :"Produkt (Wirtschaft)",
+"abstract" :"Ein Produkt als eine erzeugte Ware oder Dienstleistung ist ein wichtiger Begriff in der Wirtschaft. Es gibt unterschiedliche Definitionen sowie verschiedene Produkttypen.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"-1127358688",
+"topic" :"SQL",
+"abstract" :"SQL ist eine Datenbanksprache zur Definition von Datenstrukturen in relationalen Datenbanken sowie zum Bearbeiten (Einfügen, Verändern, Löschen) und Abfragen von darauf basierenden Datenbeständen. Die Sprache basiert auf der relationalen Algebra, ihre Syntax ist relativ einfach aufgebaut und semantisch an die englische Umgangssprache angelehnt. Ein gemeinsames Gremium von ISO und IEC standardisiert die Sprache unter Mitwirkung nationaler Normungsgremien wie ANSI oder DIN. Fast alle gängigen Datenbanksysteme unterstützen SQL – allerdings in unterschiedlichem Umfang und leicht voneinander abweichenden „Dialekten“. Durch den Einsatz von SQL strebt man die Unabhängigkeit der Anwendungen vom eingesetzten Datenbankmanagementsystem an. Die Bezeichnung SQL (offizielle Aussprache, oft aber auch nach dem Vorgänger) wird im allgemeinen Sprachgebrauch als Abkürzung für „Structured Query Language“ aufgefasst, obwohl sie laut Standard ein eigenständiger Name ist. Die Bezeichnung leitet sich von dem Vorgänger SEQUEL (Structured English Query Language) ab, welche mit Beteiligung von Edgar F. Codd (IBM) in den 1970er Jahren von Donald D. Chamberlin und Raymond F. Boyce entworfen wurde. SEQUEL wurde später in SQL umbenannt, weil SEQUEL ein eingetragenes Warenzeichen der Hawker Siddeley Aircraft Company ist.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"2007649827",
+"topic" :"Internetdienstanbieter",
+"abstract" :"Internetdienstanbieter oder Internetdienstleister, im deutschsprachigen Raum auch oft nur Provider, weniger häufig auch nur Internetanbieter oder Internetprovider genannt, sind Anbieter von Diensten, Inhalten oder technischen Leistungen, die für die Nutzung oder den Betrieb von Inhalten und Diensten im Internet erforderlich sind.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned_by" : ["-503985829","-291390368"],
+"edges" : [],
+"frequency_per_year" : {"2010":2,"2011":1}
+}
+],
+"authors" :
+[
+{
+"id" :"-503985829",
+"name" :"hunstock_deutschmann",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf"],
+"mentioned" : ["-836221904","707221962","1569226880","-860444342","1018794924","-175708745","-819305540","2007649827","1893806403","-570304174","-1815077316","-99347846","-265697895","1189372605","-1203323361","-979890238","-1877711698"]
+},{
+"id" :"1406065811",
+"name" :"deutschmann",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf","beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned" : ["-1186954707","-1336558855","-1183821875","6376568","1707024153","-1127358688","1845168340","-1000454754","658656074","-532925762","1417396736","1158788459","-1815077316","247654034","-1368744821","-821754018","-1418913207","-164398009","1891914943","-1043093885","748368881","1320708071","707221962","-1957444664","-1368063910","1675884683","750527945","-1203323361","-225985840","1533450655","-175708745","-785002019","-292015081","-1291483928","-820308878","-1746836018","-513556630","-1678804073","1916419211","118162714","-384167087","1252240133","1687519609","922115807","-2087982369","1529805091","259253852","392121492","-1155461028","835669453","850496989","546729040","1683655880","43651481","1176967491","-2009869509","1188897633","1615331617","-570304174","1018794924","166619682","-954408371","-731605274","-1837252487","1874453566","2143934050","-1570390135","-880353008","-895117153","-1892052512","-860444342","-349327793","1302353142","-931620636","-1116757765","-979890238","-429664838","-1390208372","-1877711698","-1944636999","-1318766941","-265697895","-1324773159","-25973369","1386857698","-1296517804"]
+},{
+"id" :"-291390368",
+"name" :"deutschmann_1",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned" : ["-890523378","478395161","289470275","-1390208372","-204196359","1018794924","-1377394094","711046698","-1291483928","1999573618","2007649827","1387087264","-819305540","-1877711698","168291108","1707024153"]
+},{
+"id" :"-1899321620",
+"name" :"deutschmann_2",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned" : ["-1599628245","1608041096","1569226880","-1815077316","-395228079","1320708071","1794376526","-875227069","864949796","1533450655","-429664838","-1390208372","-932573085","-1409877440","648470927","1415281627","-1877711698","-1318766941","-1368744821","-836221904","1098690309","-1451354707","-1203323361"]
+},{
+"id" :"-713554510",
+"name" :"stenzel_deutschmann",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned" : ["-731605274","-1025095496","-880353008","1252240133","2130962145","-1203323361","1569226880","1048589980","-384167087","1188897633","850496989","-1837252487","1018794924","-1746836018","259253852","-820308878","922115807","-1817538859","-1570390135","-1155461028","1893806403","1529805091","1496874267","-349327793","-1318766941","-570304174","-732603517","1687519609","2143934050","1916419211","1333465669","1176967491","118162714","1302353142","1615331617","-321178735","1874453566","-876342519","1111978930","-1338682123","1510374584","1064508556","1537098012","-1390208372","1683655880"]
+}
+]
+}

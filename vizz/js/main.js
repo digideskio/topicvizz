@@ -20,6 +20,7 @@
     };
     
     var frequency_overlay = null;
+    var authors_overlay = null;
     
     
     /* Hilfsvariablen, um das kleineste und größte Jahr sowie den kleinsten und größten Häufigkeitswert feestzuhalten */
@@ -29,13 +30,16 @@
     
     /* Liste von Autoren */
     var authors = null;
+    
+    /* Dokumente zu Topics */
+    var docs = {};
 
     
     /*
      *  JSON-Dokument mit den Topics beziehen und in die zuvor definierte Datensturktur einpflegen
      *      (momentan kann nur Firefox lokale Dateien per XHR beziehen)
      */
-    $.getJSON('./data/samplemin.json', function(json) {
+    $.getJSON('./data/samplemin_new.json', function(json) {
         
         authors = json.authors;
         
@@ -56,7 +60,7 @@
             
             
             // num_in_years_mentioned // könnte evtl. auch als Filterparameter herangezogen werden
-            if(num_overall_mentioned < 2) // Schöne Stelle für ein Threshold
+            if(num_overall_mentioned < 1) // Schöne Stelle für ein Threshold
                 return;
             
             v.num_overall_mentioned = num_overall_mentioned;
@@ -70,6 +74,18 @@
             data.nodes.push(v);
             id_index_map[v.id] = runner;
             runner++;
+            
+            
+            /* Map-Erzeugung für Dokument -> Topics */
+            for(var arr_pos in v.files) {
+                var filename = v.files[arr_pos];
+                
+                if(!docs[filename]) {
+                    docs[filename] = [];
+                }
+                
+                docs[filename].push(v);
+            }
             
             /* Durch alle "Nodes" traversieren und das niedrigste und das höchste Jahr, sowie direkt auch die Häufigkeit */
             var node_years = v.frequency_per_year;
@@ -91,6 +107,56 @@
                     frequency_min_max.max = frequency;
             });
         });
+        
+        
+        /* Häufigkeit der Topics auf den Autor bezogen */
+        for(var a_arr_pos in authors) {
+
+            var author = authors[a_arr_pos];
+        
+            author.topics_mentioned_ranking = {};
+            
+            for(var d_arr_pos in author.files) {
+                
+                var filename = author.files[d_arr_pos];
+                
+                if(docs[filename]) {
+                    
+                    for(var t_arr_pos in docs[filename]) {
+                        var topic_id = docs[filename][t_arr_pos].id;
+                        
+                        if(!author.topics_mentioned_ranking[topic_id]) {
+                            var topic = docs[filename][t_arr_pos];
+                            author.topics_mentioned_ranking[topic_id] = {topic_id: topic.id, count: 1, data: topic};
+                        }
+                        else {
+                            author.topics_mentioned_ranking[topic_id].count++;
+                            // console.log("Topic wurde vom Autor in mehreren Dokumenten genannt: " + author.name + " -> " + topic_id);
+                        }
+                    }
+                }
+            }
+        }
+        
+        /* Auf Autor bezogene Topics nach Häufigkeit sortieren */
+        for(var a_arr_pos in authors) {
+            var author = authors[a_arr_pos];
+            
+            var topics_dict = author.topics_mentioned_ranking;
+            var topics_arr = [];
+            
+            for(var t_arr_pos in topics_dict) {
+                topics_arr.push(topics_dict[t_arr_pos]);
+                if(topics_dict[t_arr_pos] > 1)
+                    console.log("Über!");
+            }
+            
+            topics_arr.sort(function(a, b) {
+                return b.count - a.count;
+            });
+            
+            author.topics_mentioned_ranking = topics_arr; 
+        }
         
         
         /* Überprüfen, dass nicht bereits eine Kante in entgegengesetzter Richtung existiert */
@@ -300,7 +366,8 @@
                 }
             });
             
-            var size = 80 + (((node.data.num_overall_mentioned - num_mentioned.min) / (num_mentioned.max - num_mentioned.min)) * 100);
+            
+            var size = 80 + (((node.data.num_overall_mentioned - num_mentioned.min) / (1 + num_mentioned.max - num_mentioned.min)) * 100);
             rect.attr("width", size);
             rect.attr("height", size);
             
@@ -900,8 +967,10 @@
                                 .attr("class", "content");
             
              // TODO: austauschen
-            var links_arr = [{"title": "Wikipedia", "href": "http://de.wikipedia.org/w/index.php?title=Spezial:Suche&search=" + d.topic },
-                             {"title": "DBPedia", "href": "http://dbpedia.org/resource/" + d.topic} ];
+            var links_arr = [{"title": "Wikipedia",
+                              "href":  "http://de.wikipedia.org/w/index.php?title=Spezial:Suche&search=" + d.topic },
+                             {"title": "DBPedia",
+                              "href":  "http://dbpedia.org/resource/" + d.topic} ];
             
             /* Links-Liste füllen */
             var links_ul = links_content.append("ul").attr("class", "list");
@@ -983,25 +1052,35 @@
         /* Referenz auf das im DOM existierende Popup-Element holen und für den späteren Gebrauch sichern */
         abstract_text_popup = $("#abstract_text_popup");
         
-        /* Referenz auf das Overlay-Popup holen und für den späteren Gebrauch sichern */
-        frequency_overlay = $("#frequency_overlay");
-        $("#frequency_overlay_close_button").on("click", function() { toggle_frequency_overlay(); })
+        $(".overlay_close_button")
             .css("opacity", 0.4)
             .hover( function(e) { $(this).stop().animate({"opacity": 1.0}, 300); }, /* MouseEnter */
                     function(e) { $(this).stop().animate({"opacity": 0.4}, 200); }); /* MouseLeave */
         
+        /* Referenz auf das Frequency-Overlay-Popup holen und für den späteren Gebrauch sichern */
+        frequency_overlay = $("#frequency_overlay");
+        frequency_overlay.find(".overlay_close_button")
+            .on("click", function() { toggle_frequency_overlay(); });
+        
         
         /* Click-Handler den Elementen innerhalb der Sidebar zuweisen */
-        $("#frequency_diagramm_button").on('click', function() {
+        $("#views_sidebar #frequency_diagramm_button").on('click', function() {
             toggle_frequency_overlay();
         });
         
         
         /* Ausglagerte Prozedur zur Diagrammerstellung (Zeitliche Entwicklung der Häufigkeit eines Terms) */
         function create_frequency_diagram() {
-        
+            
+            var frequency_viz_jq = frequency_overlay.find('#frequency_viz');
+            
+            /* Auflsitung wurde bereits erzeugt */
+            if(frequency_viz_jq.children().length > 0)
+                return;
+            
             /* Node-Referenz des DIV-Elements holen */
-            frequencyvizsvg = document.querySelector('#frequency_viz');
+            frequencyvizsvg = frequency_viz_jq[0];
+            
             var frequencyvis = d3.select(frequencyvizsvg);
 
             var frequencyvizsvg_jq = $(frequencyvizsvg);
@@ -1041,7 +1120,7 @@
             
             item_g.append("g")
                 .attr("class", "frequence_path")
-                .attr("transform", function(d, i) { return "translate(200, "+(i*30)+")"; })
+                .attr("transform", function(d, i) { return "translate(250, "+(i*30)+")"; })
                 .append("path")
                 .attr("d", function(d, i) {
                     
@@ -1087,37 +1166,162 @@
             
             /* Sofern das Popup nicht offen ist */
             if(!frequency_overlay.is(':visible')) {
+                /* Andere Overlays vorher schließen */
+                hide_overlay();
+                
                 /* Stoppe den Graphen im Hintergrund -> da nicht mehr im Fokus und zu dem Zeitpunkt irrelevant */
                 if(renderer)
                     renderer.pause();
                 
                 /* Erzeuge das Häufigkeits-Diagramm */
                 create_frequency_diagram();
+                
                 /* Popup bzw. Overlay einblenden */
                 frequency_overlay.stop().fadeIn();
-            
+                
                 /* Nano-Scrollbar initialisieren */
-                $(".nano").nanoScroller({ flash: true });
+                frequency_overlay.find(".nano").nanoScroller({ flash: true });
             }
             /* Sofern das Popup offen ist */
             else {
-                /* Blende das Popup bzw. Overlay aus und entleere den Inhalt des Diagramms (Elemente im SVG-Element) */
-                frequency_overlay.stop().fadeOut(function() { $(frequencyvizsvg).empty(); });
-                
-                /* Starte die Positionsberechnung des Graphen, der nun wieder den Fokus besitzt */
-                if(renderer)
-                    renderer.resume();
-                    
-                /* Nano-Scrollbar zerstören */
-                $(".nano").nanoScroller({ stop: true });
+                hide_overlay();
             }
+        }
+
+
+        /* Referenz auf das Frequency-Overlay-Popup holen und für den späteren Gebrauch sichern */
+        authors_overlay = $("#authors_overlay");
+        authors_overlay.find(".overlay_close_button")
+            .on("click", function() { toggle_authors_overlay(); });
+        
+        
+        /* Click-Handler den Elementen innerhalb der Sidebar zuweisen */
+        $("#views_sidebar #authors_list_button").on('click', function() {
+            toggle_authors_overlay();
+        });
+
+        /* Ausglagerte Prozedur zur Erzeugung der Autorenliste */
+        function create_authors_list() {
+            var authors_content_div = authors_overlay.find('.content');
+            
+            // Der Content wurde bereits erzeugt somit muss er nicht erneut geschehen
+            if(authors_content_div.children().length > 0)
+                return;
+            
+            for(var author_pos in authors) {
+                var author = authors[author_pos];
+            
+                var author_con = $('<div></div>').attr('class', 'author_con_entry');
+                
+                var author_heading = $('<h2></h2>').html(author.name);
+                author_con.append(author_heading);
+                
+                var author_data = $('<div></div>').attr('class', 'author_data');
+                author_con.append(author_data);
+                
+                /* Aufstellen der persönlichen Topic-Charts */
+                
+                var author_topics = $('<div></div>').attr('class', 'author_topic_charts');
+                author_data.append(author_topics);
+                author_topics.append('<h3>Topics nach Häufigkeit</h3>');
+                var topic_charts = $('<table></table>');
+                author_topics.append(topic_charts);
+                
+                for(var i = 0; i < author.topics_mentioned_ranking.length && i < 5; i++) {
+                    
+                    var curr_topic = author.topics_mentioned_ranking[i];
+                    
+                    var topic_entry = $('<tr><td></td><td></td></tr>')
+                        .attr('class', 'topic_entry');
+                    topic_entry.find('td:first')
+                        .attr('class', 'count_num')
+                        .html(curr_topic.count);
+                    topic_entry.find('td:last')
+                        .attr('class', 'topic_name')
+                        .html(curr_topic.data.topic);
+                    topic_charts.append(topic_entry);
+                }
+                
+                
+                /* Auflistung der Dokumente mit Verlinkung */
+                var author_documents = $('<div></div>').attr('class', 'author_documents_list');
+                author_data.append(author_documents);
+                author_documents.append('<h3>Dokumente</h3>');
+                var documents_list = $('<ul></ul>');
+                author_documents.append(documents_list);
+                
+                for(var pos in author.files) {
+                    var document_entry = $('<li><a></a></li>');
+                    document_entry.find('a')
+                        .attr('href', '#' + author.files[pos])
+                        .attr('target', '_blank')
+                        .html(author.files[pos]);
+                    documents_list.append(document_entry);
+                }
+                
+                author_data.append($('<div></div>').attr('class', 'clear_fix'));
+                
+                authors_content_div.append(author_con);
+            }
+        }
+
+        /* Funktion zur Steruerung des Autoren-Popups bzw. -Overlays */
+        function toggle_authors_overlay() {
+            /* Sofern das Popup nicht offen ist */
+            if(!authors_overlay.is(':visible')) {
+                /* Andere Overlays vorher schließen */
+                hide_overlay();
+                
+                /* Stoppe den Graphen im Hintergrund -> da nicht mehr im Fokus und zu dem Zeitpunkt irrelevant */
+                if(renderer)
+                    renderer.pause();
+                
+                /* Erzeuge das Häufigkeits-Diagramm */
+                create_authors_list();
+                
+                /* Popup bzw. Overlay einblenden */
+                authors_overlay.stop().fadeIn();
+                
+                /* Nano-Scrollbar initialisieren */
+                authors_overlay.find(".nano").nanoScroller({ flash: true });
+            }
+            /* Sofern das Popup offen ist */
+            else {
+                hide_overlay();
+            }
+        };
+
+        
+        function hide_overlay() {
+            var overlay = $(".overlay:visible");
+            
+            var finalStep = $.noop;
+            
+            switch(overlay.attr('id')) {
+                case "frequency_overlay":
+                    /* Entleere den Inhalt des Diagramms (Elemente im SVG-Element) */
+                    finalStep = function() { overlay.find('#frequency_viz').empty(); };
+                    break;
+                case "authors_overlay":
+                    break;
+            }
+            
+            /* Blende das Popup bzw. Overlay aus und führe die abschließende Aufräumfunktion aus */
+            overlay.stop().fadeOut(finalStep);
+
+            /* Starte die Positionsberechnung des Graphen, der nun wieder den Fokus besitzt */
+            if(renderer)
+                renderer.resume();
+                
+            /* Nano-Scrollbar zerstören */
+            overlay.find(".nano").nanoScroller({ stop: true });            
         }
         
         
         /*
          *  Export-Button, um das Diagramm innerhalb des Popups als Grafik zu exportieren
          */
-        $("#frequency_export_button").on("click", function(e) {
+        frequency_overlay.find("#frequency_export_button").on("click", function(e) {
             
             var svg_title = "Zeitliche Entwicklung der Topics";
             

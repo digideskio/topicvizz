@@ -16,9 +16,9 @@
         <script src="./js/main.js" charset="utf-8"></script>
     </head>
     <body>
-        <div id="frequency_overlay">
+        <div class="overlay" id="frequency_overlay">
             <h2>Zeitliche Entwicklung der Termhäufigkeit</h2>
-            <div id="frequency_overlay_close_button"></div>
+            <div class="overlay_close_button"></div>
             <div class="content_wrapper nano">
                 <div class="content">
                     <svg id="frequency_viz">
@@ -29,11 +29,19 @@
                 <input type="button" id="frequency_export_button" value="Als Grafik exportieren..." />
             </div>
         </div>
+        <div class="overlay" id="authors_overlay">
+            <h2>Autoren</h2>
+            <div class="overlay_close_button"></div>
+            <div class="content_wrapper nano">
+                <div class="content"></div>
+            </div>
+        </div>
         <div id="graph_viz"></div>
         
         <div id="abstract_text_popup"></div>
-        <div id="filter_sidebar">
-            <input type="button" class="button frequency_button" id="frequency_diagramm_button" value="freq" />
+        <div id="views_sidebar">
+            <input type="button" class="frequency_button" id="frequency_diagramm_button" value="freq" />
+            <input type="button" class="authors_button" id="authors_list_button" value="authors" />
         </div>
     </body>
 </html>

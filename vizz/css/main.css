@@ -66,7 +66,7 @@ input[type='checkbox'] {
 }
 
 
-body #frequency_overlay {
+body .overlay {
     display: none;
     position: absolute;
     width: 1000px;
@@ -84,13 +84,13 @@ body #frequency_overlay {
 }
 
 
-body #frequency_overlay h2 {
+body .overlay h2 {
     margin: 0;
     text-align: center;
 }
 
 
-body #frequency_overlay #frequency_overlay_close_button {
+body .overlay .overlay_close_button {
     width: 80px;
     height: 80px;
     position: absolute;
@@ -103,12 +103,16 @@ body #frequency_overlay #frequency_overlay_close_button {
 
 
 
-body #frequency_overlay .content_wrapper {
+body .overlay .content_wrapper {
     margin-top: 25px;
     overflow: hidden;
     height: 585px;
 }
 
+
+body .overlay a {
+    color: rgb(52, 101, 164);
+}
 
 .nano .content { padding: 10px; }
 .nano .pane   { background: rgb(255, 255, 255); }
@@ -138,7 +142,40 @@ body #frequency_overlay .sub_bar #frequency_export_button {
 }
 
 
-body #filter_sidebar {
+body #authors_overlay .author_con_entry {
+    margin-bottom: 30px;
+}
+
+
+body #authors_overlay .author_data {
+    margin-top: 30px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+body #authors_overlay .content_wrapper .content .author_topic_charts ul {
+    list-style: none;
+}
+
+body #authors_overlay .content_wrapper .content .author_topic_charts table tr td.count_num {
+    width: 20px;
+}
+
+
+body #authors_overlay .author_topic_charts {
+    float: left;
+    width: 400px;
+}
+
+body #authors_overlay .author_documents_list {
+    float: left;
+    overflow: hidden;
+}
+
+
+body #views_sidebar {
     position: fixed;
     margin-top: -307px;
     right: 0;
@@ -151,7 +188,7 @@ body #filter_sidebar {
 }
 
 
-body #filter_sidebar input[type="button"] {
+body #views_sidebar input[type="button"] {
     display: block;
     height: 60px;
     width: 60px;
@@ -159,15 +196,12 @@ body #filter_sidebar input[type="button"] {
     text-align: center;
     line-height: 60px;
     cursor: pointer;
-}
-
-body #filter_sidebar input[type="button"]:first-child {
     border-radius: 10px;
 }
 
 
 
-body #filter_sidebar div.button:hover {
+body #views_sidebar div.button:hover {
     
 }
 
