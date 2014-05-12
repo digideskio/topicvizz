@@ -570,7 +570,10 @@
         var body_jq_node = $('body');
         
         graph_viz_jq_node.on('mousedown', function(e) {
-        
+            
+            if(e.buttons === 2)
+                return;
+            
             /* Momentane Startposition für spätere Berechnungen zwischenspeichern */
             var start_pos = [e.clientX, e.clientY];
             var new_pos = [];
@@ -1318,6 +1321,20 @@
             /* Nano-Scrollbar zerstören */
             overlay.find(".nano").nanoScroller({ stop: true });            
         }
+        
+        
+        /* Panning des Graphen unterbrechen, wenn mit gedrückter Maustaste  */
+        $('.overlay').on('mouseenter', function(e) {
+            if(e.buttons === 1 || e.buttons === 2) {
+                 var e = document.createEvent('UIEvents');
+                    e.initUIEvent(  "mouseup", true, true,
+                                    window, 0, 0, 0, 0, 0,
+                                    false, false, false, false,
+                                    0, null);
+                
+                    $('#graph_viz').get(0).dispatchEvent(e);
+            }
+        });
         
         
         /*
