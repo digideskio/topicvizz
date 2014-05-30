@@ -25,8 +25,8 @@
     /* Hilfsvariablen, um das kleineste und größte Jahr sowie den kleinsten
      *  und größten Häufigkeitswert feestzuhalten
      */
-    var years_min_max = {min: null, max: null};
-    var frequency_min_max = {min: null, max: null};
+    var m_years_min_max = null;
+    var m_frequency_min_max = null;
 
 
     var ext = {
@@ -34,25 +34,7 @@
         info: ext_info,
         
         eval_topic: function(topic) {
-            /* Das niedrigste und das höchste Jahr, sowie direkt auch die Häufigkeit */
-            var node_years = topic.frequency_per_year;
-
-            $.each(node_years, function(i, num) {
-                var year = parseInt(i);
-                var frequency = num;
-                
-                if(years_min_max.min === null || year < years_min_max.min)
-                    years_min_max.min = year;
-
-                if(years_min_max.max === null || year > years_min_max.max)
-                    years_min_max.max = year;
-
-                if(frequency_min_max.min === null || frequency < frequency_min_max.min)
-                    frequency_min_max.min = frequency;
-
-                if(frequency_min_max.max === null || frequency > frequency_min_max.max)
-                    frequency_min_max.max = frequency;
-            });
+            
         },
         
         /* ### INIT ### - Funktion die von TopicVizz zur Initialisierungsphase aufgerufen wird */
@@ -62,6 +44,9 @@
             m_data              = data;
             m_graph_data        = graph_data;
             m_helper_functions  = helper_functions;
+            
+            m_years_min_max     = graph_data.years_min_max;
+            m_frequency_min_max = graph_data.frequency_min_max;
             
             if(callbacks && callbacks.onShow && callbacks.onHide)
                 m_callbacks = callbacks;
@@ -200,7 +185,7 @@
                         var freq_arr = d.frequency_per_year;
                         
                         data_arr = [];
-                        for(var i = years_min_max.min; i <= years_min_max.max; i++) {
+                        for(var i = m_years_min_max.min; i <= m_years_min_max.max; i++) {
                             var val = freq_arr[''+i];
                             
                             if(typeof(val) === 'undefined')
@@ -209,7 +194,7 @@
                             data_arr.push(val);
                         }
                         
-                        return m_helper_functions.line_function(data_arr, 700, 50, frequency_min_max.max);
+                        return m_helper_functions.line_function(data_arr, 700, 50, m_frequency_min_max.max);
                     })
                     .attr("stroke-width", "0");
                 
@@ -227,7 +212,7 @@
                         .attr("class", "frequence_years")
                         .attr("transform", function(d) {  new_height = 100 + (i*140); return "translate(215, " + new_height + ")"; });
                     
-                    m_helper_functions.create_year_text_in_group(year_group, years_min_max.min, data_arr.length, 700);
+                    m_helper_functions.create_year_text_in_group(year_group, m_years_min_max.min, data_arr.length, 700);
                 });
                 
                 frequencyvizsvg_jq.css('height', (new_height + 70) + "px");

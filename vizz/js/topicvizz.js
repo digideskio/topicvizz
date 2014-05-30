@@ -14,10 +14,12 @@
     /* "Globale" Variable um Zugriff auf das Popup-Element zu haben */
     var abstract_text_popup = null;
     
-    /* Vorgefertigte Datenstruktur für die Nodes (Knoten) und Lines (Kanten) */
+    /* Vorgefertigte Datenstruktur für die Nodes (Knoten), Lines (Kanten) sowie Hilfsvariablen */
     var data = {
-        "nodes": [],
-        "links": [],
+        "nodes":                [],
+        "links":                [],
+        "years_min_max":        { min: null, max: null },
+        "frequency_min_max":    { min: null, max: null }
     };
     
     
@@ -162,14 +164,19 @@
         
         for (i = 0; i < data.links.length; ++i){
             var link = data.links[i];
-            graph.addLink(link.source, link.target, link.value);
+            graph.addLink(link.source, link.target, {weight: link.weight});
         }
         
         var layout = Viva.Graph.Layout.forceDirected(graph, {
-            springLength : 200,
-            springCoeff : 0.0002,
-            dragCoeff : 0.02,
-            gravity : -1.2
+            springLength    : 200,
+            springTransform : function(link, spring) {
+                spring.length = 150 + (200 * (1 - link.data.weight));
+            },
+            springCoeff     : 0.0002,
+            dragCoeff       : 0.02,
+            gravity         : -2.2,
+            timeStep        : 20,
+            stableThreshold : 0.001
         });
 
         var svgGraphics = Viva.Graph.View.svgGraphics();
@@ -708,7 +715,7 @@
                     var freq_arr = d.frequency_per_year;
                     
                     data_arr = [];
-                    for(var i = years_min_max.min; i <= years_min_max.max; i++) {
+                    for(var i = data.years_min_max.min; i <= data.years_min_max.max; i++) {
                         var val = freq_arr[''+i];
                         
                         if(typeof(val) === 'undefined')
@@ -726,7 +733,7 @@
                 .attr("class", "frequence_years")
                 .attr("transform", "translate(45, 120)")
             
-            helper_functions.create_year_text_in_group(year_group, years_min_max.min, data_arr.length, 620);
+            helper_functions.create_year_text_in_group(year_group, data.years_min_max.min, data_arr.length, 620);
             
                 
             /* DIV-Container, in dem weitere Infos ausgegeben werden */
@@ -744,7 +751,6 @@
                         .attr("class", "content_wrapper nano")
                             .append("div")
                                 .attr("class", "content");
-                                
                                 
             var authors_arr = [];
             var mentioned_by_arr = d.mentioned_by;
@@ -895,6 +901,9 @@
             if(!jsobj || !jsobj.authors || !jsobj.topics)
                 return false;
             
+            /* Autorenliste für weitere Nutzung sichern */
+            authors = jsobj.authors;
+            
             var id_index_map = {};
             var runner = 0;
             
@@ -925,6 +934,27 @@
                 data.nodes.push(v);
                 id_index_map[v.id] = runner;
                 runner++;
+                
+                
+                /* Das niedrigste und das höchste Jahr, sowie direkt auch die Häufigkeit */
+                var node_years = v.frequency_per_year;
+
+                $.each(node_years, function(i, num) {
+                    var year = parseInt(i);
+                    var frequency = num;
+                    
+                    if(data.years_min_max.min === null || year < data.years_min_max.min)
+                        data.years_min_max.min = year;
+
+                    if(data.years_min_max.max === null || year > data.years_min_max.max)
+                        data.years_min_max.max = year;
+
+                    if(data.frequency_min_max.min === null || frequency < data.frequency_min_max.min)
+                        data.frequency_min_max.min = frequency;
+
+                    if(data.frequency_min_max.max === null || frequency > data.frequency_min_max.max)
+                        data.frequency_min_max.max = frequency;
+                });
                 
                 
                 /* Allen Extensions alle Nodes zum Auswerten reichen */
