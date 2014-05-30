@@ -11,8 +11,9 @@
     /* Variable, die das SVG-Element im DOM referenziert, in dem die Verlaufsgrafiken ausgegeben werden */
     var frequencyvizsvg = null;
     
-    /* "Globale" Variable um Zugriff auf das Popup-Element zu haben */
-    var abstract_text_popup = null;
+    /* "Globale" Variablen um Zugriff auf die Popup-Element zu haben */
+    var abstract_text_popup = null,
+        topic_title_popup   = null;
     
     /* Vorgefertigte Datenstruktur für die Nodes (Knoten), Lines (Kanten) sowie Hilfsvariablen */
     var data = {
@@ -225,7 +226,14 @@
                 
                 e.stopPropagation();
                 
-                var d = node.data;                
+                var d = node.data;
+                
+                if(d.timeout) {
+                    window.clearTimeout(d.timeout);
+                    d.timeout = null;
+                }
+                
+                topic_title_popup.stop().fadeOut();           
                 
                 /* Bei fehlendem Topic-Namen, macht es keinen Sinn diesen zu Maximieren */
                 if(d.topic) {
@@ -316,8 +324,37 @@
                 
                 }
             });
+            
+            
+            $(rect).on('mouseover', function(e) {
+                var d = node.data;
                 
+                console.log(d);
                 
+                if(!d.open) {
+                    d.timeout = window.setTimeout(function() {
+                        topic_title_popup
+                            .html(d.topic)
+                            .css({ 'left': (e.pageX + 10) + "px",
+                                   'top': (e.pageY + 10) + "px"})
+                            .stop().fadeIn(function() { d.timeout = null; });
+                    }, 1000);
+                }
+            })
+            .on('mouseleave', function() {
+                var d = node.data;
+            
+                if(!d.open) {
+                    if(d.timeout) {
+                        window.clearTimeout(d.timeout);
+                        d.timeout = null;
+                    }
+                    else
+                        topic_title_popup.stop().fadeOut();
+                }
+            })
+            
+            
             /* Minimale Nodegröße für den späteren Gebrauch sichern (für spätere Minimierung) */
             node.data.size = size;
                 
@@ -1076,8 +1113,9 @@
     /* Handler usw. erst zuweisen, wenn der DOM-Baum komplett aufgebaut ist bzw. die Seite komplett geladen wurde */
     $(document).ready(function() {
         
-        /* Referenz auf das im DOM existierende Popup-Element holen und für den späteren Gebrauch sichern */
+        /* Referenz auf die im DOM existierende Popup-Elemente holen und für den späteren Gebrauch sichern */
         abstract_text_popup = $("#abstract_text_popup");
+        topic_title_popup   = $("#topic_title_popup");
         
         $(".overlay_close_button")
             .css("opacity", 0.4)

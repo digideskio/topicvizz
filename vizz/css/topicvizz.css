@@ -224,6 +224,16 @@ div#abstract_text_popup {
     text-align: center;
 }
 
+div#topic_title_popup {
+    display: none;
+    background: rgba(50, 50, 50, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    font-size: 0.9em;
+    text-align: center;
+}
+
 
 .clear_fix {
     clear: both;
