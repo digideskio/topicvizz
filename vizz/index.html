@@ -4,44 +4,31 @@
         <title>Graph Test</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         
-        <link rel="stylesheet" type="text/css" href="./css/ui-lightness/jquery-ui-1.9.2.custom.slider.min.css" />
         <link rel="stylesheet" type="text/css" href="./css/nanoscroller.css" />
-        <link rel="stylesheet" type="text/css" href="./css/main.css" />
+        <link rel="stylesheet" type="text/css" href="./css/topicvizz.css" />
         
         <script src="./js/jquery-2.1.0.min.js"></script>
-        <script src="./js/jquery-ui-1.9.2.custom.slider.min.js"></script>
         <script src="./js/d3.min.js"></script>
         <script src="./js/vivagraph.min.js"></script>
         <script src="./js/jquery.nanoscroller.min.js"></script>
-        <script src="./js/main.js" charset="utf-8"></script>
+        
+        <!-- TopicVizz -->
+        <script src="./js/topicvizz.js" charset="utf-8"></script>
+        
+        <!-- TopicVizz Extensions -->
+        <script src="./js/ext/topic_frequency.topicvizz.js" charset="utf-8"></script>
+        <script src="./js/ext/author_charts.topicvizz.js" charset="utf-8"></script>
+        
+        <script>
+            $.getJSON('./data/samplemin_new.json', function(data) {
+                TopicVizz.init(data);
+            });
+        </script>
     </head>
     <body>
-        <div class="overlay" id="frequency_overlay">
-            <h2>Zeitliche Entwicklung der Termhäufigkeit</h2>
-            <div class="overlay_close_button"></div>
-            <div class="content_wrapper nano">
-                <div class="content">
-                    <svg id="frequency_viz">
-                    </svg>
-                </div>
-            </div>
-            <div class="sub_bar">
-                <input type="button" id="frequency_export_button" value="Als Grafik exportieren..." />
-            </div>
-        </div>
-        <div class="overlay" id="authors_overlay">
-            <h2>Autoren</h2>
-            <div class="overlay_close_button"></div>
-            <div class="content_wrapper nano">
-                <div class="content"></div>
-            </div>
-        </div>
         <div id="graph_viz"></div>
-        
         <div id="abstract_text_popup"></div>
         <div id="views_sidebar">
-            <input type="button" class="frequency_button" id="frequency_diagramm_button" value="freq" />
-            <input type="button" class="authors_button" id="authors_list_button" value="authors" />
         </div>
     </body>
 </html>

@@ -1,5 +1,6 @@
 
-(function($){
+
+(function($, window){
     "use strict";
     
     /*
@@ -15,305 +16,135 @@
     
     /* Vorgefertigte Datenstruktur für die Nodes (Knoten) und Lines (Kanten) */
     var data = {
-        "nodes":[],
-        "links":[]
+        "nodes": [],
+        "links": [],
     };
     
-    var frequency_overlay = null;
-    var authors_overlay = null;
     
+    /* Hält alle eingebundenen Erweiterungen fest */
+    var extension_list = [];
     
-    /* Hilfsvariablen, um das kleineste und größte Jahr sowie den kleinsten und größten Häufigkeitswert feestzuhalten */
-    var years_min_max = {min: null, max: null};
-    var frequency_min_max = {min: null, max: null};
-    var num_mentioned = {min: null, max: null};
-    
-    /* Liste von Autoren */
+    /* Liste aller Autoren */
     var authors = null;
     
-    /* Dokumente zu Topics */
-    var docs = {};
-
+    /* Hilfsvariable um die Mindest- und Maximalanzahl der Topicerwähnungen festzuhalten */
+    var num_mentioned = {min: null, max: null};
     
-    /*
-     *  JSON-Dokument mit den Topics beziehen und in die zuvor definierte Datensturktur einpflegen
-     *      (momentan kann nur Firefox lokale Dateien per XHR beziehen)
-     */
-    $.getJSON('./data/samplemin_new.json', function(json) {
-        
-        authors = json.authors;
-        
-        var id_index_map = {};
-        
-        var runner = 0;
-        
-        $.each(json.topics, function(i, v) {
-            var num_in_years_mentioned = 0;
-            var num_overall_mentioned = 0;
+    
+    var helper_functions = {
+        /* Hilfsfunktion, um ein HSV- in ein RGB-Farbwert umzurechnen; da SVG keine HSV-Farbangabe unterstützt */
+        /* http://de.wikipedia.org/wiki/HSV-Farbraum#Umrechnung_HSV_in_RGB */
+        hsv2rgb: function(h, s, v) {
+            if(s == 0) {
+                var val = v * 255;
+                return rgb = [val, val, val];
+            }
             
-            for(var j in v.frequency_per_year) {
-                if(v.frequency_per_year.hasOwnProperty(j)) {
-                    num_overall_mentioned += v.frequency_per_year[j];
-                    num_in_years_mentioned++;
+            var hi = h/60;
+            var i = Math.floor(hi); 
+            var f = hi - i;
+            var p = v * (1 - s);
+            var q = v * (1 - s * f);
+            var t = v * (1- s * (1 - f));
+            
+            var r, g, b;
+            
+            switch(i) {
+                case 0:
+                case 6:
+                    r = v; g = t; b = p;
+                    break;
+                case 1:
+                    r = q, g = v; b = p;
+                    break;
+                case 2:
+                    r = p; g = v; b = t;
+                    break;
+                case 3:
+                    r = p; g = q; b = v;
+                    break;
+                case 4:
+                    r = t; g = p; b = v;
+                    break;
+                case 5:
+                    r = v; g = p; b = q;
+                    break;
+            }
+        
+            return [Math.ceil(r * 255), Math.ceil(g * 255), Math.ceil(b * 255)];
+        },
+
+        /* Linienfunktion, um, anhand eines Wertearrays, ein SVG-Pfad zu erzeugen */
+        line_function: function(data_arr, max_width, max_height, max_value) {
+            
+            /* Abstandsschritt zwischen den Pfadpunkten bestimmten */
+            var width_step = max_width / data_arr.length;
+            
+            if(typeof(max_value) === 'undefined') {
+                /* Den größten Wert im Wertearray bestimmen, um das Diagramm in seiner y-Achse zu skalieren */
+                max_value = 0;
+                for(var i = 0; i < data_arr.length; i++) {
+                    if(max_value < data_arr[i]) max_value = data_arr[i];
                 }
             }
             
+            /* Skalisrungsfaktor bestimmen */
+            var resize_quot = max_height / max_value;
             
-            // num_in_years_mentioned // könnte evtl. auch als Filterparameter herangezogen werden
-            if(num_overall_mentioned < 1) // Schöne Stelle für ein Threshold
-                return;
+            var line_data = [];
             
-            v.num_overall_mentioned = num_overall_mentioned;
-            
-            if(num_mentioned.max == null || num_overall_mentioned > num_mentioned.max)
-                num_mentioned.max = num_overall_mentioned;
-            
-            if(num_mentioned.min == null || num_overall_mentioned < num_mentioned.min)
-                num_mentioned.min = num_overall_mentioned;
-            
-            data.nodes.push(v);
-            id_index_map[v.id] = runner;
-            runner++;
-            
-            
-            /* Map-Erzeugung für Dokument -> Topics */
-            for(var arr_pos in v.files) {
-                var filename = v.files[arr_pos];
-                
-                if(!docs[filename]) {
-                    docs[filename] = [];
-                }
-                
-                docs[filename].push(v);
-            }
-            
-            /* Durch alle "Nodes" traversieren und das niedrigste und das höchste Jahr, sowie direkt auch die Häufigkeit */
-            var node_years = v.frequency_per_year;
-
-            $.each(node_years, function(i, v) {
-                var year = parseInt(i);
-                var frequency = v;
-                
-                if(years_min_max.min === null || year < years_min_max.min)
-                    years_min_max.min = year;
-
-                if(years_min_max.max === null || year > years_min_max.max)
-                    years_min_max.max = year;
-
-                if(frequency_min_max.min === null || frequency < frequency_min_max.min)
-                    frequency_min_max.min = frequency;
-
-                if(frequency_min_max.max === null || frequency > frequency_min_max.max)
-                    frequency_min_max.max = frequency;
-            });
-        });
-        
-        
-        /* Häufigkeit der Topics auf den Autor bezogen */
-        for(var a_arr_pos in authors) {
-
-            var author = authors[a_arr_pos];
-        
-            author.topics_mentioned_ranking = {};
-            
-            for(var d_arr_pos in author.files) {
-                
-                var filename = author.files[d_arr_pos];
-                
-                if(docs[filename]) {
-                    
-                    for(var t_arr_pos in docs[filename]) {
-                        var topic_id = docs[filename][t_arr_pos].id;
-                        
-                        if(!author.topics_mentioned_ranking[topic_id]) {
-                            var topic = docs[filename][t_arr_pos];
-                            author.topics_mentioned_ranking[topic_id] = {topic_id: topic.id, count: 1, data: topic};
-                        }
-                        else {
-                            author.topics_mentioned_ranking[topic_id].count++;
-                            // console.log("Topic wurde vom Autor in mehreren Dokumenten genannt: " + author.name + " -> " + topic_id);
-                        }
-                    }
-                }
-            }
-        }
-        
-        /* Auf Autor bezogene Topics nach Häufigkeit sortieren */
-        for(var a_arr_pos in authors) {
-            var author = authors[a_arr_pos];
-            
-            var topics_dict = author.topics_mentioned_ranking;
-            var topics_arr = [];
-            
-            for(var t_arr_pos in topics_dict) {
-                topics_arr.push(topics_dict[t_arr_pos]);
-                if(topics_dict[t_arr_pos] > 1)
-                    console.log("Über!");
-            }
-            
-            topics_arr.sort(function(a, b) {
-                return b.count - a.count;
-            });
-            
-            author.topics_mentioned_ranking = topics_arr; 
-        }
-        
-        
-        /* Überprüfen, dass nicht bereits eine Kante in entgegengesetzter Richtung existiert */
-        var unique_link = function(source, target) {
-        
-            var is_unique = true;
-        
-            $.each(data.links, function(i, v) {
-                if(v['source'] === target && v['target'] === source) {
-                    is_unique = false;
-                    return false;
-                }
-            });
-            
-            return is_unique;
-        }
-        
-        $.each(data.nodes, function(i, v) {
-            
-            /* Sicherheitshalber überprüfen, ob das Topic überhaupt Kanten zu anderen Topics besitzt */
-            if(typeof(v.edges) === 'undefined')
-                return true;
-            
-            $.each(v.edges, function(sub_i, sub_v) {
-                
-                if(     typeof(id_index_map[v.id]) !== 'undefined'
-                    &&  typeof(id_index_map[sub_v.neighbour]) !== 'undefined'
-                    &&  unique_link(id_index_map[v.id], id_index_map[sub_v.neighbour])) {
-                    data.links.push({  source: id_index_map[v.id],
-                                        target: id_index_map[sub_v.neighbour],
-                                        weight: sub_v.weight});
-                }
-            });
-        });
-        
-        /* Ausgabe der Anzahl aller betrachteten Nodes und Kanten über die Konsole ausgeben */
-        console.log("topics_count", data.nodes.length);
-        console.log("edges_count", data.links.length);
-        
-        /* Den Graphen erst aufbauen, nachdem das JSON-Dokument geparst und alle relevanten Topics ausgewählt wurden */
-        initGraph();
-    })
-    .error(function(e, i) {
-        console.log(e, i);
-    });
-    
-    
-    /* Hilfsfunktion, um ein HSV- in ein RGB-Farbwert umzurechnen; da SVG keine HSV-Farbangabe unterstützt */
-    /* http://de.wikipedia.org/wiki/HSV-Farbraum#Umrechnung_HSV_in_RGB */
-    function hsv2rgb(h, s, v) {
-        if(s == 0) {
-            var val = v * 255;
-            return rgb = [val, val, val];
-        }
-        
-        var hi = h/60;
-        var i = Math.floor(hi); 
-        var f = hi - i;
-        var p = v * (1 - s);
-        var q = v * (1 - s * f);
-        var t = v * (1- s * (1 - f));
-        
-        var r, g, b;
-        
-        switch(i) {
-            case 0:
-            case 6:
-                r = v; g = t; b = p;
-                break;
-            case 1:
-                r = q, g = v; b = p;
-                break;
-            case 2:
-                r = p; g = v; b = t;
-                break;
-            case 3:
-                r = p; g = q; b = v;
-                break;
-            case 4:
-                r = t; g = p; b = v;
-                break;
-            case 5:
-                r = v; g = p; b = q;
-                break;
-        }
-    
-        return [Math.ceil(r * 255), Math.ceil(g * 255), Math.ceil(b * 255)];
-    }
-    
-    
-    /* Linienfunktion, um, anhand eines Wertearrays, ein SVG-Pfad zu erzeugen */
-    var line_function = function(data_arr, max_width, max_height, max_value) {
-        
-        /* Abstandsschritt zwischen den Pfadpunkten bestimmten */
-        var width_step = max_width / data_arr.length;
-        
-        if(typeof(max_value) === 'undefined') {
-            /* Den größten Wert im Wertearray bestimmen, um das Diagramm in seiner y-Achse zu skalieren */
-            max_value = 0;
+            /* Untere Punkte des Pfads berechnen (hin ->) */
             for(var i = 0; i < data_arr.length; i++) {
-                if(max_value < data_arr[i]) max_value = data_arr[i];
+                line_data.push({"x": width_step * i,
+                                "y": max_height + data_arr[i] * resize_quot });
             }
-        }
-        
-        /* Skalisrungsfaktor bestimmen */
-        var resize_quot = max_height / max_value;
-        
-        var line_data = [];
-        
-        /* Untere Punkte des Pfads berechnen (hin ->) */
-        for(var i = 0; i < data_arr.length; i++) {
-            line_data.push({"x": width_step * i, "y": max_height + data_arr[i] * resize_quot });
-        }
-        
-        /* Zwei Punkte am Ende, um einen mehr oder wenigen glatten Schnitt zu erreichen */
-        line_data.push({"x": width_step * (data_arr.length - 1) + 7, "y": max_height - 10 + data_arr[data_arr.length - 1] * resize_quot });
-        line_data.push({"x": width_step * (data_arr.length - 1) + 7, "y": max_height + 10 - data_arr[data_arr.length - 1] * resize_quot });
-        
-        /* Oberen Punkte bestimmten (zurück <-) */
-        for(var i = data_arr.length-1; i >= 0; i--) {
-            line_data.push({"x": width_step * i, "y": max_height - data_arr[i] * resize_quot });
-        }
-        
-        /* Letzten Punkt setzen, damit ein glatter Schnitt am Anfang erreicht wird */
-        line_data.push({"x": 0 , "y": max_height - data_arr[0] * resize_quot });
-        
-        /* Von d3.js bereitgestellte Funktion, um einen Pfad einfacher zu erzeugen */
-        var line_func = d3.svg.line()
-                            .x(function(d) { return d.x; })
-                            .y(function(d) { return d.y; })
-                            /* 'cardinal' versucht den Pfad über die Punkte verlaufen zu lassen und schließt den Pfad am Ende */ 
-                            .interpolate("cardinal");
-        
-        /* Attrbutwert für 'd' zurückgeben */
-        return line_func(line_data);
-    };
-
-    
-    
-    /* Jahrestexte innerhalb einer SVG-Gruppe erzeugen (justify) */
-    var create_year_text_in_group = function(group_node, year_start, year_amount, max_width) {
-        
-        /* Abstand zwischen den Textelementen (enthalten Jahreszahl) bestimmen */
-        var width_step = max_width / year_amount;
-        
-        /* Für jede Jahreszahl ein Textelement erzeugen und es dem g-Element anhängen */
-        for(var i = 0; i < year_amount; i++) {
-            group_node.append("text")
-                .attr("pointer-events", "none")
-                .attr("x", function() { return width_step * i - 15; })
-                .attr("y", 20)
-                .attr("style", "font-size: 0.8em;")
-                .attr('text-anchor', 'middle')
-                .html("" + year_start);
             
-            /* Das Jahr erhöhen */
-            year_start++;
+            /* Zwei Punkte am Ende, um einen mehr oder wenigen glatten Schnitt zu erreichen */
+            line_data.push({"x": width_step * (data_arr.length - 1) + 7,
+                            "y": max_height - 10 + data_arr[data_arr.length - 1] * resize_quot });
+            line_data.push({"x": width_step * (data_arr.length - 1) + 7,
+                            "y": max_height + 10 - data_arr[data_arr.length - 1] * resize_quot });
+            
+            /* Oberen Punkte bestimmten (zurück <-) */
+            for(var i = data_arr.length-1; i >= 0; i--) {
+                line_data.push({"x": width_step * i,
+                                "y": max_height - data_arr[i] * resize_quot });
+            }
+            
+            /* Letzten Punkt setzen, damit ein glatter Schnitt am Anfang erreicht wird */
+            line_data.push({"x": 0 ,
+                            "y": max_height - data_arr[0] * resize_quot });
+            
+            /* Von d3.js bereitgestellte Funktion, um einen Pfad einfacher zu erzeugen */
+            var line_func = d3.svg.line()
+                                .x(function(d) { return d.x; })
+                                .y(function(d) { return d.y; })
+                                /* 'cardinal' versucht den Pfad über die Punkte verlaufen zu lassen und schließt den Pfad am Ende */ 
+                                .interpolate("cardinal");
+            
+            /* Attributwert für 'd' zurückgeben */
+            return line_func(line_data);
+        },
+        
+        /* Jahrestexte innerhalb einer SVG-Gruppe erzeugen (justify) */
+        create_year_text_in_group: function(group_node, year_start, year_amount, max_width) {
+            
+            /* Abstand zwischen den Textelementen (enthalten Jahreszahl) bestimmen */
+            var width_step = max_width / year_amount;
+            
+            /* Für jede Jahreszahl ein Textelement erzeugen und es dem g-Element anhängen */
+            for(var i = 0; i < year_amount; i++) {
+                group_node.append("text")
+                    .attr("pointer-events", "none")
+                    .attr("x", function() { return width_step * i - 15; })
+                    .attr("y", 20)
+                    .attr("style", "font-size: 0.8em;")
+                    .attr('text-anchor', 'middle')
+                    .html("" + year_start);
+                
+                /* Das Jahr erhöhen */
+                year_start++;
+            }
         }
     };
     
@@ -361,7 +192,8 @@
                 "stroke": "rgba(255, 255, 255, 0.4)",
                 "stroke-width": 2,
                 "fill": function() {
-                    var rgb =  hsv2rgb((1 - node.data.num_overall_mentioned/num_mentioned.max) * 130, 0.55, 0.71); /* Sättigung und Helligkeit niedrig */
+                    /* Sättigung und Helligkeit niedrig */
+                    var rgb =  helper_functions.hsv2rgb((1 - node.data.num_overall_mentioned/num_mentioned.max) * 130, 0.55, 0.71);
                     return "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
                 }
             });
@@ -381,7 +213,8 @@
             
             var g_all = null;
             
-            $(rect).on('dblclick', function(e) { /* Ein Doppelklick auf ein Node (Rechteck) soll das Rechteck Maximieren */
+            /* Ein Doppelklick auf ein Node (Rechteck) soll das Rechteck Maximieren */
+            $(rect).on('dblclick', function(e) {
                 
                 e.stopPropagation();
                 
@@ -884,7 +717,7 @@
                         data_arr.push(val);
                     }
                     
-                    return line_function(data_arr, 620, 50);
+                    return helper_functions.line_function(data_arr, 620, 50);
                 })
                 .attr("stroke-width", "0");
             
@@ -893,7 +726,7 @@
                 .attr("class", "frequence_years")
                 .attr("transform", "translate(45, 120)")
             
-            create_year_text_in_group(year_group, years_min_max.min, data_arr.length, 620);
+            helper_functions.create_year_text_in_group(year_group, years_min_max.min, data_arr.length, 620);
             
                 
             /* DIV-Container, in dem weitere Infos ausgegeben werden */
@@ -1049,6 +882,167 @@
     }
 
 
+    /* Nach außen sichtbare Funktionen definieren */
+    window.TopicVizz = {
+        init: function(jsobj) {
+            
+            /* Übergabe der Daten von außen;
+             *  können dort über Ajax oder durch Einbindung über einen Script-Tag
+             *      bezogen werden
+             */
+             
+             /* Testen ob es einer bestimmten Aufbaustruktur folgt */
+            if(!jsobj || !jsobj.authors || !jsobj.topics)
+                return false;
+            
+            var id_index_map = {};
+            var runner = 0;
+            
+            $.each(jsobj.topics, function(i, v) {
+                var num_in_years_mentioned = 0;
+                var num_overall_mentioned = 0;
+                
+                for(var j in v.frequency_per_year) {
+                    if(v.frequency_per_year.hasOwnProperty(j)) {
+                        num_overall_mentioned += v.frequency_per_year[j];
+                        num_in_years_mentioned++;
+                    }
+                }
+                
+                
+                // num_in_years_mentioned // könnte evtl. auch als Filterparameter herangezogen werden
+                if(num_overall_mentioned < 1) // Schöne Stelle für ein Threshold
+                    return;
+                
+                v.num_overall_mentioned = num_overall_mentioned;
+                
+                if(num_mentioned.max == null || num_overall_mentioned > num_mentioned.max)
+                    num_mentioned.max = num_overall_mentioned;
+                
+                if(num_mentioned.min == null || num_overall_mentioned < num_mentioned.min)
+                    num_mentioned.min = num_overall_mentioned;
+                
+                data.nodes.push(v);
+                id_index_map[v.id] = runner;
+                runner++;
+                
+                
+                /* Allen Extensions alle Nodes zum Auswerten reichen */
+                $.each(extension_list, function(i, ext) {
+                    ext.eval_topic && ext.eval_topic(v);
+                });
+            });
+            
+            
+            /* Überprüfen, ob nicht bereits eine Kante in entgegengesetzter Richtung existiert */
+            var unique_link = function(source, target) {
+            
+                var is_unique = true;
+            
+                $.each(data.links, function(i, v) {
+                    if(v['source'] === target && v['target'] === source) {
+                        is_unique = false;
+                        return false;
+                    }
+                });
+                
+                return is_unique;
+            }
+            
+            
+            $.each(data.nodes, function(i, v) {
+                
+                /* Sicherheitshalber überprüfen, ob das Topic überhaupt Kanten zu anderen Topics besitzt */
+                if(typeof(v.edges) === 'undefined')
+                    return true;
+                
+                $.each(v.edges, function(sub_i, sub_v) {
+                    
+                    if(     typeof(id_index_map[v.id]) !== 'undefined'
+                        &&  typeof(id_index_map[sub_v.neighbour]) !== 'undefined'
+                        &&  unique_link(id_index_map[v.id], id_index_map[sub_v.neighbour])) {
+                        data.links.push({  source: id_index_map[v.id],
+                                            target: id_index_map[sub_v.neighbour],
+                                            weight: sub_v.weight});
+                    }
+                });
+            });
+            
+            
+            var body_node = $('body');
+            var views_sidebar = body_node.find('#views_sidebar');
+            
+            
+            var callbacks = {
+                onShow: function() {
+                    /* Stoppe den Graphen im Hintergrund
+                     * -> da nicht mehr im Fokus und zu dem Zeitpunkt irrelevant */
+                    if(renderer)
+                        renderer.pause();
+                },
+                onHide: function() {
+                    /* Den Graphen im Hintergrund fortfahren */
+                    if(renderer)
+                        renderer.resume();
+                }
+            };
+            
+
+            /* Extention-Overlays erzeugen */
+            $.each(extension_list, function(i, ext) {
+                
+                var overlay_node = $('<div>').addClass('overlay');
+                body_node.prepend(overlay_node);
+                
+                ext.init && ext.init(overlay_node, jsobj, data, callbacks, helper_functions);
+            
+                /* Sidebar-Button erzeugen und EventListener hinzufügen */
+                var ext_button = $('<input>').attr('type', 'button');
+                
+                if(ext.info.shortname) {
+                    ext_button.attr('id', ext.info.shortname + '_button')
+                              .val(ext.info.shortname);
+                }
+                
+                views_sidebar.append(ext_button);
+                
+                ext_button.on('click', function() {
+                    if(ext.is_open()) {
+                        /* Popup bzw. Overlay ausblenden */
+                        ext.hide();
+                    }
+                    else {
+                        $.each(extension_list, function(i, ext) {
+                            /* Popup bzw. Overlay ausblenden, sofern offen */
+                            if(ext.is_open())
+                                ext.hide();
+                        });
+                        
+                        /* Popup bzw. Overlay einblenden */
+                        ext.show();
+                    }
+                });
+                
+            });
+            
+            /* Ausgabe der Anzahl aller betrachteten Nodes und Kanten über die Konsole ausgeben */
+            console.log("topics_count", data.nodes.length);
+            console.log("edges_count", data.links.length);
+            
+            /* Den Graphen erst aufbauen, nachdem alle relevanten Topics ausgewählt wurden */
+            initGraph();
+        },
+        bindExtension: function(extObj) {
+            /* Eine Extension muss über ein Informationsfeld verfügen */
+            if(!extObj || !extObj.info)
+                return;
+            
+            extension_list.push(extObj);
+        }
+    };
+    
+
+
     /* Handler usw. erst zuweisen, wenn der DOM-Baum komplett aufgebaut ist bzw. die Seite komplett geladen wurde */
     $(document).ready(function() {
         
@@ -1060,270 +1054,8 @@
             .hover( function(e) { $(this).stop().animate({"opacity": 1.0}, 300); }, /* MouseEnter */
                     function(e) { $(this).stop().animate({"opacity": 0.4}, 200); }); /* MouseLeave */
         
-        /* Referenz auf das Frequency-Overlay-Popup holen und für den späteren Gebrauch sichern */
-        frequency_overlay = $("#frequency_overlay");
-        frequency_overlay.find(".overlay_close_button")
-            .on("click", function() { toggle_frequency_overlay(); });
         
-        
-        /* Click-Handler den Elementen innerhalb der Sidebar zuweisen */
-        $("#views_sidebar #frequency_diagramm_button").on('click', function() {
-            toggle_frequency_overlay();
-        });
-        
-        
-        /* Ausglagerte Prozedur zur Diagrammerstellung (Zeitliche Entwicklung der Häufigkeit eines Terms) */
-        function create_frequency_diagram() {
-            
-            var frequency_viz_jq = frequency_overlay.find('#frequency_viz');
-            
-            /* Auflsitung wurde bereits erzeugt */
-            if(frequency_viz_jq.children().length > 0)
-                return;
-            
-            /* Node-Referenz des DIV-Elements holen */
-            frequencyvizsvg = frequency_viz_jq[0];
-            
-            var frequencyvis = d3.select(frequencyvizsvg);
-
-            var frequencyvizsvg_jq = $(frequencyvizsvg);
-
-            /* Dimension des SVG-Elements setzen */
-            frequencyvizsvg_jq.css("height", frequencyvizsvg_jq.height() + "px");
-            frequencyvizsvg_jq.css("width", frequencyvizsvg_jq.width() + "px");
-            
-            /* Die für die Ausgabe relevanten Daten für d3.js holen bzw. Umbettungsstrukturen definieren */
-            var nodes = data.nodes;
-            
-            /* D3.js - Einbindung */
-            var item_histories =
-                frequencyvis.selectAll('.term_history')
-                    .data(nodes)
-                    .enter();
-            
-            /* Ausgabe des Terms bzw. Topics */
-            var item_g = item_histories.append("g")
-                .attr("transform", function(d, i) {
-                    return "translate(0, " + (i * 110 + 10) + ")";
-                });
-                
-            item_g.append("text")
-                .attr("class", "item_title_text")
-                .attr("pointer-events", "none")
-                .attr("dx", "175px")
-                .attr("y", function(d, i) {
-                    return (55 + i * 30) + "px";
-                })
-                .html(function(d, i) {
-                    return d.topic; /* Topic-Name als Inhalt des Text-Elements setzen */
-                })
-                .attr("text-anchor", "end");
-            
-            var data_arr = [];
-            
-            item_g.append("g")
-                .attr("class", "frequence_path")
-                .attr("transform", function(d, i) { return "translate(250, "+(i*30)+")"; })
-                .append("path")
-                .attr("d", function(d, i) {
-                    
-                    var freq_arr = d.frequency_per_year;
-                    
-                    data_arr = [];
-                    for(var i = years_min_max.min; i <= years_min_max.max; i++) {
-                        var val = freq_arr[''+i];
-                        
-                        if(typeof(val) === 'undefined')
-                            val = 0;
-                        
-                        data_arr.push(val);
-                    }
-                    
-                    return line_function(data_arr, 700, 50, frequency_min_max.max);
-                })
-                .attr("stroke-width", "0");
-            
-            var g_nodes = $(frequencyvis.node()).children();
-            
-            var new_height = null;
-            
-            $.each(g_nodes, function(i, d) {
-                var g_year_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'g'));
-                
-                $(d).after(g_year_node);
-                var g_node = d3.select(g_year_node[0]);
-                
-                var year_group = g_node
-                    .attr("class", "frequence_years")
-                    .attr("transform", function(d) {  new_height = 100 + (i*140); return "translate(215, " + new_height + ")"; });
-                
-                create_year_text_in_group(year_group, years_min_max.min, data_arr.length, 700);
-            });
-            
-            frequency_viz.style.height = (new_height + 70) + "px";
-        }
-        
-        
-        /* Funktion zur Steuerung des Häufigkeits-Popups bzw. -Overlays */
-        function toggle_frequency_overlay() {
-            
-            /* Sofern das Popup nicht offen ist */
-            if(!frequency_overlay.is(':visible')) {
-                /* Andere Overlays vorher schließen */
-                hide_overlay();
-                
-                /* Stoppe den Graphen im Hintergrund -> da nicht mehr im Fokus und zu dem Zeitpunkt irrelevant */
-                if(renderer)
-                    renderer.pause();
-                
-                /* Erzeuge das Häufigkeits-Diagramm */
-                create_frequency_diagram();
-                
-                /* Popup bzw. Overlay einblenden */
-                frequency_overlay.stop().fadeIn();
-                
-                /* Nano-Scrollbar initialisieren */
-                frequency_overlay.find(".nano").nanoScroller({ flash: true });
-            }
-            /* Sofern das Popup offen ist */
-            else {
-                hide_overlay();
-            }
-        }
-
-
-        /* Referenz auf das Frequency-Overlay-Popup holen und für den späteren Gebrauch sichern */
-        authors_overlay = $("#authors_overlay");
-        authors_overlay.find(".overlay_close_button")
-            .on("click", function() { toggle_authors_overlay(); });
-        
-        
-        /* Click-Handler den Elementen innerhalb der Sidebar zuweisen */
-        $("#views_sidebar #authors_list_button").on('click', function() {
-            toggle_authors_overlay();
-        });
-
-        /* Ausglagerte Prozedur zur Erzeugung der Autorenliste */
-        function create_authors_list() {
-            var authors_content_div = authors_overlay.find('.content');
-            
-            // Der Content wurde bereits erzeugt somit muss er nicht erneut geschehen
-            if(authors_content_div.children().length > 0)
-                return;
-            
-            for(var author_pos in authors) {
-                var author = authors[author_pos];
-            
-                var author_con = $('<div></div>').attr('class', 'author_con_entry');
-                
-                var author_heading = $('<h2></h2>').html(author.name);
-                author_con.append(author_heading);
-                
-                var author_data = $('<div></div>').attr('class', 'author_data');
-                author_con.append(author_data);
-                
-                /* Aufstellen der persönlichen Topic-Charts */
-                
-                var author_topics = $('<div></div>').attr('class', 'author_topic_charts');
-                author_data.append(author_topics);
-                author_topics.append('<h3>Topics nach Häufigkeit</h3>');
-                var topic_charts = $('<table></table>');
-                author_topics.append(topic_charts);
-                
-                for(var i = 0; i < author.topics_mentioned_ranking.length && i < 5; i++) {
-                    
-                    var curr_topic = author.topics_mentioned_ranking[i];
-                    
-                    var topic_entry = $('<tr><td></td><td></td></tr>')
-                        .attr('class', 'topic_entry');
-                    topic_entry.find('td:first')
-                        .attr('class', 'count_num')
-                        .html(curr_topic.count);
-                    topic_entry.find('td:last')
-                        .attr('class', 'topic_name')
-                        .html(curr_topic.data.topic);
-                    topic_charts.append(topic_entry);
-                }
-                
-                
-                /* Auflistung der Dokumente mit Verlinkung */
-                var author_documents = $('<div></div>').attr('class', 'author_documents_list');
-                author_data.append(author_documents);
-                author_documents.append('<h3>Dokumente</h3>');
-                var documents_list = $('<ul></ul>');
-                author_documents.append(documents_list);
-                
-                for(var pos in author.files) {
-                    var document_entry = $('<li><a></a></li>');
-                    document_entry.find('a')
-                        .attr('href', '#' + author.files[pos])
-                        .attr('target', '_blank')
-                        .html(author.files[pos]);
-                    documents_list.append(document_entry);
-                }
-                
-                author_data.append($('<div></div>').attr('class', 'clear_fix'));
-                
-                author_con.append($('<div></div>').attr('class', 'seperator'));
-                
-                authors_content_div.append(author_con);
-            }
-        }
-
-        /* Funktion zur Steruerung des Autoren-Popups bzw. -Overlays */
-        function toggle_authors_overlay() {
-            /* Sofern das Popup nicht offen ist */
-            if(!authors_overlay.is(':visible')) {
-                /* Andere Overlays vorher schließen */
-                hide_overlay();
-                
-                /* Stoppe den Graphen im Hintergrund -> da nicht mehr im Fokus und zu dem Zeitpunkt irrelevant */
-                if(renderer)
-                    renderer.pause();
-                
-                /* Erzeuge das Häufigkeits-Diagramm */
-                create_authors_list();
-                
-                /* Popup bzw. Overlay einblenden */
-                authors_overlay.stop().fadeIn();
-                
-                /* Nano-Scrollbar initialisieren */
-                authors_overlay.find(".nano").nanoScroller({ flash: true });
-            }
-            /* Sofern das Popup offen ist */
-            else {
-                hide_overlay();
-            }
-        };
-
-        
-        function hide_overlay() {
-            var overlay = $(".overlay:visible");
-            
-            var finalStep = $.noop;
-            
-            switch(overlay.attr('id')) {
-                case "frequency_overlay":
-                    /* Entleere den Inhalt des Diagramms (Elemente im SVG-Element) */
-                    finalStep = function() { overlay.find('#frequency_viz').empty(); };
-                    break;
-                case "authors_overlay":
-                    break;
-            }
-            
-            /* Blende das Popup bzw. Overlay aus und führe die abschließende Aufräumfunktion aus */
-            overlay.stop().fadeOut(finalStep);
-
-            /* Starte die Positionsberechnung des Graphen, der nun wieder den Fokus besitzt */
-            if(renderer)
-                renderer.resume();
-                
-            /* Nano-Scrollbar zerstören */
-            overlay.find(".nano").nanoScroller({ stop: true });            
-        }
-        
-        
-        /* Panning des Graphen unterbrechen, wenn mit gedrückter Maustaste  */
+        /* Panning des Graphen unterbrechen, wenn mit gedrückter Maustaste über ein Overlay gefahren wird */
         $('.overlay').on('mouseenter', function(e) {
             if(e.buttons === 1 || e.buttons === 2) {
                  var e = document.createEvent('UIEvents');
@@ -1336,47 +1068,6 @@
             }
         });
         
-        
-        /*
-         *  Export-Button, um das Diagramm innerhalb des Popups als Grafik zu exportieren
-         */
-        frequency_overlay.find("#frequency_export_button").on("click", function(e) {
-            
-            var svg_title = "Zeitliche Entwicklung der Topics";
-            
-            var svg_elem = $("#frequency_viz")
-                .attr({
-                    "version": "1.1",
-                    "xmlns": "http://www.w3.org/2000/svg"
-                }).prepend("<title>" + svg_title + "</title>" +
-                            "<defs>\n" +
-                            "<style type=\"text/css\" >\n" +
-                                "<![CDATA[\n" +
-                                    "@font-face {" +
-                                        "font-family: 'Lato';\n" +
-                                        "font-style: normal;\n" +
-                                        "font-weight: 400;\n" +
-                                        "src: local('Lato Regular'), local('Lato-Regular'), url(./font/lato_regular.woff) format('woff');" + // TODO: Evtl. die Schriftart per base64 einbetten
-                                    "}\n" +
-                                    
-                                    "* {\n" +
-                                         "font-family: Lato, Helvetica, Arial, Verdana, sans-serif;\n" +
-                                    "}\n" +
-                                    
-                                    "frequence_path {\n" +
-                                         "fill: black;\n" +
-                                    "}\n" +
-                                    
-                                    
-                                "]]>\n" + 
-                            "</style>\n" +
-                            "</defs>");
-            
-            var svg_html = svg_elem.parent().html();
-            
-            window.open("data:image/svg+xml;base64,"+ btoa(svg_html), 'Diagramm der Topic-Entwicklung');
-        });
-        
     })
 
-})(this.jQuery)
+})(this.jQuery, window)

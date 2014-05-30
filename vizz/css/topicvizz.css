@@ -213,12 +213,6 @@ body #views_sidebar input[type="button"] {
 
 
 
-body #views_sidebar div.button:hover {
-    
-}
-
-
-
 div#abstract_text_popup {
     display: none;
     background: rgba(50, 50, 50, 0.9);
