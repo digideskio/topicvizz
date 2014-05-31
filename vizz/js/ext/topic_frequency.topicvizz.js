@@ -90,11 +90,11 @@
                     
                     var svg_title = "Zeitliche Entwicklung der Topics";
                     
-                    var svg_elem = $("#frequency_viz")
+                    var svg_elem = m_svg_node.clone()
                         .attr({
                             "version": "1.1",
                             "xmlns": "http://www.w3.org/2000/svg"
-                        }).prepend("<title>" + svg_title + "</title>" +
+                        }).prepend( "<title>" + svg_title + "</title>" +
                                     "<defs>\n" +
                                     "<style type=\"text/css\" >\n" +
                                         "<![CDATA[\n" +
@@ -118,9 +118,12 @@
                                     "</style>\n" +
                                     "</defs>");
                     
-                    var svg_html = svg_elem.parent().html();
+                    var wrapper_parent = $('<div>').append(svg_elem);
+                    var svg_html = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" + 
+                                   "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">" +
+                                   wrapper_parent.html();
                     
-                    window.open("data:image/svg+xml;base64,"+ btoa(svg_html), 'Diagramm der Topic-Entwicklung');
+                    window.open("data:image/svg+xml;base64,"+ btoa(unescape(encodeURIComponent(svg_html))), 'Diagramm der Topic-Entwicklung');
                 });
                 
                 sub_bar.append(input_btn);
