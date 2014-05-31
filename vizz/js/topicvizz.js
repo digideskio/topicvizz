@@ -327,11 +327,11 @@
             
             
             $(rect).on('mouseover', function(e) {
+                e.stopPropagation();
+                
                 var d = node.data;
                 
-                console.log(d);
-                
-                if(!d.open) {
+                if(!d.open && e.buttons === 0) {
                     d.timeout = window.setTimeout(function() {
                         topic_title_popup
                             .html(d.topic)
@@ -353,7 +353,18 @@
                         topic_title_popup.stop().fadeOut();
                 }
             })
-            
+            .on('mousedown', function(e) {
+                var d = node.data;
+                
+                if(!d.open) {
+                    if(d.timeout) {
+                        window.clearTimeout(d.timeout);
+                        d.timeout = null;
+                    }
+                    else
+                        topic_title_popup.stop().fadeOut();
+                }
+            });
             
             /* Minimale Nodegröße für den späteren Gebrauch sichern (für spätere Minimierung) */
             node.data.size = size;
