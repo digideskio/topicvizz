@@ -81,7 +81,7 @@
         line_function: function(data_arr, max_width, max_height, max_value) {
             
             /* Abstandsschritt zwischen den Pfadpunkten bestimmten */
-            var width_step = max_width / data_arr.length;
+            var width_step = max_width / (data_arr.length + 2);
             
             if(typeof(max_value) === 'undefined') {
                 /* Den größten Wert im Wertearray bestimmen, um das Diagramm in seiner y-Achse zu skalieren */
@@ -96,34 +96,37 @@
             
             var line_data = [];
             
+            line_data.push({"x": 0,
+                            "y": max_height + 0.5 });
+            
             /* Untere Punkte des Pfads berechnen (hin ->) */
             for(var i = 0; i < data_arr.length; i++) {
-                line_data.push({"x": width_step * i,
-                                "y": max_height + data_arr[i] * resize_quot });
+                line_data.push({"x": width_step + width_step * i,
+                                "y": max_height + data_arr[i] * resize_quot + 0.5 });
             }
             
-            /* Zwei Punkte am Ende, um einen mehr oder wenigen glatten Schnitt zu erreichen */
-            line_data.push({"x": width_step * (data_arr.length - 1) + 7,
-                            "y": max_height - 10 + data_arr[data_arr.length - 1] * resize_quot });
-            line_data.push({"x": width_step * (data_arr.length - 1) + 7,
-                            "y": max_height + 10 - data_arr[data_arr.length - 1] * resize_quot });
+            line_data.push({"x": width_step + width_step * data_arr.length,
+                            "y": max_height + 0.5 });
+            
+            line_data.push({"x": width_step + width_step * data_arr.length,
+                            "y": max_height - 0.5});
             
             /* Oberen Punkte bestimmten (zurück <-) */
-            for(var i = data_arr.length-1; i >= 0; i--) {
-                line_data.push({"x": width_step * i,
-                                "y": max_height - data_arr[i] * resize_quot });
+            for(var i = data_arr.length - 1; i >= 0; i--) {
+                line_data.push({"x": width_step + width_step * i,
+                                "y": max_height - data_arr[i] * resize_quot - 0.5 });
             }
             
-            /* Letzten Punkt setzen, damit ein glatter Schnitt am Anfang erreicht wird */
-            line_data.push({"x": 0 ,
-                            "y": max_height - data_arr[0] * resize_quot });
+            
+            line_data.push({"x": 0,
+                            "y": max_height - 0.5 });
             
             /* Von d3.js bereitgestellte Funktion, um einen Pfad einfacher zu erzeugen */
             var line_func = d3.svg.line()
                                 .x(function(d) { return d.x; })
                                 .y(function(d) { return d.y; })
                                 /* 'cardinal' versucht den Pfad über die Punkte verlaufen zu lassen und schließt den Pfad am Ende */ 
-                                .interpolate("cardinal");
+                                .interpolate("monotone");
             
             /* Attributwert für 'd' zurückgeben */
             return line_func(line_data);
@@ -133,20 +136,32 @@
         create_year_text_in_group: function(group_node, year_start, year_amount, max_width) {
             
             /* Abstand zwischen den Textelementen (enthalten Jahreszahl) bestimmen */
-            var width_step = max_width / year_amount;
+            var width_step = max_width / (year_amount + 2);
+
+            /* Für den Start und das Ende etwas wegnehmen */
+            max_width -= (width_step * 2)
+            
+            var year_step = 1;
+            
+            /* Bei einer zu großen Anzahl an Jahren bei geringer verfügbarer Breite,
+             *  sollen einige Jahre übersprungen werden */
+            var year_text_step = year_amount / (max_width / 40.0);
+
+            if(year_text_step > 1)
+                year_step = Math.ceil(year_text_step);
             
             /* Für jede Jahreszahl ein Textelement erzeugen und es dem g-Element anhängen */
-            for(var i = 0; i < year_amount; i++) {
+            for(var i = 0; i < year_amount; i += year_step) {
                 group_node.append("text")
                     .attr("pointer-events", "none")
-                    .attr("x", function() { return width_step * i - 15; })
+                    .attr("x", function() { return width_step + (width_step * i - 15); })
                     .attr("y", 20)
                     .attr("style", "font-size: 0.8em;")
                     .attr('text-anchor', 'middle')
                     .html("" + year_start);
                 
                 /* Das Jahr erhöhen */
-                year_start++;
+                year_start += year_step;
             }
         }
     };

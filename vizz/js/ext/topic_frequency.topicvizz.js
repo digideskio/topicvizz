@@ -138,10 +138,6 @@
             
                 var frequencyvizsvg_jq = m_svg_node;
                 
-                /* Dimension des SVG-Elements setzen */
-                frequencyvizsvg_jq.css("height", frequencyvizsvg_jq.height() + "px");
-                frequencyvizsvg_jq.css("width", frequencyvizsvg_jq.width() + "px");
-                
                 /* Node-Referenz des DIV-Elements holen */
                 frequencyvizsvg = frequencyvizsvg_jq.get(0);
                 
@@ -159,26 +155,14 @@
                 /* Ausgabe des Terms bzw. Topics */
                 var item_g = item_histories.append("g")
                     .attr("transform", function(d, i) {
-                        return "translate(0, " + (i * 110 + 10) + ")";
+                        return "translate(0, " + (i * 110 + 30) + ")";
                     });
                     
-                item_g.append("text")
-                    .attr("class", "item_title_text")
-                    .attr("pointer-events", "none")
-                    .attr("dx", "175px")
-                    .attr("y", function(d, i) {
-                        return (55 + i * 30) + "px";
-                    })
-                    .html(function(d, i) {
-                        return d.topic; /* Topic-Name als Inhalt des Text-Elements setzen */
-                    })
-                    .attr("text-anchor", "end");
-                
                 var data_arr = [];
                 
                 item_g.append("g")
                     .attr("class", "frequence_path")
-                    .attr("transform", function(d, i) { return "translate(250, "+(i*30)+")"; })
+                    .attr("transform", function(d, i) { return "translate(100, "+(i * 30 + 10)+")"; })
                     .append("path")
                     .attr("d", function(d, i) {
                         
@@ -194,26 +178,42 @@
                             data_arr.push(val);
                         }
                         
-                        return m_helper_functions.line_function(data_arr, 700, 50, m_frequency_min_max.max);
+                        return m_helper_functions.line_function(data_arr, 850, 50, m_frequency_min_max.max);
                     })
                     .attr("stroke-width", "0");
                 
                 var g_nodes = $(frequencyvis.node()).children();
                 
-                var new_height = null;
+                var new_height = 0;
+                
+                var g_year_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'g'));
+                var g_node = d3.select(g_year_node[0]);
+                g_node.attr("class", "frequence_years");
+                
+                m_helper_functions.create_year_text_in_group(g_node, m_years_min_max.min, data_arr.length, 850);
                 
                 $.each(g_nodes, function(i, d) {
-                    var g_year_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'g'));
+                    var g_node_clone = g_year_node.clone();
+                    g_node_clone.attr("transform", function(d) {
+                        new_height = 130 + ( i * + 140);
+                        return "translate(115, " + new_height + ")";
+                    });
                     
-                    $(d).after(g_year_node);
-                    var g_node = d3.select(g_year_node[0]);
-                    
-                    var year_group = g_node
-                        .attr("class", "frequence_years")
-                        .attr("transform", function(d) {  new_height = 100 + (i*140); return "translate(215, " + new_height + ")"; });
-                    
-                    m_helper_functions.create_year_text_in_group(year_group, m_years_min_max.min, data_arr.length, 700);
+                    $(d).after(g_node_clone);
                 });
+                
+                item_g.append("text")
+                    .attr("class", "item_title_text")
+                    .attr("pointer-events", "none")
+                    .attr("dx", "20px")
+                    .attr("y", function(d, i) {
+                        return (10 + i * 30) + "px";
+                    })
+                    .html(function(d, i) {
+                        /* Topic-Name als Inhalt des Text-Elements setzen */
+                        return d.topic;
+                    });
+                
                 
                 frequencyvizsvg_jq.css('height', (new_height + 70) + "px");
             }
