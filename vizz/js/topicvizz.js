@@ -940,7 +940,7 @@
                             .attr("y", -160)
                             .each('end', function() {
                                 /* Haupt-ForeignObject einblenden */
-                                $(node.node()).parent().find(".main_content").fadeIn();
+                                $(node.node()).find(".main_content").fadeIn();
                                 
                                 /* Closebutton nach Wendeanimation einblenden */
                                 main_close_button.fadeIn();
