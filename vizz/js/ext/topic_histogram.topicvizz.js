@@ -3,15 +3,16 @@
 
     /* Informationen über die Extension */
     var ext_info = {
-        name:       'topic_frequency',
-        shortname:  'freq',
-        id:         'frequency_overlay'
+        name:       'topic_histogram',
+        shortname:  'histo',
+        id:         'histogram_overlay'
     };
 
     var is_open = false;
 
     var m_node              = null;
     var m_svg_node          = null;
+    var m_defs_node        = null;
     var m_data              = null;
     var m_graph_data        = null;
     var m_helper_functions  = null;
@@ -26,7 +27,7 @@
      *  und größten Häufigkeitswert feestzuhalten
      */
     var m_years_min_max = null;
-    var m_frequency_min_max = null;
+    var m_histogram_min_max = null;
 
 
     var ext = {
@@ -46,7 +47,7 @@
             m_helper_functions  = helper_functions;
             
             m_years_min_max     = graph_data.years_min_max;
-            m_frequency_min_max = graph_data.frequency_min_max;
+            m_histogram_min_max = graph_data.histogram_min_max;
             
             if(callbacks && callbacks.onShow && callbacks.onHide)
                 m_callbacks = callbacks;
@@ -69,6 +70,11 @@
                 var content = $('<div>').addClass('content');
                     
                     var svg = $(document.createElementNS('http://www.w3.org/2000/svg', 'svg'));
+                    svg.attr("xmlns:xlink", "http://www.w3.org/1999/xlink");
+                        
+                        m_defs_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'defs'));
+                        svg.prepend(m_defs_node);
+                    
                     content.append(svg);
                     m_svg_node = svg;
                     
@@ -80,7 +86,7 @@
             var sub_bar = $('<div>').addClass('sub_bar');
             
                 var input_btn = $('<input>').attr('type', 'button')
-                                            .attr('id', 'frequency_export_button')
+                                            .attr('id', 'histogram_export_button')
                                             .val('Als Grafik exportieren...');
                     
                 /*
@@ -94,9 +100,10 @@
                         .attr({
                             "version": "1.1",
                             "xmlns": "http://www.w3.org/2000/svg"
-                        }).prepend( "<title>" + svg_title + "</title>" +
-                                    "<defs>\n" +
-                                    "<style type=\"text/css\" >\n" +
+                        }).prepend("<title>" + svg_title + "</title>");
+                        
+                    svg_elem.find('defs')
+                            .append("\n<style type=\"text/css\" >\n" +
                                         "<![CDATA[\n" +
                                             "@font-face {" +
                                                 "font-family: 'Lato';\n" +
@@ -109,14 +116,39 @@
                                                  "font-family: Lato, Helvetica, Arial, Verdana, sans-serif;\n" +
                                             "}\n" +
                                             
-                                            "frequence_path {\n" +
+                                            "histogram_path {\n" +
                                                  "fill: black;\n" +
                                             "}\n" +
                                             
                                             
                                         "]]>\n" + 
-                                    "</style>\n" +
-                                    "</defs>");
+                                    "</style>\n");
+                    
+                    svg_elem.find('defs .histogram_years').attr('id', 'def_histogram_years');
+
+                    /* Alle doppelten g-Elemente mit den Jahrestexten durch use-Elemente ersetzen,
+                     *  die alle auf ein g-Element innerhalb des defs-Blocks verweisen (Referenz).
+                     *      Dies führt zu einer kleineren SVG-Grafikdatei. */
+                    $.each(svg_elem.find('.histogram_years').not('defs .histogram_years'), function(i, g_node) {
+                        var g_node = $(g_node);
+                        var use_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'use'));
+                        use_node.attr("xlink:href", "#def_histogram_years");
+                        use_node.attr('transform', g_node.attr('transform'));
+                        
+                        g_node.replaceWith(use_node);
+                    });
+                    
+                    /*
+                    var use_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'use'));
+                    use_node.attr("xlink:href", "#histogram");
+                    
+                    use_node.attr("transform", function(d) {
+                        new_height = 130 + ( i * 140);
+                        return "translate(115, " + new_height + ")";
+                    });
+                    
+                    $(d).after(use_node);
+                    */
                     
                     var wrapper_parent = $('<div>').append(svg_elem);
                     var svg_html = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" + 
@@ -137,21 +169,21 @@
             is_open = true;
             
             /* Auflistung wurde bereits erzeugt */
-            if(m_svg_node.children().length === 0) {
+            if(m_svg_node.children().not('defs').length === 0) {
             
-                var frequencyvizsvg_jq = m_svg_node;
+                var histogramvizsvg_jq = m_svg_node;
                 
                 /* Node-Referenz des DIV-Elements holen */
-                frequencyvizsvg = frequencyvizsvg_jq.get(0);
+                histogramvizsvg = histogramvizsvg_jq.get(0);
                 
-                var frequencyvis = d3.select(frequencyvizsvg);
+                var histogramvis = d3.select(histogramvizsvg);
 
                 /* Die für die Ausgabe relevanten Daten für d3.js holen bzw. Umbettungsstrukturen definieren */
                 var nodes = m_graph_data.nodes;
                 
                 /* D3.js - Einbindung */
                 var item_histories =
-                    frequencyvis.selectAll('.term_history')
+                    histogramvis.selectAll('.term_history')
                         .data(nodes)
                         .enter();
                 
@@ -164,16 +196,16 @@
                 var data_arr = [];
                 
                 item_g.append("g")
-                    .attr("class", "frequence_path")
+                    .attr("class", "histogram_path")
                     .attr("transform", function(d, i) { return "translate(100, "+(i * 30 + 10)+")"; })
                     .append("path")
                     .attr("d", function(d, i) {
                         
-                        var freq_arr = d.frequency_per_year;
+                        var histogram_arr = d.frequency_per_year;
                         
                         data_arr = [];
                         for(var i = m_years_min_max.min; i <= m_years_min_max.max; i++) {
-                            var val = freq_arr[''+i];
+                            var val = histogram_arr[''+i];
                             
                             if(typeof(val) === 'undefined')
                                 val = 0;
@@ -181,19 +213,21 @@
                             data_arr.push(val);
                         }
                         
-                        return m_helper_functions.line_function(data_arr, 850, 50, m_frequency_min_max.max);
+                        return m_helper_functions.line_function(data_arr, 850, 50, m_histogram_min_max.max);
                     })
                     .attr("stroke-width", "0");
                 
-                var g_nodes = $(frequencyvis.node()).children();
+                var g_nodes = $(histogramvis.node()).children();
                 
                 var new_height = 0;
                 
                 var g_year_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'g'));
                 var g_node = d3.select(g_year_node[0]);
-                g_node.attr("class", "frequence_years");
+                g_node.attr("class", "histogram_years");
                 
                 m_helper_functions.create_year_text_in_group(g_node, m_years_min_max.min, data_arr.length, 850);
+                
+                m_defs_node.append(g_year_node);
                 
                 $.each(g_nodes, function(i, d) {
                     var g_node_clone = g_year_node.clone();
@@ -218,7 +252,7 @@
                     });
                 
                 
-                frequencyvizsvg_jq.css('height', (new_height + 70) + "px");
+                histogramvizsvg_jq.css('height', (new_height + 70) + "px");
             }
             
             /* Finales Einblenden */

@@ -119,25 +119,25 @@ body .overlay a {
 .nano .pane .slider { background: rgb(114, 159, 207); }
 
 
-body #frequency_overlay .content_wrapper .content svg {
+body #histogram_overlay .content_wrapper .content svg {
     width: 950px;
     height: 645px;
     fill: rgb(255, 255, 255);
 }
 
 
-body #frequency_overlay .content_wrapper .content svg .item_title_text {
+body #histogram_overlay .content_wrapper .content svg .item_title_text {
     fill: rgb(255, 255, 255);
 }
 
 
 
-body #frequency_overlay .sub_bar {
+body #histogram_overlay .sub_bar {
     margin-top: 30px;
     text-align: right;
 }
 
-body #frequency_overlay .sub_bar #frequency_export_button {
+body #histogram_overlay .sub_bar #histogram_export_button {
     margin-right: 30px;
 }
 
@@ -339,12 +339,12 @@ foreignObject.main_content body div.turn_over_placer a.turn_over_btn {
 
 
 
-foreignObject.expanded_content body div.frequency_single_diagram {
+foreignObject.expanded_content body div.histogram_single_diagram {
     height: 150px;
     width: 100%;
 }
 
-    foreignObject.expanded_content body div.frequency_single_diagram svg.topic_single_diagram {
+    foreignObject.expanded_content body div.histogram_single_diagram svg.topic_single_diagram {
         height: 150px;
         width: 620px;
         fill: rgb(255, 255, 255);

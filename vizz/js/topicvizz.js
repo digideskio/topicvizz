@@ -9,7 +9,7 @@
     var renderer = null;
     
     /* Variable, die das SVG-Element im DOM referenziert, in dem die Verlaufsgrafiken ausgegeben werden */
-    var frequencyvizsvg = null;
+    var histogramvizsvg = null;
     
     /* "Globale" Variablen um Zugriff auf die Popup-Element zu haben */
     var abstract_text_popup = null,
@@ -20,7 +20,7 @@
         "nodes":                [],
         "links":                [],
         "years_min_max":        { min: null, max: null },
-        "frequency_min_max":    { min: null, max: null }
+        "histogram_min_max":    { min: null, max: null }
     };
     
     
@@ -760,13 +760,13 @@
             
 
             /* DIV-Container, in dem nur der für das Topic relevante Verlauf grafisch ausgegeben wird */                
-            var frequency_single_diagram = embed_div.append("div")
-                .attr("class", "frequency_single_diagram");
+            var histogram_single_diagram = embed_div.append("div")
+                .attr("class", "histogram_single_diagram");
                 
             
             /* Frequenz-Diagramm erzeugen */
             
-            var topic_single_diagram = frequency_single_diagram.append("svg").attr("class", "topic_single_diagram");
+            var topic_single_diagram = histogram_single_diagram.append("svg").attr("class", "topic_single_diagram");
             
             var data_arr = [];
             
@@ -775,11 +775,11 @@
                 .attr("transform", "translate(30, 10)")
                 .append("path")
                 .attr("d", function() {
-                    var freq_arr = d.frequency_per_year;
+                    var histogramm_arr = d.frequency_per_year;
                     
                     data_arr = [];
                     for(var i = data.years_min_max.min; i <= data.years_min_max.max; i++) {
-                        var val = freq_arr[''+i];
+                        var val = histogramm_arr[''+i];
                         
                         if(typeof(val) === 'undefined')
                             val = 0;
@@ -1004,7 +1004,7 @@
 
                 $.each(node_years, function(i, num) {
                     var year = parseInt(i);
-                    var frequency = num;
+                    var histogram = num;
                     
                     if(data.years_min_max.min === null || year < data.years_min_max.min)
                         data.years_min_max.min = year;
@@ -1012,11 +1012,11 @@
                     if(data.years_min_max.max === null || year > data.years_min_max.max)
                         data.years_min_max.max = year;
 
-                    if(data.frequency_min_max.min === null || frequency < data.frequency_min_max.min)
-                        data.frequency_min_max.min = frequency;
+                    if(data.histogram_min_max.min === null || histogram < data.histogram_min_max.min)
+                        data.histogram_min_max.min = histogram;
 
-                    if(data.frequency_min_max.max === null || frequency > data.frequency_min_max.max)
-                        data.frequency_min_max.max = frequency;
+                    if(data.histogram_min_max.max === null || histogram > data.histogram_min_max.max)
+                        data.histogram_min_max.max = histogram;
                 });
                 
                 
