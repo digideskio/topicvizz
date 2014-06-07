@@ -34,7 +34,7 @@
     var num_mentioned = {min: null, max: null};
     
     
-    var helper_functions = {
+    var helper = {
         /* Hilfsfunktion, um ein HSV- in ein RGB-Farbwert umzurechnen; da SVG keine HSV-Farbangabe unterstützt */
         /* http://de.wikipedia.org/wiki/HSV-Farbraum#Umrechnung_HSV_in_RGB */
         hsv2rgb: function(h, s, v) {
@@ -216,7 +216,7 @@
                 "stroke-width": 2,
                 "fill": function() {
                     /* Sättigung und Helligkeit niedrig */
-                    var rgb =  helper_functions.hsv2rgb((1 - node.data.num_overall_mentioned/num_mentioned.max) * 130, 0.55, 0.71);
+                    var rgb =  helper.hsv2rgb((1 - node.data.num_overall_mentioned/num_mentioned.max) * 130, 0.55, 0.71);
                     return "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
                 }
             });
@@ -787,7 +787,7 @@
                         data_arr.push(val);
                     }
                     
-                    return helper_functions.line_function(data_arr, 620, 50);
+                    return helper.line_function(data_arr, 620, 50);
                 })
                 .attr("stroke-width", "0");
             
@@ -796,7 +796,7 @@
                 .attr("class", "frequence_years")
                 .attr("transform", "translate(45, 120)")
             
-            helper_functions.create_year_text_in_group(year_group, data.years_min_max.min, data_arr.length, 620);
+            helper.create_year_text_in_group(year_group, data.years_min_max.min, data_arr.length, 620);
             
                 
             /* DIV-Container, in dem weitere Infos ausgegeben werden */
@@ -1087,7 +1087,7 @@
                 var overlay_node = $('<div>').addClass('overlay');
                 body_node.prepend(overlay_node);
                 
-                ext.init && ext.init(overlay_node, jsobj, data, callbacks, helper_functions);
+                ext.init && ext.init(overlay_node, jsobj, data, callbacks, helper);
             
                 /* Sidebar-Button erzeugen und EventListener hinzufügen */
                 var ext_button = $('<input>').attr('type', 'button');

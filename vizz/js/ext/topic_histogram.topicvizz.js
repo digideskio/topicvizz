@@ -10,12 +10,12 @@
 
     var is_open = false;
 
-    var m_node              = null;
-    var m_svg_node          = null;
-    var m_defs_node         = null;
-    var m_data              = null;
-    var m_graph_data        = null;
-    var m_helper_functions  = null;
+    var m_node          = null;
+    var m_svg_node      = null;
+    var m_defs_node     = null;
+    var m_data          = null;
+    var m_graph_data    = null;
+    var m_helper        = null;
 
     var m_callbacks = {
         onShow: $.noop,
@@ -26,7 +26,7 @@
     /* Hilfsvariablen, um das kleineste und größte Jahr sowie den kleinsten
      *  und größten Häufigkeitswert feestzuhalten
      */
-    var m_years_min_max = null;
+    var m_years_min_max     = null;
     var m_histogram_min_max = null;
 
 
@@ -39,12 +39,12 @@
         },
         
         /* ### INIT ### - Funktion die von TopicVizz zur Initialisierungsphase aufgerufen wird */
-        init: function(node, data, graph_data, callbacks, helper_functions) {
+        init: function(node, data, graph_data, callbacks, helper) {
             
-            m_node              = node;
-            m_data              = data;
-            m_graph_data        = graph_data;
-            m_helper_functions  = helper_functions;
+            m_node          = node;
+            m_data          = data;
+            m_graph_data    = graph_data;
+            m_helper        = helper;
             
             m_years_min_max     = graph_data.years_min_max;
             m_histogram_min_max = graph_data.histogram_min_max;
@@ -202,11 +202,11 @@
                             data_arr.push(val);
                         }
                         
-                        return m_helper_functions.line_function(data_arr, 850, 50, m_histogram_min_max.max);
+                        return m_helper.line_function(data_arr, 850, 50, m_histogram_min_max.max);
                     })
                     .attr("stroke-width", "0");
                 
-                var g_nodes = $(histogramvis.node()).children();
+                var g_nodes = $(histogramvis.node()).children().not('defs');
                 
                 var new_height = 0;
                 
@@ -216,7 +216,7 @@
                 g_node.attr("class", "histogram_years");
                 
                 /* Achsenbeschriftung (x-Achse) innerhalb des gegebenen Gruppen-ELement erzeugen lassen */
-                m_helper_functions.create_year_text_in_group(g_node, m_years_min_max.min, data_arr.length, 850);
+                m_helper.create_year_text_in_group(g_node, m_years_min_max.min, data_arr.length, 850);
                 
                 /* Festhalten der Achsenbeschriftung innerhalb des defs-Blocks des SVG-Elements;
                  *  wird für den späteren Export der Grafik benötigt, um die Dateigröße klein zu halten,
