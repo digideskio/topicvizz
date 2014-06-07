@@ -12,7 +12,7 @@
 
     var m_node              = null;
     var m_svg_node          = null;
-    var m_defs_node        = null;
+    var m_defs_node         = null;
     var m_data              = null;
     var m_graph_data        = null;
     var m_helper_functions  = null;
@@ -65,7 +65,6 @@
                         
             var content_wrapper = $('<div>').addClass('content_wrapper')
                                             .addClass('nano');
-
 
                 var content = $('<div>').addClass('content');
                     
@@ -138,18 +137,6 @@
                         g_node.replaceWith(use_node);
                     });
                     
-                    /*
-                    var use_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'use'));
-                    use_node.attr("xlink:href", "#histogram");
-                    
-                    use_node.attr("transform", function(d) {
-                        new_height = 130 + ( i * 140);
-                        return "translate(115, " + new_height + ")";
-                    });
-                    
-                    $(d).after(use_node);
-                    */
-                    
                     var wrapper_parent = $('<div>').append(svg_elem);
                     var svg_html = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" + 
                                    "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">" +
@@ -195,6 +182,7 @@
                     
                 var data_arr = [];
                 
+                /* Gruppe für den Histogrammpfad erzeugen */
                 item_g.append("g")
                     .attr("class", "histogram_path")
                     .attr("transform", function(d, i) { return "translate(100, "+(i * 30 + 10)+")"; })
@@ -203,6 +191,7 @@
                         
                         var histogram_arr = d.frequency_per_year;
                         
+                        /* Jahresdaten für die Generierung des Histogrammpfads */
                         data_arr = [];
                         for(var i = m_years_min_max.min; i <= m_years_min_max.max; i++) {
                             var val = histogram_arr[''+i];
@@ -221,14 +210,21 @@
                 
                 var new_height = 0;
                 
+                /* SVG-Element  */
                 var g_year_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'g'));
                 var g_node = d3.select(g_year_node[0]);
                 g_node.attr("class", "histogram_years");
                 
+                /* Achsenbeschriftung (x-Achse) innerhalb des gegebenen Gruppen-ELement erzeugen lassen */
                 m_helper_functions.create_year_text_in_group(g_node, m_years_min_max.min, data_arr.length, 850);
                 
+                /* Festhalten der Achsenbeschriftung innerhalb des defs-Blocks des SVG-Elements;
+                 *  wird für den späteren Export der Grafik benötigt, um die Dateigröße klein zu halten,
+                 *      indem alle Achsenbeschriftungen per use-Element darauf referenzieren */
                 m_defs_node.append(g_year_node);
                 
+                /* Achsenbeschriftung nicht immer neu generieren lassen,
+                 *  sondern die bestehende klonen und den Klon einfügen */
                 $.each(g_nodes, function(i, d) {
                     var g_node_clone = g_year_node.clone();
                     g_node_clone.attr("transform", function(d) {
