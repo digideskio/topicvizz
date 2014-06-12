@@ -1152,13 +1152,13 @@
         /* Panning des Graphen unterbrechen, wenn mit gedrückter Maustaste über ein Overlay gefahren wird */
         $('.overlay').on('mouseenter', function(e) {
             if(e.buttons === 1 || e.buttons === 2) {
-                 var e = document.createEvent('UIEvents');
-                    e.initUIEvent(  "mouseup", true, true,
-                                    window, 0, 0, 0, 0, 0,
-                                    false, false, false, false,
-                                    0, null);
+                var e = document.createEvent('UIEvents');
+                e.initUIEvent(  "mouseup", true, true,
+                                window, 0, 0, 0, 0, 0,
+                                false, false, false, false,
+                                0, null);
                 
-                    $('#graph_viz').get(0).dispatchEvent(e);
+                $('#graph_viz').get(0).dispatchEvent(e);
             }
         });
         
