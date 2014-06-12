@@ -108,6 +108,7 @@
             node.append(close_button);
             
             var content_wrapper = $('<div>').addClass('content_wrapper');
+            content_wrapper.addClass('nano');
             node.append(content_wrapper);
             
                 var content = $('<div>').addClass('content');
