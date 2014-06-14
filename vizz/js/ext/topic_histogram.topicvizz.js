@@ -185,7 +185,7 @@
                 /* Gruppe für den Histogrammpfad erzeugen */
                 item_g.append("g")
                     .attr("class", "histogram_path")
-                    .attr("transform", function(d, i) { return "translate(100, "+(i * 30 + 10)+")"; })
+                    .attr("transform", function(d, i) { return "translate(100, " + ((i + 1) * 30) + ")"; })
                     .append("path")
                     .attr("d", function(d, i) {
                         
@@ -228,7 +228,7 @@
                 $.each(g_nodes, function(i, d) {
                     var g_node_clone = g_year_node.clone();
                     g_node_clone.attr("transform", function(d) {
-                        new_height = 130 + ( i * + 140);
+                        new_height = (i + 1) * 140 + 20;
                         return "translate(115, " + new_height + ")";
                     });
                     
@@ -240,7 +240,7 @@
                     .attr("pointer-events", "none")
                     .attr("dx", "20px")
                     .attr("y", function(d, i) {
-                        return (10 + i * 30) + "px";
+                        return ((i + 1) * 30) + "px";
                     })
                     .html(function(d, i) {
                         /* Topic-Name als Inhalt des Text-Elements setzen */
