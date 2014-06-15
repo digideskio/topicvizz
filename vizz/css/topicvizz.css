@@ -133,8 +133,9 @@ body #histogram_overlay .content_wrapper .content svg .item_title_text {
 
 
 body #histogram_overlay .sub_bar {
-    margin-top: 30px;
-    text-align: right;
+    bottom: 30px;
+    right: 0px;
+    position: absolute;
 }
 
 body #histogram_overlay .sub_bar #histogram_export_button {
@@ -422,4 +423,96 @@ foreignObject.expanded_content body div.turn_over_placer a.turn_over_btn {
 }
 
 
+
+/* Topic Histogram */
+
+#histogram_overlay .item_title_text:hover {
+    cursor: pointer;
+}
+
+
+#histogram_overlay .content {
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s
+}
+
+
+#histogram_overlay .content.scrolling {
+    border-top: 1px solid #719ece;
+    border-bottom: 1px solid #719ece;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s
+}
+
+
+
+#histogram_overlay .inspector_area {
+    fill: #fff;
+    margin-top: 20px;
+    border-top: 1px solid #719ece;
+}
+
+
+#histogram_overlay .inspector_area .inspector_histogram_holder path.one {
+    fill: #6eb551;
+}
+
+#histogram_overlay .inspector_area .inspector_histogram_holder path.two {
+    fill: #b5517d;
+}
+
+#histogram_overlay .inspector_area .inspector_histogram_holder path.three {
+    fill: #518cb5;
+}
+
+#histogram_overlay .inspector_area .inspector_histogram_holder path.four {
+    fill: #51b59b;
+}
+
+#histogram_overlay .inspector_area .inspector_histogram_holder path.five {
+    fill: #b5a351;
+}
+
+
+
+#histogram_overlay .inspector_area .insp_topic_list li {
+    list-style-type: none;
+}
+
+#histogram_overlay .inspector_area .insp_topic_list .close {
+    color: red;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+
+#histogram_overlay .inspector_area .insp_topic_list .entry:hover {
+    cursor: pointer;
+}
+
+#histogram_overlay .inspector_area .insp_topic_list .entry.one {
+    color: #6eb551;
+}
+
+#histogram_overlay .inspector_area .insp_topic_list .entry.two {
+    color: #b5517d;
+}
+
+#histogram_overlay .inspector_area .insp_topic_list .entry.three {
+    color: #518cb5;
+}
+
+#histogram_overlay .inspector_area .insp_topic_list .entry.four {
+    color: #51b59b;
+}
+
+#histogram_overlay .inspector_area .insp_topic_list .entry.five {
+    color: #b5a351;
+}
 
