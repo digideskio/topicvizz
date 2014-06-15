@@ -330,17 +330,15 @@
                                         var prev_height = m_content_wrapper_node.data('prev_height');
                                         
                                         m_inspector_area.fadeOut();
-                                        m_inspector_area.animate({ height: '0px' }, 400, function() {
-                                            m_content_wrapper_node.animate({ height: prev_height + 'px' }, 400, function() {
-                                                m_content_wrapper_node.nanoScroller();
-                                            });
+                                        m_content_wrapper_node.animate({ height: prev_height + 'px' }, 400, function() {
+                                            m_content_wrapper_node.nanoScroller();
                                         });
                                     }
-                                    else {
+                                    else if(!m_insp_topics_diag.find('.' + class_number).hasClass('disabled')) {
                                         var enabled_path_elem_cnt = m_insp_topics_list.children().not('.disabled').length;
-                                        d3.select(path_node.get(0)).style('opacity', 1.0 / (enabled_path_elem_cnt - 1));
+                                        svg_elem_d3.selectAll('path').transition().style('opacity', 1.0 / (enabled_path_elem_cnt - 1));
                                     }
-                                    
+
                                     var active_topics = m_insp_topics_list.data('active_topics');
                                     active_topics[d.topic] = false;
                                     m_insp_topics_list.data('active_topics', active_topics);
@@ -478,7 +476,6 @@
                 var prev_height = m_content_wrapper_node.data('prev_height');
                 m_content_wrapper_node.css({ height: prev_height + 'px' }, 400);
                 m_inspector_area.fadeOut();
-                m_inspector_area.css({ height: '0px' });
                 
                 m_insp_topics_diag.empty();
                 m_insp_topics_list.empty();
