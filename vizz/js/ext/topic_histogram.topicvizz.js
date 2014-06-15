@@ -30,7 +30,7 @@
     
 
     /* Hilfsvariablen, um das kleineste und größte Jahr sowie den kleinsten
-     *  und größten Häufigkeitswert feestzuhalten
+     *  und größten Häufigkeitswert festzuhalten
      */
     var m_years_min_max     = null;
     var m_histogram_min_max = null;
@@ -101,7 +101,7 @@
 
             node.append(m_content_wrapper_node);
             
-            /* Bereich für die Übereinanderlegung von Diagrammen; höchstens vier Topics */
+            /* Bereich für die Übereinanderlegung von Diagrammen; höchstens fünf Topics */
             m_inspector_area = $('<div>').addClass('inspector_area');
             m_inspector_area.hide();
             
