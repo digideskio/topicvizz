@@ -424,14 +424,8 @@ foreignObject.expanded_content body div.turn_over_placer a.turn_over_btn {
 
 
 
-/* Topic Histogram */
 
-#histogram_overlay .item_title_text:hover {
-    cursor: pointer;
-}
-
-
-#histogram_overlay .content {
+.overlay .content {
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
     -webkit-transition: all 1s;
@@ -441,7 +435,7 @@ foreignObject.expanded_content body div.turn_over_placer a.turn_over_btn {
 }
 
 
-#histogram_overlay .content.scrolling {
+.overlay .content.scrolling {
     border-top: 1px solid #719ece;
     border-bottom: 1px solid #719ece;
     -webkit-transition: all 0.5s;
@@ -449,6 +443,15 @@ foreignObject.expanded_content body div.turn_over_placer a.turn_over_btn {
     -o-transition: all 0.5s;
     transition: all 0.5s
 }
+
+
+
+/* Topic Histogram */
+
+#histogram_overlay .item_title_text:hover {
+    cursor: pointer;
+}
+
 
 
 

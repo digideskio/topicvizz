@@ -116,6 +116,19 @@
                 m_content_node = content;
             
             
+            m_content_node.on('scroll', function(e) {
+                        if(m_content_node.data('timeoutHandler'))
+                            window.clearTimeout(m_content_node.data('timeoutHandler'));
+                        
+                        m_content_node.addClass('scrolling');
+                        
+                        var timeoutHandler = window.setTimeout(function() {
+                            m_content_node.removeClass('scrolling').data('timeoutHandler', null);
+                        }, 200);
+                        
+                        m_content_node.data('timeoutHandler', timeoutHandler);
+                    });
+            
         },
         
         /* ### SHOW ### */
