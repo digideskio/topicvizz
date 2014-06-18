@@ -25,7 +25,7 @@
     
     
     /* Hält alle eingebundenen Erweiterungen fest */
-    var extension_list = [];
+    var extension_set = {};
     
     /* Liste aller Autoren */
     var authors = null;
@@ -1021,7 +1021,7 @@
                 
                 
                 /* Allen Extensions alle Nodes zum Auswerten reichen */
-                $.each(extension_list, function(i, ext) {
+                $.each(extension_set, function(i, ext) {
                     ext.eval_topic && ext.eval_topic(v);
                 });
             });
@@ -1081,8 +1081,10 @@
             };
             
 
+            console.log(extension_set);
+
             /* Extention-Overlays erzeugen */
-            $.each(extension_list, function(i, ext) {
+            $.each(extension_set, function(i, ext) {
                 
                 var overlay_node = $('<div>').addClass('overlay');
                 body_node.prepend(overlay_node);
@@ -1105,7 +1107,7 @@
                         ext.hide();
                     }
                     else {
-                        $.each(extension_list, function(i, ext) {
+                        $.each(extension_set, function(i, ext) {
                             /* Popup bzw. Overlay ausblenden, sofern offen */
                             if(ext.is_open())
                                 ext.hide();
@@ -1127,10 +1129,10 @@
         },
         bindExtension: function(extObj) {
             /* Eine Extension muss über ein Informationsfeld verfügen */
-            if(!extObj || !extObj.info)
+            if(!extObj || !extObj.info || !extObj.info.name || extension_set[extObj.info.name])
                 return;
             
-            extension_list.push(extObj);
+            extension_set[extObj.info.name] = extObj;
         }
     };
     
