@@ -294,7 +294,7 @@
                         
                         var list_cnt = m_insp_topics_list.children().length;
                         var color_pos = list_cnt;                        
-                        var class_number = ['one', 'two', 'three', 'four', 'five'][list_cnt];
+                        var class_number = "";
                         
                         var svg_elem_d3 = d3.select(m_insp_topics_diag.get(0));
                         var data_arr = [];
@@ -308,13 +308,14 @@
                             
                             /* 
                              * Farben von Topic wiederverwenden, die evtl. zuvor gelöscht wurden,
-                             *  um mehreren Topics nicht die slebe Farbe zu zuweisen
+                             *  um mehreren Topics nicht die selbe Farbe zu zuweisen
                              */
                             var given_up_color_pos = m_insp_topics_list.data('given_up_color_pos');
                             if(given_up_color_pos && given_up_color_pos.length > 0) {
                                 color_pos = given_up_color_pos.shift();
-                                class_number = ['one', 'two', 'three', 'four', 'five'][color_pos];
                             }
+                            
+                            class_number = ['one', 'two', 'three', 'four', 'five'][color_pos];
                             
                             var topic_list_entry_remove = $('<span>')
                                 .html(' x ')

@@ -125,7 +125,6 @@
             var line_func = d3.svg.line()
                                 .x(function(d) { return d.x; })
                                 .y(function(d) { return d.y; })
-                                /* 'cardinal' versucht den Pfad über die Punkte verlaufen zu lassen und schließt den Pfad am Ende */ 
                                 .interpolate("monotone");
             
             /* Attributwert für 'd' zurückgeben */
@@ -1078,8 +1077,6 @@
                 }
             };
             
-
-            console.log(extension_set);
 
             /* Extention-Overlays erzeugen */
             $.each(extension_set, function(i, ext) {
