@@ -132,13 +132,13 @@ body #histogram_overlay .content_wrapper .content svg .item_title_text {
 
 
 
-body #histogram_overlay .sub_bar {
+body .overlay .sub_bar {
     bottom: 30px;
     right: 0px;
     position: absolute;
 }
 
-body #histogram_overlay .sub_bar #histogram_export_button {
+body .overlay .sub_bar input[type="button"] {
     margin-right: 30px;
 }
 
@@ -516,6 +516,94 @@ foreignObject.expanded_content body div.turn_over_placer a.turn_over_btn {
 }
 
 #histogram_overlay .inspector_area .insp_topic_list .entry.five {
+    color: #b5a351;
+}
+
+
+/* Topic Flow */
+
+
+#flow_overlay .content_wrapper {
+    width: 100%;
+    height: 150px;
+}
+
+
+#flow_overlay .content_wrapper .content ul {
+    float: left;
+    width: 200px;
+}
+
+
+#flow_overlay .content_wrapper .content ul li {
+    margin-bottom: 5px;
+}
+
+#flow_overlay .content_wrapper .content ul li:hover {
+    cursor: pointer;
+}
+
+#flow_overlay .flow_diagram {
+    float: right;
+    height: 440px;
+    width: 1000px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #719ece;
+}
+
+
+#flow_overlay .flow_diagram svg {
+    height: 440px;
+    width: 1000px;
+}
+
+
+#flow_overlay .flow_diagram svg g.time_axis text {
+    fill: #fff;
+}
+
+
+#flow_overlay .flow_diagram svg g.flow_components path.one {
+    fill: #6eb551;
+}
+
+#flow_overlay .flow_diagram svg g.flow_components path.two {
+    fill: #b5517d;
+}
+
+#flow_overlay .flow_diagram svg g.flow_components path.three {
+    fill: #518cb5;
+}
+
+#flow_overlay .flow_diagram svg g.flow_components path.four {
+    fill: #51b59b;
+}
+
+#flow_overlay .flow_diagram svg g.flow_components path.five {
+    fill: #b5a351;
+}
+
+
+
+
+#flow_overlay .content_wrapper .content ul li.one {
+    color: #6eb551;
+}
+
+#flow_overlay .content_wrapper .content ul li.two {
+    color: #b5517d;
+}
+
+#flow_overlay .content_wrapper .content ul li.three {
+    color: #518cb5;
+}
+
+#flow_overlay .content_wrapper .content ul li.four {
+    color: #51b59b;
+}
+
+#flow_overlay .content_wrapper .content ul li.five {
     color: #b5a351;
 }
 
