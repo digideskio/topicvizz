@@ -38,7 +38,7 @@
     var path_func = d3.svg.line()
                         .x(function(d) { return d.x; })
                         .y(function(d) { return d.y; })
-                        .interpolate("monotone");
+                        .interpolate("basis");
             
     
     function create_flow_diagram(flow_g_node, selected_topics, years_min_max, max_width, max_height) {
@@ -111,6 +111,9 @@
                     
                     path_data.push({'x': (years_max_values.length + 1) * width_step,
                                     'y': height_half});
+                    
+                    path_data_back.push({'x': (years_max_values.length + 1) * width_step,
+                                         'y': height_half});
                     
                     path_data = path_data.concat(path_data_back.reverse());
 
