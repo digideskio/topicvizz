@@ -338,10 +338,8 @@
                     }
                 
                 }
-            });
-            
-            
-            $(rect).on('mouseover', function(e) {
+            })
+            .on('mouseover', function(e) {
                 e.stopPropagation();
                 
                 var d = node.data;
