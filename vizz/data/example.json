@@ -1,0 +1,160 @@
+{
+"topics" :
+[
+{
+"id" :"1188897633",
+"topic" :"Leipzig",
+"abstract" :"ist eine kreisfreie Großstadt im Freistaat Sachsen. Sie bildet ein Zentrum für Wirtschaft, Bildung und Handel sowie Verwaltung, Kultur und Verkehr in Ostdeutschland und Sachsen und war Ende 2012 mit über 520.000 Einwohnern die zwölftgrößte Stadt der Bundesrepublik Deutschland. Leipzig gehört zu den sechs Oberzentren Sachsens und bildet mit der benachbarten Großstadt Halle (Saale) den Ballungsraum Leipzig-Halle, in dem über eine Million Menschen leben. Mit Halle und weiteren Städten in den Ländern Sachsen, Sachsen-Anhalt und Thüringen bildet Leipzig die Metropolregion Mitteldeutschland. Nach Verleihung des Stadtrechts und der Marktprivilegien um das Jahr 1165 entwickelte sich Leipzig bereits während der Deutschen Ostsiedlung zu einem wichtigen Handelszentrum. Leipzigs Tradition als bedeutender Messestandort in Mitteleuropa mit einer der ältesten Messen der Welt geht auf das Jahr 1190 zurück und war eng mit der langjährigen Rolle Leipzigs als internationalem Zentrum des Pelzhandels verknüpft. Deshalb wurde Leipzig am 20.  Dezember 1937 offiziell in Reichsmessestadt Leipzig umbenannt. Neben Frankfurt am Main ist die Stadt ein historisches Zentrum des Buchdrucks und -handels. Außerdem befinden sich in Leipzig eine der ältesten Universitäten sowie die ältesten Hochschulen sowohl für Handel als auch für Musik in Deutschland. Leipzig verfügt über eine große musikalische Tradition, die vor allem auf das Wirken von Johann Sebastian Bach und Felix Mendelssohn Bartholdy zurückgeht und sich unter anderem auf die Bedeutung des Gewandhausorchesters und des Thomanerchors stützt. Im Zuge der Montagsdemonstrationen 1989, die einen entscheidenden Impuls für die Wende in der DDR gaben, wurde Leipzig als Heldenstadt bezeichnet. Die informelle Auszeichnung für den so mutigen wie friedlichen Einsatz vieler Leipziger Bürger einschließlich Kurt Masurs im Umfeld der Leipziger Nikolaikirche prägten den Ruf der Stadt nach der Wende und wird beim Stadtmarketing unter dem Motto „Leipziger Freiheit“ aufgegriffen.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [{"neighbour":"922115807","weight":0.9999999350043275},{"neighbour":"1496874267","weight":0.9999999999120064}],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"1064508556",
+"topic" :"Universität Rostock",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-1451354707",
+"topic" :"Immatrikulation",
+"abstract" :"Die Einschreibung oder Immatrikulation an einer Hochschule ist heute Voraussetzung, um die Einrichtungen einer deutschen Hochschule benutzen zu dürfen. Dazu gehört unter anderem die Teilnahme an Lehrveranstaltungen und an Hochschul-Prüfungen, Benutzung der Bibliotheken. Mit der Eintragung in die Matrikel (Stammrolle) bewirkt die Hochschulverwaltung die Aufnahme einer Person als Studierende/r und Mitglied der Hochschule. Früher gab es ein eigenes Bürgerrecht an der Universität, mit der Einschreibung war auch ein Wechsel der Gerichtsbarkeit verbunden; von der Gerichtsbarkeit des Heimatortes zur Gerichtsbarkeit der Universität. Die Immatrikulation erfolgt beim Studierendensekretariat oder Immatrikulationsamt einer Hochschule, der/die Studierende wird dann in der Universitätsmatrikel geführt. In Österreich ist zusätzlich zur einmaligen Zulassung zum Studium (Immatrikulation) auch für jedes Semester eine Inskription für das jeweilige Studium erforderlich. Gegensatz: Exmatrikulation – das Verlassen der Hochschule (früher verlor man dadurch auch das Universitätsbürgerrecht).",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned_by" : ["-1899321620"],
+"edges" : [{"neighbour":"-1318766941","weight":0.9818194944361296}],
+"frequency_per_year" : {"2010":1}
+},
+{
+"id" :"-1390208372",
+"topic" :"Jena",
+"abstract" :"Jena ist eine deutsche Universitätsstadt und kreisfreie Großstadt in Thüringen in der Metropolregion Mitteldeutschland. Sie liegt an der Saale zwischen Muschelkalkhängen der Ilm-Saale-Platte und ist nach der Landeshauptstadt Erfurt die zweitgrößte Stadt Thüringens und eines der drei Oberzentren des Freistaats. In Jena befindet sich die Friedrich-Schiller-Universität Jena, die 1558 gegründet wurde und nun mit über 20.000 Studenten die größte Universität Thüringens ist. Jena begann sich ab dem Bau der Saalbahn 1874 zu einer Industriestadt zu entwickeln. Sie ist ein Zentrum der deutschen Optik- und Feinmechanikindustrie rund um das Unternehmen von Carl Zeiss. Das Kombinat Carl Zeiss mit etwa 60.000 Mitarbeitern war seinerzeit auch das größte Kombinat der DDR. Nach der deutschen Wiedervereinigung 1990 wandelte sich Jena vom Industrie- zum Bildungs- und Wissenschaftszentrum. In Jena haben zahlreiche Forschungslabors und Institute ihren Sitz. Das 144,5 m (mit Antenne 159,60 m) hohe Bürohochhaus Jentower war zur Zeit seiner Errichtung das höchste Hochhaus Deutschlands. Am 21. März 2007 verlieh der Stifterverband für die Deutsche Wissenschaft Jena den Titel Stadt der Wissenschaft des Jahres 2008. Die Stadt Jena wirbt für sich auch mit dem Namen „Jena. Lichtstadt. “",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2010-02-08_deutschmann_1.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["-1899321620","-291390368","-713554510","1406065811"],
+"edges" : [{"neighbour":"-2009869509","weight":1.0},{"neighbour":"707221962","weight":0.999997571484407},{"neighbour":"-1318766941","weight":0.8632641831024305}],
+"frequency_per_year" : {"2010":2,"2004":1,"2013":1,"2003":2}
+},
+{
+"id" :"1496874267",
+"topic" :"Sachsen",
+"abstract" :"Der Freistaat Sachsen (obersorbisch Swobodny stat Sakska, Abkürzung SN, auch Sa. ) ist ein Land im Osten der Bundesrepublik Deutschland. Die Landeshauptstadt ist Dresden. Mit etwa 4 Millionen Einwohnern und einer Fläche von rund 18.400 Quadratkilometern gehört Sachsen zu den mittelgroßen Ländern der Bundesrepublik. Neben Dresden gehören mit Leipzig und Chemnitz zwei weitere Großstädte zum Freistaat. Nachbarländer sind Bayern im Südwesten, Thüringen im Westen, Sachsen-Anhalt im Nordwesten, Brandenburg im Norden sowie die Republik Polen im Osten und die Tschechische Republik im Süden. Nach der Auflösung der Länder 1952 wurde 1990 aus den DDR-Bezirken Chemnitz, Dresden und dem größten Teil des Bezirks Leipzig sowie einigen Gebieten des Bezirks Cottbus das Land Sachsen gegründet. Seit 2008 ist Sachsen in zehn Landkreise sowie drei kreisfreie Städte gegliedert. Wie bereits als Gliedstaat in der Weimarer Republik bezeichnet sich Sachsen per Landesgesetz als Freistaat.",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["-713554510"],
+"edges" : [{"neighbour":"1188897633","weight":0.9733524753449226}],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"-2009869509",
+"topic" :"Friedrich-Schiller-Universität Jena",
+"abstract" :"String index out of range: -9",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2013":1}
+},
+{
+"id" :"1320708071",
+"topic" :"Ilmenau",
+"abstract" :"Die Goethe- und Universitätsstadt Ilmenau liegt in Thüringen, etwa 33 Kilometer südwestlich der Landeshauptstadt Erfurt im Tal der Ilm am Nordrand des Thüringer Waldes. Sie ist die größte Stadt im Ilm-Kreis und die elftgrößte Stadt Thüringens. Ilmenau übt für den südlichen Teil des Ilm-Kreises die Funktion eines Mittelzentrums aus. Sie besitzt als einzige Stadt Thüringens, die nicht auch Kreisstadt ist, den Status einer Großen kreisangehörigen Stadt. Wichtigste Institution der Stadt ist die Technische Universität, an der rund 7000 Studierende eingeschrieben sind (Stand Wintersemester 2012/13). Die Universität ist nach der Friedrich-Schiller-Universität in Jena die zweitgrößte in Thüringen. Tragende Wirtschaftszweige sind die Glasindustrie sowie der Maschinenbau. Historisch bedeutsam waren auch der Bergbau (Kupfer, Silber und Mangan) und seit 1777 die Porzellanindustrie. Zunehmend gewinnt auch der Tourismus an Bedeutung. Die Stadt war über die Jahrhunderte hinweg relativ unbedeutend. Sie wuchs erst an, als nach der Gründung des Deutschen Reiches 1871 die Industrialisierung einsetzte. Wie andere Städte der neuen Bundesländer auch erlebte Ilmenau seit der Wende 1990 einen Strukturwandel von der Industrie zur Dienstleistungsbranche. Zur Zeit Goethes und in den darauffolgenden Jahrzehnten war Ilmenau ein beliebtes Ausflugs- und Urlaubsziel der „Weimarer Prominenz“, bis zum Ersten Weltkrieg außerdem ein Kurbad.",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["-1899321620","1406065811"],
+"edges" : [{"neighbour":"-1390208372","weight":0.9999895181817021},{"neighbour":"707221962","weight":0.9999926827221638},{"neighbour":"-1318766941","weight":0.9999880564411546}],
+"frequency_per_year" : {"2010":1,"2004":1}
+},
+{
+"id" :"-1746836018",
+"topic" :"RWTH Aachen",
+"abstract" :"Die Rheinisch-Westfälische Technische Hochschule Aachen ist mit über 40.000 Studierenden die größte Universität für technische Studiengänge in Deutschland. Die Technische Hochschule in Aachen in Nordrhein-Westfalen zählt mit ihrem Zukunftskonzept RWTH 2020: „Meeting Global Challenges” zu den neun bundesdeutschen Universitäten, die im Rahmen der Exzellenzinitiative 2007 in die dritte Förderlinie Zukunftskonzepte zum projektbezogenen Ausbau der universitären Spitzenforschung aufgenommen wurden. Die Universität ist Mitglied im Universitätsverbund TU9, in der IDEA League, im TIME- und UNITECH-Netzwerk sowie im Euregio-Hochschulverbund ALMA.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [{"neighbour":"-1318766941","weight":0.9999999903974413}],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"-1000454754",
+"topic" :"Otto I. (HRR)",
+"abstract" :"Otto I. der Große aus dem Geschlecht der Liudolfinger war ab 936 Herzog von Sachsen und König des Ostfrankenreiches (regnum francorum orientalium), ab 951 König von Italien und ab 962 römisch-deutscher Kaiser. Otto setzte während der ersten Hälfte seiner langen Herrschaftszeit die Unteilbarkeit des Königtums, seine Entscheidungsgewalt in der Nachfolgefrage und einen Wandel der Machtstruktur durch: Durch eine geschickte Heiratspolitik und Personalentscheidungen besetzte er die Herzogtümer mit seinen Verwandten und griff damit tief in das bestehende Herrschaftsgefüge des Adels ein. Aus den Aufständen, in denen sich die Erbberechtigten gegen Konkurrenz später geborener Kinder wehrten, ging er als Sieger hervor. Durch seinen Sieg 955 über die Ungarn endeten nicht nur deren Invasionen, sondern auch die Erhebungen der Großen des Reiches gegen den König. Zudem erlangte er damit den Nimbus eines Retters der Christenheit, zumal ihm noch im selben Jahr ein Sieg über die Slawen gelang. In der Folge setzte eine kulturelle Blütezeit ein, die als Ottonische Renaissance bekannt wurde. 961 eroberte er das Königreich Italien und dehnte sein Reich nach Norden, Osten und bis nach Süditalien aus, wo er in Konflikt mit Byzanz geriet. Dennoch ließ er sich unter Rückgriff auf die Kaiseridee Karls des Großen 962 von Papst Johannes XII. in Rom zum Kaiser krönen, und schließlich gelang ihm sogar ein Ausgleich mit dem byzantinischen Kaiser und die Verehelichung seines Sohnes Otto II. mit dessen Nichte Theophanu. Im Jahr 968 gründete er ein Erzbistum in Magdeburg, jener Stadt, die wie keine zweite mit seinem Nachleben verbunden ist. Das Erzbistum war für Otto die entscheidende Voraussetzung für die Christianisierung der Slawen. Der Beiname „der Große“ gilt spätestens seit dem mittelalterlichen Geschichtsschreiber Otto von Freising als festes Namensattribut. Schon Widukind von Corvey nannte ihn totius orbis caput, das „Haupt der ganzen Welt“.",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["1406065811"],
+"edges" : [{"neighbour":"1496874267","weight":1.0}],
+"frequency_per_year" : {"2004":1}
+},
+{
+"id" :"-1318766941",
+"topic" :"Universität",
+"abstract" :"String index out of range: -9",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned_by" : ["-1899321620","-713554510","1406065811"],
+"edges" : [],
+"frequency_per_year" : {"2010":1,"2013":2,"2003":2}
+},
+{
+"id" :"922115807",
+"topic" :"Halle (Saale)",
+"abstract" :"Halle (Saale) (bis 1995 Halle/Saale; etwa vom Ende des 15. bis zum Ende des 17. Jahrhunderts Hall in Sachsen) ist eine kreisfreie Großstadt im Süden von Sachsen-Anhalt und liegt an der Saale. Mit mehr als 230.000 Einwohnern ist Halle die größte Stadt und eines der drei Oberzentren des Landes sowie Sitz des Landesverwaltungsamtes. Sie ist die fünftgrößte Stadt Ostdeutschlands. Die Stadt bildet gemeinsam mit der benachbarten Großstadt Leipzig den Ballungsraum Leipzig-Halle, in dem mehr als eine Million Menschen leben, sowie mit Leipzig und neun weiteren Städten in Sachsen-Anhalt, Sachsen und Thüringen die Metropolregion Mitteldeutschland. Halle ist ein bedeutender Verkehrsknotenpunkt und ein wichtiges Wirtschaftszentrum in den neuen Ländern. Die erste urkundliche Erwähnung datiert auf das Jahr 806 n.  Chr. Die Einwohnerzahl der Stadt überschritt 1890 die Grenze von 100.000, wodurch Halle zur Großstadt wurde. Als einzige deutsche Großstadt mit mehr als 200.000 Einwohnern im Jahr 1945 hat Halle den Zweiten Weltkrieg fast unbeschadet überstanden, sodass ihr städtebaulicher Charakter unter den deutschen Großstädten als einzigartig gilt. Mit den durch August Hermann Francke 1698 gegründeten Franckeschen Stiftungen, über deren Aufnahme als UNESCO-Weltkulturerbe 2015 entschieden wird, gilt Halle als Ausgangspunkt der sozial-humanistischen Bildung in Deutschland. Halle ist Sitz einer der ältesten Universitäten Deutschlands, der Martin-Luther-Universität Halle-Wittenberg, sowie der Burg Giebichenstein Kunsthochschule. Darüber hinaus ist die Stadt Sitz der Nationalen Akademie der Wissenschaften Leopoldina und der Kulturstiftung des Bundes, die für die Bundesrepublik Deutschland die Aufgaben der internationalen Vertretung der nationalen Wissenschaft und deutschen Kultur haben. Im Stadtgebiet befindet sich eine Vielzahl von kulturellen und musealen Einrichtungen, wie die Stiftung Moritzburg oder das Landesmuseum für Vorgeschichte. Des Weiteren ist der Weinberg Campus ein wichtiges Technologie- und Gründungszentrum in den neuen Ländern.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [{"neighbour":"1188897633","weight":0.9999999047672691},{"neighbour":"1496874267","weight":0.9999999999893134}],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"1683655880",
+"topic" :"Hannover",
+"abstract" :"Hannover [haˈnoːfɐ] ist die Hauptstadt des Landes Niedersachsen. Unter dem Namen Hanovere 1150 erstmals urkundlich erwähnt, war die Stadt Hauptstadt Kurhannovers, ab 1814 Hauptstadt des Königreichs Hannover und zwischen 1866 und 1946 nach dessen Annexion durch Preußen als Folge des Deutschen Krieges Hauptstadt der Provinz Hannover. 1875 wurde sie mit über 100.000 Einwohnern zur Großstadt. Heute gehört Hannover mit {{#invoke:FormatNum|format|514137|format=dewiki}} Einwohnern zu den 15 größten Städten Deutschlands. Die an der Leine gelegene Stadt ist durch die seit 1947 stattfindende Hannover Messe sowie die CeBIT-Messe international bekannt. Hier kreuzen sich wichtige Schienen- und Straßenverkehrsverbindungen der Nord-Süd-Richtung mit solchen der Ost-West-Richtung. Über den Mittellandkanal ist Hannover zudem an das Binnenschifffahrtsnetz angebunden. Die kreisfreie Stadt gehört zur Region Hannover, einem Kommunalverband besonderer Art, und ist Teil der Metropolregion Hannover-Braunschweig-Göttingen-Wolfsburg. Hannover ist Standort mehrerer Hochschulen: der Gottfried Wilhelm Leibniz Universität, der Medizinischen Hochschule, der Tierärztlichen Hochschule, der Hochschule für Musik, Theater und Medien und der Hochschule Hannover.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [{"neighbour":"-1318766941","weight":0.9989898894199152}],
+"frequency_per_year" : {"2013":2}
+},
+{
+"id" :"707221962",
+"topic" :"Erfurt",
+"abstract" :"Erfurt ist die Landeshauptstadt des deutschen Freistaats Thüringen. Es ist zugleich die größte Stadt Thüringens und neben Jena und Gera eines der drei Oberzentren des Landes. Wichtigste Institutionen neben den Landesbehörden sind das Bundesarbeitsgericht, die Hochschulen Universität Erfurt und Fachhochschule Erfurt sowie das katholische Bistum Erfurt, dessen Kathedrale der Erfurter Dom ist, der wiederum neben der Krämerbrücke eine der Hauptsehenswürdigkeiten der Stadt darstellt. Darüber hinaus besitzt die Stadt einen knapp drei Quadratkilometer großen mittelalterlich geprägten Altstadtkern mit etwa 25 Pfarrkirchen und zahlreichen Fachwerk- und Bürgerhäusern. Erfurt, rund 100 Kilometer westsüdwestlich von Leipzig gelegen, gehört wie die anderen Großstädte in Sachsen, Sachsen-Anhalt und Thüringen zur Metropolregion Mitteldeutschland. Erfurt wurde 742 im Zusammenhang mit der Errichtung des Bistums Erfurt durch Bonifatius erstmals urkundlich erwähnt – schon damals als Großsiedlung. Bereits kurz danach entwickelte es sich zum Zentrum des Thüringer Raumes, wenngleich es lange Zeitabschnitte politisch nicht Teil des Landes war. Im Mittelalter hatte die Stadt ein hohes Maß an Autonomie. Das änderte sich mit der gewaltsamen Unterwerfung durch die Mainzer 1664. 1802 wurde Erfurt Teil Preußens (mit Ausnahme der Zeit von 1806 bis 1814, als es als Fürstentum Erfurt direkt unter französischer Herrschaft stand) und blieb es bis 1945. Die Universität wurde 1392 eröffnet, 1816 geschlossen und 1994 neugegründet. Damit ist sie die dritte Universität, die in Deutschland eröffnet wurde, kann dank eines Gründungsprivilegs von 1379 aber auch als älteste gelten. Martin Luther war ihr bekanntester Student. Die Wirtschaft der Stadt ist von Verwaltung und Dienstleistung geprägt. Ferner hat sich auf Grund der niedrigen Lohnkosten und zentralen Lage in Deutschland eine bedeutende Logistik-Branche etabliert. Erfurt ist nach Leipzig die Stadt mit der zweitgrößten Messe in den ostdeutschen Ländern. Des Weiteren ist Erfurt mit dem Hauptbahnhof wichtiger Verkehrsknotenpunkt im Zentrum Deutschlands. Bekannt ist Erfurt auch für seinen Gartenbau und als Medienzentrum (Sitz des Kindersenders KiKA und mehrerer Radiostationen sowie Tageszeitungen). Die Stadt liegt im südlichen Thüringer Becken am Fluss Gera.",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf","vortrag_vd-ak_2004-05-24_deutschmann.pdf"],
+"mentioned_by" : ["-503985829","1406065811"],
+"edges" : [{"neighbour":"-1390208372","weight":0.9996075129030637},{"neighbour":"-1318766941","weight":0.9999996197210107},{"neighbour":"1496874267","weight":0.9999737359469041},{"neighbour":"1188897633","weight":0.9999628320895053}],
+"frequency_per_year" : {"2004":1,"2011":1}
+},
+{
+"id" :"1302353142",
+"topic" :"Rostock",
+"abstract" :"Rostock ist eine norddeutsche Hansestadt an der Ostsee. Sie liegt im Landesteil Mecklenburg des Landes Mecklenburg-Vorpommern. Die kreisfreie Stadt erhielt 1218 das Lübische Stadtrecht bestätigt. Rostock zieht sich etwa 20 Kilometer am Lauf der Warnow bis zur Ostsee entlang. Der größte bebaute Teil Rostocks befindet sich auf der westlichen Seite der Warnow. Der östliche Teil der Stadt wird durch den Überseehafen, weitere Gewerbestandorte und das Waldgebiet der Rostocker Heide geprägt. Rostock hat heute etwa 202.000 Einwohner und ist nach Einwohnerzahl und Fläche die größte Stadt des Landes Mecklenburg-Vorpommern. Rostock hat einen für Fährverkehr und Güterumschlag wichtigen Ostseehafen sowie einen der größten deutschen Kreuzfahrthäfen. Kulturell wie wirtschaftlich gilt es als die wichtigste Stadt im Land. Geprägt ist es durch die Lage am Meer, den Hafen, die Hanse und deren Backsteingotik sowie die Universität Rostock, die 1419 gegründet wurde. Rostock gehörte bis 1918 zum Großherzogtum, dann zum Freistaat Mecklenburg-Schwerin. Die Stadt ist eines der vier Oberzentren des Landes. Wirtschaftlich dominiert neben Schiffbau und Schifffahrt, dem Tourismus und dem Dienstleistungssektor die Universität als größter Arbeitgeber der Stadt.",
+"files" : ["beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned_by" : ["1406065811","-713554510"],
+"edges" : [{"neighbour":"1064508556","weight":0.9999999984274837},{"neighbour":"-1318766941","weight":0.9895056472318052}],
+"frequency_per_year" : {"2013":2}
+}
+],
+"authors" :
+[
+{
+"id" :"-503985829",
+"name" :"hunstock_deutschmann",
+"files" : ["vortrag_vd-ak_2011-03-10_hunstock_deutschmann.pdf"],
+"mentioned" : ["-836221904","707221962","1569226880","-860444342","1018794924","-175708745","-819305540","2007649827","1893806403","-570304174","-1815077316","-99347846","-265697895","1189372605","-1203323361","-979890238","-1877711698"]
+},{
+"id" :"1406065811",
+"name" :"deutschmann",
+"files" : ["vortrag_vd-ak_2004-05-24_deutschmann.pdf","vortrag_vd-ak_2003-12-09_deutschmann.pdf","vortrag_vd-ak_2003-07-10_deutschmann.pdf","beitrag_vd-ak_2013-09-17_deutschmann.pdf","beitrag_vd-ak_2003-12-09_deutschmann.pdf"],
+"mentioned" : ["-1186954707","-1336558855","-1183821875","6376568","1707024153","-1127358688","1845168340","-1000454754","658656074","-532925762","1417396736","1158788459","-1815077316","247654034","-1368744821","-821754018","-1418913207","-164398009","1891914943","-1043093885","748368881","1320708071","707221962","-1957444664","-1368063910","1675884683","750527945","-1203323361","-225985840","1533450655","-175708745","-785002019","-292015081","-1291483928","-820308878","-1746836018","-513556630","-1678804073","1916419211","118162714","-384167087","1252240133","1687519609","922115807","-2087982369","1529805091","259253852","392121492","-1155461028","835669453","850496989","546729040","1683655880","43651481","1176967491","-2009869509","1188897633","1615331617","-570304174","1018794924","166619682","-954408371","-731605274","-1837252487","1874453566","2143934050","-1570390135","-880353008","-895117153","-1892052512","-860444342","-349327793","1302353142","-931620636","-1116757765","-979890238","-429664838","-1390208372","-1877711698","-1944636999","-1318766941","-265697895","-1324773159","-25973369","1386857698","-1296517804"]
+},{
+"id" :"-291390368",
+"name" :"deutschmann_1",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_1.pdf"],
+"mentioned" : ["-890523378","478395161","289470275","-1390208372","-204196359","1018794924","-1377394094","711046698","-1291483928","1999573618","2007649827","1387087264","-819305540","-1877711698","168291108","1707024153"]
+},{
+"id" :"-1899321620",
+"name" :"deutschmann_2",
+"files" : ["vortrag_vd-ak_2010-02-08_deutschmann_2.pdf"],
+"mentioned" : ["-1599628245","1608041096","1569226880","-1815077316","-395228079","1320708071","1794376526","-875227069","864949796","1533450655","-429664838","-1390208372","-932573085","-1409877440","648470927","1415281627","-1877711698","-1318766941","-1368744821","-836221904","1098690309","-1451354707","-1203323361"]
+},{
+"id" :"-713554510",
+"name" :"stenzel_deutschmann",
+"files" : ["beitrag_vd-ak_2013-03-05_stenzel_deutschmann.pdf"],
+"mentioned" : ["-731605274","-1025095496","-880353008","1252240133","2130962145","-1203323361","1569226880","1048589980","-384167087","1188897633","850496989","-1837252487","1018794924","-1746836018","259253852","-820308878","922115807","-1817538859","-1570390135","-1155461028","1893806403","1529805091","1496874267","-349327793","-1318766941","-570304174","-732603517","1687519609","2143934050","1916419211","1333465669","1176967491","118162714","1302353142","1615331617","-321178735","1874453566","-876342519","1111978930","-1338682123","1510374584","1064508556","1537098012","-1390208372","1683655880"]
+}
+]
+}
