@@ -80,7 +80,7 @@
                     path_data_back.push({'x': 0,
                                          'y': height_half});
                     
-                    /* Oberen Punkte bestimmten (hin ->) */
+                    /* Oberen und gleichzeitig unteren Punkt bestimmen */
                     for(var i = 0; i < years_max_values.length; i++) {
                         var year            = years_max_values[i].year;
                         var year_max_value  = years_max_values[i].max_value;
@@ -97,21 +97,28 @@
                             last_y_pos = height_half - curr_year_max_height / 2;
                         }
                         
+                        /* Hin (->); oben */
                         path_data.push({'x': width_step * (i + 1),
-                                        'y': last_y_pos - 0.5});
+                                        'y': last_y_pos - 0.5}); /* 0.5 für eine leichte Überlappung der Pfade */
                         
+                        /* Zurück (<-); unten */
                         path_data_back.push({'x': width_step * (i + 1),
                                              'y': last_y_pos + curr_path_height});
                         
                         years_max_values[i].last_y_pos = last_y_pos + curr_path_height;
                     }
                     
-                    path_data.push({'x': (years_max_values.length + 1) * width_step,
-                                    'y': height_half});
+                    /* Punkt rechts außen setzen */
+                    var last_right_point = { 'x': (years_max_values.length + 1) * width_step,
+                                             'y': height_half };
                     
-                    path_data_back.push({'x': (years_max_values.length + 1) * width_step,
-                                         'y': height_half});
+                    path_data.push(last_right_point);
+                    path_data_back.push(last_right_point;
                     
+                    /*
+                     * Array mit den Punkten zurück, muss gespiegelt werden
+                     *  und mit dem anderen Array (enthält die Puntkte hin) konkatiniert werden
+                     */
                     path_data = path_data.concat(path_data_back.reverse());
 
                     /* Attributwert für 'd' zurückgeben */
