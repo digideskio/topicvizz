@@ -93,18 +93,15 @@
                         var curr_path_height = max_height / overall_max_value * topic_year_val;
                         var curr_year_max_height = max_height / overall_max_value * year_max_value;
                         
-                        var extra_height = 0;
-                        
                         if(last_y_pos === null) {
                             last_y_pos = height_half - curr_year_max_height / 2;
-                            extra_height = 0.5;
                         }
                         
                         path_data.push({'x': width_step * (i + 1),
-                                        'y': last_y_pos - extra_height});
+                                        'y': last_y_pos - 0.5});
                         
                         path_data_back.push({'x': width_step * (i + 1),
-                                             'y': last_y_pos + curr_path_height + extra_height});
+                                             'y': last_y_pos + curr_path_height});
                         
                         years_max_values[i].last_y_pos = last_y_pos + curr_path_height;
                     }
