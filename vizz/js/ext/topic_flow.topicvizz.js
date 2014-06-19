@@ -113,6 +113,7 @@
                                              'y': height_half };
                     
                     path_data.push(last_right_point);
+                    path_data.push(last_right_point);
                     path_data_back.push(last_right_point);
                     
                     /*
