@@ -492,6 +492,12 @@
         /* ### IS_OPEN ### */
         is_open: function() {
             return is_open;
+        },
+        
+        /* Kontrollierten Zugriff auf Datenbestände innerhalb der Extension erlauben;
+         *  von Extension zu Extension unterschiedlich */
+        actions: {
+            
         }
     };
 

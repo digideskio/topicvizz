@@ -136,14 +136,14 @@
             
             is_open = true;
             
-            // Der Content existiert noch nicht, weshalb er noch erzeugt werden muss
+            /* Der Content existiert noch nicht, weshalb er noch erzeugt werden muss */
             if(m_content_node.children().length === 0) {
             
                 $.each(m_authors, function(i, author) {
                     
                     var author_con = $('<div></div>').attr('class', 'author_con_entry');
                     
-                    var author_heading = $('<h2></h2>').html(author.name);
+                    var author_heading = $('<h2></h2>').html(author.name).attr('id', 'list_' + author.id);
                     author_con.append(author_heading);
                     
                     var author_data = $('<div></div>').attr('class', 'author_data');
@@ -157,7 +157,7 @@
                     var topic_charts = $('<table></table>');
                     author_topics.append(topic_charts);
                     
-                    for(var i = 0; i < author.topics_mentioned_ranking.length && i < 5; i++) {
+                    for(var i = 0; i < author.topics_mentioned_ranking.length; i++) {
                         
                         var curr_topic = author.topics_mentioned_ranking[i];
                         
@@ -183,8 +183,11 @@
                     for(var pos in author.files) {
                         var document_entry = $('<li><a></a></li>');
                         document_entry.find('a')
-                            .attr('href', '#' + author.files[pos])
-                            .attr('target', '_blank')
+                            .attr({
+                                    href:   '#' + author.files[pos],
+                                    target: '_blank',
+                                    title:  author.files[pos]
+                                })
                             .html(author.files[pos]);
                         documents_list.append(document_entry);
                     }
@@ -222,6 +225,27 @@
         /* ### IS_OPEN ### */
         is_open: function() {
             return is_open;
+        },
+        
+        /* Kontrollierten Zugriff auf Datenbestände innerhalb der Extension erlauben;
+         *  von Extension zu Extension unterschiedlich */
+        actions: {
+            jump_to_author_id: function(author_id) {
+                
+                if(typeof(author_id) !== 'string')
+                    return;
+                
+                if(!ext.is_open())
+                    ext.show();
+                
+                var item = m_content_node.find('#list_' + author_id);
+                var to_pos = item.position().top + m_content_node.scrollTop();
+                
+                /* Zur Abschnitt des Autors scrollen */
+                
+                m_content_node.stop().animate({scrollTop: to_pos});
+                //m_node.find(".nano").nanoScroller({ scrollTop: to_pos });
+            }
         }
     };
 

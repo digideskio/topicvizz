@@ -369,23 +369,13 @@ foreignObject.expanded_content body div.topic_more_infos {
         border: 1px solid rgba(255, 255, 255, 0.5);
     }
 
-        foreignObject.expanded_content body div.topic_more_infos div.authors_list div.content_wrapper {
-            /*border-radius: 10px 0 0 10px;*/
-            /*border-left: 1px solid rgba(255, 255, 255, 0.5);*/
-        }
-        
-        foreignObject.expanded_content body div.topic_more_infos div.links_list div.content_wrapper {
-            /*border-radius: 0 10px 10px 0;*/
-            /*border-right: 1px solid rgba(255, 255, 255, 0.5);*/
-        }
-
-        foreignObject.expanded_content body div.topic_more_infos div div.content_wrapper {
-            width: 190px;
-            height: 220px;
-            text-align: left;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.1);
-        }
+    foreignObject.expanded_content body div.topic_more_infos div div.content_wrapper {
+        width: 190px;
+        height: 220px;
+        text-align: left;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.1);
+    }
     
     foreignObject.expanded_content body div.topic_more_infos div span {
         font-weight: bold;
@@ -402,11 +392,7 @@ foreignObject.expanded_content body div.topic_more_infos {
         padding-left: 20px;
     }
     
-    foreignObject.expanded_content body div.topic_more_infos div.authors_list div.content_wrapper div.content a {
-        color: rgb(52, 101, 164);
-    }
-        
-
+    
 foreignObject.expanded_content body div.turn_over_placer {
     position: absolute;
     text-align: right;
@@ -421,8 +407,6 @@ foreignObject.expanded_content body div.turn_over_placer a.turn_over_btn {
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
-
-
 
 
 .overlay .content {

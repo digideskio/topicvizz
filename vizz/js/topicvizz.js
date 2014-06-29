@@ -821,18 +821,45 @@
                 for(var i = 0; i < mentioned_by_arr.length; i++) {
                     for(var j = 0; j < authors.length; j++) {
                         if(authors[j].id === mentioned_by_arr[i]) {
-                            authors_arr.push(authors[j].name);
+                            authors_arr.push(authors[j]);
                         }
                     }
                 }
                 
             }
             
+            /* Referenz auf die "Authors-Charts" holen;
+             *  um die Topic-Statistiken eines Autors zu beziehen */
+            var charts_ext = extension_set['authors_charts'];
+            
+            
             /* Autoren-Liste füllen */
             var authors_ul = authors_content.append("ul").attr("class", "list");
-            for(var i = 0; i < authors_arr.length; i++) {
-                authors_ul.append("li").text(authors_arr[i]);
-            }
+            $.each(authors_arr, function(key, author) {
+                var list_item_node = authors_ul.append("li");
+                
+                /* Überprüfen, ob die für den Datenbezug benötigte Methode
+                 *  von der Extension bereitgesetllt wird */
+                if(     charts_ext
+                    &&  charts_ext.actions
+                    &&  charts_ext.actions.jump_to_author_id) {
+                    
+                    list_item_node = list_item_node
+                        .append('a')
+                        .attr('href', 'javascript:void();')
+                        .on('click', function() {
+                            $.each(extension_set, function(i, ext) {
+                                /* Popup bzw. Overlay ausblenden, sofern offen */
+                                if(ext.is_open())
+                                    ext.hide();
+                            });
+                        
+                            charts_ext.actions.jump_to_author_id(author.id);
+                        });
+                }
+                
+                list_item_node.text(author.name);
+            });
             
             
             /* Dokumenten-Liste */
