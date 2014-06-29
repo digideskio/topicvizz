@@ -852,7 +852,12 @@
             /* Dokumenten-Liste füllen */
             var docs_ul = docs_content.append("ul").attr("class", "list");
             for(var i = 0; i < docs_arr.length; i++) {
-                docs_ul.append("li").append("a").attr("target", "_blank").attr("href", "#" + docs_arr[i]).text(docs_arr[i]);
+                docs_ul.append("li")
+                    .append("a")
+                    .attr({ target: "_blank",
+                            href:   "#" + docs_arr[i],
+                            title:  docs_arr[i]  })
+                    .text(docs_arr[i]);
             }
             
             
