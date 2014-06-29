@@ -11,7 +11,7 @@
 
     var is_open = false;
     
-    var m_diagram_width = 1000;
+    var m_diagram_width = 950;
     
     var m_node                  = null;
     var m_svg_node              = null;
@@ -74,11 +74,12 @@
                     var path_data = [];
                     var path_data_back = [];
                     
-                    path_data.push({'x': 0,
-                                    'y': height_half});
+                    var first_left_point = { 'x': 0,
+                                             'y': height_half };
                     
-                    path_data_back.push({'x': 0,
-                                         'y': height_half});
+                    path_data.push(first_left_point);
+                    path_data_back.push(first_left_point);
+                    
                     
                     /* Oberen und gleichzeitig unteren Punkt bestimmen */
                     for(var i = 0; i < years_max_values.length; i++) {
@@ -126,9 +127,28 @@
                     return path_func(path_data);
                 })
                 .attr("stroke-width", "0");
-            
         });
         
+        
+        /* y-Achse  */
+        var y_axis_g_node = d3.select($(flow_g_node.node()).parent().find('g.value_axis')[0]);
+        
+        if(selected_topics.length === 0) {
+            y_axis_g_node.selectAll('*').remove();
+        }
+        else {
+            var half_o_max_value = overall_max_value / 2.0;
+            var y = d3.scale.linear()
+                            .domain([-half_o_max_value, half_o_max_value])
+                            .range([0, max_height - 10]);
+            var value_axis = d3.svg.axis()
+                                   .orient('right')
+                                   .tickFormat(function(d) {
+                                        return "" + ((parseInt(d) == parseFloat(d) && !isNaN(d) || Math.abs(d % 1) === 0.5) ? Math.abs(d): "");
+                                   })
+                                   .scale(y);
+            y_axis_g_node.call(value_axis);
+        }
     }    
     
 
@@ -181,9 +201,9 @@
                 
                 var ticks_cnt = m_years_min_max.max - m_years_min_max.min + 3;
                 
-                m_flow_g_node.attr('transform', 'translate(35, 0)');
+                m_flow_g_node.attr('transform', 'translate(35, 10)');
                 
-                /* Zeitachse erzeugen */    
+                /* Zeitachse (x-Achse) erzeugen */    
                 var time_axis_g_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'g'));
                 time_axis_g_node.attr('class', 'time_axis');
                 m_svg_node.append(time_axis_g_node);
@@ -194,7 +214,16 @@
                 time_axis_g_node.attr('transform', 'translate(50, 390)');
                 
                 m_helper.create_year_text_in_group(time_axis_g_node, m_years_min_max.min, year_cnt, m_diagram_width);
-            
+                
+                /* Wertachse (y-Achse) erzeugen */
+                var value_axis_g_node = $(document.createElementNS('http://www.w3.org/2000/svg', 'g'));
+                value_axis_g_node.attr('class', 'value_axis');
+                m_svg_node.append(value_axis_g_node);
+                
+                value_axis_g_node = d3.select(value_axis_g_node.get(0));
+                value_axis_g_node.attr('transform', 'translate(' + (m_diagram_width) + ', 10)');
+                
+                
             node.append(svg_wrapper);
             
             
@@ -258,6 +287,10 @@
                                                  "fill: black;\n" +
                                             "}\n" +
                                             
+                                            ".value_axis path.domain {\n" +
+                                                "fill: transparent;\n" +
+                                                "stroke: rgb(0, 0, 0);\n" +
+                                            "}\n" +
                                             
                                         "]]>\n" + 
                                     "</style>\n");
@@ -306,6 +339,7 @@
                 
                 var topic_list_item = $('<li>').html(node.topic);
                 
+                /* Pfad bei Klick auf ein Topic in der Topicliste hinzufügen/entfernen */
                 topic_list_item.on('click', function() {
                     
                     var active_topics = m_content_node.data('active_topics');
@@ -320,7 +354,7 @@
                         given_up_color_pos = [];
 
                     m_flow_g_node.selectAll('path').remove()
-
+                    
                     if(active_topics[node.topic]) {
                         var found_index = -1;
                         
@@ -358,7 +392,7 @@
                         topic_list_item.addClass(class_number);
                     }
                     
-                    create_flow_diagram(m_flow_g_node, m_selected_topics, m_years_min_max, m_diagram_width, 380);
+                    create_flow_diagram(m_flow_g_node, m_selected_topics, m_years_min_max, m_diagram_width, 370);
                     
                     m_content_node.data('given_up_color_pos', given_up_color_pos);
                     m_content_node.data('active_topics', active_topics);

@@ -591,3 +591,13 @@ foreignObject.expanded_content body div.turn_over_placer a.turn_over_btn {
     color: #b5a351;
 }
 
+
+#flow_overlay .flow_diagram svg g.value_axis {
+    fill: rgb(255, 255, 255);
+    font-size: 0.9em;
+}
+
+#flow_overlay .flow_diagram svg g.value_axis path.domain {
+    fill: transparent;
+    stroke: rgb(255, 255, 255);
+}
